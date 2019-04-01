@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 22.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 109.8 100.7" style="enable-background:new 0 0 109.8 100.7;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:none;stroke:#736357;stroke-width:2;stroke-miterlimit:10;}
+	.st1{fill:#736357;}
+	.st2{fill:none;stroke:#736357;stroke-miterlimit:10;}
+	.st3{fill:#736357;stroke:#736357;stroke-width:0.25;stroke-miterlimit:10;}
+	.st4{fill:#736357;stroke:#736357;stroke-miterlimit:10;}
+</style>
+<g>
+	<line class="st0" x1="0" y1="60.1" x2="109.9" y2="60.1"/>
+	<g>
+		<path class="st1" d="M53.8,65.1v22.5l-2.9-19.8L53.8,65.1 M54.8,62.8l-5,4.7l5,33.7V62.8L54.8,62.8z"/>
+	</g>
+	<g>
+		<path class="st1" d="M35.6,65.1v14.3l-2.9-11.5L35.6,65.1 M36.6,62.8l-5,4.7l5,20V62.8L36.6,62.8z"/>
+	</g>
+	<g>
+		<path class="st1" d="M74,65.1v14.3l-2.9-11.5L74,65.1 M75,62.8l-5,4.7l5,20V62.8L75,62.8z"/>
+	</g>
+	<polygon class="st2" points="55.4,9.4 55.4,16.5 62.5,9.4 	"/>
+	<polygon class="st2" points="54.4,8.4 54.4,1.4 47.4,8.4 	"/>
+	<g>
+		<polygon class="st3" points="54.8,62.8 54.8,101.2 59.8,67.5 		"/>
+		<polygon class="st3" points="36.6,62.8 36.6,87.5 41.6,67.5 		"/>
+		<polygon class="st3" points="75,62.8 75,87.5 80,67.5 		"/>
+		<polygon class="st4" points="54.4,9.4 47.4,9.4 54.4,16.5 		"/>
+		<polygon class="st4" points="55.4,8.5 62.5,8.5 55.4,1.4 		"/>
+		<circle class="st4" cx="54.8" cy="62.8" r="2.5"/>
+		<circle class="st4" cx="36.6" cy="62.8" r="2.5"/>
+		<circle class="st4" cx="75" cy="62.8" r="2.5"/>
+	</g>
+</g>
+</svg>

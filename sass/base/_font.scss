@@ -1,0 +1,83 @@
+//嵌入字型
+@font-face{
+	font-family: "王漢宗特明體繁";
+	src:url(../font/WT004.TTF);
+}
+@font-face{
+	font-family: "Adobe Heiti Std R";
+	src:url(../font/ADOBEHEITISTD-REGULAR.OTF);
+}
+
+// 網站主要用色
+$red : #a34f49;
+$blue : #006ca6;
+$brown : #362e2b;
+
+//網站用字
+$fofaTitle : 王漢宗特明體繁;
+$fofaText : Adobe Heiti Std R;
+
+//p標籤都是行高1.5
+p{
+	line-height: 1.5;
+}
+//標題字外觀
+.textEmphasis{
+	font-size: 3rem;
+	color:$brown;
+	font-family: $fofaTitle;
+	letter-spacing: 10px;
+	
+}
+//p標籤內的強調字顏色(eg.以strong包)
+.textHiliR{
+	color:$red;
+}
+.textHiliB{
+	color:$blue;
+}
+
+//內頁第一屏標題，h1
+.titlePri{
+	font-family: $fofaTitle;
+	color: $blue;
+	font-size: 3rem;
+	text-align: center;
+}
+
+//內頁h2副標題及圖案src="image/h2frame.svg"
+.titleSec{
+	position: relative;
+	color: $brown;
+	font-size: 1.5rem;
+	font-family: $fofaText;
+	text-align: center;
+	margin: 80px 0;
+}
+.titleSec img{
+	width: 110px;
+	position: absolute;
+	left: 50%;
+	top: 100%;
+	transform: translateX(-50%) translateY(-50%);
+	z-index: -1;
+}
+
+//內文大字
+.textL{
+	font-family: $fofaText;
+	font-size: 1.5rem;
+}
+//內文普通字
+.textM{
+	color: $brown;
+	font-family: $fofaText;
+	font-size: 1.25rem;
+	text-align: center;
+}
+//內文小字
+.textS{
+	font-family: $fofaText;
+	font-size: 1rem;
+}
+

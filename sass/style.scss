@@ -1,3 +1,16 @@
+@import 'base/font';
+@import 'base/reset';
+
 body{
 	margin: 0;
 }
+
+//變數：網站主要用色
+$red : #a34f49;
+$blue : #006ca6;
+$brown : #362e2b;
+
+//變數：網站用字
+$fofaTitle : 王漢宗特明體繁;
+$fofaText : Adobe Heiti Std R;
+
