@@ -1,0 +1,26 @@
+{
+  "name": "pirate",
+  "version": "1.0.0",
+  "description": "Pirate game webpage",
+  "main": "index.js",
+  "dependencies": {
+    "browser-sync": "^2.26.3",
+    "gulp": "^3.9.1",
+    "gulp-sass": "^4.0.2",
+    "jquery": "^3.3.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/asterlin/Pirate.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/asterlin/Pirate/issues"
+  },
+  "homepage": "https://github.com/asterlin/Pirate#readme"
+}
