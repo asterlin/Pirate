@@ -1,0 +1,88 @@
+
+//LOGO旗
+#headerLogo{
+    padding-top: 3px;
+    position: relative;
+    text-align: center;
+    margin: auto;
+    width: 250px;
+    background: url(../../image/headerLogoBg.svg) no-repeat;
+    background-size: 100% 100%;
+}
+#headerLogo a{
+    width: 200px;
+    height: 160px;
+    display: inline-block;
+    margin-top: 15px;
+}
+#headerLogo img{
+    width: 195px;
+    vertical-align: middle;
+}
+// #headerLogo::before{ //logo旗上面的桿子
+//     content: '';
+//     background-image: url(../../image/navrogC.svg);
+//     display: block;
+//     height: 15px;
+//     width: 250px;
+// }
+// #headerLogo::after{ //logo旗下的三角形
+//     content: '';
+//     display: block;
+//     margin: auto;
+//     width: 0px;
+//     border-top: $beige 20px solid;
+//     border-left: transparent 100px solid;
+//     border-right: transparent 100px solid;
+//     border-bottom: transparent 20px solid;
+// }
+
+header::before{
+    content: '';
+    background-image: url(../../image/navrog.svg);
+    background-size: cover;
+    background-position: center;
+    display: block;
+    height: 15px;
+    width: 100%;
+    
+}
+
+header::after{
+    content: '';
+    background-image: url(../../image/navrog.svg);
+    background-size: cover;
+    background-position: center;
+    display: block;
+    height: 15px;
+    width: 100%;
+    
+}
+header{
+    background: $beige;
+    margin-top: 10px;
+    position: relative;
+}
+#headerMenu{
+    text-align: center;
+}
+#headerMenu a{
+    color:$brown;
+    font-size: 1.5rem;
+    font-family: $fofaText;
+    display: inline-block;
+    padding: 20px;
+
+}
+
+#headerMe{
+    background: #385478;
+    color: #fff;
+    font-size: 1.25rem;
+    font-family: $fofaText;
+    position: absolute;
+
+}
+#headerMe a{
+    color: #fff;
+}

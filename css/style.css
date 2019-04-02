@@ -108,5 +108,67 @@ table {
 a {
   text-decoration: none; }
 
+#headerLogo {
+  padding-top: 3px;
+  position: relative;
+  text-align: center;
+  margin: auto;
+  width: 250px;
+  background: url(../../image/headerLogoBg.svg) no-repeat;
+  background-size: 100% 100%; }
+
+#headerLogo a {
+  width: 200px;
+  height: 160px;
+  display: inline-block;
+  margin-top: 15px; }
+
+#headerLogo img {
+  width: 195px;
+  vertical-align: middle; }
+
+header::before {
+  content: '';
+  background-image: url(../../image/navrog.svg);
+  background-size: cover;
+  background-position: center;
+  display: block;
+  height: 15px;
+  width: 100%; }
+
+header::after {
+  content: '';
+  background-image: url(../../image/navrog.svg);
+  background-size: cover;
+  background-position: center;
+  display: block;
+  height: 15px;
+  width: 100%; }
+
+header {
+  background: #fffcf2;
+  margin-top: 10px;
+  position: relative; }
+
+#headerMenu {
+  text-align: center; }
+
+#headerMenu a {
+  color: #362e2b;
+  font-size: 1.5rem;
+  font-family: Adobe Heiti Std R;
+  display: inline-block;
+  padding: 20px; }
+
+#headerMe {
+  background: #385478;
+  color: #fff;
+  font-size: 1.25rem;
+  font-family: Adobe Heiti Std R;
+  position: absolute; }
+
+#headerMe a {
+  color: #fff; }
+
 body {
   margin: 0; }

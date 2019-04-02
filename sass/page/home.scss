@@ -1,3 +1,7 @@
-.box{
-	padding: 50px;
+@import 'base/font';
+@import 'base/reset';
+
+div{
+	height: 100px;
+	width: 100px;
 }
