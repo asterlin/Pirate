@@ -173,7 +173,8 @@ header {
   top: 439px;
   left: 0;
   right: 0;
-  width: 350px; }
+  width: 350px;
+  transition-duration: 1s; }
 
 #headerMe::after {
   content: '';
