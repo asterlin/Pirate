@@ -6,7 +6,6 @@ Pirate game webpage
 sass/
 |
 |– base/
-|   |– _reset.scss       # Reset/normalize
 |   |– _font.scss        # Font
 |   |– _common.scss      # Common
 |   |– _var.scss         # var
