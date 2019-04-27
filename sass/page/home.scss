@@ -13,6 +13,9 @@
 .justHide{
     display: none;
 }
+.invisible{
+    visibility: hidden;
+}
 a{color: $blue;}
 
 .btnpri,.btnsec{
@@ -231,15 +234,16 @@ header.homeHeadHide{
     margin:300px 10px 10px 10px;
     transition-duration: 0.5s;
     overflow: hidden;
-    li{
+    .DIYStatusDot{
         width: 20px;
         height: 20px;
         border-radius: 20px;
-        border:3px solid $beige;
+        border:3px solid #fffcf2;
         position: relative;
         display: inline-block;
         background: transparent;
         margin: 10px 0px;
+        transition-duration: 0.3s;
         p{
             position: absolute;
             width: 100px;
@@ -248,10 +252,10 @@ header.homeHeadHide{
             top: 25px;
         }
     }
-    li.current{
+    .DIYStatusDot.current{
         border:3px solid $blue;
     }
-    li.fin{
+    .DIYStatusDot.active{
         background:$blue;
     }
     .DIYStatBar{
@@ -264,13 +268,17 @@ header.homeHeadHide{
         border-radius: 5px;
     }
     .DIYStatLine{
-        width: 100%;
+        width: 0%;
         height: 5px;
         background: $blue;
         position: absolute;
         top: 0;
         left: 0;
         border-radius: 5px;
+        transition-duration: 0.3s;
+    }
+    .DIYStatLine.active{
+        width: 100%;
     }
 
 }
@@ -278,7 +286,15 @@ header.homeHeadHide{
     margin-top: 40px;
     width: 300%;
     position: relative;
-    // left: calc(-100%);
+    left: 0;
+    transition-duration: 0.3s;
+    &.sec{
+        left: -100%
+    }
+    &.thi{
+        left: -200%
+    }
+
 }
 .DIYSlide{
     float: left;
@@ -288,11 +304,15 @@ header.homeHeadHide{
 
 //船的部位圖片
 #DIYPanel img{
-    width: 90px;
+    width: 84px;
     background: $beige;
     display: inline-block;
     padding: 5px;
+    border: 3px solid $beige;
     border-radius: 10px;
+    &.active{
+        border: 3px solid $blue;
+    }
 }
 #DIYHeads,#DIYSails{
     margin-top: 20px;
@@ -465,7 +485,27 @@ h2 a{
 }
 
 //懸賞排行
+#homeGameRank{
+    margin-top: 20px;
+    >p{
+        margin-left: 20px;
+        .textEmphasis{
+            padding-left: 0px;
+        }
+    }
+}
+#homeGameRank .textEmphasis{
+    text-align: left;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+}
+#homeGameRank .textS a{
+    color:$blue;
+    font-size: 1.25rem;
+    font-family: Adobe Heiti Std R;
+}
 .homeWanteds{
+    margin-top: 10px;
     position: relative;
     height: 400px;
 }
@@ -480,26 +520,13 @@ h2 a{
 }
 .wrapWanted:nth-child(2){
     left: 10px;
-    top: 160px;
+    top: 90px;
     z-index: -1;
 }
 .wrapWanted:nth-child(3){
     right: 10px;
-    top: 180px;
+    top: 120px;
     z-index: -1;
-}
-#homeGameRank>p{
-    margin-left: 20px;
-}
-#homeGameRank .textEmphasis{
-    text-align: left;
-    font-size: 1.5rem;
-    letter-spacing: 2px;
-}
-#homeGameRank .textS a{
-    color:$blue;
-    font-size: 1.25rem;
-    font-family: Adobe Heiti Std R;
 }
 .wanted{
     width: 170px;
@@ -580,6 +607,7 @@ h2 a{
 
 //啟航尋寶
 #homeGameGPS{
+    margin-top: 40px;
     .smaller{
         letter-spacing: 1px;
     }
@@ -651,7 +679,7 @@ h2 a{
     border-radius: 10px;
     width: calc(100% - 40px);
     color: $beige;
-    height: 200px;
+    height: 400px;
     position: absolute;
     .textM{
         color: $beige;
@@ -687,16 +715,10 @@ h2 a{
     border-radius: 10px;
     margin:10px 30px;
     padding: 10px;
-    height: 530px;
+    height: 300px;
     text-align: center;
     box-shadow: 0 0 5px rgba(166, 124, 82,0.5);
     position: relative;
-    .homeProdTalent{
-        img{
-            width: 200px;
-            margin-top: 10px;
-        }
-    }
     i{
         position: absolute;
         top: 50%;
@@ -704,6 +726,7 @@ h2 a{
         width: auto;
         height: auto;
         color: #736357;
+        // background: $beige;
     }
     .fa-arrow-circle-right{
         right: -25px;
@@ -716,33 +739,41 @@ h2 a{
 .homeWrapProd{
     position: absolute;
     left: 0;right: 0;margin: auto;
-}
-.homeProdImg{
-    width: 150px;
-    margin-top: -50px;
-    opacity: 0;
-    transform: translateX(-50px)  scale(0.8);
-    transition-duration: 0.5s
-}
-.homeProdInfoCard p{
-    opacity: 0;
-    transform: translateY(24px) scale(0.8);
-    transition-duration: 0.5s;
-}
-@for $i from 1 through 6{
-    .homeProdInfoCard p:nth-child(#{$i}){
-        transition-delay:$i*0.1 - 0.1s;
+    &.active{
+        .homeProdImg{
+            opacity: 1;
+            transform: translateX(0px)  scale(1);
+        }
+        .homeProdInfoCard p{
+            opacity: 1;
+            transform: translateY(0px)  scale(1);
+        }
+
     }
 }
-.homeProdInfoCard p.homeProdAct{
-    opacity: 1;
-    transform: translateY(0px)  scale(1);
+.homeProdImg{
+    width: 140px;
+    // margin-top: -50px;
+    opacity: 0;
+    transform: translateX(-50px)  scale(0.8);
+    transition-duration: 0.5s;
+}
+.homeProdInfoCard{
+    width: 150px;
+    margin: 10px;
+    float: right;
+    p{
+        opacity: 0;
+        transform: translateY(24px) scale(0.8);
+        transition-duration: 0.3s;
+    }
+}
+@for $i from 1 through 6{ //文字淡入的時間差
+    .homeProdInfoCard p:nth-child(#{$i}){
+        transition-delay:$i*0.05 - 0.05s;
+    }
 }
 
-.homeProdImg.homeProdAct{
-    opacity: 1;
-    transform: translateX(0px)  scale(1);
-}
 
 @media screen and (min-width:768px){
     #homeMarketBlack,#homeMarketShip{
