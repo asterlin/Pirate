@@ -18,7 +18,7 @@ body {
     background-color: rgba(0, 0, 0, .6);
     width: 100%;
     height: 100vh;
-    position: absolute;
+    position: fixed;
     z-index: 500;
 }
 
@@ -57,32 +57,70 @@ body {
     left: 0;
 }
 
-.content {
+.contents {
     padding: 20px 0;
-
-    img {
-        width: 100%;
-        display: block;
-        margin: auto;
-        margin-bottom: 20px;
-    }
 }
 
-.labelBox {
+.leave {
+    width: 45px;
+    height: 45px;
+    position: absolute;
+    right: 32px;
+    top: 32px;
+}
+
+.leave::after {
+    content: " ";
+    width: 40px;
+    height: 8px;
+    position: absolute;
+    background-color: brown;
+    transform: rotate(45deg);
+    right: 7%;
+    top: 40%;
+}
+
+.leave::before {
+    content: " ";
+    width: 40px;
+    height: 8px;
+    background-color: brown;
+    transform: rotate(135deg);
+    position: absolute;
+    right: 7%;
+    top: 40%;
+}
+
+// .labelBox {
+//     display: flex;
+//     justify-content: center;
+//     padding: 10px;
+
+//     input {
+//         border-radius: 10px;
+//         border: 1px solid transparent;
+//     }
+
+//     span {
+//         margin-right: 10px;
+//         color: $brown;
+//         font-family: Adobe Heiti Std R;
+//     }
+// }
+
+.shipwrap {
     display: flex;
-    justify-content: center;
-    padding: 10px;
 
-    input {
-        border-radius: 10px;
-        border: 1px solid transparent;
+    .shiping {
+        width: 50%;
+        font-size: 0;
+
+        img {
+            width: 100%;
+
+        }
     }
 
-    span {
-        margin-right: 10px;
-        color: $brown;
-        font-family: Adobe Heiti Std R;
-    }
 }
 
 .textM {
@@ -93,5 +131,8 @@ body {
     border: 1px solid transparent;
     margin: 10px auto;
     display: block;
-    
+
+}
+.titleThi{
+    padding: 10px;
 }

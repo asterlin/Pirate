@@ -37,14 +37,11 @@
      if ($manager -> rowCount() != 0) {
          echo "false";
      } else {
-         $sql = "insert into manager(managerAcc, managerPsw, managerStatus)
-         values(:managerAcc, :managerPsw, 0)";
+         $sql = "insert into manager values(:managerAcc, :managerPsw, now(), 1)";
          $manager = $pdo -> prepare($sql);
          $manager -> bindValue(':managerAcc', $_REQUEST['managerAcc']);
          $manager -> bindValue(':managerPsw', $_REQUEST['managerPsw']);
-         $manager -> bindValue(':managerStatus', $_REQUEST['managerStatus']);
          $manager -> execute();
-         echo "true";
      }
  } catch (PDOException $e) {
      $errMsg .=  "錯誤原因" . $e->getMessage() . "<br>";

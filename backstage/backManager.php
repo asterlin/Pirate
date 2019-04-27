@@ -56,13 +56,27 @@ echo $errMsg;
                         </tr>
                         <tr>
                         <?php
-                        while ($memberRow = $manager->fetch()) {
+                        while ($managerRow = $manager->fetch()) {
                             ?>
-                            <td><?php echo $memberRow['managerAcc'] ?></td>
-                            <td><?php echo $memberRow['managerPsw'] ?></td>
-                            <td><?php echo $memberRow['managerSignUpTime'] ?></td>
-                            <td><?php echo $memberRow['managerStatus'] ?></td>
-                            
+                            <td><?php echo $managerRow['managerAcc'] ?></td>
+                            <td><?php echo $managerRow['managerPsw'] ?></td>
+                            <td><?php echo $managerRow['managerSignUpTime'] ?></td>
+                            <form action="backManagerStatus.php">
+                            <td>
+                            <label>
+                                <input type="radio" name="managerStatus" value="1" <?php echo $managerRow['managerStatus'] == 1 ? 'checked' : '' ?>>
+                                開啟
+                            </label>
+                            <label>
+                                <input type="radio" name="managerStatus" value="0" <?php echo $managerRow['managerStatus'] == 0 ? 'checked' : '' ?>>
+                                關閉
+                            </label>
+                            </td>
+                            <td>
+                            <input type="hidden" name="managerAcc" value="<?php echo $managerRow['managerAcc'] ?>">
+                            <button type="submit" class="btnpri"><span>修改</span></button>
+                            </td>
+                            </form>
                             </tr>
                         <?php
                         }

@@ -5,8 +5,9 @@ window.addEventListener('load',function(){
     
 
     //取得工具列的船身船帆們
-    var DYIsails=document.getElementsByClassName('DIYSail');
-    var DYIbodys=document.getElementsByClassName('DIYbody');
+    var DIYsails=document.getElementsByClassName('DIYSail');
+    var DIYbodys=document.getElementsByClassName('DIYbody');
+    var DIYheads=document.getElementsByClassName('head');
 
     //換船帆船身
     function changeSail(e){
@@ -18,8 +19,8 @@ window.addEventListener('load',function(){
         $id('partBody').src = e.target.src;
     }
     for(var i=0;i<3;i++){
-        DYIsails[i].addEventListener('click',changeSail);
-        DYIbodys[i].addEventListener('click',changeBody);
+        DIYsails[i].addEventListener('click',changeSail);
+        DIYbodys[i].addEventListener('click',changeBody);
     }
 
     //插入色相環
@@ -68,8 +69,8 @@ window.addEventListener('load',function(){
     })
 
     //設定canvas寬
-    cavDraw.width=750;
-    cavDraw.height = 700;
+    cavDraw.width=600;
+    cavDraw.height = 650;
     
 
     //設定筆畫參數
@@ -140,8 +141,8 @@ window.addEventListener('load',function(){
     var cavCombine = $id('combineShip');
     var ctxCombine = cavCombine.getContext('2d');
 
-    cavCombine.width=750;
-    cavCombine.height = 700;
+    cavCombine.width=600;
+    cavCombine.height = 650;
 
     //先用來繪製畫旗的區域
     function flagFrame(){

@@ -75,7 +75,6 @@
                         </tr>
                     </table>
                     <div class="butBox">
-                        <button>++</button>
                         <button type="button" class="btnpri" id="addButton"><span>新增帳號</span></button>
                         <button type="button" class="btnpri" id="cancelButton"><span>取消新增</span></button>
                     </div>
@@ -90,8 +89,13 @@
                 document.getElementById('managerPsw').value = '';
                 document.getElementById('checkPsw').value = '';
                 alert('密碼與確認密碼不正確！請重新輸入')
-            }else{
+        }else{
+            document.getElementById('myForm').submit();
+        }
                 
+        });
+        document.getElementById('cancelButton').addEventListener('click', function () {
+            header("location:backManager.php");
         });
     </script>
    

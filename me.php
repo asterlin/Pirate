@@ -5,12 +5,13 @@ $errMsg = "";
 
 try {
     require_once("backstage/php/connectPirates.php");
-    $sql = "select * from traderecord";
-    $traderecord = $pdo->query($sql);
+    //"select * from traderecord";
+    $traderecord =" select * from traderecord JOIN treasurelist ON traderecord.treaId = treasurelist.treaId ";
+    $traderecord = $pdo->query($traderecord);
 
-
-    $sql2 = "select * from articlelist";
-    $articlelist = $pdo->query($sql2);
+    //發文紀錄
+    $articlelist = "select * from articlelist ";
+    $articlelist = $pdo->query($articlelist);
 } catch (PDOException $e) {
     $errMsg .=  "錯誤原因" . $e->getMessage() . "<br>";
     $errMsg .=  "錯誤行號" . $e->getLine() . "<br>";
@@ -28,11 +29,57 @@ echo $errMsg;
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>《大海賊帝國》去追尋吧！</title>
     <link rel="stylesheet" href="css/me.css">
+    <script src="js/shipDIY.js"></script>
+    <link rel="stylesheet" href="css/wavebtn.css">
+    <script src="../js/wavebtn.js"></script>
+    <style>
+    canvas{
+        border: 1px solid gainsboro;
+    }
+    #tools img{
+        width: 100px;
+    }
+    #shipArea{
+        position: relative;
+        height: 120%;
+    }
+    /* #shipArea img{
+        width: 750px;
+        position: absolute;
+    } */
+    #partSail,#partBody,#partHead,#drawFrame{
+        width: 100%;
+        height:100%;
+        position: absolute;
+    }
+    #drawFlag,#combineShip{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    }
+    #pen{
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: rgba(0,0,0,0.3);
+        position: absolute;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+    }
+    </style>
 </head>
 
 <body>
 
     <!-- 選單 -->
+    <label for="burgerCtrl">
+        <input type="checkbox" name="" id="burgerCtrl">
+        <div id="burger">
+            <div class="burgerLine"></div>
+            <div class="burgerLine"></div>
+        </div>
+    </label>
     <header>
         <h1 id="headerLogo"><a href="index.html">
                 <img src="image/logo.svg" alt="大海賊帝國">
@@ -45,27 +92,6 @@ echo $errMsg;
                 <li><a href="me.html">俺の海賊船</a></li>
             </ul>
         </nav>
-        <div>
-            <ul id="headerMe">
-                <li id="headerMeID">
-                    <a href="javascript:;">我是大帥哥</a>
-                </li>
-                <li id="headerMeLv">lv.<span>7</span>
-                    <div id="headerExpBar">
-                        <div id="headerExpLine"></div>
-                        <p id="headerExp"><span>1000</span>/<span>10000</span></p>
-                    </div>
-                </li>
-                <li id="headerMeMoney">金幣<span>100</span>G</li>
-                <li id="headerMeShip"><a href="javascript:;">
-                        <img src="image/ship/shipTemp.png" alt="角色頭像">
-                    </a></li>
-                <li id="headerMeTalentS">力量<span>◆◆◆◆◇</span></li>
-                <li id="headerMeTalentL">幸運<span>5</span></li>
-                <li id="headerMeTalentA">敏捷<span>5</span></li>
-                <li id="headerMeTalentI">智力<span>5</span></li>
-            </ul>
-        </div>
     </header>
 
 
@@ -77,33 +103,54 @@ echo $errMsg;
         <div class="col-12 col-md-4 drawing">
             <img src="image/background/blueprint.png" alt="">
             <div class="meShip">
-                <img src="image/ship/shipComplete.png" alt="">
-                <!-- <img src="image/background/light1.png" alt=""> -->
+                <div id="shipArea">
+                    <!-- 為了取得外聯SVG的內文使用於船帆遮罩，使用object標籤 -->
+                    <img src="image/ship/300.png" alt="挑選船身" id="partBody">
+                    <object data="image/ship/200.svg" type="image/svg+xml" id="partSail"></object>
+                    <img src="image/ship/100.png" alt="挑選船頭" id="partHead">
+                        <canvas id="combineShip">
+                            你看不到我你看不到我你看不到我你看不到我你看不到我你看不到我你看不到我你看不到我....好吧，請你<strong>下載並使用<a href="https://www.google.com/intl/zh-TW_ALL/chrome/">google chrome</a></strong>開啟這個網頁吧
+                        </canvas>
+                        <canvas id="drawFlag">
+                            你看不到我你看不到我你看不到我你看不到我你看不到我你看不到我你看不到我你看不到我....好吧，請你<strong>下載並使用<a href="https://www.google.com/intl/zh-TW_ALL/chrome/">google chrome</a></strong>開啟這個網頁吧(ㄏ￣▽￣)ㄏ   ㄟ(￣▽￣ㄟ)
+                        </canvas>
+                     <!-- <div id="pen"></div> -->
+                </div>
             </div>
+            <a href="">
+                <button class="btnpri"><span>儲存</span></button>
+            </a>
         </div>
         <!-- 個人資訊 -->
         <div class="col-12 col-md-4 boxNews">
             <div class="meNews">
                 <ul class="col-12 col-md-5 field">
                     <li>
-                        帳號: <span>abc123</span>
+                        帳號: <span><?php echo $_SESSION["memId"]; ?></span>
+                    </li>
+                    
+                    <li>
+                        ID: <input type="text" name="memName" value=" <?php echo $_SESSION["memNic"];  ?> " maxlength="12"
+                                readonly id="memName">
                     </li>
                     <li>
-                        密碼: <a href="#"><span>更改密碼</span></a>
+                        LV: <span> <?php echo $_SESSION["memLv"];  ?> </span>
+                      
                     </li>
                     <li>
-                        ID: <span>祕寶尋者號</span>
+                          EXP:<span> <?php echo $_SESSION["memExp"];  ?>/100 </span>
                     </li>
                     <li>
-                        LV: <span>10</span>
+                        金幣: <span> <?php echo $_SESSION["memMoney"];  ?> </span> G
                     </li>
                     <li>
-                        金幣: <span>500</span> G
+                        <button class="btnpri"><span>編輯</span></button>
+                        <button class="btnpri"><span>完成</span></button>
                     </li>
                 </ul>
                 <!-- 雷達圖 -->
                 <div class="col-12 col-md-7 radar">
-                    <h3>天賦值: <span id="points">30</span> 點</h3>
+                    <h3>天賦值: <span id="points"> <?php echo $_SESSION["talentPointsRemain"];?> </span> 點</h3>
                     <div class="chartRadarDiv">
                         <canvas id="chartRadar" style="height:100px; width: 100px;"></canvas>
                     </div>
@@ -125,6 +172,7 @@ echo $errMsg;
                         <div id="tab0" class="tabs-panel" style="display:block">
                             <div class="content">
                                 <ul>
+                                
                                     <li>
                                         <img src="image/treasure/trea1.svg" alt="">
                                     </li>
@@ -143,6 +191,8 @@ echo $errMsg;
                                     <li>
                                         <img src="image/treasure/trea6.svg" alt="">
                                     </li>
+
+                                     
                                 </ul>
                             </div>
                         </div>
@@ -163,55 +213,44 @@ echo $errMsg;
                 <div class="tabs-container1">
                     <div id="tab2" class="tabs-panel1" style="display:block">
                     <?php
-                        while ($memberRow = $traderecord->fetch()) {
-                            ?>
-                    <div class="tt">
+                        $memId = $_SESSION["memId"];
+                        while ($traderecordRow = $traderecord->fetch(PDO::FETCH_ASSOC)) {
+                            if ($traderecordRow["buyerId"] == $memId) {
+                                ?>
+                    <div class="tt textS">
                             <ul>
-                                <li>寶物名稱:<?php echo $memberRow['treaId']?></li>
-                                <li>上架時間:<?php echo $memberRow['saleTime']?></li>
-                                <li>買家暱稱:<?php echo $memberRow['salerId']?></li>
-                                <li>交易時間:<?php echo $memberRow['tradeTime']?></li>
-                                <li>價格:<?php echo $memberRow['price']?></li>
+                                <li>寶物名稱: <span><?php echo $traderecordRow['treaName']?></span> </li>
+                                <li>上架時間: <span><?php echo $traderecordRow['saleTime']?></span> </li>
+                                <li>買家暱稱: <span><?php echo $traderecordRow['salerId']?></span> </li>
+                                <li>交易時間: <span><?php echo $traderecordRow['tradeTime']?></span> </li>
+                                <li>價格: <span> <?php echo $traderecordRow['price']?> </span> </li>
                             </ul>
                         </div>
                     <?php
+                            }
                         }
                     ?>
                     </div>
                     <div id="tab3" class="tabs-panel1">
                     <?php
-                        while ($memberRow2 = $traderecord->fetch()) {
-                            ?>
-                    <div class="tt">
+                        $memId = $_SESSION["memId"];
+                        while ($articlelistRow = $articlelist->fetch(PDO::FETCH_ASSOC)) {
+                            if ($articlelistRow["memId"] == $memId) {
+                                ?>
+                    <div class="tt textS">
                             <ul>
-                                <li>主題:<?php echo $memberRow2['artTitle']?></li>
-                                <li>發文時間:<?php echo $memberRow2['artTime']?></li>
-                                <li>討論人數:<?php echo $memberRow2['msgAmt']?></li>
-                                <li>點擊次數:<?php echo $memberRow2['clickAmt']?></li>
-                                <li> <a href="#"><button>前往文章</button></a> </li>
+                                <li>主題: <span><?php echo $articlelistRow['artTitle']?></span> </li>
+                                <li>發文時間: <span><?php echo $articlelistRow['artTime']?></span> </li>
+                                <li>討論人數: <span><?php echo $articlelistRow['msgAmt']?></span> 次</li>
+                                <li>點擊次數: <span><?php echo $articlelistRow['clickAmt']?></span> 次</li>
+                                <li><button class="btnpri"><span><a href="ber.php?from=me&artId=<?php echo $articlelistRow['artId']?>">前往文章</a></span></button></li>
                             </ul>
                         </div>
                     <?php
+                            }
                         }
                     ?>
-                        <div class="tt">
-                            <ul>
-                                <li>主題:</li>
-                                <li>發文時間:</li>
-                                <li>討論人數:</li>
-                                <li>點擊次數:</li>
-                                <li> <a href="#"><button>前往文章</button></a> </li>
-                            </ul>
-                        </div>
-                        <div class="tt">
-                            <ul>
-                                <li>主題:</li>
-                                <li>發文時間:</li>
-                                <li>討論人數:</li>
-                                <li>點擊次數:</li>
-                                <li> <a href="#"><button>前往文章</button></a> </li>
-                            </ul>
-                        </div>
+
                     </div>
                 </div>
                 <div style="clear: both"></div>
@@ -225,6 +264,7 @@ echo $errMsg;
     <script src="js/header.js"></script>
     <script src="js/radar.js"></script>
     <script src="js/me.js"></script>
+    <script src="js/wavebtn.js"></script>
 
 </body>
 

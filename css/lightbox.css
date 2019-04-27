@@ -129,7 +129,12 @@ a {
   width: 450px;
   /* height: 100%; */
   transform: translate(-50%, -50%);
+<<<<<<< HEAD
   position: fixed;
+=======
+   position: fixed;  
+}
+>>>>>>> 09aefc0509242be30f3a66d8057bc82bb3425151
 
 .axis {
   width: 450px;

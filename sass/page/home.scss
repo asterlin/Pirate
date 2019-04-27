@@ -4,7 +4,7 @@
 
 
 #homeGame,#homeMarket,#homeBar,#homeEnd{
-    margin-top: 250px;
+    margin-top: 20vh;
 }
 
 .clearfix{
@@ -14,7 +14,13 @@
     display: none;
 }
 a{color: $blue;}
-.btnpri{cursor: pointer;}
+
+.btnpri,.btnsec{
+    cursor: pointer;
+    padding: 10px;
+    font-size: 1.25rem;
+    // -webkit-tap-highlight-color: transparent;
+}
 
 body{
     background: url(../image/background/BgPage.png);
@@ -26,7 +32,14 @@ p{ //這裡其實不懂為何_font設定的在瀏覽器不執行
 .textEmphasis{
     font-size: 2rem;
     text-align: center;
+    padding-left: 10px; //此處為了校正字距
 }
+.btnsec{
+    padding: 10px;
+    font-size: 1.25rem;
+    // -webkit-tap-highlight-color: transparent;
+}
+
 #homeBanner{
     height: 100vh;
 }
@@ -43,11 +56,14 @@ p{ //這裡其實不懂為何_font設定的在瀏覽器不執行
     width: 100%;
     overflow: hidden;
     // position: fixed;
-    z-index: -1;
+    height: 100vh;
+    // z-index: -1;
 }
 .homeMap{
     width: 1200px; //之後隨著視角，調整為固定寬度及scale translate之類的
     position: relative;
+    // transition-duration: 0.1s;
+    // position: fixed;
 }
 #homeMapImg{
     width: 100%;
@@ -57,13 +73,18 @@ p{ //這裡其實不懂為何_font設定的在瀏覽器不執行
 //調整成為海賊的船
 #wrapShipArea{
     position: absolute;
-    width: 15%;
-    top: 40%;
-    left: 9%;
+    width: 100%;
+    top: 61%;
+    // left: 9%;
     text-align: center;
+    // position: fixed;
+    cursor: pointer;
+    .btnsec{
+        margin-top: -15px;
+    }
 }
 #wrapShipArea img{
-    width: 100%;
+    // width: 100%;
     position: absolute;
 }
 
@@ -71,65 +92,43 @@ p{ //這裡其實不懂為何_font設定的在瀏覽器不執行
     // position: absolute;
     margin: 150px 0 0 40px;
 }
-
-
-
-
-//調整地圖上圖片的定位
-.homeMapPlace{
-    position: absolute;
-    opacity: 0.1;
+//船
+#shipArea{
+    position: relative;
+    height: 240px;
+    width: 180px;
+    margin: auto;
+    // transform: scale(0.4);
 }
-#homeMapGame{
-    top: 38%;
-    left: 25%;
-    width: 14%;
-}
-#homeMapMarket{
-    top: 32%;
-    left: 40%;
-    width: 15%;
-}
-#homeMapBar{
-    top: 42%;
-    left: 56%;
-    width: 12%;
-}
-#homeMapMe{
-    top: 52%;
-    left: 70%;
-    width: 8%;
-}
-#mapGameImg,#mapMarketImg,#mapBarImg,#mapMeImg{
+#partSail,#partHead,#partBody,#drawFrame{
     width: 100%;
-}
-
-//調整地圖超連結緞帶的定位
-.mapLink{
-    width: 120px;
     position: absolute;
-    left: 10px;
-    top: -20px;
-    z-index: 1;
+    top: 0;
+    left: 0;
+    right: 0;
+    // margin: auto;
 }
-
-.homeMapMsg{
-    background: $beige;
-    width: 300px;
-    padding: 10px;
-    box-shadow: #a67c52 0 0 5px;
-    border-radius: 10px;
+#drawFlag,#combineShip{
     position: absolute;
-    top: -50px;
+    top: 0;
     left: 0;
     right: 0;
     margin: auto;
-    display: none;
-    z-index: 2;
+    transform-origin: 0 0;
+    transform: scale(0.3); //大螢幕為0.4吧，修改時，前面的shiparea寬度也要修改
 }
-.homeMapPlace:hover .homeMapMsg{
-    display: initial;
+#pen{
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.3);
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    transform: scale(0.3);
 }
+
 
 @media screen and (min-width:768px){
 //調整slogan的字距
@@ -149,13 +148,25 @@ p{ //這裡其實不懂為何_font設定的在瀏覽器不執行
 #wrapShipArea{
     // position: absolute;
     width: 10%;
-    top: 70%;
-    left: 0;
-    right: 0;
-    margin: auto;
+    top: 50%;
+    // left: 0;
+    // right: 0;
+    // margin: auto;
 }
 #shipArea{
-    height: 150px;
+    width: 600px;
+    height: 650px;
+}
+#drawFlag,#combineShip{
+    transform: scale(1);
+}
+#partSail,#partHead,#partBody,#drawFrame{
+    width: 600px;
+    // position: absolute;
+    // top: 0;
+    // left: 0;
+    // right: 0;
+    // margin: auto;
 }
 
 //調整城市圖片可見度
@@ -168,12 +179,12 @@ p{ //這裡其實不懂為何_font設定的在瀏覽器不執行
 }
 
 }
-@media screen and (min-width:1200px){
+@media screen and (min-width:1024px){
     //.textEmphasis設回3rem，letter-spacing: 50px;
     .textEmphasis{
         font-size: 3rem;
     }
-    .mapLink{width: 200px;}
+    .mapLink{width: 150px;}
 
     #homeBannerLogo{
         width: 250px;
@@ -185,16 +196,18 @@ p{ //這裡其實不懂為何_font設定的在瀏覽器不執行
     .homeMap{
         width: 100%; //之後隨著視角，調整為固定寬度及scale translate之類的
         transform: scale(1) translateX(0%) translateY(0px);
+        transform-origin: 14% 62%;
     }
     //調整成為海賊的位置到中間
     #wrapShipArea{
         // width: 15%;
-        top: 40%;
-        left: 14%;
+        top: 40%; //9%
+        left: 6%;
         right: auto;
     }
     #shipArea{
-        height: 200px;
+        // height: 200px;
+        transform: scale(0.3);
     }
 
 }
@@ -215,36 +228,63 @@ header.homeHeadHide{
 }
 #DIYPanel{
     border: #a67c52 5px double;
-    padding: 10px;
-    margin:10px;
+    margin:300px 10px 10px 10px;
     transition-duration: 0.5s;
+    overflow: hidden;
+    li{
+        width: 20px;
+        height: 20px;
+        border-radius: 20px;
+        border:3px solid $beige;
+        position: relative;
+        display: inline-block;
+        background: transparent;
+        margin: 10px 0px;
+        p{
+            position: absolute;
+            width: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 25px;
+        }
+    }
+    li.current{
+        border:3px solid $blue;
+    }
+    li.fin{
+        background:$blue;
+    }
+    .DIYStatBar{
+        height: 5px;
+        width: calc((100% - 150px)/2);
+        background: $beige;
+        display: inline-block;
+        position: relative;
+        top: -21px;
+        border-radius: 5px;
+    }
+    .DIYStatLine{
+        width: 100%;
+        height: 5px;
+        background: $blue;
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-radius: 5px;
+    }
+
 }
-//客製狀態列的點點
-#DIYStatus svg{
-    width: 15px;
-}
-.st0{fill:none;stroke:#736357;stroke-miterlimit:10;}
-.st1{fill:#736357;stroke:#736357;stroke-miterlimit:10;}
-//客製狀態列的箭頭，及位置調整
-#DIYStatus li:nth-child(n+2)::before{
-    content:'';
-    background: url(../image/home/arrow.svg) no-repeat;
-    display: inline-block;
-    width: 40px;
-    height: 10px;
-    position: absolute;
-    top: 30px;
-    left: -40px;
-}
-#DIYStatus li{
+#DIYSlides{
+    margin-top: 40px;
+    width: 300%;
     position: relative;
-    text-align: center;
+    // left: calc(-100%);
+}
+.DIYSlide{
     float: left;
-    width: 40px;
+    width: 33.3%;
 }
-#DIYStatus li:nth-child(n+2){
-    margin: 0 10px 20px 45px;
-}
+
 
 //船的部位圖片
 #DIYPanel img{
@@ -254,67 +294,13 @@ header.homeHeadHide{
     padding: 5px;
     border-radius: 10px;
 }
-//船
-#shipArea{
-    position: relative;
-    height: 280px;
-    width: 300px;
-    margin: auto;
+#DIYHeads,#DIYSails{
+    margin-top: 20px;
 }
-#partSail,#partBody,#drawFrame{
-    width: 300px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-}
-#drawFlag,#combineShip{
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-    transform-origin: 0 0;
-    transform: scale(0.4);
-}
-#pen{
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background: rgba(0,0,0,0.3);
-    position: absolute;
-    top: 0;
-    left: 0;
-    pointer-events: none;
-    transform: scale(0.4);
+#DIYSails{
+    margin-bottom: 40px;
 }
 
-    //海浪，海浪的位置跟上面shipArea的height有關
-#wrapShipArea::before{
-    content: '';
-    display: block;
-    position: absolute;
-    width: 50px;
-    height: 50px;
-    background:url(../image/ship/wave1.svg) no-repeat;
-    background-size: 100% 100%;
-    bottom: 10px;
-    left: -20px;
-    z-index: -1;
-}
-#wrapShipArea::after{
-    content: '';
-    display: block;
-    position: absolute;
-    width: 150px;
-    height: 50px;
-    background:url(../image/ship/wave2.svg) no-repeat;
-    background-size: 100% 100%;
-    bottom: -12px;
-    right: 0px;
-    z-index: -1;
-}
 
 
 //畫畫區的按鈕
@@ -396,12 +382,9 @@ header.homeHeadHide{
 #DIYStatus li:nth-child(n+2){
     margin: 0 10px 20px 45px;
 }
-#drawFlag,#combineShip{
-    transform: scale(0.4);
-}
 }
 
-@media screen and (min-width:1200px){
+@media screen and (min-width:1024px){
     #homeDIY .textEmphasis{
         margin-top: 150px;
     }
@@ -412,19 +395,19 @@ header.homeHeadHide{
         width: 1200px;
         margin: auto;
     }
-    #shipArea{
-        float: left;
-    }
+    // #shipArea{
+    //     float: left;
+    // }
     #DIYPanel{
         float: right;
         margin-top: 100px;
     }
-    #shipArea{
-        position: relative;
-        height: 700px;
-    }
-    #partSail,#partBody,#drawFrame{
-        width: 750px;
+    // #shipArea{
+    //     position: relative;
+    //     height: 650px;
+    // }
+    #partSail,#partHead,#partHead,#partBody,#drawFrame{
+        width: 600px;
         position: absolute;
         top: 0;
         left: 0;
