@@ -4,36 +4,7 @@ var a;
 var count;
 function setup(){
 	createCanvas(windowWidth, windowHeight);
-	a=0;
-	count=0;
-
-	star = createSprite(random(0, width), random(0, height));
-	star.addImage(loadImage('image/play/game/asterisk_circle0006.png'));
-
-	rock = createSprite(200,400);
-	rock.addImage(loadImage('image/play/game/rock1.png'));
-
-	rock2 = createSprite(400,300);
-	rock2.addImage(loadImage('image/play/game/rock2.png'));
-
-	rock3 = createSprite(800,350);
-	rock3.addImage(loadImage('image/play/game/rock2.png'));
-
-	rock4 = createSprite(640,200);
-	rock4.addImage(loadImage('image/play/game/rock2.png'));
-
-	treaBox = createSprite(200,600);
-	treaBox.addImage(loadImage('image/play/game/treaBox.png'));
-
-	marine= createSprite(300,300);
-	marine.addImage(loadImage('image/play/game/marine.png'));
-
-	collectibles = new Group();
-	for(var i=0; i<10; i++){
-		var dot = createSprite(random(200,width-200),random(100,height-100));
-		dot.addImage(loadImage('image/play/game/coin.png'));
-    	collectibles.add(dot);
-	}
+	reset();
 }
 function draw(){
 	background(51,166,184);
@@ -78,12 +49,67 @@ function collect2(collector, collected)
   endGame();
 }
 function endGame(){
+	clearInterval(playTimer);
+	treaBox.remove();
+	star.remove();
+	marine.remove();
+	collectibles.removeSprites = function() {
+	    for(var i = 0; i<10; i++)
+	      collectibles[i].remove();
+	      collectibles.length = 0;
+    }
+	reset();
 	$('#defaultCanvas0').css('display','none');
 	$('.button_border').css('display','block');
 	$('#playSpark').css('clipPath','circle(5px)');
 }
 function wingame(){
+	clearInterval(playTimer);
+	treaBox.remove();
+	star.remove();
+	marine.remove();
+	collectibles.removeSprites = function() {
+	    for(var i = 0; i<10; i++)
+	      collectibles[i].remove();
+	      collectibles.length = 0;
+    }
+	reset();
 	$('#defaultCanvas0').css('display','none');
 	$('.button_border').css('display','block');
-	$('#playSpark').css('clipPath','circle(5px)');	
+	$('#playSpark').css('clipPath','circle(5px)');
+}
+function reset(){
+	a=0;
+	count=0;
+
+	star = createSprite(random(0, width), random(0, height));
+	star.addImage(loadImage('image/play/game/asterisk_circle0006.png'));
+
+	rock = createSprite(200,400);
+	rock.addImage(loadImage('image/play/game/rock1.png'));
+
+	rock2 = createSprite(400,300);
+	rock2.addImage(loadImage('image/play/game/rock2.png'));
+
+	rock3 = createSprite(800,350);
+	rock3.addImage(loadImage('image/play/game/rock2.png'));
+
+	rock4 = createSprite(640,200);
+	rock4.addImage(loadImage('image/play/game/rock2.png'));
+
+	treaBox = createSprite(200,600);
+	treaBox.addImage(loadImage('image/play/game/treaBox.png'));
+
+	marine= createSprite(300,300);
+	marine.addImage(loadImage('image/play/game/marine.png'));
+
+	// coin1= createSprite(400,400);
+	// coin1.addImage(loadImage())
+
+	collectibles = new Group();
+	for(var i=0; i<10; i++){
+		var dot = createSprite(random(200,width-200),random(100,height-100));
+		dot.addImage(loadImage('image/play/game/coin.png'));
+    	collectibles.add(dot);
+	}
 }

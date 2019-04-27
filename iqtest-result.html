@@ -6,6 +6,7 @@
 	<link rel="stylesheet" href="css/iqtest-result.css">
 	<link rel="stylesheet" href="css/wavebtn.css">
 	<link rel="stylesheet" href="css/lightbox.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
 	<style type="text/css">
 		.lightbox{
 			display: none;
@@ -41,7 +42,7 @@
 					<img src="image/iqtest/info.png" alt="luck" class="infoImg">
 					<img src="image/iqtest/info.png" alt="quick" class="infoImg">
 				</div>
-				<canvas id="chartRadar"></canvas>
+				<canvas id="myChart" width='400' height='400' style="display: block;"></canvas>
 			</div>
 			<h2 class="titleSec">LV3 聰明的冒險家!</h2>
 			<p class="textM">恭喜你成功通過海賊IQ測驗，接下來前方還有更多冒險必須去挑戰。試著在海賊試煉場中通過試煉,獲得經驗值與金錢。<br>等級提升後會獲得技能點數，你可以在我的海賊船頁面中使用點數提升技能。<br>在海上市集中可以使用金錢購買裝備。
@@ -49,147 +50,86 @@
 		</div>
 		<a class="btnpri" href="game.html" id="toPlay"><span>海賊試煉場</span></a>
 		<div class="lightbox">//智力燈箱
-				<div class="popbg"></div>
-				<div class="info">
-					<div class="axis axis1"></div>
-					<div class="axis axis2"></div>
-					<div class="leave"></div>
-					<div class="paper">
-						<!-- 範例 -->
-						<h2 class="titlePri titlePriX" >智力</h2>
-						<p class="textIQ">在海上市集裡可以買到你想要的寶物和造型。<br>當你的智力越多的話，就能使出殺價能力，每10點智力能折扣5元。假設當你想要買價值100元的商品，而你的智力是30點，你能夠以85元價格買入商品。</p>
-						<a class="btnpri checkToLeave" href="game.html"><span>確認</span></a>
-					</div>
+			<div class="popbg"></div>
+			<div class="info">
+				<div class="axis axis1"></div>
+				<div class="axis axis2"></div>
+				<div class="leave"></div>
+				<div class="paper">
+					<!-- 範例 -->
+					<h2 class="titlePri titlePriX" >智力</h2>
+					<p class="textIQ">在海上市集裡可以買到你想要的寶物和造型。<br>當你的智力越多的話，就能使出殺價能力，每10點智力能折扣5元。假設當你想要買價值100元的商品，而你的智力是30點，你能夠以85元價格買入商品。</p>
+					<a class="btnpri checkToLeave" href="game.html"><span>確認</span></a>
 				</div>
+			</div>
 		</div>
 		<div class="lightbox">//力量燈箱
-				<div class="popbg"></div>
-				<div class="info">
-					<div class="axis axis1"></div>
-					<div class="axis axis2"></div>
-					<div class="leave"></div>
-					<div class="paper">
-						<!-- 範例 -->
-						<h2 class="titlePri titlePriX" >力量</h2>
-						<p class="textIQ">遊戲中每1小時回復體力值1點。<br>力量越多的話，體力回復速度越快，每五個力量點數能加快1分鐘體力回復速度。</p>
-						<a class="btnpri checkToLeave" href="game.html"><span>確認</span></a>
-					</div>
+			<div class="popbg"></div>
+			<div class="info">
+				<div class="axis axis1"></div>
+				<div class="axis axis2"></div>
+				<div class="leave"></div>
+				<div class="paper">
+					<!-- 範例 -->
+					<h2 class="titlePri titlePriX" >力量</h2>
+					<p class="textIQ">遊戲中每1小時回復體力值1點。<br>力量越多的話，體力回復速度越快，每五個力量點數能加快1分鐘體力回復速度。</p>
+					<a class="btnpri checkToLeave" href="game.html"><span>確認</span></a>
 				</div>
+			</div>
 		</div>
 		<div class="lightbox">//幸運燈箱
-				<div class="popbg"></div>
-				<div class="info">
-					<div class="axis axis1"></div>
-					<div class="axis axis2"></div>
-					<div class="leave"></div>
-					<div class="paper">
-						<!-- 範例 -->
-						<h2 class="titlePri titlePriX" >幸運</h2>
-						<p class="textIQ">在海賊試煉場裡的尋寶GPS遊戲裡找到寶相的話可以進行抽獎遊戲。<br>如果你的幸運越多的話，抽到大獎的機率越高哦。</p>
-						<a class="btnpri checkToLeave" href="game.html"><span>確認</span></a>
-					</div>
+			<div class="popbg"></div>
+			<div class="info">
+				<div class="axis axis1"></div>
+				<div class="axis axis2"></div>
+				<div class="leave"></div>
+				<div class="paper">
+					<!-- 範例 -->
+					<h2 class="titlePri titlePriX" >幸運</h2>
+					<p class="textIQ">在海賊試煉場裡的尋寶GPS遊戲裡找到寶相的話可以進行抽獎遊戲。<br>如果你的幸運越多的話，抽到大獎的機率越高哦。</p>
+					<a class="btnpri checkToLeave" href="game.html"><span>確認</span></a>
 				</div>
+			</div>
 		</div>
 		<div class="lightbox">//敏捷燈箱
-				<div class="popbg"></div>
-				<div class="info">
-					<div class="axis axis1"></div>
-					<div class="axis axis2"></div>
-					<div class="leave"></div>
-					<div class="paper">
-						<!-- 範例 -->
-						<h2 class="titlePri titlePriX" >敏捷</h2>
-						<p class="textIQ">當你進行海賊試煉遊戲時，遊戲中會出現金幣。<br>敏捷越高，遊戲裡的金幣數量越多。</p>
-						<a class="btnpri checkToLeave" href="game.html"><span>確認</span></a>
-					</div>
+			<div class="popbg"></div>
+			<div class="info">
+				<div class="axis axis1"></div>
+				<div class="axis axis2"></div>
+				<div class="leave"></div>
+				<div class="paper">
+					<!-- 範例 -->
+					<h2 class="titlePri titlePriX" >敏捷</h2>
+					<p class="textIQ">當你進行海賊試煉遊戲時，遊戲中會出現金幣。<br>敏捷越高，遊戲裡的金幣數量越多。</p>
+					<a class="btnpri checkToLeave" href="game.html"><span>確認</span></a>
 				</div>
+			</div>
 		</div>
 	</div>
 	<script src="js/wavebtn.js"></script>
 	<script src="js/jquery-3.3.1.min.js"></script>
-	<script src="js/Chart.bundle.min.js"></script>
+	<script src="js/radar100.js"></script>
 	<script>
 		var storage = sessionStorage;
+		var chart;
+		var graphDataNew = [50,30,40,70];//從資料庫載入的Radar數值
+		// chart.data.datasets[0].label=["asas","B","C","D"];
 		grade = storage['grade'];
 		str = parseInt(storage['str']);//力量
 		int = parseInt(storage['int']);//智力
 		lcu = parseInt(storage['lcu']);//幸運
 		agi = parseInt(storage['agi']);//敏捷
 		tans = parseInt(storage['tans']);//答對題數
+
+		// 給分數
 		$('#grade').text(`${grade}`);
 		$('#correct').text(`${tans}`);
-		if( grade>90 )
-			$('#abc').text(`A`);
-		else if( grade>=70 )
-			$('#abc').text(`B`);
-		else if( grade>=50 )
-			$('#abc').text(`C`);
-		else
-			$('#abc').text(`87`);
-		function radar(){
-			//定義變數
-			var chartRadarDOM;
-			var chartRadarData;
-			var chartRadarOptions;
-			
-		    //載入雷達圖
-			Chart.defaults.global.legend.display = false;
-			Chart.defaults.global.defaultFontColor = 'rgba(0,0,74, 1)';
-			chartRadarDOM = document.getElementById("chartRadar");
-			chartRadarData;
-			chartRadarOptions = 
-			{
-				scale: 
-				{
-					ticks: 
-					{
-						fontSize: 16,
-						beginAtZero: true,
-						maxTicksLimit: 7,
-						min:0,
-						max:100
-					},
-					pointLabels:
-					{
-						fontSize: 25,
-						color: '#0044BB'
-					},
-					gridLines: 
-					{
-						color: '#009FCC'
-					}
-				}
-			};
-			
-			var graphData =new Array();
-			graphData.push(str);
-			graphData.push(int);
-			graphData.push(lcu);
-			graphData.push(agi);
-				
-			//CreateData
-			chartRadarData = {
-		    		labels: [ '力量', '幸運', '敏捷', '智慧'],
-				datasets: [{
-		    			label: "Skill Level",
-					backgroundColor: "rgba(17, 34, 51,0.8)",
-					borderColor: "rgba(63,63,74,.8)",
-					pointBackgroundColor: "rgba(63,63,74,1)",
-		   			pointBorderColor: "rgba(0,0,0,0)",
-					pointHoverBackgroundColor: "#fff",
-					pointHoverBorderColor: "rgba(0,0,0,0.3)",
-					pointBorderWidth: 7,
-					data: graphData}]
-			};
-				
-			//Draw
-			var chartRadar = new Chart(chartRadarDOM, {
-				type: 'radar',
-				data: chartRadarData,
-				options: chartRadarOptions
-				});
-		}
-
+		if( grade>90 ) $('#abc').text(`A`);
+		else if( grade>=70 ) $('#abc').text(`B`);
+		else if( grade>=50 ) $('#abc').text(`C`);
+		else $('#abc').text(`D`);
+		
+		// 燈箱事件
 		function show(e){
 			index = $(this).index();
 			document.getElementsByClassName('lightbox')[index].style.display = 'block';
@@ -201,16 +141,14 @@
 		function off2(e){
 			e.target.parentNode.style.display = 'none';				//按popbg
 		}
-
-		function init() {
-		    radar();
+		$(document).ready(function(){
+			chartRadar(graphDataNew);//從資料庫載入的Radar數值,初始化用
 			for(i=0; i<=3; i++){
 				document.getElementsByClassName('infoImg')[i].onclick = show;
 				document.getElementsByClassName("leave")[i].onclick=off;
 				document.getElementsByClassName("popbg")[i].onclick=off2;
-			}				
-		}
-		window.onload = init;
+			}
+		});
 	</script>
 </body>
 </html>

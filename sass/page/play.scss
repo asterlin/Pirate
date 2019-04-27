@@ -8,7 +8,7 @@ body {
 		background-size: cover;
 }
 *{
-	// outline: 1px solid red;
+	outline: 1px solid red;
 	box-sizing:border-box;
 	margin:0;
 	padding:0;
@@ -706,7 +706,7 @@ body {
   position: relative;
   display: inline-block;
   width: 700px;
-  height: 400px;
+  height: 650px;
   margin-right: -4px;
 }
 #rankListColName{width: 490px;}
@@ -763,23 +763,24 @@ body {
 }
 // rank1~10
 .rankFrame{
+	transform: skewY(10deg);	
 	transition: all 2s;
 	border: 1px solid black;
 	position: absolute;
 	height: 320px;
 }
 .rank0{
-	transform: scale(1.05);
+	transform: translateX(50%) scale(1.1) skewY(0);
 	z-index: 0;
 	top: 0px;
-	left: 0px;
+	left: 20px;
 	box-shadow: 5px 5px #fff14e,
 	-5px 5px #fff14e,
 	5px -5px #fff14e,
 	-5px -5px #fff14e;
 }
 .rank1{
-	transform: scale(1.02);
+	transform: translateX(25%) scale(1.02) skewY(3deg);
 	z-index: -1;
 	top: -15px;
 	left: 20px;
@@ -789,7 +790,9 @@ body {
 	-5px -5px #c1c1c1;
 }
 .rank2{
+	transform: translateX(0);
 	transform: scale(1);
+	transform: skewY(10deg);
 	z-index: -2;
 	top: -30px;
 	left: 40px;
@@ -833,6 +836,36 @@ body {
 	top: -135px;
 	left: 180px;
 }
+// .rank0:hover{
+// 	transform: translateX(50%);
+// }
+// .rank1:hover{
+// 	transform: translateX(50%);
+// }
+// .rank2:hover{
+// 	transform: translateX(50%);
+// }
+// .rank3:hover{
+// 	transform: translateX(50%);
+// }
+// .rank4:hover{
+// 	transform: translateX(50%);
+// }
+// .rank5:hover{
+// 	transform: translateX(50%);
+// }
+// .rank6:hover{
+// 	transform: translateX(50%);
+// }
+// .rank7:hover{
+// 	transform: translateX(50%);
+// }
+// .rank8:hover{
+// 	transform: translateX(50%);
+// }
+// .rank9:hover{
+// 	transform: translateX(50%);
+// }
 // btn
 .button_border{
 	display: inline-block;
@@ -916,7 +949,7 @@ body {
 }
 // game
 #defaultCanvas0{
-	z-index: 10;
+	z-index: 50;
 	position: fixed;
 	top: 0;
 	left: 50%;
