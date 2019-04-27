@@ -6,12 +6,11 @@ $errMsg = "";
 try {
     require_once("backstage/php/connectPirates.php");
     //"select * from traderecord";
-    //交易紀錄" select * from treasurestorage r join treasurelist l on r.treaId = l.treaId";
     $traderecord =" select * from traderecord JOIN treasurelist ON traderecord.treaId = treasurelist.treaId ";
     $traderecord = $pdo->query($traderecord);
 
     //發文紀錄
-    $articlelist = "select * from articlelist";
+    $articlelist = "select * from articlelist ";
     $articlelist = $pdo->query($articlelist);
 } catch (PDOException $e) {
     $errMsg .=  "錯誤原因" . $e->getMessage() . "<br>";
@@ -214,35 +213,41 @@ echo $errMsg;
                 <div class="tabs-container1">
                     <div id="tab2" class="tabs-panel1" style="display:block">
                     <?php
-                        while ($memberRow = $traderecord->fetch()) {
-                            ?>
+                        $memId = $_SESSION["memId"];
+                        while ($traderecordRow = $traderecord->fetch(PDO::FETCH_ASSOC)) {
+                            if ($traderecordRow["buyerId"] == $memId) {
+                                ?>
                     <div class="tt textS">
                             <ul>
-                                <li>寶物名稱: <span><?php echo $memberRow['treaName']?></span> </li>
-                                <li>上架時間: <span><?php echo $memberRow['saleTime']?></span> </li>
-                                <li>買家暱稱: <span><?php echo $memberRow['salerId']?></span> </li>
-                                <li>交易時間: <span><?php echo $memberRow['tradeTime']?></span> </li>
-                                <li>價格: <span> <?php echo $memberRow['price']?> </span> </li>
+                                <li>寶物名稱: <span><?php echo $traderecordRow['treaName']?></span> </li>
+                                <li>上架時間: <span><?php echo $traderecordRow['saleTime']?></span> </li>
+                                <li>買家暱稱: <span><?php echo $traderecordRow['salerId']?></span> </li>
+                                <li>交易時間: <span><?php echo $traderecordRow['tradeTime']?></span> </li>
+                                <li>價格: <span> <?php echo $traderecordRow['price']?> </span> </li>
                             </ul>
                         </div>
                     <?php
+                            }
                         }
                     ?>
                     </div>
                     <div id="tab3" class="tabs-panel1">
                     <?php
-                        while ($articlelistRow = $articlelist->fetch()) {
-                            ?>
+                        $memId = $_SESSION["memId"];
+                        while ($articlelistRow = $articlelist->fetch(PDO::FETCH_ASSOC)) {
+                            if ($articlelistRow["memId"] == $memId) {
+                                ?>
                     <div class="tt textS">
                             <ul>
                                 <li>主題: <span><?php echo $articlelistRow['artTitle']?></span> </li>
                                 <li>發文時間: <span><?php echo $articlelistRow['artTime']?></span> </li>
                                 <li>討論人數: <span><?php echo $articlelistRow['msgAmt']?></span> 次</li>
                                 <li>點擊次數: <span><?php echo $articlelistRow['clickAmt']?></span> 次</li>
-                                <li><button class="btnpri"><span><a href="#">前往文章</a></span></button></li>
+                                <li><button class="btnpri"><span><a href="ber.php?from=me&artId=<?php echo $articlelistRow['artId']?>">前往文章</a></span></button></li>
                             </ul>
                         </div>
                     <?php
+                            }
                         }
                     ?>
 
