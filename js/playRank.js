@@ -74,7 +74,6 @@ function getScoreH(){
 
 function getScoreLJSON(jsonStr){
 	member = JSON.parse(jsonStr);
-	console.log(member);
 	for(i=0; i<=9; i++){
 		$('.myName').eq(i).text(`${member[i].memNic}`);
 		$('.rankName').eq(i).text(`${member[i].memNic}`);
@@ -118,3 +117,4 @@ $('.playerList').click(function(e){
 		count+=1;
 	}
 });
+// Tweenmax
