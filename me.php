@@ -6,12 +6,17 @@ $errMsg = "";
 try {
     require_once("backstage/php/connectPirates.php");
     //"select * from traderecord";
-    $traderecord =" select * from traderecord JOIN treasurelist ON traderecord.treaId = treasurelist.treaId ";
+    //交易紀錄
+    $traderecord = "select * from traderecord JOIN treasurelist ON traderecord.treaId = treasurelist.treaId ";
     $traderecord = $pdo->query($traderecord);
 
     //發文紀錄
     $articlelist = "select * from articlelist ";
     $articlelist = $pdo->query($articlelist);
+
+    //持有造型
+    $mycustom = "select * from customlist JOIN mycustom ON customlist.modelId = mycustom.modelId ";
+    $mycustom = $pdo->query($mycustom);
 } catch (PDOException $e) {
     $errMsg .=  "錯誤原因" . $e->getMessage() . "<br>";
     $errMsg .=  "錯誤行號" . $e->getLine() . "<br>";
@@ -29,9 +34,9 @@ echo $errMsg;
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>《大海賊帝國》去追尋吧！</title>
     <link rel="stylesheet" href="css/me.css">
-    <script src="js/shipDIY.js"></script>
     <link rel="stylesheet" href="css/wavebtn.css">
-    <script src="../js/wavebtn.js"></script>
+    
+
     <style>
     canvas{
         border: 1px solid gainsboro;
@@ -100,7 +105,7 @@ echo $errMsg;
     </div>
 
     <div class="wrap">
-        <div class="col-12 col-md-4 drawing">
+        <div class="col-12 col-md-12 col-xl-4 drawing">
             <img src="image/background/blueprint.png" alt="">
             <div class="meShip">
                 <div id="shipArea">
@@ -122,7 +127,7 @@ echo $errMsg;
             </a>
         </div>
         <!-- 個人資訊 -->
-        <div class="col-12 col-md-4 boxNews">
+        <div class="col-12 col-md-12 col-xl-4 boxNews">
             <div class="meNews">
                 <ul class="col-12 col-md-5 field">
                     <li>
@@ -144,16 +149,14 @@ echo $errMsg;
                         金幣: <span> <?php echo $_SESSION["memMoney"];  ?> </span> G
                     </li>
                     <li>
-                        <button class="btnpri"><span>編輯</span></button>
-                        <button class="btnpri"><span>完成</span></button>
+                        <button class="btnpri butNews" id="edit"><span>編輯</span></button>
+                        <button class="btnpri butNews" id="carryOut"><span>完成</span></button>
                     </li>
                 </ul>
                 <!-- 雷達圖 -->
                 <div class="col-12 col-md-7 radar">
                     <h3>天賦值: <span id="points"> <?php echo $_SESSION["talentPointsRemain"];?> </span> 點</h3>
-                    <div class="chartRadarDiv">
-                        <canvas id="chartRadar" style="height:100px; width: 100px;"></canvas>
-                    </div>
+                    <canvas id="myChart" width='400' height='400' style="display: inline-block; width:400px; height:400px;"></canvas>
                     <button id="butS" class="but">力量</button>
                     <button id="butI" class="but">智力</button>
                     <button id="butL" class="but">幸運</button>
@@ -197,13 +200,28 @@ echo $errMsg;
                             </div>
                         </div>
                         <div id="tab1" class="tabs-panel">
-                            我是內容222222
+                        <div class="content">
+                            <ul>
+                                <?php
+                                    $memId = $_SESSION["memId"];
+                                    while ($mycustomRow = $mycustom->fetch(PDO::FETCH_ASSOC)) {
+                                        if ($mycustomRow["memId"] == $memId) {
+                                ?>      
+                                    <li>
+                                        <img src="image/product/<?php echo $mycustomRow['modelImg']?>" alt="">
+                                    </li>
+                                <?php
+                                        }
+                                    }
+                                ?>
+                            </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-12 col-md-4 filewrap">
+        <div class="col-12 col-md-12 col-xl-4 filewrap">
             <div id="js-tabs1" class="js-tabs1">
                 <div id="tabs-nav1">
                     <a href="#tab2" onclick="jsTabs1(event,'tab2');return false"
@@ -212,11 +230,11 @@ echo $errMsg;
                 </div>
                 <div class="tabs-container1">
                     <div id="tab2" class="tabs-panel1" style="display:block">
-                    <?php
-                        $memId = $_SESSION["memId"];
-                        while ($traderecordRow = $traderecord->fetch(PDO::FETCH_ASSOC)) {
-                            if ($traderecordRow["buyerId"] == $memId) {
-                                ?>
+                        <?php
+                            $memId = $_SESSION["memId"];
+                            while ($traderecordRow = $traderecord->fetch(PDO::FETCH_ASSOC)) {
+                                if ($traderecordRow["buyerId"] == $memId) {
+                                    ?>
                     <div class="tt textS">
                             <ul>
                                 <li>寶物名稱: <span><?php echo $traderecordRow['treaName']?></span> </li>
@@ -227,8 +245,8 @@ echo $errMsg;
                             </ul>
                         </div>
                     <?php
+                                }
                             }
-                        }
                     ?>
                     </div>
                     <div id="tab3" class="tabs-panel1">
@@ -262,9 +280,30 @@ echo $errMsg;
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/Chart.bundle.min.js"></script>
     <script src="js/header.js"></script>
-    <script src="js/radar.js"></script>
+    <script src="js/myRadar.js"></script>
     <script src="js/me.js"></script>
     <script src="js/wavebtn.js"></script>
+    <!-- <script src="js/shipDIY.js"></script> -->
+    <!-- <script>
+        window.addEventListener("load", getMyInfo());
+    </script> -->
+    <script>
+		var chart;//radar圖名稱
+		var graphDataNew = [1,2,3,4];//從資料庫載入的Radar數值
+		function plusSkill(e){
+			point = parseInt($('#myPoint').text());
+			if(point){
+				$('#myPoint').text(point-1);
+				graphDataNew[$(this).index()] += 1;
+				chart.data.datasets[0].data=graphDataNew;
+				chart.update();//更新radar圖
+			}
+		}
+		$(document).ready(function(){
+			chartRadar(graphDataNew);//從資料庫載入的Radar數值,初始化用
+			$('.btnPlus').click(plusSkill);
+		});
+	</script>
 
 </body>
 

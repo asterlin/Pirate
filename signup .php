@@ -9,6 +9,7 @@ try {
     $member->bindValue(":memId", $memId); //代入資料
     $member->bindValue(":memPsw", $memPsw);
     $member->execute();//執行之
+    
 
     if( $member->rowCount() == 0 ){//找不到
         $errMsg .= "帳密錯誤, <a href='signUp.html'>重新登入</a><br>";
@@ -32,6 +33,7 @@ try {
         $_SESSION["playedTimes"] = $memRow["playedTimes"];
         $_SESSION["talentPointsRemain"] = $memRow["talentPointsRemain"];
   
+        // header('location:me.php');
     }
 } catch (PDOException $e) {
     $errMsg .= "錯誤 : ".$e -> getMessage()."<br>";
@@ -63,6 +65,7 @@ try {
                             echo $memRow["memNic"], " 您好~<br>";
                         }
                     ?>
+                    <a href="me.php">ME</a>  
                 </p>
             </div>
         </div>

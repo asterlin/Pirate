@@ -20,7 +20,7 @@ body {
     background-size: cover;
 }
 
-.btnpri{
+.btnpri {
     border: 1px solid transparent;
 }
 
@@ -122,9 +122,11 @@ body {
         // margin: 5px 10px;
         padding: 10px 0 0;
         position: relative;
+        box-sizing: border-box;
 
         // 底框
         .meNews {
+            // display: flex;
             background-color: #f5ecdd;
             border: 7px dashed #5f6f70;
             // margin-top: 40px;
@@ -327,7 +329,7 @@ body {
         background-color: #f5ecdd;
         overflow-y: hidden;
         float: left;
-        width: 90%;
+        width: 100%;
         // height: 400px;
         box-sizing: border-box;
 
@@ -351,7 +353,8 @@ body {
     margin: 10px;
     padding: 10px;
     background-color: #aaf;
-    li{
+
+    li {
         padding: 10px 5px;
     }
 }
@@ -377,7 +380,123 @@ body {
     }
 
     .wrap {
+        // display: flex;
+        // flex-wrap: wrap;
+        perspective: 1000px;
+        margin: 0px auto;
+        // margin-top: 20px;
+        z-index: 20;
+        overflow: hidden;
+
+
+        .drawing {
+            box-sizing: border-box;
+            position: relative;
+            margin: 80px 0;
+            transform-style: preserve-3d;
+            transform-origin: bottom;
+            transform: rotateX(30deg);
+
+
+            .meShip {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                transform: rotateX(-30deg);
+                top: -720px;
+                right: -50px;
+            }
+
+
+        }
+
+
+        .boxNews {
+            padding: 0 20px;
+            // padding-left: 80px;
+            transform-style: preserve-3d;
+            // transform: rotateX(0deg);
+            transform-origin: bottom;
+            // animation: lyingDown .5s;
+
+
+
+            .meNews {
+                display: flex;
+            }
+
+        }
+
+
+    }
+
+
+
+    // 紀錄頁籤---------------------
+    .filewrap {
+        margin-top: 20px;
+        // padding-left: 40px;
+        overflow: visible;
+        z-index: -1;
+        transform-origin: bottom;
+        // transform: rotateX(50deg);
+
+        // &:hover {
+        //     transform: rotateX(0deg);
+        //     animation-name: standUp;
+        //     animation-duration: .5s;
+
+
+        // }
+
+        .js-tabs1 {
+            position: relative;
+            // transform: rotateX(50deg);
+            transform-origin: bottom;
+            margin-top: 80px;
+            // padding-left: 40px;
+
+
+
+        }
+
+    }
+
+    // .vvv {
+    //     transform: rotateX(0deg);
+    //     animation-name: standUp;
+    //     animation-duration: .5s;
+    //     z-index: 100;
+    //     left: 935px;
+
+
+    // }
+
+}
+
+
+@media screen and(min-width: 1200px) {
+
+    .meTitle {
+        padding-top: 210px;
+
+        &::before {
+            content: "";
+            background-image: url("../image/background/shipWindow.png");
+            width: 600px;
+            height: 600px;
+            top: -170px;
+            left: 0;
+            right: 0;
+            opacity: .6;
+            margin: auto;
+        }
+
+    }
+
+    .wrap {
         display: flex;
+        flex-wrap: nowrap;
         perspective: 1000px;
         margin: 0px auto;
         // margin-top: 20px;
@@ -387,7 +506,7 @@ body {
 
         .drawing {
             position: relative;
-            margin: 0 20px;
+            margin-bottom: 0px;
             transform-style: preserve-3d;
             transform-origin: bottom;
             transform: rotateX(50deg);
@@ -398,8 +517,9 @@ body {
                 height: 100%;
                 position: absolute;
                 transform: rotateX(-50deg);
-                top: -500px;
-                right: 70px;
+                top: -520px;
+                right: 90px;
+
             }
 
 
@@ -413,16 +533,16 @@ body {
             transform: rotateX(50deg);
             transform-origin: bottom;
             animation: lyingDown .5s;
-        
+
 
             &:hover {
                 transform: rotateX(0deg);
                 animation: standUp .5s;
             }
 
-            .meNews {
-                display: flex;
-            }
+            // .meNews {
+            //     display: flex;
+            // }
 
         }
 
@@ -506,8 +626,8 @@ body {
             transform: rotateX(0deg);
             animation-name: standUp;
             animation-duration: .5s;
-            
-            
+
+
         }
 
         .js-tabs1 {
@@ -517,8 +637,8 @@ body {
             margin-top: 80px;
             padding-left: 40px;
 
-            
-            
+
+
         }
 
     }
