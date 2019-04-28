@@ -105,7 +105,7 @@ echo $errMsg;
     </div>
 
     <div class="wrap">
-        <div class="col-12 col-md-4 drawing">
+        <div class="col-12 col-md-12 col-xl-4 drawing">
             <img src="image/background/blueprint.png" alt="">
             <div class="meShip">
                 <div id="shipArea">
@@ -127,7 +127,7 @@ echo $errMsg;
             </a>
         </div>
         <!-- 個人資訊 -->
-        <div class="col-12 col-md-4 boxNews">
+        <div class="col-12 col-md-12 col-xl-4 boxNews">
             <div class="meNews">
                 <ul class="col-12 col-md-5 field">
                     <li>
@@ -156,7 +156,7 @@ echo $errMsg;
                 <!-- 雷達圖 -->
                 <div class="col-12 col-md-7 radar">
                     <h3>天賦值: <span id="points"> <?php echo $_SESSION["talentPointsRemain"];?> </span> 點</h3>
-                    <canvas id="myChart" width='400' height='400' style="display: inline-block;"></canvas>
+                    <canvas id="myChart" width='400' height='400' style="display: inline-block; width:400px; height:400px;"></canvas>
                     <button id="butS" class="but">力量</button>
                     <button id="butI" class="but">智力</button>
                     <button id="butL" class="but">幸運</button>
@@ -221,7 +221,7 @@ echo $errMsg;
                 </div>
             </div>
         </div>
-        <div class="col-12 col-md-4 filewrap">
+        <div class="col-12 col-md-12 col-xl-4 filewrap">
             <div id="js-tabs1" class="js-tabs1">
                 <div id="tabs-nav1">
                     <a href="#tab2" onclick="jsTabs1(event,'tab2');return false"
@@ -284,9 +284,9 @@ echo $errMsg;
     <script src="js/me.js"></script>
     <script src="js/wavebtn.js"></script>
     <!-- <script src="js/shipDIY.js"></script> -->
-    <script>
+    <!-- <script>
         window.addEventListener("load", getMyInfo());
-    </script>
+    </script> -->
     <script>
 		var chart;//radar圖名稱
 		var graphDataNew = [1,2,3,4];//從資料庫載入的Radar數值

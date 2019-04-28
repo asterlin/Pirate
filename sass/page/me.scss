@@ -20,7 +20,7 @@ body {
     background-size: cover;
 }
 
-.btnpri{
+.btnpri {
     border: 1px solid transparent;
 }
 
@@ -126,7 +126,7 @@ body {
 
         // 底框
         .meNews {
-            display: flex;
+            // display: flex;
             background-color: #f5ecdd;
             border: 7px dashed #5f6f70;
             // margin-top: 40px;
@@ -329,7 +329,7 @@ body {
         background-color: #f5ecdd;
         overflow-y: hidden;
         float: left;
-        width: 90%;
+        width: 100%;
         // height: 400px;
         box-sizing: border-box;
 
@@ -353,7 +353,8 @@ body {
     margin: 10px;
     padding: 10px;
     background-color: #aaf;
-    li{
+
+    li {
         padding: 10px 5px;
     }
 }
@@ -379,8 +380,8 @@ body {
     }
 
     .wrap {
-        display: flex;
-        flex-wrap: wrap;
+        // display: flex;
+        // flex-wrap: wrap;
         perspective: 1000px;
         margin: 0px auto;
         // margin-top: 20px;
@@ -391,19 +392,19 @@ body {
         .drawing {
             box-sizing: border-box;
             position: relative;
-            // margin: 0 20px;
+            margin: 80px 0;
             transform-style: preserve-3d;
             transform-origin: bottom;
-            transform: rotateX(50deg);
+            transform: rotateX(30deg);
 
 
             .meShip {
                 width: 100%;
                 height: 100%;
                 position: absolute;
-                transform: rotateX(-50deg);
-                top: -500px;
-                right: 70px;
+                transform: rotateX(-30deg);
+                top: -720px;
+                right: -50px;
             }
 
 
@@ -417,12 +418,8 @@ body {
             // transform: rotateX(0deg);
             transform-origin: bottom;
             // animation: lyingDown .5s;
-        
 
-            // &:hover {
-            //     transform: rotateX(0deg);
-            //     animation: standUp .5s;
-            // }
+
 
             .meNews {
                 display: flex;
@@ -430,69 +427,7 @@ body {
 
         }
 
-        // .bbb {
-        //     transform: rotateX(0deg);
-        //     animation: standUp .5s;
-        //     animation: lyingDown .5s;
-        // }
 
-    }
-
-
-    //個人資訊動畫站起來
-    @keyframes standUp {
-        0% {
-            transform: rotateX(50deg);
-        }
-
-
-        20% {
-            transform: rotateX(40deg);
-        }
-
-        40% {
-            transform: rotateX(30deg);
-        }
-
-        60% {
-            transform: rotateX(20deg);
-        }
-
-        80% {
-            transform: rotateX(10deg);
-        }
-
-        100% {
-            transform: rotateX(0deg);
-        }
-    }
-
-    //個人資訊動畫躺下
-    @keyframes lyingDown {
-        0% {
-            transform: rotateX(0deg);
-        }
-
-
-        20% {
-            transform: rotateX(10deg);
-        }
-
-        40% {
-            transform: rotateX(20deg);
-        }
-
-        60% {
-            transform: rotateX(30deg);
-        }
-
-        80% {
-            transform: rotateX(40deg);
-        }
-
-        100% {
-            transform: rotateX(50deg);
-        }
     }
 
 
@@ -504,38 +439,38 @@ body {
         overflow: visible;
         z-index: -1;
         transform-origin: bottom;
-        transform: rotateX(50deg);
+        // transform: rotateX(50deg);
 
-        &:hover {
-            transform: rotateX(0deg);
-            animation-name: standUp;
-            animation-duration: .5s;
-            
-            
-        }
+        // &:hover {
+        //     transform: rotateX(0deg);
+        //     animation-name: standUp;
+        //     animation-duration: .5s;
+
+
+        // }
 
         .js-tabs1 {
             position: relative;
             // transform: rotateX(50deg);
             transform-origin: bottom;
             margin-top: 80px;
-            padding-left: 40px;
+            // padding-left: 40px;
 
-            
-            
+
+
         }
 
     }
 
-    .vvv {
-        transform: rotateX(0deg);
-        animation-name: standUp;
-        animation-duration: .5s;
-        z-index: 100;
-        left: 935px;
+    // .vvv {
+    //     transform: rotateX(0deg);
+    //     animation-name: standUp;
+    //     animation-duration: .5s;
+    //     z-index: 100;
+    //     left: 935px;
 
 
-    }
+    // }
 
 }
 
@@ -571,7 +506,7 @@ body {
 
         .drawing {
             position: relative;
-            // margin: 0 20px;
+            margin-bottom: 0px;
             transform-style: preserve-3d;
             transform-origin: bottom;
             transform: rotateX(50deg);
@@ -582,8 +517,9 @@ body {
                 height: 100%;
                 position: absolute;
                 transform: rotateX(-50deg);
-                top: -500px;
-                right: 70px;
+                top: -520px;
+                right: 90px;
+
             }
 
 
@@ -597,16 +533,16 @@ body {
             transform: rotateX(50deg);
             transform-origin: bottom;
             animation: lyingDown .5s;
-        
+
 
             &:hover {
                 transform: rotateX(0deg);
                 animation: standUp .5s;
             }
 
-            .meNews {
-                display: flex;
-            }
+            // .meNews {
+            //     display: flex;
+            // }
 
         }
 
@@ -690,8 +626,8 @@ body {
             transform: rotateX(0deg);
             animation-name: standUp;
             animation-duration: .5s;
-            
-            
+
+
         }
 
         .js-tabs1 {
@@ -701,8 +637,8 @@ body {
             margin-top: 80px;
             padding-left: 40px;
 
-            
-            
+
+
         }
 
     }
@@ -718,6 +654,3 @@ body {
     }
 
 }
-
-
-
