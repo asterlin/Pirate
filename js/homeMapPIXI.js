@@ -1,3 +1,5 @@
+if(window.innerWidth>=1024){
+
 //PIXI地圖
     //先設定好變數
     var HEIGHT = window.innerHeight,
@@ -10,9 +12,9 @@
     var sizeS = 768;
     var sizeXS = 480;
 
-    var pixiCanvas = document.getElementById("pixiCanvas");
-    var framePadding = -20;
-    var framePaddingTarget = 40;
+    var pixiCanvas = document.getElementById("homepixiCanvas");
+    var framePadding = -5;
+    var framePaddingTarget = 20;
     var parallaxCoeff = 3;
     var globalScale = 1;
     var brightness = 1;
@@ -40,7 +42,7 @@
     container.filters = [noiseFilter, colorMatrix];
 
     //loaders.loader跟PIXI.loader的差別好像是後者是PIXI以包裝好的，前者還可以自己加很多功能進去?
-    var loader = new PIXI.loaders.Loader('image/',30); //前述網址是載入後續sprites的目錄
+    var loader = new PIXI.loaders.Loader('image/home/',30); //前述網址是載入後續sprites的目錄
     loader.add('map', 'map.json');
     loader.once('complete', onAssetsLoaded);
     loader.load();
@@ -58,8 +60,8 @@
     }
 
     function onWindowResize() {
-        HEIGHT = window.innerHeight*.8; //雖然...總之這裡可以成功修改比例
-        WIDTH = window.innerWidth;
+        HEIGHT = window.innerHeight*.6; //雖然...總之這裡可以成功修改比例
+        WIDTH = window.innerWidth-framePaddingTarget;
         renderer.resize(WIDTH, HEIGHT);//重新調整渲染畫布大小
         repositionAll();
     }
@@ -231,8 +233,8 @@
         this.depth = this.params.depth || 0; //越小越遠
         this.tiling = (this.params.tiling) ? true : false; //重複貼上
         this.initRotation = this.params.initRotation || 0; 
-        this.initScaleX = this.params.initScaleX || 1; //X軸縮放
-        this.initScaleY = this.params.initScaleY || 1; //Y軸縮放
+        this.initScaleX = this.params.initScaleX || 0.8; //X軸縮放
+        this.initScaleY = this.params.initScaleY || 0.8; //Y軸縮放
         this.affectedByScale = (this.params.affectedByScale==false)? false : true; //是否隨滑鼠縮放
         this.centerPivotX = (this.params.centerPivotX==false) ? false : true; //是否將sprite原點設至X中心
         this.centerPivotY = (this.params.centerPivotY==false)? false : true;//是否將sprite原點設至Y中心
@@ -352,3 +354,4 @@
         repositionAll();
         renderer.render(container);
     }
+}//視窗大於1024才出現地圖
