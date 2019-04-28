@@ -133,24 +133,30 @@ if(winWidth < 1024){
     function showTreaBtn(){
         if(winWidth<768){
             $('.homeTreaBtn').addClass('justHide');
-        }else{
+        }else if(winWidth < 1025){
             $('.homeTreaBtn').removeClass('justHide');
+            $('.homeTreaBtn').eq(0).addClass('justHide');
+            $('.homeTreaBtn').eq(1).addClass('justHide');
+            $('.homeTreaBtn').eq(7).addClass('justHide');
+            $('.homeTreaBtn').eq(8).addClass('justHide');
         }
     }
     showTreaBtn();   
     //市集更換商品
 
-    var homeProdArr = [
-        {'tradeId':1,'prodName':'產品1','prodPrice':100,'saler':'人物1','str':10,'int':10,'agi':10,'luc':10,'img':"trea1.svg"},
-        {'tradeId':2,'prodName':'產品2','prodPrice':200,'saler':'人物2','str':12,'int':12,'agi':12,'luc':12,'img':"trea2.svg"},
-        {'tradeId':3,'prodName':'產品3','prodPrice':300,'saler':'人物3','str':13,'int':13,'agi':13,'luc':13,'img':"trea3.svg"},
-        {'tradeId':4,'prodName':'產品4','prodPrice':400,'saler':'人物4','str':14,'int':14,'agi':14,'luc':14,'img':"tre41.svg"},
-        {'tradeId':5,'prodName':'產品5','prodPrice':100,'saler':'人物1','str':10,'int':10,'agi':10,'luc':10,'img':"trea5.svg"},
-        {'tradeId':6,'prodName':'產品6','prodPrice':200,'saler':'人物2','str':12,'int':12,'agi':12,'luc':12,'img':"trea6.svg"},
-        {'tradeId':7,'prodName':'產品7','prodPrice':300,'saler':'人物3','str':13,'int':13,'agi':13,'luc':13,'img':"trea3.svg"},
-        {'tradeId':8,'prodName':'產品8','prodPrice':400,'saler':'人物4','str':14,'int':14,'agi':14,'luc':14,'img':"trea1.svg"},
-        {'tradeId':9,'prodName':'產品9','prodPrice':200,'saler':'人物2','str':12,'int':12,'agi':12,'luc':12,'img':"trea6.svg"},
-    ]
+    
+
+    // var homeProdArr = [
+    //     {'tradeId':1,'prodName':'產品1','prodPrice':100,'saler':'人物1','str':10,'int':10,'agi':10,'luc':10,'img':"trea1.svg"},
+    //     {'tradeId':2,'prodName':'產品2','prodPrice':200,'saler':'人物2','str':12,'int':12,'agi':12,'luc':12,'img':"trea2.svg"},
+    //     {'tradeId':3,'prodName':'產品3','prodPrice':300,'saler':'人物3','str':13,'int':13,'agi':13,'luc':13,'img':"trea3.svg"},
+    //     {'tradeId':4,'prodName':'產品4','prodPrice':400,'saler':'人物4','str':14,'int':14,'agi':14,'luc':14,'img':"tre41.svg"},
+    //     {'tradeId':5,'prodName':'產品5','prodPrice':100,'saler':'人物1','str':10,'int':10,'agi':10,'luc':10,'img':"trea5.svg"},
+    //     {'tradeId':6,'prodName':'產品6','prodPrice':200,'saler':'人物2','str':12,'int':12,'agi':12,'luc':12,'img':"trea6.svg"},
+    //     {'tradeId':7,'prodName':'產品7','prodPrice':300,'saler':'人物3','str':13,'int':13,'agi':13,'luc':13,'img':"trea3.svg"},
+    //     {'tradeId':8,'prodName':'產品8','prodPrice':400,'saler':'人物4','str':14,'int':14,'agi':14,'luc':14,'img':"trea1.svg"},
+    //     {'tradeId':9,'prodName':'產品9','prodPrice':200,'saler':'人物2','str':12,'int':12,'agi':12,'luc':12,'img':"trea6.svg"},
+    // ]
 
     var prodPrev = $('#homeProdPrev');
     var prodNext = $('#homeProdNext');
@@ -168,34 +174,29 @@ if(winWidth < 1024){
         if(ProdIndex == -1) ProdIndex=8; //重製索引值
         changeProdBig(ProdIndex);
     })
-    prodBtns.click(function(){
-        ProdIndex = homeProdArr.map(function(e) { return e.tradeId; }).indexOf(parseInt($(this).children('img').attr('tradeId')));
+    prodBtns.click(function(e){
+        ProdIndex = homeProdArr.map(function(e) { return e.tradeId; }).indexOf($(this).children('img').attr('tradeId'));
+
+        console.log(ProdIndex);
+
         changeProdBig(ProdIndex);
     })
 
     function changeProdBig(i){
-
-        //將按鈕隱藏或開啟
-        // if(i==0) prodPrev.addClass('invisible');
-        // else if(i==8) prodNext.addClass('invisible');
-        // else{
-        //     prodPrev.removeClass('invisible');
-        //     prodNext.removeClass('invisible');
-        // }
+        
         
         //先讓內文消失
         $('#homeWrapProd').removeClass('active');
-        // console.log(homeProdArr[i]);
         //內文再依序出現
         setTimeout(() => {
-            $('#homeProdImg').attr({'src':`image/treasure/${homeProdArr[i].img}`,'tradeId':homeProdArr[i].tradeId});
-            $('#homeProdName').text(homeProdArr[i].prodName);
-            $('#homeProdPrice').text(homeProdArr[i].prodPrice);
-            $('#homeProdSaler').text(homeProdArr[i].saler);
-            $('#homeProdStr').text(homeProdArr[i].str);
-            $('#homeProdInt').text(homeProdArr[i].int);
-            $('#homeProdAgi').text(homeProdArr[i].agi);
-            $('#homeProdLuc').text(homeProdArr[i].luc);
+            $('#homeProdImg').attr({'src':`image/treasure/${homeProdArr[i].treaImg}`,'tradeId':homeProdArr[i].tradeId});
+            $('#homeProdName').text(homeProdArr[i].treaName);
+            $('#homeProdPrice').text(homeProdArr[i].price);
+            $('#homeProdSaler').text(homeProdArr[i].salerId);
+            $('#homeProdStr').text(homeProdArr[i].treaStr);
+            $('#homeProdInt').text(homeProdArr[i].treaInt);
+            $('#homeProdAgi').text(homeProdArr[i].treaAgi);
+            $('#homeProdLuc').text(homeProdArr[i].treaLuk);
             $('#homeWrapProd').addClass('active');
         }, 400);
 
@@ -204,8 +205,8 @@ if(winWidth < 1024){
         for(var btn = 0; btn< 9;btn ++){
             let index = (srcNum+5)%9;
             prodImgS.eq(btn).addClass('active');
-            prodImgS.eq(btn).prev().text(homeProdArr[index].prodName)
-            prodImgS.eq(btn).attr({'src':`image/treasure/${homeProdArr[index].img}`,'tradeId':homeProdArr[index].tradeId})
+            prodImgS.eq(btn).prev().text(homeProdArr[index].treaName)
+            prodImgS.eq(btn).attr({'src':`image/treasure/${homeProdArr[index].treaImg}`,'tradeId':homeProdArr[index].tradeId})
             setTimeout(() => {
                 prodImgS.removeClass('active');
             }, 200);
