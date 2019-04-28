@@ -1,4 +1,4 @@
-var star, rock, rock2, rock3, rock4, treaBox, marine;
+var star, rock, rock2, rock3, rock4, rock5, rock6, rock7, treaBox, marine;
 var endTimer;
 var a;
 var count;
@@ -18,6 +18,9 @@ function draw(){
   	star.collide(rock2);
   	star.collide(rock3);
   	star.collide(rock4);
+  	star.collide(rock5);
+  	star.collide(rock6);
+  	star.collide(rock7);
   	star.displace(treaBox);
 	drawSprites();
 
@@ -53,11 +56,6 @@ function endGame(){
 	treaBox.remove();
 	star.remove();
 	marine.remove();
-	collectibles.removeSprites = function() {
-	    for(var i = 0; i<10; i++)
-	      collectibles[i].remove();
-	      collectibles.length = 0;
-    }
 	reset();
 	$('#defaultCanvas0').css('display','none');
 	$('.button_border').css('display','block');
@@ -68,11 +66,7 @@ function wingame(){
 	treaBox.remove();
 	star.remove();
 	marine.remove();
-	collectibles.removeSprites = function() {
-	    for(var i = 0; i<10; i++)
-	      collectibles[i].remove();
-	      collectibles.length = 0;
-    }
+
 	reset();
 	$('#defaultCanvas0').css('display','none');
 	$('.button_border').css('display','block');
@@ -97,14 +91,20 @@ function reset(){
 	rock4 = createSprite(640,200);
 	rock4.addImage(loadImage('image/play/game/rock2.png'));
 
+	rock5 = createSprite(1240,300);
+	rock5.addImage(loadImage('image/play/game/rock2.png'));
+
+	rock6 = createSprite(1050,440);
+	rock6.addImage(loadImage('image/play/game/rock2.png'));
+
+	rock7 = createSprite(540,300);
+	rock7.addImage(loadImage('image/play/game/rock2.png'));
+
 	treaBox = createSprite(200,600);
 	treaBox.addImage(loadImage('image/play/game/treaBox.png'));
 
 	marine= createSprite(300,300);
 	marine.addImage(loadImage('image/play/game/marine.png'));
-
-	// coin1= createSprite(400,400);
-	// coin1.addImage(loadImage())
 
 	collectibles = new Group();
 	for(var i=0; i<10; i++){
