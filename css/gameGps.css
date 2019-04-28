@@ -3,3 +3,7 @@
     height: 500px;
     border: 2px #000 solid;
 }
+#luckyWheel{
+    display: block;
+    margin: auto;
+}

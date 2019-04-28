@@ -275,11 +275,11 @@ function succCallback(e) {
             map.panTo(player.getPosition());
         }, 3000);
         circle();
-        addEvent();
-    });
-    circle();
-    getTreaPosition()
-    dropTreas();
+      });
+      circle();
+      getTreaPosition()
+      dropTreas();
+      addEvent();
     //addEvent();
     // treas.addEventListener("click", function(){
     //     console.log(click);
@@ -295,12 +295,12 @@ function dropTreas(){
     for (var i = 0; i < treaPosArr.length; i++) {
         treas.push(new google.maps.Marker({
             position: treaPosArr[i],
-			map: map,
-			icon: treaIcon,
-			title: treaName,
-			animation: google.maps.Animation.DROP,
-        }))
-    };
+            map: map,
+            icon: treaIcon,
+            title: treaName,
+            animation: google.maps.Animation.DROP,
+          }));
+    }
 }
 function circle() {
     var circleCoords = [];
@@ -313,21 +313,25 @@ function circle() {
         strokeOpacity: 1,
         strokeWeight: 3,
         fillColor: '#a34f49',
-        fillOpacity: 0.2,
+        fillOpacity: 0.1,
       });
     circle.setMap(map);
 }
 function addEvent(){
-  
-
-    for (let i = 0; i < treaPosArr.length; i++) {
-        while ((Math.pow(treaPosArr[i][0], 2)+Math.pow(treaPosArr[i][1], 2)) < Math.pow(0.008, 2)) {
-            treas[i].setAnimation(google.maps.Animation.BOUNCE);
-            treas[i].addEventListener("click", function(){
-                console.log(click);
-            });
-        } 
+  for (let i = 0; i < treas.length; i++) {
+    treaPosArrX = treaPosArr[i].lat-lati;
+    treaPosArrY = treaPosArr[i].lng-long;
+    console.log(treaPosArrX);
+    console.log(treaPosArrY);
+    console.log(treas[i]);
+    if ((Math.pow(treaPosArrX,2)+Math.pow(treaPosArrY, 2)) < Math.pow(0.005, 2)) {
+      treas[i].addListener('click', showWheel());
+      treas[i].setAnimation(google.maps.Animation.BOUNCE);
     }
+  }
+}
+function showWheel(){
+  console.log("click");
 }
 function errorCallback(e) {
     console.log(e.code);
@@ -339,11 +343,43 @@ var canvas = document.getElementById('luckyWheel');
 var ctx = canvas.getContext('2d');
 canvas.width = 400;
 canvas.height = 400;
+
+setInterval(drawWheel,10);
+var theClock = 0;
+// cxt.clearRect(0,0,canvas.width,canvas.height);
+
 function drawWheel(){
+  theClock++;
+  let deg = (theClock/180);
+
+  // ctx.fillStyle = '#362e2b';
+  //   ctx.beginPath();
+  //   ctx.moveTo(200,200);
+  //   ctx.arc(200,200,30,0,2*(Math.PI),false);
+  //   ctx.closePath();
+  //   ctx.fill();
+    
     ctx.fillStyle = '#362e2b';
     ctx.beginPath();
     ctx.arc(200,200,140,0, 2*(Math.PI) ,false);
     ctx.fill();
+
+
+    // ctx.strokeStyle = '#362e2b';
+    // ctx.beginPath();
+    // ctx.moveTo(200,200);
+    // ctx.lineTo(130*((0.2+deg)%2)*(Math.PI),(130*(0.4+deg)%2)*(Math.PI));
+    // ctx.moveTo(200,200);
+    // ctx.lineTo(((0.6+deg)%2)*(Math.PI), ((0.8+deg)%2)*(Math.PI));
+    // ctx.moveTo(200,200);
+    // ctx.lineTo(((1+deg)%2)*(Math.PI), ((1.2+deg)%2)*(Math.PI));
+    // ctx.moveTo(200,200);
+    // ctx.lineTo(((1.4+deg)%2)*(Math.PI), ((1.6+deg)%2)*(Math.PI));
+    // ctx.moveTo(200,200);
+    // ctx.lineTo(((1.8+deg)%2)*(Math.PI), ((0+deg)%2)*(Math.PI));
+    // ctx.moveTo(200,200);
+    // ctx.closePath();
+    // ctx.stroke();
 
     for (let i = 1; i < 11; i++) {
         ctx.fillStyle = '#fffcf2';
@@ -353,36 +389,92 @@ function drawWheel(){
         ctx.fill();  
     }
 
+    // ctx.fillStyle = '#a34f49';
+    // ctx.beginPath();
+    // ctx.moveTo(200,200);
+    // ctx.arc(200,200,120,0, 0.2*(Math.PI) ,false);
+    // ctx.moveTo(200,200);
+    // ctx.arc(200,200,120, 0.4*(Math.PI), 0.6*(Math.PI) ,false);
+    // ctx.moveTo(200,200);
+    // ctx.arc(200,200,120, 0.8*(Math.PI), (Math.PI) ,false);
+    // ctx.moveTo(200,200);
+    // ctx.arc(200,200,120,1.8*(Math.PI),1.6*(Math.PI),true);
+    // ctx.moveTo(200,200);
+    // ctx.arc(200,200,120,1.4*(Math.PI), 1.2*(Math.PI) ,true);
+    // ctx.moveTo(200,200);
+    // ctx.closePath();
+    // ctx.fill();
+
     ctx.fillStyle = '#a34f49';
     ctx.beginPath();
     ctx.moveTo(200,200);
-    ctx.arc(200,200,120,0, 0.2*(Math.PI) ,false);
-    ctx.moveTo(200,200);
-    ctx.arc(200,200,120, 0.4*(Math.PI), 0.6*(Math.PI) ,false);
-    ctx.moveTo(200,200);
-    ctx.arc(200,200,120, 0.8*(Math.PI), (Math.PI) ,false);
-    ctx.moveTo(200,200);
-    ctx.arc(200,200,120,1.8*(Math.PI),1.6*(Math.PI),true);
-    ctx.moveTo(200,200);
-    ctx.arc(200,200,120,1.4*(Math.PI), 1.2*(Math.PI) ,true);
-    ctx.moveTo(200,200);
+    ctx.arc(200,200,120,0, 2*(Math.PI) ,false);
     ctx.closePath();
     ctx.fill();
+
+    // ctx.fillStyle = '#006ca6';
+    // ctx.beginPath();
+    // let deg = (theClock/180);
+    // ctx.moveTo(200,200);
+    // ctx.arc(200,200,120,(0.2+deg)*(Math.PI),(0.4+deg)*(Math.PI),false);
+    // ctx.moveTo(200,200);
+    // ctx.arc(200,200,120, (0.6+deg)*(Math.PI), (0.8+deg)*(Math.PI) ,false);
+    // ctx.moveTo(200,200);
+    // ctx.arc(200,200,120,(0+deg),(1.8+deg)*(Math.PI) ,true);
+    // ctx.moveTo(200,200);
+    // ctx.arc(200,200,120,(1.6+deg)*(Math.PI), (1.4+deg)*(Math.PI) ,true);
+    // ctx.moveTo(200,200);
+    // ctx.arc(200,200,120, (1.2+deg)*(Math.PI), (1+deg)*(Math.PI) ,true);
+    // ctx.moveTo(200,200);
+    // ctx.closePath();
+    // ctx.fill();
 
     ctx.fillStyle = '#006ca6';
     ctx.beginPath();
     ctx.moveTo(200,200);
-    ctx.arc(200,200,120,0.2*(Math.PI),0.4*(Math.PI),false);
+    ctx.arc(200,200,120,((0.2+deg)%2)*(Math.PI),((0.4+deg)%2)*(Math.PI),false);
     ctx.moveTo(200,200);
-    ctx.arc(200,200,120, 0.6*(Math.PI), 0.8*(Math.PI) ,false);
+    ctx.arc(200,200,120,((0.6+deg)%2)*(Math.PI), ((0.8+deg)%2)*(Math.PI) ,false);
     ctx.moveTo(200,200);
-    ctx.arc(200,200,120,0,1.8*(Math.PI) ,true);
+    ctx.arc(200,200,120, ((1+deg)%2)*(Math.PI), ((1.2+deg)%2)*(Math.PI) ,false);
     ctx.moveTo(200,200);
-    ctx.arc(200,200,120,1.6*(Math.PI), 1.4*(Math.PI) ,true);
+    ctx.arc(200,200,120, ((1.4+deg)%2)*(Math.PI), ((1.6+deg)%2)*(Math.PI) ,false);
     ctx.moveTo(200,200);
-    ctx.arc(200,200,120, 1.2*(Math.PI), (Math.PI) ,true);
+    ctx.arc(200,200,120, ((1.8+deg)%2)*(Math.PI), ((0+deg)%2)*(Math.PI) ,false);
     ctx.moveTo(200,200);
     ctx.closePath();
     ctx.fill();
+
+    ctx.fillStyle = '#362e2b';
+    ctx.beginPath();
+    ctx.moveTo(200,200);
+    ctx.arc(200,200,30,0,2*(Math.PI),false);
+    ctx.closePath();
+    ctx.fill();
+
+    ctx.fillStyle = '#362e2b';
+    ctx.beginPath();
+    ctx.moveTo(200,150);
+    ctx.arc(200,50,20,0,2*(Math.PI),false);
+    ctx.closePath();
+    ctx.fill();
+    
+
+    ctx.fillStyle = '#362e2b';
+    ctx.beginPath();
+    ctx.moveTo(180,50);
+    ctx.lineTo(180,50);
+    ctx.lineTo(200,100);
+    ctx.lineTo(220,50);
+    ctx.closePath();
+    ctx.fill();
+
+    ctx.fillStyle = '#fffcf2';
+    ctx.beginPath();
+    ctx.moveTo(200,100);
+    ctx.arc(200,50,8,0,2*(Math.PI),false);
+    ctx.closePath();
+    ctx.fill();
+
 }
-// window.addEventListener('load',drawWheel);
+window.addEventListener('load',drawWheel);

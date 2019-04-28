@@ -1,6 +1,6 @@
 <?php
-$memId = $_POST["memId"];
-$memPsw = $_POST["memPsw"];
+$memId = $_REQUEST["signmemId"];
+$memPsw = $_REQUEST["signmemPsw"];
 $errMsg = "";
 try {
     require_once("backstage/php/connectPirates.php");
@@ -11,8 +11,10 @@ try {
     $member->execute();//執行之
 
     if( $member->rowCount() == 0 ){//找不到
+        echo 0;
         $errMsg .= "帳密錯誤, <a href='signUp.html'>重新登入</a><br>";
     }else{
+        echo 1;
         $memRow = $member->fetch(PDO::FETCH_ASSOC);
         //登入成功,將登入者的資料寫入session
         session_start();
@@ -38,35 +40,3 @@ try {
     $errMsg .= "行號 : ".$e -> getLine()."<br>";
 }
 ?>  
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8">
-<title></title>
-<link rel="stylesheet" href="css/lightbox.css">
-<link rel="stylesheet" href="css/login.css">
-</head>
-<body>
-
-  <div class="lightbox">
-        <div class="popbg"></div>
-        <div class="info">
-            <div class="axis axis1"></div>
-            <div class="axis axis2"></div>
-            <div class="leave"></div>
-            <div class="paper">
-                <p>
-                    <?php 
-                        if($errMsg !=""){
-                            echo $errMsg;
-                        }else{
-                            echo $memRow["memNic"], " 您好~<br>";
-                        }
-                    ?>
-                </p>
-            </div>
-        </div>
-    </div>   
-
-</body>
-</html>
