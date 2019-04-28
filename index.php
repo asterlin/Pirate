@@ -33,9 +33,25 @@ try {
     $rowGameHiM = $staGameHiM->fetch(PDO::FETCH_ASSOC);
     $rowGameHiH = $staGameHiH->fetch(PDO::FETCH_ASSOC);
 
-    ?>
-    <script>console.log('<?php echo $rowGameHiL['memNic'];  ?>')</script>
-    <?php
+    //如果沒有最高分
+   if(!isset($rowGameHiL))$rowGameHiL = array('memNic'=>'從缺','highscoreL'=>'--');
+   if(!isset($rowGameHiM))$rowGameHiM = array('memNic'=>'從缺','highscoreM'=>'--');
+   if(!isset($rowGameHiH))$rowGameHiH = array('memNic'=>'從缺','highscoreH'=>'--');
+
+    //取得最新寶物
+    $sql = "
+        select r.tradeId, l.treaName, r.price, r.salerId, l.treaStr, l.treaInt, l.treaLuk, l.treaAgi, l.treaImg 
+        from traderecord r join treasurelist l on r.treaId = l.treaId 
+        order by saleTime desc limit 9";
+    $staProds = $pdo -> query($sql);
+    $rowsProds = $staProds->fetchAll(PDO::FETCH_ASSOC);
+   ?>
+   <script>var homeProdArr = <?php echo json_encode($rowsProds) ?>;</script>
+   <?php
+
+    
+
+
 
 
 } catch (PDOException $e) {
@@ -106,9 +122,9 @@ try {
     <div id="homeDIY">
         <p class="textEmphasis">四個步驟打造<strong class="textHiliR">專屬海賊船</strong></p>
         <div id="shipArea">
-            <img src="image/ship/<?php echo $DIYbodys[0] ?>" alt="挑選船身" id="partBody">
-            <object data="image/ship/<?php echo $DIYSails[0] ?>" type="image/svg+xml" id="partSail"></object>
-            <img src="image/ship/<?php echo $DIYheads[0] ?>" alt="挑選船頭" id="partHead">
+            <img src="image/ship/<?php echo $DIYbodys[count($DIYbodys)-1] ?>" alt="挑選船身" id="partBody">
+            <object data="image/ship/<?php echo $DIYSails[count($DIYSails)-1] ?>" type="image/svg+xml" id="partSail"></object>
+            <img src="image/ship/<?php echo $DIYheads[count($DIYheads)-1] ?>" alt="挑選船頭" id="partHead">
             <canvas id="combineShip">
                 你看不到我你看不到我你看不到我你看不到我你看不到我你看不到我你看不到我你看不到我....好吧，請你<strong>下載並使用<a href="https://www.google.com/intl/zh-TW_ALL/chrome/">google chrome</a></strong>開啟這個網頁吧
             </canvas>
@@ -134,48 +150,42 @@ try {
                 <div id="DIYShip" class="DIYSlide">
                     <div id="DIYBodys" >
                         <p class="textS">選擇船身</p>
+                        <?php
+                        foreach ($DIYbodys as $key => $value) {
+                        ?>
                         <label>
                             <input type="radio" name="DIYbody" id="" checked>
-                            <img src="image/ship/<?php echo $DIYbodys[0] ?>" alt="船身1" class="DIYbody" id="DIYbody1">
+                            <img src="image/ship/<?php echo $value ?>" alt="船身<?php echo $key ?>" class="DIYbody" id="DIYbody<?php echo $key ?>">
                         </label>
-                        <label>
-                            <input type="radio" name="DIYbody" id="">
-                            <img src="image/ship/<?php echo $DIYbodys[1] ?>" alt="船身2" class="DIYbody" id="DIYbody2">
-                        </label>
-                        <label>
-                            <input type="radio" name="DIYbody" id="">
-                            <img src="image/ship/<?php echo $DIYbodys[2] ?>" alt="船身3" class="DIYbody" id="DIYbody3">
-                        </label>
+                        <?php
+                        }
+                        ?>
                     </div>
                     <div id="DIYHeads" >
                         <p class="textS">選擇船頭</p>
+                        <?php
+                        foreach ($DIYheads as $key => $value) {
+                        ?>
                         <label>
                             <input type="radio" name="DIYhead" id="" checked>
-                            <img src="image/ship/<?php echo $DIYheads[0] ?>" alt="船頭1" class="DIYhead" id="DIYhead1">
+                            <img src="image/ship/<?php echo $value ?>" alt="船頭<?php echo $key ?>" class="DIYhead" id="DIYhead<?php echo $key ?>">
                         </label>
-                        <label>
-                            <input type="radio" name="DIYhead" id="">
-                            <img src="image/ship/<?php echo $DIYheads[1] ?>" alt="船頭2" class="DIYhead" id="DIYhead2">
-                        </label>
-                        <label>
-                            <input type="radio" name="DIYhead" id="">
-                            <img src="image/ship/<?php echo $DIYheads[2] ?>" alt="船頭3" class="DIYhead" id="DIYhead3">
-                        </label>
+                        <?php
+                        }
+                        ?>
                     </div>
                     <div id="DIYSails">
                         <p class="textS">選擇船帆</p>
+                        <?php
+                        foreach ($DIYSails as $key => $value) {
+                        ?>
                         <label>
                             <input type="radio" name="DIYSail" id="" checked>
-                            <img src="image/ship/<?php echo $DIYSails[0] ?>" alt="船桅1" class="DIYSail" id="DIYSail1">
+                            <img src="image/ship/<?php echo $value ?>" alt="船頭<?php echo $key ?>" class="DIYSail" id="DIYSail<?php echo $key ?>">
                         </label>
-                        <label>
-                            <input type="radio" name="DIYSail" id="">
-                            <img src="image/ship/<?php echo $DIYSails[1] ?>" alt="船桅2" class="DIYSail" id="DIYSail2">
-                        </label>
-                        <label>
-                            <input type="radio" name="DIYSail" id="">
-                            <img src="image/ship/<?php echo $DIYSails[2] ?>" alt="船桅3" class="DIYSail" id="DIYSail3">
-                        </label>
+                        <?php
+                        }
+                        ?>
                     </div>
                 </div>
                 <div id="DYIFlag" class="DIYSlide">
@@ -312,19 +322,19 @@ try {
             </div>
             <div id="homeMarketProdInfo">
                 <div id="homeWrapProd" class="homeWrapProd active">
-                    <img id="homeProdImg" class="homeProdImg homeProdAct" src="image/treasure/trea6.svg" alt="寶物6">
+                    <img id="homeProdImg" class="homeProdImg" src="image/treasure/006.png" alt="寶物6">
                     <div class="homeProdInfoCard">
-                        <p id="homeProdName" class="homeProdName textM homeProdAct">八加九大刀</p>
-                        <p class="homeProdPrice textM homeProdAct">
-                            價格：<strong id="homeProdPrice" class="textHiliR">890G</strong>
-                            <p class="btnpri homeProdAct">直接購買</p>
+                        <p id="homeProdName" class="homeProdName textM"><?php echo $rowsProds[0]['treaName'] ?></p>
+                        <p class="homeProdPrice textM">
+                            價格：<strong id="homeProdPrice" class="textHiliR"><?php echo $rowsProds[0]['price'] ?></strong> G
+                            <a href="javascript:;" class="btnpri"><span>直接購買</span></a>
                         </p>
-                        <p class="homeProdSaler textS homeProdAct">賣家：<span id="homeProdSaler">景成</span></p>
-                        <p class="homeProdTalent textS homeProdAct">寶物天賦：<br>
-                            力量：<span id="homeProdStr">10</span><br>
-                            智力：<span id="homeProdInt">10</span><br>
-                            敏捷：<span id="homeProdAgi">10</span><br>
-                            幸運：<span id="homeProdLuc">10</span>
+                        <p class="homeProdSaler textS">賣家：<span id="homeProdSaler"><?php echo $rowsProds[0]['salerId'] ?></span></p>
+                        <p class="homeProdTalent textS">寶物天賦：<br>
+                            力量：<span id="homeProdStr"><?php echo $rowsProds[0]['treaStr'] ?></span><br>
+                            智力：<span id="homeProdInt"><?php echo $rowsProds[0]['treaInt'] ?></span><br>
+                            幸運：<span id="homeProdLuc"><?php echo $rowsProds[0]['treaLuk'] ?></span><br>
+                            敏捷：<span id="homeProdAgi"><?php echo $rowsProds[0]['treaAgi'] ?></span>
                             <div id="homeProdTalentImg">
                                 <!-- <canvas id="homeTalentRadar"></canvas> -->
                             </div>
@@ -335,34 +345,16 @@ try {
                 <i id="homeProdNext" class='fas fa-arrow-circle-right'></i>
             </div>
             <ul>
-                <li class="homeTreaBtn hide">
-                    <p class="TreaBtnName textS">產品</p>
-                    <img src="image/treasure/trea1.svg" alt="寶物1"></li>
-                <li class="homeTreaBtn hide">
-                    <p class="TreaBtnName textS">產品</p>
-                    <img src="image/treasure/trea2.svg" alt="寶物2"></li>
-                <li class="homeTreaBtn">
-                    
-                    <p class="TreaBtnName textS">產品</p>
-                    <img src="image/treasure/trea3.svg" alt="寶物3"></li>
-                <li class="homeTreaBtn">
-                    <p class="TreaBtnName textS">產品</p>
-                    <img src="image/treasure/trea4.svg" alt="寶物4"></li>
-                <li class="homeTreaBtn">
-                    <p class="TreaBtnName textS">產品</p>
-                    <img src="image/treasure/trea5.svg" alt="寶物5"></li>
-                <li class="homeTreaBtn ">
-                    <p class="TreaBtnName textS">產品</p>
-                    <img src="image/treasure/trea7.svg" alt="寶物6"></li>
-                <li class="homeTreaBtn">
-                    <p class="TreaBtnName textS">產品</p>
-                    <img src="image/treasure/trea2.svg" alt="寶物7"></li>
-                <li class="homeTreaBtn hide">
-                    <p class="TreaBtnName textS">產品</p>
-                    <img src="image/treasure/trea2.svg" alt="寶物8"></li>
-                <li class="homeTreaBtn hide">
-                    <p class="TreaBtnName textS">產品</p>
-                    <img src="image/treasure/trea2.svg" alt="寶物9"></li>
+                <?php
+                foreach ($rowsProds as $key => $row) {
+                ?>
+                    <li class="homeTreaBtn">
+                        <p class="TreaBtnName textS"><?php echo $row['treaName'] ?></p>
+                        <img src="image/treasure/<?php echo $row['treaImg'] ?>" alt="寶物<?php echo $row['treaName'] ?>" tradeId="<?php echo $row['tradeId'] ?>" >
+                    </li>
+                <?php
+                    }
+                ?>
             </ul>
         </div>
         <p class="textS">來去<a href="market.html">海上市集</a>逛逛更多寶物！</p>
