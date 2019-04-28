@@ -1,0 +1,1279 @@
+@import '../base/reset';
+@import '../base/font';
+@import '../layout/boxx';
+
+$padV: 768px;
+$padH: 960px;
+$pc: 1200px;
+$pcMax: 2500px;
+//@media screen and (min-width: ){}
+//@media screen and (min-width: $padV){}
+//@media screen and (min-width: $pc){}
+$brownO40: rgba(54,46,43,0.4);
+$lightBrown: #b6a79a;
+$boxColor: #d4c5af;
+$titleHight: 300px;
+$lightBox: rgba(0,0,0,.5);
+$paddingBetweenHeader: 150px;
+
+// * {
+//     outline: 2px #aaaaaa solid;
+// }
+
+body {
+    background-image: url(../image/background/BgPage.png);
+    background-size: cover;
+    &::-webkit-scrollbar {
+        width: 20px;
+        background-color: #574934;
+        box-shadow: 0px 0px 3px .5px rgba(0, 0, 0,.3);
+    }
+    &::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+        background-color: #a19476;
+    }
+    &::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+        // border-radius: 10px;
+        background-color: #F5F5F5;
+    }
+}
+.lightboxShow{
+    overflow: hidden;
+    width: 100%;
+}
+//頁面標題
+#bartitle {
+    width: 100%;
+    height: $titleHight;
+    background-image: url(../image/bar/barBackground.png);
+    background-size: 150%;
+    background-repeat: no-repeat;
+    background-position: 80px -50px;
+    line-height: $titleHight / 1.5;
+    //line-height: $titleHight;
+    text-align: center;
+    @media screen and (min-width: $padV){
+        background-size: 80%;
+        background-position: bottom right;
+    }
+    @media screen and (min-width: $pc){
+        padding-top: $paddingBetweenHeader;
+        background-size: 55%;
+    }
+    .titlePri {
+        margin: auto;
+        vertical-align: bottom;
+    }
+    .btnpri{
+        font-family: $fofaText;
+        color: $beige;
+        //background-color: $darkred;
+        vertical-align: top;
+        .wave {
+            background: $red;
+        }
+    }
+}
+//熱門話題
+#hotIssue{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: auto;
+    width: 90%;
+    >div:nth-child(5), >div:last-child{
+        display: none;
+    }
+    @media screen and (min-width: $padV){}
+    @media screen and (min-width: $pc){
+        width: 1200px;
+        height: 550px;
+        >div:nth-child(5), >div:last-child{
+            display: block;
+        }
+    }
+    .hotIssueBox{
+        //margin: 1rem 1rem 0;
+        margin: 0.5rem 0.5rem;
+        width: calc(100% - 1rem);
+        @media screen and (min-width: $pc){
+            width: calc(20rem + 120px);
+        }
+    }
+    .hotIssueBoxLink{
+        display: flex;
+        background: $boxColor;
+        color: $brown;
+        font-family: $fofaText;
+        font-size: 1rem;
+        line-height: 1.5;
+        padding: 1rem;
+        @media screen and (min-width: $padV){
+            margin: auto;
+        }
+    }
+    .hotIssueBoxInfo{
+        width: 90px;
+        height: 90px;
+        -webkit-clip-path: circle(47.0% at 50% 50%);
+        clip-path: circle(47.0% at 50% 50%);
+        @media screen and (min-width: $padV){}
+        @media screen and (min-width: $pc){
+            width: 120px;
+            height: 120px;
+        }
+        img{
+            height: 90px;
+            @media screen and (min-width: $pc){
+                height: 90px;
+            }
+        }
+    }
+    .hotIssueBoxCont{
+        width: calc(100% - 90px);
+        @media screen and (min-width: $pc){
+            width: 20rem;
+        }
+        .textM{
+            text-align: left;
+        }
+        .hotIssueBoxContText{
+            padding-left: 0.5rem;
+            color: $brown;
+            width: calc(100% - 0.5rem);
+        }
+        .hotIssueBoxView{
+            position: relative;
+            top: 0.5rem;
+            left: 0.5rem;
+            color: $brown;
+            font-family: $fofaText;
+            font-size: 1rem;
+            line-height: 1.5rem;
+            padding-left: 2rem;
+            &::before{
+                content: "";
+                position: absolute;
+                top: 0px;
+                left: 0px;
+                display: block;
+                width: 2rem;
+                height: 1rem;
+                background-repeat: no-repeat;
+                background-image: url(../image/bar/viewed.png);
+                background-size: contain;
+            }
+        }
+        .hotIssueBoxCommend{
+            position: relative;
+            top: 0.5rem;
+            left: 1rem;
+            color: $brown;
+            font-family: $fofaText;
+            font-size: 1rem;
+            line-height: 1.5rem;
+            padding-left: 1.5rem;
+            &::before{
+                content: "";
+                position: absolute;
+                top: 0px;
+                left: 0px;
+                display: block;
+                width: 2rem;
+                height: 1.2rem;
+                background-repeat: no-repeat;
+                background-image: url(../image/bar/commend.png);
+                background-size: contain;
+            }
+        }
+    }
+}
+//放火燒
+#hotIssue{
+    // -webkit-clip-path: url(../../image/bar/take_4.svg);
+    animation-name: firePath;
+    animation-duration: 3s;
+    animation-delay: 0s;
+    animation-iteration-count: 1s;
+    animation-timing-function: steps(1000000000000000000,start);
+    // animation-direction: reverse;
+    animation-fill-mode: none;
+    animation-play-state: running;
+    // background-color: #f00;
+    // -webkit-mask-image: url(../../image/bar/take_9.svg);
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: bottom right;
+    -webkit-mask-size: contain;
+    position: relative;
+    // transition: 10s linear;
+    // &::after{
+    //     content: url(../../image/bar/fire.gif);
+    //     display: block;
+    //     width: 20%;
+    //     height: 100%;
+    //     position: absolute;
+    //     top: 0;
+    //     left: 0;
+    // }
+}
+// #fire{
+//     position: absolute;
+//     bottom: 0;
+//     right: 0;
+// }
+@keyframes firePath{
+     0%{ -webkit-mask-image: url(../image/bar/take_11.svg);
+        opacity: 0.4; }
+    10%{ -webkit-mask-image: url(../image/bar/take_10.svg);
+        opacity: 0.46}
+    20%{ -webkit-mask-image: url(../image/bar/take_9.svg);
+        opacity: 0.52}
+    30%{ -webkit-mask-image: url(../image/bar/take_8.svg);}
+    40%{ -webkit-mask-image: url(../image/bar/take_7.svg);}
+    50%{ -webkit-mask-image: url(../image/bar/take_6.svg);}
+    60%{ -webkit-mask-image: url(../image/bar/take_5.svg);}
+    70%{ -webkit-mask-image: url(../image/bar/take_4.svg);}
+    80%{ -webkit-mask-image: url(../image/bar/take_3.svg);}
+    90%{ -webkit-mask-image: url(../image/bar/take_2.svg);}
+    100%{ -webkit-mask-image: url(../image/bar/take_1.svg);}
+    0%{ -webkit-mask-image: url(../image/bar/take_11.svg); }
+    10%{ -webkit-mask-image: url(../image/bar/take_10.svg);}
+    20%{ -webkit-mask-image: url(../image/bar/take_9.svg);}
+    30%{ -webkit-mask-image: url(../image/bar/take_8.svg);}
+    40%{ -webkit-mask-image: url(../image/bar/take_7.svg);}
+    50%{ -webkit-mask-image: url(../image/bar/take_6.svg);}
+    60%{ -webkit-mask-image: url(../image/bar/take_5.svg);}
+    70%{ -webkit-mask-image: url(../image/bar/take_4.svg);}
+    80%{ -webkit-mask-image: url(../image/bar/take_3.svg);}
+    90%{ -webkit-mask-image: url(../image/bar/take_2.svg);}
+    100%{ -webkit-mask-image: url(../image/bar/take_1.svg);
+        opacity: 1;}
+}
+.hotIssueBoxLink:hover{
+    box-shadow: 0px 2px  10px #574934;
+}
+
+//最新情報
+#newsWrapCont{
+    width: 100%;
+    @media screen and (min-width: $padV){}
+    @media screen and (min-width: $pc){
+        width: 1200px;
+        margin: auto;
+    }
+}
+//內容標題列 
+#newsWrapContListTit{
+    display: flex;
+    background-color: $brown;
+    font-family: $fofaText;
+    font-size: 1.25rem;
+    color: $beige;
+    align-items: center;
+    width: 100%;
+    @media screen and (min-width: $padV){}
+    @media screen and (min-width: $pc){
+        width: 1200px;
+        height: 4rem;
+        border-radius: 10px;
+    }
+    #newsWrapFilter{
+        width: 60%;
+        padding: 0.3rem;
+        padding-left: 0.5rem;
+        @media screen and (min-width: $padV){}
+        @media screen and (min-width: $pc){
+            width: calc(100% - 150px - 220px);
+            padding-left: 1rem;
+        }
+        #newsWrapListType{
+            display: none;
+            @media screen and (min-width: $padV){
+                display: inline;
+            }
+        }
+        .newsWrapListBtn{
+            display: inline-block;
+            padding: 0.3rem 0.5rem;
+            margin: 0.2rem;
+            line-height: 1;
+            font-family: $fofaText;
+            color: $brown;
+            text-align: center;
+            vertical-align: center;
+            border-radius: 4px;
+            background-color: $beige;
+            @media screen and (min-width: $padV){
+                
+            }
+            @media screen and (min-width: $pc){
+                padding: 0.3rem 0.5rem;
+                margin: 0px 0.2rem;
+            }
+        }
+        #newsWrapListGps{
+            background-color: #7ccbbd;
+        }
+        #newsWrapListTraining{
+            background-color: #ffe3ac;
+        }
+        #newsWrapListOther{
+            background-color: #fbc9bc;
+        }
+        #newsWrapListNavy{
+            background-color: #45a0c7;
+        }
+    }
+    .newsBoxCommend,.newsBoxTime{
+        padding-top: 0.5rem;
+        display: block;
+        @media screen and (min-width: $padV){
+            display: inline;
+            padding-top: 0;
+        }
+    }
+    .newsBoxCommend::before,.newsBoxTime::before{
+        @media screen and (min-width: $padV){
+            content:' / ';
+        }
+    }
+}
+//內容
+.newsBox{
+    margin-top: 10px;
+    // position: relative;
+    // transform: rotateX(180deg);
+    // &::after{
+    //     content: '';
+    //     display: block;
+    //     position: absolute;
+    //     top: 0;
+    //     left: 0;
+    //     width: 100%;
+    //     height: 100%;
+    //     z-index: 1;
+    //     border-radius: 10px;
+    //     background: $brown;
+    //     transform: rotateX(180deg);
+    // }
+}
+.newsBoxInfo:hover{
+    box-shadow: 0px 0px 15px 1px #000;
+}
+.newsBoxInfo{
+    display: flex;
+    align-items: center;
+    background: $boxColor;
+    color: $brown;
+    font-family: $fofaText;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    padding: 10px;
+    border-radius: 10px;    
+     a{
+        color: $brown;
+    }
+    .newsBoxInfoCont{
+        width: 65%;
+        @media screen and (min-width: $padV){}
+        @media screen and (min-width: $pc){
+            width: 830px;
+            padding-left: 0.5rem;
+        }
+        .newsBoxName{
+            display: none;
+            @media screen and (min-width: $pc){
+                display: inline-block;
+                padding: 0.3rem 0.5rem;
+                margin: 0px 0.2rem;
+                line-height: 1;
+                font-family: $fofaText;
+                color: $brown;
+                text-align: center;
+                vertical-align: center;
+                border-radius: 4px;
+                background-color: #7ccbbd;
+            }
+        }
+        .newsBoxNameGps{
+            background-color: #7ccbbd;
+        }
+        .newsBoxNameTraining{
+            background-color: #ffe3ac;
+        }
+        .newsBoxNameOther{
+            background-color: #fbc9bc;
+        }
+        .newsBoxNameNavy{
+            background-color: #45a0c7;
+        }
+        .newsBoxTit{
+            display: inline-block;
+            padding-left: 0.5rem;
+        }
+    }
+    .newsBoxCommend::before,.newsBoxTime::before{
+        @media screen and (min-width: $padV){
+            content:' / ';
+        }
+        @media screen and (min-width: $pc){}
+    }
+}
+.newsBoxArti{
+    //background: $boxColor;
+    //background: $blue;
+    //background: $beige;
+    background: #FAD6A5;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    //opacity: 0;
+    z-index: 1;
+    color: $brown;
+    font-family: $fofaText;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    box-sizing: border-box;
+    padding: 10px 1.5rem;
+    border-radius: 10px;
+    transform: rotateX(90deg);
+    transform-origin: top;
+    @media screen and (min-width: $padV){}
+    @media screen and (min-width: $pc){
+        width: 1200px;
+    }
+}
+.newsInfo{
+    width: 20%;
+    text-align: center;
+    @media screen and (min-width: $padV){}
+    @media screen and (min-width: $pc){
+        width: 150px;
+    }
+
+}
+.newsOwner{
+    width: 30%;
+    text-align: center;
+    @media screen and (min-width: $padV){}
+    @media screen and (min-width: $pc){
+        width: 220px;
+    }
+}
+#getMoreNews{
+    //outline: 2px #f00 solid;
+    display: block;
+    position: relative;
+    margin: 10px auto 30px;
+    background-color: transparent;
+    text-align: center;
+    border: 0px;
+    font-size: 1.2rem;
+    color:$brown;
+    font-family: $fofaTitle;
+    padding-bottom: 2rem;
+    // &::after{
+    //     // content: "";
+    //     content: url(../../image/bar/expand-button.svg);
+    //     display: block;
+    //     position: absolute;
+    //     bottom: 0rem;
+    //     left: calc(50% - 1rem);
+    //     width: 2rem;
+    //     height: 2rem;
+    //     // background-image: url(../../image/bar/expand-button.svg);
+    //     // background-size: cover;
+    //     background-color: #000;
+    //     }
+}
+// 新增討論燈箱
+#addFormWrap{
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 3;
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll; 
+    padding: 30px 0px 0px;
+    background-color: $brownO40;
+    >h1{
+        display: none;
+        text-align: center;
+        @media screen and (min-width: $padV){
+            display: block;
+            padding-top: 200px;
+        }
+    }
+    .textM{
+        display: none;
+        text-align: center;
+        padding-bottom: 1rem;
+        @media screen and (min-width: $padV){
+            display: block;
+        }
+    }
+    @media screen and (min-width: $padH){        
+        background-image: url(../image/bar/backToBar.svg);
+        background-size: 40%;
+        background-position: 0px -20%;
+        background-repeat: no-repeat;
+    }
+    @media screen and (min-width: $pc){
+        padding: 0px 0px 0px;
+        background-size: 30%;
+    }
+    &::-webkit-scrollbar {
+        width: 20px;
+        background-color: #574934;
+        box-shadow: 0px 0px 3px .5px rgba(0, 0, 0,.3);
+    }
+    &::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+        background-color: #a19476;
+    }
+    &::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+        // border-radius: 10px;
+        background-color: #F5F5F5;
+    }
+    // .artBtn{
+    //     display: inline;
+    //     position: relative;
+    //     z-index: 100;
+    //     top: 0px;
+    //     left: 20%;
+    //     font-family: $fofaText;
+    //     font-size: 0.9rem;
+    //     color: $brown;
+    //     background: $beige;
+    //     opacity: 0.8;
+    //     padding: 0.5rem 0.5rem;
+    //     border: $beige  2px solid;
+    //     letter-spacing: 2px;
+    //     box-shadow: 0px 0px 0px 2px $brown inset,
+    //                 0px 0px 0px 2px $brown;
+    //     &::before{
+    //         content: "⏎";
+    //     }
+    //     @media screen and (min-width: $padH){
+    //         top: -80px;
+    //         left: 5%;
+    //     }
+    //     @media screen and (min-width: $pc){ 
+    //         top: -200px;
+    //         left: 7%;
+    //         font-size: 1.1rem;
+    //         padding: 1rem 1rem;
+    //     }
+    //     @media screen and (min-width: $pcMax){
+    //         top: -100%;
+    //     }
+    // }
+    .artBtn{
+        display: block;
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        width: 1.5rem;
+        height: 1.5rem;
+        background-color: $brown;
+        -webkit-clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
+        clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
+        @media screen and (min-width: $padV){
+            top: 1.5rem;
+            right: 1.5rem; 
+        }
+        @media screen and (min-width: $pc){ 
+            top: 1rem;
+            right: 1.5rem; 
+        }
+        @media screen and (min-width: $pcMax){
+            top: 1rem;
+            right: 1.5rem;  
+        }
+    }
+    #addForm{
+        position: relative;
+        width: 80%;
+        margin: auto;
+        padding: 2rem;
+        font-family: $fofaTitle;
+        background-image: url(../image/market/mBGPapper.jpg);
+        background-size: cover;
+        box-shadow: 0px 0px 50px 10px $brown;
+        //background-color: $beige;
+        // border: #ccc  7px dashed;
+        // box-shadow: 0px 0px 0px 2px $brown inset,
+        //             0px 0px 0px 2px $brown;
+        @media screen and (min-width: $padH){
+            margin: 200px auto auto;
+        }
+        @media screen and (min-width: $padV){
+            margin: 50px auto auto;
+        }
+        @media screen and (min-width: $pc){
+            margin: 200px auto auto;
+            width: 1000px;
+        }
+        @media screen and (min-width: $pcMax){
+            width: 1200px;
+        }
+        .textHiliR{
+            text-align: center;
+            font-size: 2rem;
+            font-family: $fofaTitle;
+            letter-spacing: 10px;
+            position: relative;
+            &::after{
+                content: "";
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: 0;
+            }
+        }
+        //表格
+        #addFormCont{
+            width: 100%;
+            padding-top: 1.5rem;
+            color: $brown;
+            font-size: 1.25rem;
+            #articleTypeTit{
+                position: relative;
+                padding-bottom: 0.5rem;
+                margin-bottom: 0.5rem;
+                &::after{
+                    content: "";
+                    position: absolute;
+                    width: 100%;
+                    height: 2px;
+                    bottom: 0px;
+                    left: -5px;
+                    background-color: $brown;
+                    opacity: 0.7;
+                }
+                >span{
+                    display: block;
+                    padding-bottom: 0.5rem;
+                    @media screen and (min-width: $pc){
+                        display: inline-block;
+                        padding-bottom: 0;
+                    }
+                }
+                .articleTypeBtn{
+                    position: relative;
+                    padding-left: 1.5rem;
+                    display: inline-block;
+                    &::before{
+                        content:"";
+                        width: 1rem;
+                        height: 1rem;
+                        display: block;
+                        position: absolute;
+                        top: 0rem;
+                        left: 0px;
+                        border-radius: 50%;
+                        border: 2px $brown solid;
+                        @media screen and (min-width: $pc){
+                            top: 0rem;
+                            left: 0px;
+                        }
+                    }
+                }
+                input{
+                    -webkit-appearance: none;
+                    -moz-appearance: none;
+                    opacity: 1;
+                    &:checked{
+                        opacity: 1;
+                    }
+                }
+                input[type="radio"]:checked+label{
+                    color: $blue; 
+                }
+                input[type="radio"]:checked+label::before{
+                    border-color: $blue;
+                    background: $blue;
+                    box-shadow: 0px 0px 0px 2px #fff inset; 
+                }
+            }
+            #articleTit{
+                font-size: 1.25rem;
+                font-family: $fofaTitle;
+                color: $blue;
+                background: transparent;
+                border-width: 0px;
+                padding-top: 0.5rem;
+                outline: 0px;
+                //border-bottom: 2px $brown dashed;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                >span{
+                    display: block;
+                }
+            }
+            #articleCont{
+                position: relative;
+                padding: 1rem 0rem 0.5rem;
+                margin: 0.5rem 0;
+                background: transparent;
+                border-width: 0px;
+                outline: 0px;
+                &::before, &::after{
+                    content: "";
+                    position: absolute;
+                    width: 100%;
+                    height: 2px;
+                    bottom: 0px;
+                    left: -5px;
+                    background-color: $brown;
+                    opacity: 0.7;
+                }
+                &::after{
+                    top: 0rem;
+                    left: -5px;
+                }
+                span{
+                    display: block;
+                }
+                #articleImg{
+                    -webkit-appearance: none;
+                    -moz-appearance: none;  
+                    font-size: 1.2rem;
+                    font-family: $fofaTitle;
+                    color: $brown;
+                    padding: 1rem 0 0 1rem;
+                }
+                #showArticleImg{
+                    width: 50%;
+                    text-align: center;
+                    display: block;
+                    margin: auto;
+                    @media screen and (min-width: $pc){
+                        width: 30%;
+                    }
+                }
+                #articleCont{
+                    width: 100%;
+                    font-size: 1.2rem;
+                    font-family: $fofaTitle;
+                    color: $blue;
+                    padding-left: 1rem;
+                }
+            }
+        }
+        .btnpri{
+            left: calc(100% - 8rem);
+        }
+    }
+}
+#submitArticle{
+    opacity: 0;
+}
+// 討論內容燈箱
+#articleBoxWrapMask{
+    position: fixed;
+    overflow-y: scroll;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    background-color: $lightBox;
+    display: none;
+    z-index: 5;
+    &::-webkit-scrollbar {
+        width: 20px;
+        background-color: #574934;
+        box-shadow: 0px 0px 3px .5px rgba(0, 0, 0,.3);
+    }
+    &::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+        background-color: #a19476;
+    }
+    &::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+        // border-radius: 10px;
+        background-color: #F5F5F5;
+    }
+}
+#articleBoxWrap{
+    // overflow-y: scroll;
+    padding-top: 2rem 0px;
+    @media screen and (min-width: $padV){}
+    @media screen and (min-width: $padH){
+        padding: 100px 0px;
+    }
+    @media screen and (min-width: $pc){ }
+    #articleBox{
+        margin: auto;
+        background: $boxColor;
+        border-radius: 20px;
+        position: relative;
+        // overflow-y: scroll;
+        width: 90%;
+        @media screen and (min-width: $padV){}
+        @media screen and (min-width: $padH){
+            width: 960px;
+            // position: relative;
+        }
+        @media screen and (min-width: $pc){
+            width: 1200px;
+        }
+    }
+    #articleBoxTit{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        padding: 1.5rem 0;
+        align-items: center;
+        position: relative;
+        background: $beige;
+        border-radius: 20px 20px 0 0;
+        &::after{
+            content: "";
+            display: block;
+            position: absolute;
+            bottom: -15px;
+            left: calc(50% - 12px);
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 25px 25px 0 25px;
+            border-color: $beige transparent transparent transparent;
+        }
+        @media screen and (min-width: $padV){
+            &::after{
+                bottom: -25px;
+                left: calc(50% - 12px);
+            }
+        }
+        @media screen and (min-width: $padH){
+            width: 960px;
+            height: 4rem;
+            padding: 1rem 0;
+            // position: absolute;
+            // top: -75px;
+            // left: 0;
+        }
+        @media screen and (min-width: $pc){
+            width: 1200px;
+        }
+        .textL{
+            padding-right: 1rem;
+        }
+        #articleBoxType{
+            display: inline-block;
+            padding: 0.3rem 0.5rem;
+            margin: 0.2rem;
+            height: 1rem;
+            //line-height: 2rem;
+            font-family: $fofaText;
+            color: $brown;
+            text-align: center;
+            vertical-align: center;
+            border-radius: 4px;
+            background-color: #7ccbbd;
+            @media screen and (min-width: $pc){
+                padding: 0.3rem 0.5rem;
+                margin: 0px 0.2rem;
+            }
+        }
+    }
+    #articleBoxTitInfo{
+        padding-left: 1rem;
+        position: absolute;
+        top: 1rem;
+        right: 0.5rem;
+        width: 4rem;
+        text-align: right;
+        @media screen and (min-width: $padV){
+            right: 2rem;
+            width: auto;
+        }
+        #articleBoxView{
+            position: relative;
+            // top: 0.5rem;
+            //left: 1rem;
+            color: $brown;
+            font-family: $fofaText;
+            font-size: 1rem;
+            line-height: 1.5rem;
+            padding-left: 1.5rem;
+            &::before{
+                content: "";
+                position: absolute;
+                top: 0px;
+                left: 0px;
+                display: block;
+                width: 2rem;
+                height: 1rem;
+                background-repeat: no-repeat;
+                background-image: url(../image/bar/viewed.png);
+                background-size: contain;
+            }
+        }
+        #articleBoxCommend{
+            position: relative;
+            // top: 0.5rem;
+            // right: 0px;
+            color: $brown;
+            font-family: $fofaText;
+            font-size: 1rem;
+            line-height: 1.5rem;
+            padding-left: 1.5rem;
+            &::before{
+                content: "";
+                position: absolute;
+                top: 0px;
+                left: 0px;
+                display: block;
+                width: 2.5rem;
+                height: 1.4rem;
+                background-repeat: no-repeat;
+                background-image: url(../image/bar/commend.png);
+                background-size: contain;
+            }
+        }
+    }
+    #articleBoxMemInfo{
+        display: flex;
+        padding: 1rem 0 0 0.5rem;
+        position: relative;
+        @media screen and (min-width: $padV){
+            padding: 1rem 0 0 3rem;
+        }
+        #articleBoxMemImg{
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            border: 2px $brown solid;
+            overflow: hidden;
+            text-align: center;
+            vertical-align:middle;
+            img{
+                margin-top: 0.5rem;
+                width: 2rem;
+            }
+            @media screen and (min-width: $padV){
+                width: 5rem;
+                height: 5rem;
+                // padding: 20px;
+                border-radius: 50%;
+                border: 2px $brown solid;
+                // -webkit-clip-path: circle(47.0% at 50% 50%);
+                // clip-path: circle(47.0% at 50% 50%);
+                // background-color: #f00;
+                overflow: hidden;
+                text-align: center;
+                vertical-align:middle;
+                img{
+                    margin-top: 0.5rem;
+                    width: 4rem;
+                }
+            }
+        }
+        #articleBoxMemMeg{
+            margin: auto 0 auto 0.5rem ;
+            >span{
+                display: block;
+                font-family: $fofaText;
+                font-size: 0.7rem;
+            }
+            #articleBoxMemId{
+                font-size: 1rem;
+                padding-bottom: 0.3rem;
+            }
+            #articleBoxMemLv::before{
+                content: "LV. ";
+            }
+            #articleBoxMemMoney::before{
+                content: "所持有金幣數 ";
+            }
+            @media screen and (min-width: $padV){
+                margin: auto 0 auto 1rem ;
+                >span{
+                    display: block;
+                    font-family: $fofaText;
+                    font-size: 1rem;
+                }
+                #articleBoxMemId{
+                    font-size: 1.25rem;
+                    padding-bottom: 0.5rem;
+                }
+            }
+            @media screen and (min-width: $pc){
+                
+            }
+        }
+    }
+    #articleBoxCont{
+        margin-top: 25px;
+        padding: 0 1.5rem 0.5rem;
+        line-height: 1.5;
+        #articleBoxImg{
+            width: 200px;
+            text-align: center;
+            margin: auto;
+            #articleBoxContImg{
+                width: 150px;
+            }
+        }
+        .textM{
+            text-align: left;
+            width: 100%;
+        }
+        @media screen and (min-width: $padV){
+            display: flex;
+            justify-content: center;
+            align-items:center;
+            margin-top: 25px;
+            padding: 0.5rem 1.5rem;
+            line-height: 1.5;
+            #articleBoxImg{
+                width: 300px;
+                text-align: center;
+                #articleBoxContImg{
+                    width: 250px;
+                }
+            }
+            .textM{
+                text-align: left;
+                width: calc(100% - 400px);
+            }
+        }
+    }
+}
+#closeArt{
+    display: block;
+    position: absolute;
+    top: 1rem;
+    right: 1.25rem;
+    // font-family: $fofaText;
+    // font-size: 1rem;
+    // color: $brown;
+    // background: $beige;
+    // opacity: 0.8;
+    // padding: 0.5rem 0.5rem;
+    // border: $beige  2px solid;
+    // letter-spacing: 2px;
+    // box-shadow: 0px 0px 0px 2px $brown inset,
+    //             0px 0px 0px 2px $brown;\
+    background: $brown;
+    width: 1.5rem;
+    height: 1.5rem;
+    clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
+}
+#artReport{
+    display: block;
+    position: absolute;
+    bottom: -0.5rem;
+    right: 1rem;
+    width: 2rem;
+    height: 2rem;
+    // background-color: #f00;
+    background-image: url(../image/bar/artRespond.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: top right;
+    &:hover::before, &:hover::after{
+            display: block;
+    }
+    &::before{
+        content:"";
+        position: absolute;
+        top: calc(-70px + 2rem );
+        left: 0;
+        display: none;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 2rem 1rem 0 1rem;
+        border-color: $blue transparent transparent transparent;
+    }
+    &::after{
+        content: "通報海軍";
+        position: absolute;
+        top: -70px;
+        left: -270%;
+        display: none;
+        width: 6rem;
+        padding: 1rem;
+        font-family: $fofaText;
+        font-size:1rem;
+        color: $beige;
+        background: $blue;
+        text-align: center;
+        vertical-align: middle;
+        border-radius: 15px;
+    }
+}
+.artiRespondBox{
+    width: 90%;
+    margin: 1rem auto auto;
+    background: $beige;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    @media screen and (min-width: $padH){
+        width: 960px;
+    }
+    @media screen and (min-width: $pc){ 
+        width: 1200px;
+        // justify-content: center;
+    }
+    .artiRespondBoxCont{
+        // width: calc(100% - 10rem);
+        padding-left: 1rem;
+        #artiRespondBoxContText{
+            text-align: left;
+        }
+        @media screen and (min-width: $padH){
+            padding-left: 2rem;
+            #artiRespondBoxContText{
+                text-align: center;
+            }
+        }
+    }
+    .artiRespondBoxMem{
+        text-align: center;
+        background-color: $boxColor;
+        padding: 1rem 1.5rem 1rem 1rem;
+        border-radius: 20px 0 0 20px;
+        text-align: center;
+        position: relative;
+        .artiRespondBoxMemImg{
+            height: 40px;
+        }
+        .textM{
+            display: block;
+            font-size: 1rem;
+        }
+        &::after{
+            content:"";
+            position: absolute;
+            top: calc(50% - 1rem);
+            right: -0.5rem;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 1rem 1.5rem 1rem 0;
+            border-color: transparent $beige transparent transparent;
+
+        }
+        @media screen and (min-width: $padH){
+            text-align: center;
+            padding: 1rem 2.5rem 1rem 1rem;
+            text-align: center;
+            width:10rem;
+            .artiRespondBoxMemImg{
+                height: 50px;
+                vertical-align: middle;
+            }
+            .textM{
+                vertical-align: middle;
+                padding-left:1rem; 
+                display: inline;
+            }
+            &::after{
+                top: calc(50% - 1rem);
+                right: 0;
+                border-style: solid;
+                border-width: 1rem 1.5rem 1rem 0;
+            } 
+        }
+    }
+}
+#addArtRespondBox{
+    width: 90%;
+    margin: 1rem auto 1rem;
+    background: $beige;
+    box-sizing: border-box;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    @media screen and (min-width: $padV){}
+    @media screen and (min-width: $padH){
+        width: 960px;
+    }
+    @media screen and (min-width: $pc){ 
+        width: 1200px;
+        display: flex;
+        align-items: center;
+        // justify-content: center;
+    }
+    #addArtRespond{
+        width: 100%;
+        vertical-align: middle;
+    }
+    #addArtRespondCont{
+        color: $brown;
+        font-family: $fofaText;
+        font-size: 1.25rem;
+        width: calc( 100% - 8rem);
+        height: 2rem;
+        line-height: 1.5;
+        border-width: 0;
+        background-color: transparent;
+        -webkit-appearance: none;
+    }
+}
+#submitAddArtRespond{
+    opacity: 0;
+}
+.newsBoxNameGps{
+    background-color: #7ccbbd;
+}
+.newsBoxNameTraining{
+    background-color: #ffe3ac;
+}
+.newsBoxNameOther{
+    background-color: #fbc9bc;
+}
+.newsBoxNameNavy{
+    background-color: #45a0c7;
+}
+// 討論檢舉燈箱
+#lightBoxReport{
+    display: none;
+    line-height: 1.5;
+    text-align: center;
+}
+//請求登入的燈箱
+#lightBoxLogin{
+    display: none;
+    // display: block;
+    line-height: 1.5;
+    text-align: center;
+}
+#addNavyReportForm{
+    width: 100%;
+    padding-left: 0.5rem;
+    text-align: center;
+    #navyReportCont{
+        width: 90%;
+        outline: 0px;
+        outline: 0px;
+        border: 0px ;
+        background: transparent;
+        box-shadow: none;
+        font-size: 1rem;
+        text-align: center;
+        font-family: $fofaText;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+    }
+    #submitNavyReport{
+        opacity: 0;
+    }
+}
+#submitAddArtRespond{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    opacity: 0;
+}

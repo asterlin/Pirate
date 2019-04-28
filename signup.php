@@ -65,7 +65,8 @@ try {
                             echo $memRow["memNic"], " 您好~<br>";
                         }
                     ?>
-                    <a href="me.php">ME</a>  
+                    <a href="me.php">ME</a>
+                    <a href="bar.php">bar</a>  
                 </p>
             </div>
         </div>

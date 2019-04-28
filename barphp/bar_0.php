@@ -1,3 +1,18 @@
+<!-- php -->
+<!-- 熱門話題 -->
+<?php
+  try{
+    require_once("connectPirate.php");
+    $sql = "select * from articlelist order by artTime DESC limit 6";
+    $hotIssue = $pdo->prepare( $sql );
+    $hotIssue->execute();
+    $hotIssueRow = $hotIssue ->fetchAll(PDO::FETCH_ASSOC);
+  }catch(PDOException $e){
+      echo $e->getMessage();
+    };
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,7 +48,7 @@
                     <img src="image/bar/hotIssueImg_1.png" alt="洩露情報者">
                 </div>
                 <div class="hotIssueBoxCont">
-                    <h4 class="textM">【競技】如何打贏大媽</h4>
+                    <h4 class="textM"><?php echo ?></h4>
                     <p class="textS hotIssueBoxContText">
                         這次活動角竟然是酒吞，讚嘆營運 為了不讓縮圖停在怪怪的地方先上個預覽圖，請見諒ˊˋ 以下是全文，終於要和的....
                     </p>
@@ -246,41 +261,11 @@
      </form>
 </div>
 <!-- 討論內容燈箱 -->
-<div id="articleBoxWrap">
+<!-- <div id="articleBoxWrap">
     <div id="articleBox">
-        <div id="articleBoxTit">
-            <span id="articleBoxType">尋寶</span>
-            <h3 class="textL">金斧頭GET</h3>
-            <div id="articleBoxTitInfo">
-                <span id="articleBoxView">人氣</span>
-                <span id="articleBoxCommend">回覆</span>
-            </div>
-        </div>
-        <div id="articleBoxMemInfo">
-            <div id="articleBoxMemImg">
-                <img src="image/ship.png" alt="" id="">
-            </div>
-            <div id="articleBoxMemMeg">
-                <span id="articleBoxMemId">景成大帥哥</span>
-                <span id="articleBoxMemLv">7</span>
-                <span id="articleBoxMemMoney">100G</span>
-            </div>
-        </div>
-        <div id="articleBoxCont">
-            <div id="articleBoxImg">
-                <img src="image/bar/hotIssueImg_1.png" alt="文章圖片" id="articleBoxContImg">
-            </div>
-            <p class="textM">
-<<<<<<< HEAD
-                讚嘆營運，不知道大家在開啟景成的大秘寶章節後，尋寶遊戲的運氣如何，那天玩尋寶遊戲，竟然在中大湖得到傳說中董董女神的金斧頭
 
-=======
-                讚嘆營運，不知道大家在開啟景成的大秘寶章節後，尋寶遊戲的運氣如何，那天在中大玩尋寶遊戲，竟然在中大湖得到傳說中湖中董董女神
->>>>>>> da5fff7fe642c8d74444f1eafc970db43eeafd23
-            </p>
-        </div>
     </div>
-</div>
+</div> -->
 
 <!-- script -->
 <script  src="https://code.jquery.com/jquery-3.4.0.min.js"   integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg="   crossorigin="anonymous"></script>
