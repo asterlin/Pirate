@@ -8,6 +8,7 @@ try{
   $statement->bindValue(":strength",$_REQUEST["str"]);
   $statement->bindValue(":agile",$_REQUEST["agi"]);
   $statement->bindValue(":luck",$_REQUEST["lcu"]);
+  // $statement->bindValue(":memId",$_REQUEST["memId"]);
   $statement->execute();
 
   // echo "異動{$affectedRows}筆資料成功";

@@ -1,4 +1,7 @@
-
+<?php
+ob_start();
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,17 +11,6 @@
 	<link rel="stylesheet" href="css/wavebtn.css">
 	<link rel="stylesheet" href="css/lightbox.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
-	<style type="text/css">
-		.lightbox{
-			display: none;
-		}
-		.checkToLeave{
-			bottom: 100px;
-			left: 10%;
-			top: 50%;
-			transform: translate(-50%,50%);
-		}
-	</style>
 </head>
 <body>
 	<div class="resultSlogan">
@@ -49,7 +41,7 @@
 			<p class="textM">恭喜你成功通過海賊IQ測驗，接下來前方還有更多冒險必須去挑戰。試著在海賊試煉場中通過試煉,獲得經驗值與金錢。<br>等級提升後會獲得技能點數，你可以在我的海賊船頁面中使用點數提升技能。<br>在海上市集中可以使用金錢購買裝備。
 			</p>
 		</div>
-		<a class="btnpri" href="play.html" id="toPlay"><span>海賊試煉場</span></a>
+		<a class="btnpri" href="play.php" id="toPlay"><span>海賊試煉場</span></a>
 		<div class="lightbox">//智力燈箱
 			<div class="popbg"></div>
 			<div class="info">
@@ -60,7 +52,7 @@
 					<!-- 範例 -->
 					<h2 class="titlePri titlePriX" >智力</h2>
 					<p class="textIQ">在海上市集裡可以買到你想要的寶物和造型。<br>當你的智力越多的話，就能使出殺價能力，每10點智力能折扣5元。假設當你想要買價值100元的商品，而你的智力是30點，你能夠以85元價格買入商品。</p>
-					<a class="btnpri checkToLeave" href="game.html"><span>確認</span></a>
+					<a class="btnpri checkToLeave"><span>確認</span></a>
 				</div>
 			</div>
 		</div>
@@ -74,7 +66,7 @@
 					<!-- 範例 -->
 					<h2 class="titlePri titlePriX" >力量</h2>
 					<p class="textIQ">遊戲中每1小時回復體力值1點。<br>力量越多的話，體力回復速度越快，每五個力量點數能加快1分鐘體力回復速度。</p>
-					<a class="btnpri checkToLeave" href="game.html"><span>確認</span></a>
+					<a class="btnpri checkToLeave"><span>確認</span></a>
 				</div>
 			</div>
 		</div>
@@ -88,7 +80,7 @@
 					<!-- 範例 -->
 					<h2 class="titlePri titlePriX" >幸運</h2>
 					<p class="textIQ">在海賊試煉場裡的尋寶GPS遊戲裡找到寶相的話可以進行抽獎遊戲。<br>如果你的幸運越多的話，抽到大獎的機率越高哦。</p>
-					<a class="btnpri checkToLeave" href="game.html"><span>確認</span></a>
+					<a class="btnpri checkToLeave"><span>確認</span></a>
 				</div>
 			</div>
 		</div>
@@ -102,7 +94,7 @@
 					<!-- 範例 -->
 					<h2 class="titlePri titlePriX" >敏捷</h2>
 					<p class="textIQ">當你進行海賊試煉遊戲時，遊戲中會出現金幣。<br>敏捷越高，遊戲裡的金幣數量越多。</p>
-					<a class="btnpri checkToLeave" href="game.html"><span>確認</span></a>
+					<a class="btnpri checkToLeave"><span>確認</span></a>
 				</div>
 			</div>
 		</div>
@@ -133,14 +125,11 @@
 		// 把技能點數傳回資料庫update
 		function checkId(){  
 		  //產生XMLHttpRequest物件
-		  console.log('checkId');
 		  let xhr = new XMLHttpRequest();
 
 		  //註冊callback function
 		  xhr.onload = function(){
 			      if( xhr.status == 200){ //server端可以正確的執行
-			          // $id("idMsg").innerText = xhr.responseText;
-			          console.log('sucess');
 			      }else{ //其它
 			          alert( xhr.status );
 			      }
@@ -171,6 +160,9 @@
 				document.getElementsByClassName("leave")[i].onclick=off;
 				document.getElementsByClassName("popbg")[i].onclick=off2;
 			}
+			$('.checkToLeave').click(function(){
+				$('.lightbox').css('display','none');
+			});
 			checkId();
 		});
 	</script>

@@ -1,13 +1,13 @@
 function chartRadar(graphData){
 var ctx = document.getElementById('myChart').getContext('2d');
 Chart.defaults.global.legend.display = false;//讓label消失
-Chart.defaults.global.responsive = false;//不fit screen
+Chart.defaults.global.responsive = true;//不fit screen
 graphDataNew = graphData;
 // var graphData =[1,2,2,3];
 chart = new Chart(ctx, {
 type: 'radar',
 data: {
-    labels: ["A","B","C","D"],
+    labels: ["力量","智力","幸運","敏捷"],
     datasets: [{
         label: "",
         backgroundColor: "rgba(0, 255, 0,0.1)",
