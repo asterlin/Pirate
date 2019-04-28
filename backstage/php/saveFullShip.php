@@ -8,7 +8,7 @@ $sailSrc = $_POST['sailSrc'];
 $errMsg ='' ;
 try {
 
-require_once('connectPirate.php');
+require_once('connectPirates.php');
 
 //從資料庫取得船各部位ID
 $sql = "select modelId from customList where modelImg in ('{$headSrc}','{$bodySrc}','{$sailSrc}')";
@@ -24,7 +24,7 @@ $_SESSION['custList'] = $custList;
 
 
 //圖片儲存路徑
-define('UPLOAD_PATH','img/');
+define('UPLOAD_PATH','../../image/ship/');
 
 //接收data url
 

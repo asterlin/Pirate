@@ -3,7 +3,7 @@
 // @import '../base/lightbox';
 
 
-input[type="text"]{
+input{
     height: 20px;
     border-radius:2px;
     background:#fff;
@@ -14,28 +14,28 @@ input[type="text"]{
 .btnpri{
     margin: 10px;
 }
-.lightbox{
-    width: 450px;
-    height: 320px;
-}
-.axis{
-    width: 450px;
-}
-.paper{
-    text-align: center;
-    padding: 50px 0px;
-    width: 400px;
-    height: 200px;
-}
-.paper::after{
-    right: 7%;
-    top: 15%;
-}
+// .lightbox{
+//     width: 450px;
+//     height: 320px;
+// }
+// .axis{
+//     width: 450px;
+// }
+// .paper{
+//     text-align: center;
+//     padding: 50px 0px;
+//     width: 400px;
+//     height: 200px;
+// }
+// .paper::after{
+//     right: 7%;
+//     top: 15%;
+// }
 
-.paper::before{
-    right: 7%;
-    top: 15%;
-}
+// .paper::before{
+//     right: 7%;
+//     top: 15%;
+// }
 
 #tab-demo ul > li{
     display: inline;
@@ -63,7 +63,30 @@ input[type="text"]{
     margin-left:0;
     
 }
+.verification{
+    float: left;
+    
+}
 
 .Data-Title > label{
     margin: 10px;
+}
+
+
+
+.paper{
+    width: 450px;
+    padding: 50px 0;
+}
+@media screen and (max-width: 768px){
+    .info{
+        width: 370px;
+    }
+    .axis{
+        width: 370px;
+    }
+    .paper{
+        width: 350px;
+    }
+
 }
