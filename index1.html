@@ -38,7 +38,7 @@
         <img id="homeBannerLogo" src="image/logo.svg" alt="大海賊帝國">
         <div id="homepixiCanvas"></div>
         <div id="wrapShipArea">
-            <div id="shipArea">
+            <!-- <div id="shipArea">
                 <img src="image/ship/300.png" alt="挑選船身" id="partBody">
                 <object data="image/ship/200.svg" type="image/svg+xml" id="partSail"></object>
                 <img src="image/ship/100.png" alt="挑選船頭" id="partHead">
@@ -49,12 +49,24 @@
                     你看不到我你看不到我你看不到我你看不到我你看不到我你看不到我你看不到我你看不到我....好吧，請你<strong>下載並使用<a href="https://www.google.com/intl/zh-TW_ALL/chrome/">google chrome</a></strong>開啟這個網頁吧(ㄏ￣▽￣)ㄏ   ㄟ(￣▽￣ㄟ)
                 </canvas>
                 <div id="pen"></div>
-            </div>
-            <button class="btnsec">成為海賊</button>
+            </div> -->
+            <button class="btnsec scrToDIY">成為海賊</button>
         </div>
     </div>
     <div id="homeDIY">
         <p class="textEmphasis">四個步驟打造<strong class="textHiliR">專屬海賊船</strong></p>
+        <div id="shipArea">
+            <img src="image/ship/300.png" alt="挑選船身" id="partBody">
+            <object data="image/ship/200.svg" type="image/svg+xml" id="partSail"></object>
+            <img src="image/ship/100.png" alt="挑選船頭" id="partHead">
+            <canvas id="combineShip">
+                你看不到我你看不到我你看不到我你看不到我你看不到我你看不到我你看不到我你看不到我....好吧，請你<strong>下載並使用<a href="https://www.google.com/intl/zh-TW_ALL/chrome/">google chrome</a></strong>開啟這個網頁吧
+            </canvas>
+            <canvas id="drawFlag">
+                你看不到我你看不到我你看不到我你看不到我你看不到我你看不到我你看不到我你看不到我....好吧，請你<strong>下載並使用<a href="https://www.google.com/intl/zh-TW_ALL/chrome/">google chrome</a></strong>開啟這個網頁吧(ㄏ￣▽￣)ㄏ   ㄟ(￣▽￣ㄟ)
+            </canvas>
+            <div id="pen"></div>
+        </div>
         <div id="DIYPanel">
             <ol id="DIYStatus">
                 <li class="DIYStatusDot current"><p class="textS">挑選船型</p>
@@ -72,21 +84,48 @@
                 <div id="DIYShip" class="DIYSlide">
                     <div id="DIYBodys" >
                         <p class="textS">選擇船身</p>
-                        <img src="image/ship/300.png" alt="船身1" class="DIYbody" id="DIYbody1">
-                        <img src="image/ship/301.png" alt="船身2" class="DIYbody" id="DIYbody2">
-                        <img src="image/ship/302.png" alt="船身3" class="DIYbody" id="DIYbody3">
+                        <label>
+                            <input type="radio" name="DIYbody" id="" checked>
+                            <img src="image/ship/300.png" alt="船身1" class="DIYbody" id="DIYbody1">
+                        </label>
+                        <label>
+                            <input type="radio" name="DIYbody" id="">
+                            <img src="image/ship/301.png" alt="船身2" class="DIYbody" id="DIYbody2">
+                        </label>
+                        <label>
+                            <input type="radio" name="DIYbody" id="">
+                            <img src="image/ship/302.png" alt="船身3" class="DIYbody" id="DIYbody3">
+                        </label>
                     </div>
                     <div id="DIYHeads" >
                         <p class="textS">選擇船頭</p>
-                        <img src="image/ship/100.png" alt="船頭1" class="DIYhead" id="DIYhead1">
-                        <img src="image/ship/101.png" alt="船頭2" class="DIYhead" id="DIYhead2">
-                        <img src="image/ship/102.png" alt="船頭3" class="DIYhead" id="DIYhead3">
+                        <label>
+                            <input type="radio" name="DIYhead" id="" checked>
+                            <img src="image/ship/100.png" alt="船頭1" class="DIYhead" id="DIYhead1">
+                        </label>
+                        <label>
+                            <input type="radio" name="DIYhead" id="">
+                            <img src="image/ship/101.png" alt="船頭2" class="DIYhead" id="DIYhead2">
+                        </label>
+                        <label>
+                            <input type="radio" name="DIYhead" id="">
+                            <img src="image/ship/102.png" alt="船頭3" class="DIYhead" id="DIYhead3">
+                        </label>
                     </div>
                     <div id="DIYSails">
                         <p class="textS">選擇船帆</p>
-                        <img src="image/ship/200.svg" alt="船桅1" class="DIYSail" id="DIYSail1">
-                        <img src="image/ship/201.svg" alt="船桅2" class="DIYSail" id="DIYSail2">
-                        <img src="image/ship/202.svg" alt="船桅3" class="DIYSail" id="DIYSail3">
+                        <label>
+                            <input type="radio" name="DIYSail" id="" checked>
+                            <img src="image/ship/200.svg" alt="船桅1" class="DIYSail" id="DIYSail1">
+                        </label>
+                        <label>
+                            <input type="radio" name="DIYSail" id="">
+                            <img src="image/ship/201.svg" alt="船桅2" class="DIYSail" id="DIYSail2">
+                        </label>
+                        <label>
+                            <input type="radio" name="DIYSail" id="">
+                            <img src="image/ship/202.svg" alt="船桅3" class="DIYSail" id="DIYSail3">
+                        </label>
                     </div>
                 </div>
                 <div id="DYIFlag" class="DIYSlide">
@@ -132,7 +171,7 @@
                 <span class="textEmphasis">遊戲高分<strong class="textHiliR">懸賞排行</strong>等你挑戰！</span><br>
                 <span class="textS">
                     還沒有海賊船嗎?立即
-                    <a href="javascript:;">成為海賊</a>
+                    <a class="scrToDIY" href="javascript:;">成為海賊</a>
                 </span>
             </p>
             <div class="homeWanteds">
@@ -243,19 +282,38 @@
                         </p>
                     </div>
                 </div>
-                <i id="homeProdPrev" class='fas fa-arrow-circle-left invisible'></i>
+                <i id="homeProdPrev" class='fas fa-arrow-circle-left '></i>
                 <i id="homeProdNext" class='fas fa-arrow-circle-right'></i>
             </div>
             <ul>
-                <li class="homeTreaBtn hide"><img src="image/treasure/trea1.svg" alt="寶物1"></li>
-                <li class="homeTreaBtn hide"><img src="image/treasure/trea2.svg" alt="寶物2"></li>
-                <li class="homeTreaBtn"><img src="image/treasure/trea3.svg" alt="寶物3"></li>
-                <li class="homeTreaBtn"><img src="image/treasure/trea4.svg" alt="寶物4"></li>
-                <li class="homeTreaBtn"><img src="image/treasure/trea5.svg" alt="寶物5"></li>
-                <li class="homeTreaBtn "><img src="image/treasure/trea7.svg" alt="寶物6"></li>
-                <li class="homeTreaBtn"><img src="image/treasure/trea2.svg" alt="寶物7"></li>
-                <li class="homeTreaBtn hide"><img src="image/treasure/trea2.svg" alt="寶物8"></li>
-                <li class="homeTreaBtn hide"><img src="image/treasure/trea2.svg" alt="寶物9"></li>
+                <li class="homeTreaBtn hide">
+                    <p class="TreaBtnName textS">產品</p>
+                    <img src="image/treasure/trea1.svg" alt="寶物1"></li>
+                <li class="homeTreaBtn hide">
+                    <p class="TreaBtnName textS">產品</p>
+                    <img src="image/treasure/trea2.svg" alt="寶物2"></li>
+                <li class="homeTreaBtn">
+                    
+                    <p class="TreaBtnName textS">產品</p>
+                    <img src="image/treasure/trea3.svg" alt="寶物3"></li>
+                <li class="homeTreaBtn">
+                    <p class="TreaBtnName textS">產品</p>
+                    <img src="image/treasure/trea4.svg" alt="寶物4"></li>
+                <li class="homeTreaBtn">
+                    <p class="TreaBtnName textS">產品</p>
+                    <img src="image/treasure/trea5.svg" alt="寶物5"></li>
+                <li class="homeTreaBtn ">
+                    <p class="TreaBtnName textS">產品</p>
+                    <img src="image/treasure/trea7.svg" alt="寶物6"></li>
+                <li class="homeTreaBtn">
+                    <p class="TreaBtnName textS">產品</p>
+                    <img src="image/treasure/trea2.svg" alt="寶物7"></li>
+                <li class="homeTreaBtn hide">
+                    <p class="TreaBtnName textS">產品</p>
+                    <img src="image/treasure/trea2.svg" alt="寶物8"></li>
+                <li class="homeTreaBtn hide">
+                    <p class="TreaBtnName textS">產品</p>
+                    <img src="image/treasure/trea2.svg" alt="寶物9"></li>
             </ul>
         </div>
         <p class="textS">來去<a href="market.html">海上市集</a>逛逛更多寶物！</p>
@@ -414,7 +472,7 @@
         </p>
         <p class="textM">
             加入大海賊帝國，立即<br>
-            <a href="javascript:;">成為海賊</a>
+            <a class="scrToDIY" href="javascript:;">成為海賊</a>
         </p>
     </div>
 

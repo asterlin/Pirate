@@ -2,25 +2,43 @@ function $id(id){
     return document.getElementById(id); 
 }
 window.addEventListener('load',function(){
+    //取得工具列的船身船帆們
+    var DIYsails=document.getElementsByClassName('DIYSail');
+    var DIYbodys=document.getElementsByClassName('DIYbody');
+    var DIYheads=document.getElementsByClassName('DIYhead');
 
     //若user的web storage有換過造型，就先換上
     var homeStor = sessionStorage;
     if(homeStor['homePartSail']){
         $id('partSail').data = homeStor['homePartSail'];
         $id('partSail').onload=flagFrame;//更新畫旗的框框
+        //把面板船的部位打勾
+        for(let i =0;i<DIYsails.length;i++){
+            if($id('partSail').data == DIYsails[i].src){
+                DIYsails[i].previousElementSibling.checked = true;
+            }
+        }
     }
     if(homeStor['homePartBody']){
         $id('partBody').src = homeStor['homePartBody'];
+        //把面板船的部位打勾
+        for(let i =0;i<DIYbodys.length;i++){
+            if($id('partBody').src == DIYbodys[i].src){
+                DIYbodys[i].previousElementSibling.checked = true;
+            }
+        }
     }
     if(homeStor['homePartHead']){
         $id('partHead').src = homeStor['homePartHead'];
+        //把面板船的部位打勾
+        for(let i =0;i<DIYheads.length;i++){
+            if($id('partHead').src == DIYheads[i].src){
+                DIYheads[i].previousElementSibling.checked = true;
+            }
+        }
     }
 
-    //取得工具列的船身船帆們
-    var DIYsails=document.getElementsByClassName('DIYSail');
-    var DIYbodys=document.getElementsByClassName('DIYbody');
-    var DIYheads=document.getElementsByClassName('DIYhead');
-
+    
     //換船帆船身
     function changeSail(e){
         $id('partSail').data = e.target.src;
@@ -130,7 +148,6 @@ window.addEventListener('load',function(){
             ctxDraw.globalCompositeOperation="source-over";
             ctxDraw.lineTo(drawX,drawY);
             ctxDraw.stroke();
-            console.log(drawX,drawY)
         }else{
             //橡皮擦畫線
             ctxDraw.strokeStyle="rgba(0,0,0,1)";
@@ -216,7 +233,7 @@ window.addEventListener('load',function(){
         var avatarUrl = cavDraw.toDataURL();
         $.ajax({
             type: "post",
-            url: "saveAvatar.php",
+            url: "backstage/php/saveAvatar.php",
             data: {avatarImg:avatarUrl},
             success: function (response) {
                 console.log("It's avatar:"+response)
@@ -248,7 +265,7 @@ window.addEventListener('load',function(){
             //傳送完整海賊船及部位資訊至php儲存圖檔
             $.ajax({
                 type: "post",
-                url: "saveFullShip.php",
+                url: "backstage/php/saveFullShip.php",
                 data: {
                     fullShipImg:shipUrl,
                     headSrc:$id('partHead').src.slice(-7),

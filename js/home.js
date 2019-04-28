@@ -21,6 +21,13 @@ $(document).ready(function () {
         showTreaBtn();    
     })
 
+//通頁連結的滾動
+$('.scrToDIY').click(function(){
+    $('html, body').animate({
+        scrollTop: $("#homeDIY").offset().top
+    }, 1000);
+})
+
 
 //客製的下一步紐
     //取得變數
@@ -103,22 +110,22 @@ $(document).ready(function () {
     }
 
 //客製的船部位被按時，加上外框啦
-    var DIYbody = $('.DIYbody');
-    var DIYHead = $('.DIYhead');
-    var DIYSail = $('.DIYSail');
+    // var DIYbody = $('.DIYbody');
+    // var DIYHead = $('.DIYhead');
+    // var DIYSail = $('.DIYSail');
     
-    DIYbody.click(function(){
-        DIYbody.not($(this)).css('border',"3px solid #fffcf2");
-        $(this).css('border',"3px dashed #006ca6");
-    })
-    DIYHead.click(function(){
-        DIYHead.not($(this)).css('border',"3px solid #fffcf2");
-        $(this).css('border',"3px dashed #006ca6");
-    })
-    DIYSail.click(function(){
-        DIYSail.not($(this)).css('border',"3px solid #fffcf2");
-        $(this).css('border',"3px dashed #006ca6");
-    })
+    // DIYbody.click(function(){
+    //     DIYbody.not($(this)).css('border',"3px solid #fffcf2");
+    //     $(this).css('border',"3px dashed #006ca6");
+    // })
+    // DIYHead.click(function(){
+    //     DIYHead.not($(this)).css('border',"3px solid #fffcf2");
+    //     $(this).css('border',"3px dashed #006ca6");
+    // })
+    // DIYSail.click(function(){
+    //     DIYSail.not($(this)).css('border',"3px solid #fffcf2");
+    //     $(this).css('border',"3px dashed #006ca6");
+    // })
 
 
 //更換海賊試煉遊戲內文
@@ -139,46 +146,54 @@ if(winWidth < 1024){
     //市集更換商品
 
     var homeProdArr = [
-        {'prodName':'產品1','prodPrice':100,'saler':'人物1','str':10,'int':10,'agi':10,'luc':10,'img':"trea1.svg"},
-        {'prodName':'產品2','prodPrice':200,'saler':'人物2','str':12,'int':12,'agi':12,'luc':12,'img':"trea2.svg"},
-        {'prodName':'產品3','prodPrice':300,'saler':'人物3','str':13,'int':13,'agi':13,'luc':13,'img':"trea3.svg"},
-        {'prodName':'產品4','prodPrice':400,'saler':'人物4','str':14,'int':14,'agi':14,'luc':14,'img':"tre41.svg"},
-        {'prodName':'產品5','prodPrice':100,'saler':'人物1','str':10,'int':10,'agi':10,'luc':10,'img':"trea5.svg"},
-        {'prodName':'產品6','prodPrice':200,'saler':'人物2','str':12,'int':12,'agi':12,'luc':12,'img':"trea6.svg"},
-        {'prodName':'產品7','prodPrice':300,'saler':'人物3','str':13,'int':13,'agi':13,'luc':13,'img':"trea3.svg"},
-        {'prodName':'產品8','prodPrice':400,'saler':'人物4','str':14,'int':14,'agi':14,'luc':14,'img':"trea1.svg"},
-        {'prodName':'產品9','prodPrice':200,'saler':'人物2','str':12,'int':12,'agi':12,'luc':12,'img':"trea6.svg"},
+        {'tradeId':1,'prodName':'產品1','prodPrice':100,'saler':'人物1','str':10,'int':10,'agi':10,'luc':10,'img':"trea1.svg"},
+        {'tradeId':2,'prodName':'產品2','prodPrice':200,'saler':'人物2','str':12,'int':12,'agi':12,'luc':12,'img':"trea2.svg"},
+        {'tradeId':3,'prodName':'產品3','prodPrice':300,'saler':'人物3','str':13,'int':13,'agi':13,'luc':13,'img':"trea3.svg"},
+        {'tradeId':4,'prodName':'產品4','prodPrice':400,'saler':'人物4','str':14,'int':14,'agi':14,'luc':14,'img':"tre41.svg"},
+        {'tradeId':5,'prodName':'產品5','prodPrice':100,'saler':'人物1','str':10,'int':10,'agi':10,'luc':10,'img':"trea5.svg"},
+        {'tradeId':6,'prodName':'產品6','prodPrice':200,'saler':'人物2','str':12,'int':12,'agi':12,'luc':12,'img':"trea6.svg"},
+        {'tradeId':7,'prodName':'產品7','prodPrice':300,'saler':'人物3','str':13,'int':13,'agi':13,'luc':13,'img':"trea3.svg"},
+        {'tradeId':8,'prodName':'產品8','prodPrice':400,'saler':'人物4','str':14,'int':14,'agi':14,'luc':14,'img':"trea1.svg"},
+        {'tradeId':9,'prodName':'產品9','prodPrice':200,'saler':'人物2','str':12,'int':12,'agi':12,'luc':12,'img':"trea6.svg"},
     ]
 
     var prodPrev = $('#homeProdPrev');
     var prodNext = $('#homeProdNext');
     var prodImgS = $('.homeTreaBtn img');
+    var prodBtns = $('.homeTreaBtn');
 
     var ProdIndex = 0;
     prodNext.click(function(){
         ProdIndex++;
+        if(ProdIndex == 9) ProdIndex=0; //重製索引值
         changeProdBig(ProdIndex);
     })
     prodPrev.click(function(){
         ProdIndex--;
+        if(ProdIndex == -1) ProdIndex=8; //重製索引值
         changeProdBig(ProdIndex);
     })
+    prodBtns.click(function(){
+        ProdIndex = homeProdArr.map(function(e) { return e.tradeId; }).indexOf(parseInt($(this).children('img').attr('tradeId')));
+        changeProdBig(ProdIndex);
+    })
+
     function changeProdBig(i){
 
         //將按鈕隱藏或開啟
-        if(i==0) prodPrev.addClass('invisible');
-        else if(i==8) prodNext.addClass('invisible');
-        else{
-            prodPrev.removeClass('invisible');
-            prodNext.removeClass('invisible');
-        }
+        // if(i==0) prodPrev.addClass('invisible');
+        // else if(i==8) prodNext.addClass('invisible');
+        // else{
+        //     prodPrev.removeClass('invisible');
+        //     prodNext.removeClass('invisible');
+        // }
         
         //先讓內文消失
         $('#homeWrapProd').removeClass('active');
         // console.log(homeProdArr[i]);
         //內文再依序出現
         setTimeout(() => {
-            $('#homeProdImg').attr('src',`image/treasure/${homeProdArr[i].img}`);
+            $('#homeProdImg').attr({'src':`image/treasure/${homeProdArr[i].img}`,'tradeId':homeProdArr[i].tradeId});
             $('#homeProdName').text(homeProdArr[i].prodName);
             $('#homeProdPrice').text(homeProdArr[i].prodPrice);
             $('#homeProdSaler').text(homeProdArr[i].saler);
@@ -192,95 +207,103 @@ if(winWidth < 1024){
         //更換小圖的圖片
         var srcNum = i;
         for(var btn = 0; btn< 9;btn ++){
+            let index = (srcNum+5)%9;
             prodImgS.eq(btn).addClass('active');
-            prodImgS.eq(btn).attr({'src':`image/treasure/${homeProdArr[(srcNum+5)%9].img}`})
-            srcNum++;
+            prodImgS.eq(btn).prev().text(homeProdArr[index].prodName)
+            prodImgS.eq(btn).attr({'src':`image/treasure/${homeProdArr[index].img}`,'tradeId':homeProdArr[index].tradeId})
             setTimeout(() => {
-                prodImgS.eq(btn).removeClass('active');
-                console.log(prodImgS.eq(btn).removeClass('active'))
-            }, 1000);
+                prodImgS.removeClass('active');
+            }, 200);
+            srcNum++;
 
 
         }
-        
-
     }
     
 //要來做船的動畫了唷
-    document.addEventListener('scroll',function(){
-        var pageY = window.pageYOffset;
-    })
+    // document.addEventListener('scroll',function(){
+    //     var pageY = window.pageYOffset;
+    // })
 
-    // Init ScrollMagic
-    var ctrl = new ScrollMagic.Controller({
-        globalSceneOptions: {
-        }
-    });
-    var shipArea = document.getElementById('shipArea');
-    var homeDIYTop = document.getElementById('homeDIY').offsetTop;
-    var homeGameTop = document.getElementById('homeGame').offsetTop;
-    var homeMarketTop = document.getElementById('homeMarket').offsetTop;
-    var homeBarTop = document.getElementById('homeBar').offsetTop;
-    var homeEndTop = document.getElementById('homeEnd').offsetTop;
+    // // Init ScrollMagic
+    // var ctrl = new ScrollMagic.Controller({
+    //     globalSceneOptions: {
+    //     }
+    // });
+    // var shipArea = document.getElementById('shipArea');
+    // var homeDIYTop = document.getElementById('homeDIY').offsetTop;
+    // var homeGameTop = document.getElementById('homeGame').offsetTop;
+    // var homeMarketTop = document.getElementById('homeMarket').offsetTop;
+    // var homeBarTop = document.getElementById('homeBar').offsetTop;
+    // var homeEndTop = document.getElementById('homeEnd').offsetTop;
+    // var shipPosRWD = [
+    //     {'toDIY':220,'DIYScale':0.6,'toGame1':500,'toGame2':610,'toEnd':270},
+    //     {'toDIY':220,'DIYScale':1,'toGame1':500,'toGame2':610,'toEnd':270},
+    // ]
 
-    TweenMax.from(shipArea,1,{
-        bezier:{values:[{y:-20,x:-100},{y:-80,x:-100}]},
-    })
 
-    var toDIY = TweenMax.to(shipArea,1,{
-        bezier:{values:[{y:50,x:50},{y:homeDIYTop-220,x:0}]},
-        scale:0.6,
-    })
-    new ScrollMagic.Scene({
-        triggerElement:document.getElementById('homeDIY'),
-        triggerHook: 'onCenter'
-    })
-    .setTween(toDIY)
-    .addIndicators({'name':'toDIY'})
-    .addTo(ctrl)
+    // TweenMax.from(shipArea,1,{
+    //     bezier:{values:[{y:-20,x:-100},{y:-80,x:-100}]},
+    // })
 
-    var toGame = TweenMax.to(shipArea,1,{
-        bezier:{values:[{y:homeDIYTop-500,x:-150},{y:homeGameTop-610,x:0}]},
-        scale:0.3,
-    })
-    new ScrollMagic.Scene({
-        triggerElement:document.getElementById('homeGame'),
-        triggerHook: 'onEnter'
-    })
-    .setTween(toGame)
-    .addIndicators({'name':'toGame'})
-    .addTo(ctrl)
-
-    var toMarket = TweenMax.to(shipArea,1,{
-        bezier:{values:[{y:homeGameTop-610,x:-150},{y:homeMarketTop-610,x:0}]},
-    })
-    new ScrollMagic.Scene({
-        triggerElement:document.getElementById('homeMarket'),
-        triggerHook: 'onEnter'
-    })
-    .setTween(toMarket)
-    .addIndicators({'name':'toMarket'})
-    .addTo(ctrl)
+    // //在不同螢幕寬度給予不同參數
+    // if(winWidth<1024) var shipPos = 0;
+    // else var shipPos = 1;
     
-    var toBar = TweenMax.to(shipArea,1,{
-        bezier:{values:[{y:homeMarketTop-610,x:-150},{y:homeBarTop-610,x:0}]},
-    })
-    new ScrollMagic.Scene({
-        triggerElement:document.getElementById('homeBar'),
-        triggerHook: 'onEnter'
-    })
-    .setTween(toBar)
-    .addIndicators({'name':'toBar'})
-    .addTo(ctrl)
+    // var toDIY = TweenMax.to(shipArea,1,{
+    //     bezier:{values:[{y:50,x:50},{y:homeDIYTop-shipPosRWD[shipPos].toDIY,x:0}]},
+    //     scale:shipPosRWD[shipPos].DIYScale,
+    // })
+    // new ScrollMagic.Scene({
+    //     triggerElement:document.getElementById('homeDIY'),
+    //     triggerHook: 'onCenter'
+    // })
+    // .setTween(toDIY)
+    // .addIndicators({'name':'toDIY'})
+    // .addTo(ctrl)
+
+    // var toGame = TweenMax.to(shipArea,1,{
+    //     bezier:{values:[{y:homeDIYTop-shipPosRWD[shipPos].toGame1,x:-150},{y:homeGameTop-shipPosRWD[shipPos].toGame2,x:0}]},
+    //     scale:0.3,
+    // })
+    // new ScrollMagic.Scene({
+    //     triggerElement:document.getElementById('homeGame'),
+    //     triggerHook: 'onEnter'
+    // })
+    // .setTween(toGame)
+    // .addIndicators({'name':'toGame'})
+    // .addTo(ctrl)
+
+    // var toMarket = TweenMax.to(shipArea,1,{
+    //     bezier:{values:[{y:homeGameTop-shipPosRWD[shipPos].toGame2,x:-150},{y:homeMarketTop-shipPosRWD[shipPos].toGame2,x:0}]},
+    // })
+    // new ScrollMagic.Scene({
+    //     triggerElement:document.getElementById('homeMarket'),
+    //     triggerHook: 'onEnter'
+    // })
+    // .setTween(toMarket)
+    // .addIndicators({'name':'toMarket'})
+    // .addTo(ctrl)
     
-    var toEnd = TweenMax.to(shipArea,1,{
-        bezier:{values:[{y:homeBarTop-610,x:-150},{y:homeEndTop-270,x:50}]},
-    })
-    new ScrollMagic.Scene({
-        triggerElement:document.getElementById('homeEnd'),
-        triggerHook: 'onEnter'
-    })
-    .setTween(toEnd)
-    .addIndicators({'name':'toEnd'})
-    .addTo(ctrl)
+    // var toBar = TweenMax.to(shipArea,1,{
+    //     bezier:{values:[{y:homeMarketTop-shipPosRWD[shipPos].toGame2,x:-150},{y:homeBarTop-shipPosRWD[shipPos].toGame2,x:0}]},
+    // })
+    // new ScrollMagic.Scene({
+    //     triggerElement:document.getElementById('homeBar'),
+    //     triggerHook: 'onEnter'
+    // })
+    // .setTween(toBar)
+    // .addIndicators({'name':'toBar'})
+    // .addTo(ctrl)
+    
+    // var toEnd = TweenMax.to(shipArea,1,{
+    //     bezier:{values:[{y:homeBarTop-shipPosRWD[shipPos].toGame2,x:-150},{y:homeEndTop-shipPosRWD[shipPos].toGame2,x:50}]},
+    // })
+    // new ScrollMagic.Scene({
+    //     triggerElement:document.getElementById('homeEnd'),
+    //     triggerHook: 'onEnter'
+    // })
+    // .setTween(toEnd)
+    // .addIndicators({'name':'toEnd'})
+    // .addTo(ctrl)
 });
