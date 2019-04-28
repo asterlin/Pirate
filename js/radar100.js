@@ -7,7 +7,7 @@ graphDataNew = graphData;
 chart = new Chart(ctx, {
 type: 'radar',
 data: {
-    labels: ["力量","智慧","幸運","敏捷"],
+    labels: ["力量","智力","幸運","敏捷"],
     datasets: [{
         label: "",
         backgroundColor: "rgba(107, 0, 255,0.5)",

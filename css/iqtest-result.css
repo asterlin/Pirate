@@ -218,20 +218,20 @@ body {
   position: absolute; }
 
 .infoImg:nth-child(1) {
-  top: 0;
-  left: 220px; }
+  top: 190px;
+  left: 350px; }
 
 .infoImg:nth-child(2) {
-  top: 75px;
-  left: 38px; }
+  top: 0;
+  left: 225px; }
 
 .infoImg:nth-child(3) {
-  top: 76px;
-  left: 315px; }
+  top: 310px;
+  left: 225px; }
 
 .infoImg:nth-child(4) {
-  top: 155px;
-  left: 220px; }
+  top: 190px;
+  left: 38px; }
 
 .info {
   position: fixed; }
@@ -283,7 +283,7 @@ body {
     width: 1132px;
     height: 142px;
     line-height: 142px;
-    margin: 50px auto 10px;
+    margin: 15px auto 10px;
     text-align: center; }
 
   .row {
@@ -320,7 +320,7 @@ body {
     padding-bottom: 25px; }
 
   .titleSec {
-    margin: 40px auto;
+    margin: 0px auto;
     font-size: 30px; }
 
   .textM {
@@ -332,7 +332,7 @@ body {
     transform: translateX(-50%); }
 
   #toPlay {
-    margin: 50px auto 0; }
+    margin: 25px auto; }
 
   .infoImg:nth-child(1) {
     top: 165px;
