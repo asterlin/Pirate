@@ -2,10 +2,14 @@
 $errMsg = "";
 try{
   require_once("../backstage/php/connectPirates.php");
-  $sql = "UPDATE member SET intelligence = 45 WHERE memId = 'test03'";
+  $sql = "update member set intelligence = :intelligence,strength= :strength,agile = :agile, luck = :luck where memId = 'test03'";
   $statement = $pdo->prepare($sql);
-  $statement->bindValue(":intelligence",8);
-  $statement->execute();  
+  $statement->bindValue(":intelligence",$_REQUEST["int"]);
+  $statement->bindValue(":strength",$_REQUEST["str"]);
+  $statement->bindValue(":agile",$_REQUEST["agi"]);
+  $statement->bindValue(":luck",$_REQUEST["lcu"]);
+  $statement->execute();
+
   // echo "異動{$affectedRows}筆資料成功";
   $affectedRows = $pdo->exec( $sql );//下指令
   echo "異動{$affectedRows}筆資料成功";

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -48,7 +49,7 @@
 			<p class="textM">恭喜你成功通過海賊IQ測驗，接下來前方還有更多冒險必須去挑戰。試著在海賊試煉場中通過試煉,獲得經驗值與金錢。<br>等級提升後會獲得技能點數，你可以在我的海賊船頁面中使用點數提升技能。<br>在海上市集中可以使用金錢購買裝備。
 			</p>
 		</div>
-		<a class="btnpri" href="game.html" id="toPlay"><span>海賊試煉場</span></a>
+		<a class="btnpri" href="play.html" id="toPlay"><span>海賊試煉場</span></a>
 		<div class="lightbox">//智力燈箱
 			<div class="popbg"></div>
 			<div class="info">
@@ -128,6 +129,28 @@
 		else if( grade>=70 ) $('#abc').text(`B`);
 		else if( grade>=50 ) $('#abc').text(`C`);
 		else $('#abc').text(`D`);
+
+		// 把技能點數傳回資料庫update
+		function checkId(){  
+		  //產生XMLHttpRequest物件
+		  console.log('checkId');
+		  let xhr = new XMLHttpRequest();
+
+		  //註冊callback function
+		  xhr.onload = function(){
+			      if( xhr.status == 200){ //server端可以正確的執行
+			          // $id("idMsg").innerText = xhr.responseText;
+			          console.log('sucess');
+			      }else{ //其它
+			          alert( xhr.status );
+			      }
+			  }  
+
+			  //設定好所要連結的程式
+			  var url = "php/iqresult_Update.php?int="+int+"&str="+str+"&lcu="+lcu+"&agi="+agi;
+			  xhr.open("Get", url, true);
+			  xhr.send( null );
+		}//function_checkId
 		
 		// 燈箱事件
 		function show(e){
@@ -148,6 +171,7 @@
 				document.getElementsByClassName("leave")[i].onclick=off;
 				document.getElementsByClassName("popbg")[i].onclick=off2;
 			}
+			checkId();
 		});
 	</script>
 </body>
