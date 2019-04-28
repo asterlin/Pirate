@@ -345,6 +345,24 @@ function drawWheel(){
     ctx.arc(200,200,140,0, 2*(Math.PI) ,false);
     ctx.fill();
 
+    let deg = (theClock/180);
+
+    ctx.fillStyle = '#a34f49';
+    ctx.beginPath();
+    ctx.moveTo(200,200);
+    ctx.lineTo(((0.2+deg)%2)*(Math.PI),((0.4+deg)%2)*(Math.PI);
+    ctx.moveTo(200,200);
+    ctx.lineTo(((0.6+deg)%2)*(Math.PI), ((0.8+deg)%2)*(Math.PI));
+    ctx.moveTo(200,200);
+    ctx.lineTo(((1+deg)%2)*(Math.PI), ((1.2+deg)%2)*(Math.PI));
+    ctx.moveTo(200,200);
+    ctx.lineTo(((1.4+deg)%2)*(Math.PI), ((1.6+deg)%2)*(Math.PI));
+    ctx.moveTo(200,200);
+    ctx.lineTo(((1.8+deg)%2)*(Math.PI), ((0+deg)%2)*(Math.PI));
+    ctx.moveTo(200,200);
+    ctx.closePath();
+    ctx.fill();
+
     for (let i = 1; i < 11; i++) {
         ctx.fillStyle = '#fffcf2';
         ctx.beginPath();
