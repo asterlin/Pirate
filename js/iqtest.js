@@ -27,7 +27,7 @@ if (enteredLength == 5 && entered === code) {
     $('.keypad').delay( 400 ).fadeOut(0);
     $('.front').addClass('open').animate({  borderSpacing: -180 }, {
     step: function(now,fx) {
-    $(this).css('transform','rotateY('+ now +'deg)');         
+    $(this).css('transform','rotateY('+ now +'deg)');
 	},duration:1000},'linear');
 	$('span.results').hide();
 	$('#right').show();
@@ -122,7 +122,7 @@ function change(){
 		storage['lcu'] = lcu;
 		storage['agi'] = agi;
 		storage['tans'] = tans;
-		window.location="iqtest-result.html";
+		window.location="iqtest-result.php";
 	}
 }
 

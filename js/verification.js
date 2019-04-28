@@ -1,16 +1,29 @@
 
 
-
-
-
-
-
-
-
-
-
-
 var number
+
+function signUp(){
+    var signmemId= document.getElementById("signmemId").value;
+    var signmemPsw= document.getElementById("signmemPsw").value;
+    console.log(signmemId);
+    console.log(signmemPsw);
+    
+    $.ajax({
+        url: 'signup.php',
+        data: {signmemId:signmemId,signmemPsw:signmemPsw},
+        type: 'GET',
+        success: function(data){
+            if(data == 1){
+                document.getElementsByClassName("lightbox")[0].style.display="none";
+                console.log(data);
+            } 
+        },
+    });
+
+}
+
+
+
 
 function left(){
     number -= 90;
@@ -47,7 +60,7 @@ function right(){
 //         content.innerHTML = "驗證失敗";
 //     }
 
-//}
+// }
 function verification(){
     
     if($('#btnver span').text() == "驗證身份"){
@@ -58,7 +71,7 @@ function verification(){
         document.getElementsByClassName("verification")[0].style.display = "block";
 
     }else{
-        document.getElementById('loginforma').submit();
+        document.getElementById("loginforma").submit();
         document.getElementsByClassName("Data-Title")[0].style.display = "block";
         document.getElementsByClassName("Data-Items")[0].style.display = "block";
         document.getElementsByClassName("verification")[0].style.display = "none";
@@ -68,7 +81,9 @@ function verification(){
 
 
 
+
 function init(){
+    document.getElementById("signUp").addEventListener("click",signUp );
 
     function getrandom(x){
         return Math.floor(Math.random()*x)+1;
@@ -78,16 +93,12 @@ function init(){
 
     var imgrotate = document.getElementById("signnew");
     imgrotate.style.transform = "rotate(" + number + "deg)";
-     
+    
     document.getElementById("btnver").addEventListener("click",verification );
     document.getElementById("signlbtn").addEventListener("click",left );
     document.getElementById("signrbtn").addEventListener("click",right );
     // document.getElementById("signconfirm").addEventListener("click",confirm );
     // myBody_click, myForm_click, btn_click, forFun
   }
-
-
-
-
 
 window.onload = init;	

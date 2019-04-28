@@ -1,3 +1,7 @@
+<?php
+ob_start();
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,12 +10,15 @@
 	<link rel="stylesheet" href="css/normalize.css">
 	<link rel="stylesheet" href="css/play.css">
 	<link rel="stylesheet" href="css/compass.css">
+	<link rel="stylesheet" href="css/wavebtn.css">
+    <link rel="stylesheet" href="css/lightbox.css">
+    <link rel="stylesheet" href="css/login.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.6/plugins/animation.gsap.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.6/plugins/debug.addIndicators.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.6/ScrollMagic.min.js"></script>
-	<script src="js/p5.js" type="text/javascript"></script>
-	<script src="js/p5.play.js" type="text/javascript"></script>
-	<script src="js/p5.dom.js"></script>
+	<!-- <script src="js/p5.js" type="text/javascript"></script> -->
+	<!-- <script src="js/p5.play.js" type="text/javascript"></script> -->
+	<!-- <script src="js/p5.dom.js"></script> -->
 	<script src="js/sketch.js" type="text/javascript"></script>
 	<script src="js/TweenMax.min.js"></script>
     <script src="js/ScrollMagic.min.js"></script>
@@ -21,6 +28,26 @@
 	<script src="js/ScrollToPlugin.js"></script>
 </head>
 <body>
+	<label for="burgerCtrl">
+        <input type="checkbox" name="" id="burgerCtrl">
+        <div id="burger">
+            <div class="burgerLine"></div>
+            <div class="burgerLine"></div>
+        </div>
+    </label>
+    <header>
+        <h1 id="headerLogo"><a href="index.html">
+                <img src="image/logo.svg" alt="大海賊帝國">
+            </a></h1>
+        <nav id="headerMenu">
+            <ul>
+                <li><a href="game.html">海賊試煉場</a></li>
+                <li><a href="market.html">海上市集</a></li>
+                <li><a href="bar.html">情報酒館</a></li>
+                <li><a href="me.html">俺の海賊船</a></li>
+            </ul>
+        </nav>
+    </header>
 	<div id="choose">
 		<div id="playTitle">
 	        <h1 class="titlePri">海賊試煉場</h1>
@@ -281,6 +308,43 @@
 			</div>
 		</div>
 	</div>
+	<!-- lightBox -->
+	<!-- win -->
+	<div class="playLightbox">
+		<div class="lightbox" id="winbox">
+		<div class="popbg"></div>
+		<div class="info">
+			<div class="axis axis1"></div>
+			<div class="axis axis2"></div>
+			<div class="leave"></div>
+			<div class="paper">
+				<!-- 範例 -->
+				<h2 class="titlePriX" >WIN</h2>
+				<p class="textIQ">恭喜你贏了初級試煉。<br>你的通關時間為<span id="lightboxTime">5</span>秒!<br>獲得了經驗值50點金錢1000G</p>
+				<a class="btnpri checkToLeave"><span>確認</span></a>
+			</div>
+		</div>
+		</div>
+	</div>
+	
+	<!-- lose -->
+	<div class="playLightbox">
+		<div class="lightbox" id="losebox">
+		<div class="popbg"></div>
+		<div class="info">
+				<div class="axis axis1"></div>
+				<div class="axis axis2"></div>
+				<div class="leave"></div>
+				<div class="paper">
+					<!-- 範例 -->
+					<h2 class="titlePriX" >LOSE</h2>
+					<p class="textIQ">好可惜!沒通過初級試煉,請再接再厲。</p>
+					<a class="btnpri checkToLeave"><span>確認</span></a>
+				</div>
+			</div>
+		</div>
+	</div>
+	
 	<!-- compass -->
 	<div id="compass">
 		<img src="image/compass_inner.png" alt="in" id="in">
@@ -295,13 +359,18 @@
 			<div id="blueLuck" class="blueInfo">幸運<span>60</span></div>
 			<div id="blueAgi" class="blueInfo">敏捷<span>50</span></div>
 			<div id="blueInt" class="blueInfo">智力<span>70</span></div>
+			<div id="blueGameTime" class="blueInfo">體力值<span>5</span></div>
 		</div>
 	</div>
+<script src="js/header.js"></script>
+<script src="js/wavebtn.js"></script>
+<script src="js/login.js"></script>
 <script type="js/TweenMaxPlay.js"></script>
 <script src="js/compass.js"></script>
 <script src="js/playRank.js"></script>
 <script src="js/playFrameChange.js"></script>
 <script>
+var compass;
 var rwd=0;//判斷如果為手機螢幕不執行動畫
 var playTimeCount=0;
 var animation_04;
@@ -316,6 +385,12 @@ if(w==375)rwd=1;
 var bazierRank;
 if(rwd==0){
 $(document).ready(function(){
+//lightbox 離開
+$('.checkToLeave').click(function(){
+	$('.lightbox').css('display','none');
+});
+// 從資料庫中拿到compass資訊
+getCompass();
 // 滑到第二屏時藍色布幕動畫
 animation_04 = TweenMax.to(`#blueAppear`,10, {
 	top:0,

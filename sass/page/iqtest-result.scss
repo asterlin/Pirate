@@ -13,10 +13,8 @@ body{
 .lightbox{
 	display: none;
 }
-.checkToLeave{
-	bottom: 100px;
+.lightbox .checkToLeave{
 	left: 10%;
-	top: 50%;
 	transform: translate(-50%,50%);
 }
 .resultSlogan{
@@ -96,20 +94,20 @@ body{
 	position: absolute;
 }
 .infoImg:nth-child(1){
-	top: 0;
-	left: 220px;
+	top: 190px;
+	left: 350px;
 }
 .infoImg:nth-child(2){
-	top: 75px;
-	left: 38px;
+	top: 0;
+	left: 225px;
 }
 .infoImg:nth-child(3){
-	top: 76px;
-	left: 315px;
+	top: 310px;
+	left: 225px;
 }
 .infoImg:nth-child(4){
-	top: 155px;
-	left: 220px;
+	top: 190px;
+	left: 38px;
 }
 .info{
 	position: fixed;
@@ -164,7 +162,7 @@ body{
 	width: 1132px;
 	height: 142px;
 	line-height: 142px;
-	margin: 50px auto 10px;
+	margin: 15px auto 10px;
 	text-align: center;
 }
 // brain area
@@ -191,14 +189,14 @@ body{
 .grade{font-size: 36px;padding-bottom: 25px;}
 .correctop{font-size: 36px;padding-bottom: 25px;}
 // 說明area
-.titleSec{margin: 40px auto;font-size: 30px;}
+.titleSec{margin: 0px auto;font-size: 30px;}
 .textM{padding: 0 20px;}
 .btnpri{
 	text-align: left;
 	left: 50%;
 	transform: translateX(-50%);
 }
-#toPlay{margin: 50px auto 0;}
+#toPlay{margin: 25px auto;}
 // info-btn
 .infoImg:nth-child(1){
     top: 165px;
@@ -209,7 +207,7 @@ body{
     left: 320px;
 }
 .infoImg:nth-child(3){
-	top: 310px;
+	top: 360px;
     left: 320px;
 }
 .infoImg:nth-child(4){

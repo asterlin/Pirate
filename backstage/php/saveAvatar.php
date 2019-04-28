@@ -4,11 +4,11 @@ session_start();
 $errMsg ='' ;
 try {
 
-require_once('connectPirate.php');
+require_once('connectPirates.php');
 
 
 //圖片儲存路徑
-define('UPLOAD_PATH','img/');
+define('UPLOAD_PATH','../../image/ship/');
 
 //接收data url
 $img = $_POST['avatarImg'];

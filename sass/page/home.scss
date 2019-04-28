@@ -3,21 +3,23 @@
 @import '../layout/header';
 
 
-#homeGame,#homeMarket,#homeBar,#homeEnd{
-    margin-top: 20vh;
+#homeGame,#homeMarket,#homeBar{
+    margin-top: 34vh;
 }
-
 .clearfix{
     clear: both;
 }
 .justHide{
     display: none;
 }
+.invisible{
+    visibility: hidden;
+}
 a{color: $blue;}
 
 .btnpri,.btnsec{
     cursor: pointer;
-    padding: 10px;
+    // padding: 10px;
     font-size: 1.25rem;
     // -webkit-tap-highlight-color: transparent;
 }
@@ -50,7 +52,6 @@ p{ //這裡其實不懂為何_font設定的在瀏覽器不執行
     width: 250px;
     margin: 10px auto -80px auto;
     display: block;
-    
 }
 #WrapMap{
     width: 100%;
@@ -74,13 +75,16 @@ p{ //這裡其實不懂為何_font設定的在瀏覽器不執行
 #wrapShipArea{
     position: absolute;
     width: 100%;
-    top: 61%;
-    // left: 9%;
+    top: 28%;
+    left: -30%;
     text-align: center;
-    // position: fixed;
     cursor: pointer;
     .btnsec{
-        margin-top: -15px;
+        // margin-top: -15px;
+        position: absolute;
+        top: 65%;
+        right: 0;
+            
     }
 }
 #wrapShipArea img{
@@ -95,10 +99,12 @@ p{ //這裡其實不懂為何_font設定的在瀏覽器不執行
 //船
 #shipArea{
     position: relative;
-    height: 240px;
-    width: 180px;
-    margin: auto;
-    // transform: scale(0.4);
+    // height: 240px;
+    // width: 180px;
+    width: 600px;
+    height: 650px;
+    // margin: auto;
+    transform: scale(0.3);//大螢幕為0.4吧，修改時，前面的shiparea寬度也要修改
 }
 #partSail,#partHead,#partBody,#drawFrame{
     width: 100%;
@@ -115,7 +121,6 @@ p{ //這裡其實不懂為何_font設定的在瀏覽器不執行
     right: 0;
     margin: auto;
     transform-origin: 0 0;
-    transform: scale(0.3); //大螢幕為0.4吧，修改時，前面的shiparea寬度也要修改
 }
 #pen{
     width: 5px;
@@ -126,7 +131,6 @@ p{ //這裡其實不懂為何_font設定的在瀏覽器不執行
     top: 0;
     left: 0;
     pointer-events: none;
-    transform: scale(0.3);
 }
 
 
@@ -140,10 +144,10 @@ p{ //這裡其實不懂為何_font設定的在瀏覽器不執行
     margin: 10px auto -20px auto;
 }
 //調整地圖大小及位置
-.homeMap{
-    width: 166%; //之後隨著視角，調整為固定寬度及scale translate之類的
-    transform: scale(1) translateX(-22%) translateY(0px);
-}
+// .homeMap{
+//     width: 166%; //之後隨著視角，調整為固定寬度及scale translate之類的
+//     transform: scale(1) translateX(-22%) translateY(0px);
+// }
 //調整成為海賊的位置到中間
 #wrapShipArea{
     // position: absolute;
@@ -182,32 +186,32 @@ p{ //這裡其實不懂為何_font設定的在瀏覽器不執行
 @media screen and (min-width:1024px){
     //.textEmphasis設回3rem，letter-spacing: 50px;
     .textEmphasis{
-        font-size: 3rem;
+        font-size: 2.5rem;
     }
-    .mapLink{width: 150px;}
+    // .mapLink{width: 150px;}
 
     #homeBannerLogo{
-        width: 250px;
-        margin: 10px auto -80px auto;
-        display: block;
-        
+        display: none;
+    }   
+    #homeBanner{
+        margin-top: 200px;
+        height: calc(100vh - 200px);
     }
-    //調整地圖大小及位置
-    .homeMap{
-        width: 100%; //之後隨著視角，調整為固定寬度及scale translate之類的
-        transform: scale(1) translateX(0%) translateY(0px);
-        transform-origin: 14% 62%;
+    #homeBanner .textEmphasis{
+        margin: 50px auto -20px auto;
     }
+
     //調整成為海賊的位置到中間
     #wrapShipArea{
-        // width: 15%;
+        width: 380px;
         top: 40%; //9%
-        left: 6%;
+        left: 18%;
         right: auto;
     }
     #shipArea{
         // height: 200px;
-        transform: scale(0.3);
+        transform: scale(1); //0.4
+        float: left;
     }
 
 }
@@ -225,21 +229,24 @@ header.homeHeadHide{
 #homeDIY{
     // height: 100vh;
     text-align: center;
+    position: relative;
 }
 #DIYPanel{
     border: #a67c52 5px double;
-    margin:300px 10px 10px 10px;
+    margin:400px 10px 10px 10px;
     transition-duration: 0.5s;
     overflow: hidden;
-    li{
+    .DIYStatusDot{
         width: 20px;
         height: 20px;
         border-radius: 20px;
-        border:3px solid $beige;
+        border:3px solid #fffcf2;
         position: relative;
         display: inline-block;
         background: transparent;
         margin: 10px 0px;
+        transition-duration: 0.3s;
+        cursor: pointer;
         p{
             position: absolute;
             width: 100px;
@@ -247,11 +254,14 @@ header.homeHeadHide{
             transform: translateX(-50%);
             top: 25px;
         }
+        &:hover{
+            border:3px solid $blue;
+        }
     }
-    li.current{
+    .DIYStatusDot.current{
         border:3px solid $blue;
     }
-    li.fin{
+    .DIYStatusDot.active{
         background:$blue;
     }
     .DIYStatBar{
@@ -264,13 +274,17 @@ header.homeHeadHide{
         border-radius: 5px;
     }
     .DIYStatLine{
-        width: 100%;
+        width: 0%;
         height: 5px;
         background: $blue;
         position: absolute;
         top: 0;
         left: 0;
         border-radius: 5px;
+        transition-duration: 0.3s;
+    }
+    .DIYStatLine.active{
+        width: 100%;
     }
 
 }
@@ -278,7 +292,8 @@ header.homeHeadHide{
     margin-top: 40px;
     width: 300%;
     position: relative;
-    // left: calc(-100%);
+    left: 0;
+    transition-duration: 0.3s;
 }
 .DIYSlide{
     float: left;
@@ -288,11 +303,21 @@ header.homeHeadHide{
 
 //船的部位圖片
 #DIYPanel img{
-    width: 90px;
+    width: 84px;
     background: $beige;
     display: inline-block;
     padding: 5px;
+    border: 3px solid $beige;
     border-radius: 10px;
+    cursor: pointer;
+    transition-duration: 0.1s;
+    &.active{
+        border: 3px solid $blue;
+    }
+    &:hover{
+        box-shadow:0 3px 5px #a67c52;
+        transform: translateY(-3px);
+    }
 }
 #DIYHeads,#DIYSails{
     margin-top: 20px;
@@ -301,6 +326,15 @@ header.homeHeadHide{
     margin-bottom: 40px;
 }
 
+//選船部位時邊框改變
+#DIYShip input[type=radio]{
+    display: none;
+    &:checked{
+        +img{
+            border: 3px dashed $blue;
+        }
+    }
+}
 
 
 //畫畫區的按鈕
@@ -368,44 +402,41 @@ header.homeHeadHide{
 
 //客製狀態列的箭頭，及位置調整
 #DIYStatus{
-    width: 453px;
+    width: 375px;
     margin: auto;
-}
-#DIYStatus li:nth-child(n+2)::before{
-    top: 0;
-    bottom: 0;
-    margin: auto;
-}
-#DIYStatus li{
-    width: auto;
-}
-#DIYStatus li:nth-child(n+2){
-    margin: 0 10px 20px 45px;
 }
 }
 
 @media screen and (min-width:1024px){
     #homeDIY .textEmphasis{
-        margin-top: 150px;
+        margin-top: 110px;
     }
     #DIYStatus li:first-child{
         margin-left: auto;
     }
+    
     #homeDIY{
-        width: 1200px;
+        max-width: 1200px;
         margin: auto;
     }
     // #shipArea{
-    //     float: left;
+    //     z-index: 100;
     // }
+    #DIYSlides{
+        margin-top: 20px;
+    }
     #DIYPanel{
         float: right;
-        margin-top: 100px;
+        margin-top: 10px;
+        width: 375px;
     }
-    // #shipArea{
-    //     position: relative;
-    //     height: 650px;
-    // }
+    #DIYHeads,#DIYSails{
+        margin-top: 10px;
+    }
+    #DIYSails{
+        margin-bottom: 20px;
+    }
+
     #partSail,#partHead,#partHead,#partBody,#drawFrame{
         width: 600px;
         position: absolute;
@@ -465,7 +496,27 @@ h2 a{
 }
 
 //懸賞排行
+#homeGameRank{
+    margin-top: 20px;
+    >p{
+        margin-left: 20px;
+        .textEmphasis{
+            padding-left: 0px;
+        }
+    }
+}
+#homeGameRank .textEmphasis{
+    text-align: left;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+}
+#homeGameRank .textS a{
+    color:$blue;
+    font-size: 1.25rem;
+    font-family: Adobe Heiti Std R;
+}
 .homeWanteds{
+    margin-top: 10px;
     position: relative;
     height: 400px;
 }
@@ -480,26 +531,13 @@ h2 a{
 }
 .wrapWanted:nth-child(2){
     left: 10px;
-    top: 160px;
+    top: 90px;
     z-index: -1;
 }
 .wrapWanted:nth-child(3){
     right: 10px;
-    top: 180px;
+    top: 120px;
     z-index: -1;
-}
-#homeGameRank>p{
-    margin-left: 20px;
-}
-#homeGameRank .textEmphasis{
-    text-align: left;
-    font-size: 1.5rem;
-    letter-spacing: 2px;
-}
-#homeGameRank .textS a{
-    color:$blue;
-    font-size: 1.25rem;
-    font-family: Adobe Heiti Std R;
 }
 .wanted{
     width: 170px;
@@ -545,9 +583,9 @@ h2 a{
     }
 
 }
-@media screen and (min-width:1200px){
+@media screen and (min-width:1024px){
     h2{
-        font-size: 3rem;
+        font-size: 2.5rem;
         letter-spacing: 10px;
     }
     #homeGameRank::after{
@@ -557,7 +595,7 @@ h2 a{
     }
     #homeGameRank>p{
         text-align: right;
-        width: 70%;
+        width: 60%;
         float: left;
     }
     .homeWanteds{
@@ -565,14 +603,14 @@ h2 a{
         height: 400px;
         width:calc(30% - 20px);
         float: left;
-        margin-top: -100px;
+        margin-top: -50px;
     }
     .wrapWanted:nth-child(2){
-        top: 100px;
+        top: 90px;
         left: 9%;
     }
     .wrapWanted:nth-child(3){
-        top: 130px;
+        top: 110px;
         left: 55%;
         right: auto;
     }
@@ -580,6 +618,7 @@ h2 a{
 
 //啟航尋寶
 #homeGameGPS{
+    margin-top: 40px;
     .smaller{
         letter-spacing: 1px;
     }
@@ -651,7 +690,7 @@ h2 a{
     border-radius: 10px;
     width: calc(100% - 40px);
     color: $beige;
-    height: 200px;
+    height: 400px;
     position: absolute;
     .textM{
         color: $beige;
@@ -687,16 +726,10 @@ h2 a{
     border-radius: 10px;
     margin:10px 30px;
     padding: 10px;
-    height: 530px;
+    height: 300px;
     text-align: center;
     box-shadow: 0 0 5px rgba(166, 124, 82,0.5);
     position: relative;
-    .homeProdTalent{
-        img{
-            width: 200px;
-            margin-top: 10px;
-        }
-    }
     i{
         position: absolute;
         top: 50%;
@@ -704,45 +737,63 @@ h2 a{
         width: auto;
         height: auto;
         color: #736357;
+        // background: $beige;
+        transition-duration: 0.1s;
     }
     .fa-arrow-circle-right{
         right: -25px;
+        &:hover{transform: translateX(5px);}
+        &:active{transform: translateX(10px);}
     }
     .fa-arrow-circle-left{
         left: -25px;
+        &:hover{transform: translateX(-5px);}
+        &:active{transform: translateX(-10px);}
     }
 
 }
 .homeWrapProd{
     position: absolute;
     left: 0;right: 0;margin: auto;
-}
-.homeProdImg{
-    width: 150px;
-    margin-top: -50px;
-    opacity: 0;
-    transform: translateX(-50px)  scale(0.8);
-    transition-duration: 0.5s
-}
-.homeProdInfoCard p{
-    opacity: 0;
-    transform: translateY(24px) scale(0.8);
-    transition-duration: 0.5s;
-}
-@for $i from 1 through 6{
-    .homeProdInfoCard p:nth-child(#{$i}){
-        transition-delay:$i*0.1 - 0.1s;
+    p{
+        text-align: center;;
+    }
+    &.active{
+        .homeProdImg{
+            opacity: 1;
+            transform: translateX(0px)  scale(1);
+        }
+        .homeProdInfoCard p{
+            opacity: 1;
+            transform: translateY(0px)  scale(1);
+        }
+
     }
 }
-.homeProdInfoCard p.homeProdAct{
-    opacity: 1;
-    transform: translateY(0px)  scale(1);
+
+.homeProdImg{
+    width: 140px;
+    // margin-top: -50px;
+    opacity: 0;
+    transform: translateX(-50px)  scale(0.8);
+    transition-duration: 0.3s;
+}
+.homeProdInfoCard{
+    width: 170px;
+    margin: 10px;
+    float: right;
+    p{
+        opacity: 0;
+        transform: translateY(24px) scale(0.8);
+        transition-duration: 0.1s;
+    }
+}
+@for $i from 1 through 6{ //文字淡入的時間差
+    .homeProdInfoCard p:nth-child(#{$i}){
+        transition-delay:$i*0.05 - 0.05s;
+    }
 }
 
-.homeProdImg.homeProdAct{
-    opacity: 1;
-    transform: translateX(0px)  scale(1);
-}
 
 @media screen and (min-width:768px){
     #homeMarketBlack,#homeMarketShip{
@@ -764,18 +815,18 @@ h2 a{
         transform: rotateZ(-10deg) translateX(-40px);
     
     }
-    #homeMarketProds{ 
-        ul{
-            float: left;
-        }
-        li{
-            margin: 10px 20px;
-        }
-    }
+    // #homeMarketProds{ 
+    //     ul{
+    //         float: left;
+    //     }
+    //     li{
+    //         margin: 10px 20px;
+    //     }
+    // }
     #homeMarketProdInfo{
-        float: left;
+        // float: left;
         width: calc(100% - 400px);
-        height: 530px;
+        // height: 530px;
     }
     #homeMarketProds::after{
         content: '';
@@ -786,36 +837,36 @@ h2 a{
 @media screen and (min-width:1024px){
     #homeMarket>.textS{
         text-align: right;
-        margin: 10px 30% 10px 10px;
+        margin: 20px 30% 10px 10px;
     }
     #homeMarketBlack{
-        top: -90px;
+        top: -110px;
         left: -15%;
         width: 300px;
-        height: 500px;
+        height: 420px;
     }
     #homeMarketShip{
         left: -15%;
         width: 300px;
-        height: 500px;
+        height: 420px;
     }
-    #homeMarketProds{ 
-        ul{
-            float: left;
-            width: calc(50% - 300px);
-        }
-        li{
-            float: left;
-            margin: 10px 20px;
-        }
-        li:nth-child(2n){
-            margin: 80px -40px -80px -40px;
-        }
-    }
+    // #homeMarketProds{ 
+        // ul{
+        //     float: left;
+        //     width: calc(50% - 300px);
+        // }
+        // li{
+        //     float: left;
+        //     margin: 10px 20px;
+        // }
+        // li:nth-child(2n){
+        //     margin: 80px -40px -80px -40px;
+        // }
+    // }
     #homeMarketProdInfo{
         width:400px;
-        margin-left: 100px;
-        height: 370px;
+        margin: auto;
+        // height: 370px;
         .homeProdImg{
             float: left;
             position: absolute;
@@ -829,13 +880,43 @@ h2 a{
         }
     }
     .homeProdInfoCard{
+        float: initial;
         text-align: left;
-        padding-left: 150px;
-        .btnpri{
-            position: absolute;    
-            right: 20px;
-        }
+        padding-left: 170px;
+        // .btnpri{
+        //     position: absolute;    
+        //     right: 20px;
+        // }
     }
+    .homeTreaBtn{
+        margin-top: -120px;
+        float: left;
+        transition-duration: 0.2s;
+        cursor: pointer;
+        img{
+            opacity: 1;
+            transform: translateY(0);
+            transition-duration: 0.2s;
+            &.active{
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+        }
+        
+        &.hide{
+            display: none;
+        }
+        &:nth-child(5){ //此處將與大卡片相同商品的隱藏起來
+            margin-left: 310px;
+            visibility: hidden;
+        }
+        &:hover{
+            box-shadow: 0 5px 10px rgba(166, 124, 82, 0.8);
+            transform: translateY(-5px);
+        }
+        
+    }
+
 
     
 }
@@ -996,6 +1077,10 @@ h2 a{
         margin: auto;
     }
 }
+
+#homeEnd{
+    margin-top: 50px;
+}
 @media screen and (min-width:768px){
     #homeEnd .textEmphasis{
         font-size: 2rem;
@@ -1023,7 +1108,7 @@ h2 a{
 //竟然是footer
 footer{
     text-align: center;
-    margin-top: 100px;
+    margin-top: 200px;
 }
 footer img{
     width: 250px;

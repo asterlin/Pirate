@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>demo</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
+	<style type="text/css">
+		body{
+			background-color: #456789;
+		}
+		#box{
+			width: 500px;
+			height: 500px;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<canvas id="myChart" width='100%' height='100%' style="display: inline-block;"></canvas>
+	</div>
+	
+	<script src="js/jquery-3.3.1.min.js"></script>
+	<script src="js/radar5.js"></script>
+	<script>
+		var chart;//radar圖名稱
+		var graphDataNew = [1,2,3,4];//從資料庫載入的Radar數值
+		// function plusSkill(e){
+		// 	point = parseInt($('#myPoint').text());
+		// 	if(point){
+		// 		$('#myPoint').text(point-1);
+		// 		graphDataNew[$(this).index()] += 1;
+		// 		chart.data.datasets[0].data=graphDataNew;
+		// 		chart.update();//更新radar圖
+		// 	}
+		// }
+		$(document).ready(function(){
+			chartRadar(graphDataNew);//從資料庫載入的Radar數值,初始化用
+			$('.btnPlus').click(plusSkill);
+		});
+	</script>
+</body>
+</html>
