@@ -246,12 +246,16 @@ header.homeHeadHide{
         background: transparent;
         margin: 10px 0px;
         transition-duration: 0.3s;
+        cursor: pointer;
         p{
             position: absolute;
             width: 100px;
             left: 50%;
             transform: translateX(-50%);
             top: 25px;
+        }
+        &:hover{
+            border:3px solid $blue;
         }
     }
     .DIYStatusDot.current{
@@ -305,8 +309,14 @@ header.homeHeadHide{
     padding: 5px;
     border: 3px solid $beige;
     border-radius: 10px;
+    cursor: pointer;
+    transition-duration: 0.1s;
     &.active{
         border: 3px solid $blue;
+    }
+    &:hover{
+        box-shadow:0 3px 5px #a67c52;
+        transform: translateY(-3px);
     }
 }
 #DIYHeads,#DIYSails{

@@ -109,23 +109,6 @@ $('.scrToDIY').click(function(){
         }
     }
 
-//客製的船部位被按時，加上外框啦
-    // var DIYbody = $('.DIYbody');
-    // var DIYHead = $('.DIYhead');
-    // var DIYSail = $('.DIYSail');
-    
-    // DIYbody.click(function(){
-    //     DIYbody.not($(this)).css('border',"3px solid #fffcf2");
-    //     $(this).css('border',"3px dashed #006ca6");
-    // })
-    // DIYHead.click(function(){
-    //     DIYHead.not($(this)).css('border',"3px solid #fffcf2");
-    //     $(this).css('border',"3px dashed #006ca6");
-    // })
-    // DIYSail.click(function(){
-    //     DIYSail.not($(this)).css('border',"3px solid #fffcf2");
-    //     $(this).css('border',"3px dashed #006ca6");
-    // })
 
 
 //更換海賊試煉遊戲內文
@@ -133,8 +116,20 @@ if(winWidth < 1024){
     $('#homeGameMsg').text("請在電腦進行海賊試煉～");
 }
 
-
-
+//動態調整懸賞排行的文字大小
+    var getFontSize = (textLength) => {
+        var fozi = 1.5;
+        if(textLength>5){
+            fozi -= ((textLength-5)*0.125);
+        }
+        return fozi;
+    }
+    var wantNames =  document.getElementsByClassName('wantName');
+    for(let i =0;i<wantNames.length;i++){
+        wantNames[i].style.fontSize =`${getFontSize(wantNames[i].textContent.length)}rem`;
+    }
+        
+//市集的商品按鈕
     function showTreaBtn(){
         if(winWidth<768){
             $('.homeTreaBtn').addClass('justHide');

@@ -1,3 +1,53 @@
+<?php
+$errMsg ='' ;
+try {
+    require_once('backstage\php\connectPirates.php');
+
+    //取得客製的船體們，用在客製的panel
+    $sql = "select * from customlist where forCust = 1 ";
+    $staCust = $pdo->query($sql);
+    $rowCust = $staCust->fetchAll(PDO::FETCH_ASSOC);
+    foreach($rowCust as $i => $data){
+        switch($data['modelPart']){
+            case "1":
+                $DIYheads[] = $data['modelImg'];
+                break;
+            case "2":
+                $DIYbodys[] = $data['modelImg'];
+                break;
+            case "3":
+                $DIYSails[] = $data['modelImg'];
+                break;
+        }
+    }
+
+    //取得懸賞排行
+    $sql = "SELECT memNic, highscoreL FROM `member` where highscoreL is NOT null order by highscoreL ASC LIMIT 1;";
+    $staGameHiL = $pdo -> query($sql);
+    $sql = "SELECT memNic, highscoreM FROM `member` where highscoreM is NOT null order by highscoreM ASC LIMIT 1;";
+    $staGameHiM = $pdo -> query($sql);
+    $sql = "SELECT memNic, highscoreH FROM `member` where highscoreH is NOT null order by highscoreH ASC LIMIT 1;";
+    $staGameHiH = $pdo -> query($sql);
+
+    $rowGameHiL = $staGameHiL->fetch(PDO::FETCH_ASSOC);
+    $rowGameHiM = $staGameHiM->fetch(PDO::FETCH_ASSOC);
+    $rowGameHiH = $staGameHiH->fetch(PDO::FETCH_ASSOC);
+
+    ?>
+    <script>console.log('<?php echo $rowGameHiL['memNic'];  ?>')</script>
+    <?php
+
+
+} catch (PDOException $e) {
+    $errMsg .= "錯誤行：".$e->getLine()."<br>";
+    $errMsg .= "錯誤原因：".$e->getMessage()."<br>";
+    echo $errMsg;
+}
+
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,13 +68,13 @@
             <div class="burgerLine"></div>
         </div>
     </label>
-    <header class="homeHeadHide">
+    <header class=""><!-- homeHeadHide-->
         <h1 id="headerLogo"><a href="javascript:;">
             <img src="image/logo.svg" alt="大海賊帝國">
         </a></h1>
         <nav id="headerMenu" >
             <ul>
-                <li><a href="game.html">海賊試煉場</a></li>
+                <li><a href="play.html">海賊試煉場</a></li>
                 <li><a href="market.html">海上市集</a></li>
                 <li><a href="bar.html">情報酒館</a></li>
                 <li><a href="me.html">俺の海賊船</a></li>
@@ -36,9 +86,9 @@
             如果我們的夢想可以引導你的方向，<br><strong class="textHiliR">那就去追尋吧！</strong><br>
         </p>
         <img id="homeBannerLogo" src="image/logo.svg" alt="大海賊帝國">
-        <div id="pixiCanvas"></div>
+        <div id="homepixiCanvas"></div>
         <div id="wrapShipArea">
-            <div id="shipArea">
+            <!-- <div id="shipArea">
                 <img src="image/ship/300.png" alt="挑選船身" id="partBody">
                 <object data="image/ship/200.svg" type="image/svg+xml" id="partSail"></object>
                 <img src="image/ship/100.png" alt="挑選船頭" id="partHead">
@@ -49,49 +99,87 @@
                     你看不到我你看不到我你看不到我你看不到我你看不到我你看不到我你看不到我你看不到我....好吧，請你<strong>下載並使用<a href="https://www.google.com/intl/zh-TW_ALL/chrome/">google chrome</a></strong>開啟這個網頁吧(ㄏ￣▽￣)ㄏ   ㄟ(￣▽￣ㄟ)
                 </canvas>
                 <div id="pen"></div>
-            </div>
-            <button class="btnsec">成為海賊</button>
+            </div> -->
+            <button class="btnsec scrToDIY">成為海賊</button>
         </div>
     </div>
     <div id="homeDIY">
         <p class="textEmphasis">四個步驟打造<strong class="textHiliR">專屬海賊船</strong></p>
+        <div id="shipArea">
+            <img src="image/ship/<?php echo $DIYbodys[0] ?>" alt="挑選船身" id="partBody">
+            <object data="image/ship/<?php echo $DIYSails[0] ?>" type="image/svg+xml" id="partSail"></object>
+            <img src="image/ship/<?php echo $DIYheads[0] ?>" alt="挑選船頭" id="partHead">
+            <canvas id="combineShip">
+                你看不到我你看不到我你看不到我你看不到我你看不到我你看不到我你看不到我你看不到我....好吧，請你<strong>下載並使用<a href="https://www.google.com/intl/zh-TW_ALL/chrome/">google chrome</a></strong>開啟這個網頁吧
+            </canvas>
+            <canvas id="drawFlag">
+                你看不到我你看不到我你看不到我你看不到我你看不到我你看不到我你看不到我你看不到我....好吧，請你<strong>下載並使用<a href="https://www.google.com/intl/zh-TW_ALL/chrome/">google chrome</a></strong>開啟這個網頁吧(ㄏ￣▽￣)ㄏ   ㄟ(￣▽￣ㄟ)
+            </canvas>
+            <div id="pen"></div>
+        </div>
         <div id="DIYPanel">
             <ol id="DIYStatus">
-                <li class="current fin"><p class="textS">挑選船型</p>
+                <li class="DIYStatusDot current"><p class="textS">挑選船型</p>
                 </li>
                 <div class="DIYStatBar">
                     <div class="DIYStatLine"></div>
                 </div>
-                <li class="current"><p class="textS">創作海賊旗</p></li>
+                <li class="DIYStatusDot"><p class="textS">創作海賊旗</p></li>
                 <div class="DIYStatBar">
                     <div class="DIYStatLine"></div>
                 </div>
-                <li><p class="textS">預覽完稿</p></li>
+                <li class="DIYStatusDot"><p class="textS">預覽完稿</p></li>
             </ol>
             <div id="DIYSlides">
                 <div id="DIYShip" class="DIYSlide">
                     <div id="DIYBodys" >
                         <p class="textS">選擇船身</p>
-                        <img src="image/ship/300.png" alt="船身1" class="DIYbody" id="DIYbody1">
-                        <img src="image/ship/301.png" alt="船身2" class="DIYbody" id="DIYbody2">
-                        <img src="image/ship/302.png" alt="船身3" class="DIYbody" id="DIYbody3">
+                        <label>
+                            <input type="radio" name="DIYbody" id="" checked>
+                            <img src="image/ship/<?php echo $DIYbodys[0] ?>" alt="船身1" class="DIYbody" id="DIYbody1">
+                        </label>
+                        <label>
+                            <input type="radio" name="DIYbody" id="">
+                            <img src="image/ship/<?php echo $DIYbodys[1] ?>" alt="船身2" class="DIYbody" id="DIYbody2">
+                        </label>
+                        <label>
+                            <input type="radio" name="DIYbody" id="">
+                            <img src="image/ship/<?php echo $DIYbodys[2] ?>" alt="船身3" class="DIYbody" id="DIYbody3">
+                        </label>
                     </div>
                     <div id="DIYHeads" >
                         <p class="textS">選擇船頭</p>
-                        <img src="image/ship/100.png" alt="船頭1" class="DIYHead" id="DIYHead1">
-                        <img src="image/ship/101.png" alt="船頭2" class="DIYHead" id="DIYHead2">
-                        <img src="image/ship/102.png" alt="船頭3" class="DIYHead" id="DIYHead3">
+                        <label>
+                            <input type="radio" name="DIYhead" id="" checked>
+                            <img src="image/ship/<?php echo $DIYheads[0] ?>" alt="船頭1" class="DIYhead" id="DIYhead1">
+                        </label>
+                        <label>
+                            <input type="radio" name="DIYhead" id="">
+                            <img src="image/ship/<?php echo $DIYheads[1] ?>" alt="船頭2" class="DIYhead" id="DIYhead2">
+                        </label>
+                        <label>
+                            <input type="radio" name="DIYhead" id="">
+                            <img src="image/ship/<?php echo $DIYheads[2] ?>" alt="船頭3" class="DIYhead" id="DIYhead3">
+                        </label>
                     </div>
                     <div id="DIYSails">
                         <p class="textS">選擇船帆</p>
-                        <img src="image/ship/200.svg" alt="船桅1" class="DIYSail" id="DIYSail1">
-                        <img src="image/ship/201.svg" alt="船桅2" class="DIYSail" id="DIYSail2">
-                        <img src="image/ship/202.svg" alt="船桅3" class="DIYSail" id="DIYSail3">
+                        <label>
+                            <input type="radio" name="DIYSail" id="" checked>
+                            <img src="image/ship/<?php echo $DIYSails[0] ?>" alt="船桅1" class="DIYSail" id="DIYSail1">
+                        </label>
+                        <label>
+                            <input type="radio" name="DIYSail" id="">
+                            <img src="image/ship/<?php echo $DIYSails[1] ?>" alt="船桅2" class="DIYSail" id="DIYSail2">
+                        </label>
+                        <label>
+                            <input type="radio" name="DIYSail" id="">
+                            <img src="image/ship/<?php echo $DIYSails[2] ?>" alt="船桅3" class="DIYSail" id="DIYSail3">
+                        </label>
                     </div>
                 </div>
                 <div id="DYIFlag" class="DIYSlide">
                     <p class="textS">請直接在船帆<span class="textHiliR">紅色虛線</span>作畫，<br>
-                        <span class="textHiliR">紅色虛線</span>區域為海賊旗繪製區<br>
                         下方工具列可調整畫筆及顏色</p>
                     <span id="penColor"></span>
                     <span class="penWidth" LW="5"></span>
@@ -105,17 +193,17 @@
                 <div id="DIYPreview" class="DIYSlide">
                     <p class="textS">已裁切船帆</p>
                 <!-- <canvas id="shipPreview"></canvas> -->
-
+                    
                 </div>
                 <div class="clearfix"></div>
             </div>
-            <button class="btnsec" id="DIYPrev" >上一步</button>
+            <button class="btnsec invisible" id="DIYPrev" >上一步</button>
+            <button class="btnpri invisible" id="finishDIY" >完成製作</button>
             <button class="btnsec" id="DIYNext">下一步</button>
-            <button class="btnpri" id="finishDIY" >完成製作</button>
         </div>
     </div>
     <div id="homeGame">
-        <h2><a href="javascript:;" class="textHiliB">海賊試煉場</a></h2>
+        <h2><a href="play.html" class="textHiliB">海賊試煉場</a></h2>
         <p class="textEmphasis">駕駛海賊船，挑戰<strong class="textHiliR">海賊試煉遊戲</strong>
         </p>
         <div id="homeGamePlay" class="scaleBorder">
@@ -129,35 +217,36 @@
         </div>
         <div id="homeGameRank">
             <p >
-                <span class="textEmphasis">遊戲高分榜：<strong class="textHiliR">懸賞排行</strong>等你挑戰！</span><br>
+                <span class="textEmphasis">遊戲高分<strong class="textHiliR">懸賞排行</strong>等你挑戰！</span><br>
                 <span class="textS">
                     還沒有海賊船嗎?立即
-                    <a href="javascript:;">成為海賊</a>
+                    <a class="scrToDIY" href="javascript:;">成為海賊</a>
                 </span>
             </p>
             <div class="homeWanteds">
                 <div class="wrapWanted">
                     <div class="wanted">
                         <img class="wantedPaper" src="image/home/wanted.svg" alt="懸賞單低階第一">
-                        <p class="wantName">我是大帥哥</p>
-                        <p class="wantScore">高階試煉34.38秒</p>
+                        <p class="wantName"><?php echo $rowGameHiL['memNic']; ?></p>
+                        <p class="wantScore">高階試煉 <?php echo $rowGameHiL['highscoreL'];  ?>秒</p>
                         <img class="wantedShip" src="image/ship/ship.png" alt="我是大帥哥的海賊船">
                     </div>
                 </div>
-            <div class="wrapWanted">
-                <div class="wanted">
-                    <img class="wantedPaper" src="image/home/wanted.svg" alt="懸賞單中階第一">
-                    <p class="wantName">我是大帥哥</p>
-                    <p class="wantScore">中階試煉34.38秒</p>
-                    <img class="wantedShip" src="image/ship/ship.png" alt="我是大帥哥的海賊船">
+                <div class="wrapWanted">
+                    <div class="wanted">
+                        <img class="wantedPaper" src="image/home/wanted.svg" alt="懸賞單中階第一">
+                        <p class="wantName"><?php echo $rowGameHiM['memNic']; ?></p>
+                        <p class="wantScore">中階試煉 <?php echo $rowGameHiM['highscoreM'];  ?>秒</p>
+                        <img class="wantedShip" src="image/ship/ship.png" alt="我是大帥哥的海賊船">
+                    </div>
                 </div>
-            </div>
-            <div class="wrapWanted">
-                <div class="wanted">
-                    <img class="wantedPaper" src="image/home/wanted.svg" alt="懸賞單高階第一">
-                    <p class="wantName">我是大帥哥</p>
-                    <p class="wantScore">初階試煉34.38秒</p>
-                    <img class="wantedShip" src="image/ship/ship.png" alt="我是大帥哥的海賊船">
+                <div class="wrapWanted">
+                    <div class="wanted">
+                        <img class="wantedPaper" src="image/home/wanted.svg" alt="懸賞單高階第一">
+                        <p class="wantName"><?php echo $rowGameHiH['memNic']; ?></p>
+                        <p class="wantScore">初階試煉 <?php echo $rowGameHiH['highscoreH'];  ?>秒</p>
+                        <img class="wantedShip" src="image/ship/ship.png" alt="我是大帥哥的海賊船">
+                    </div>
                 </div>
             </div>
         </div>
@@ -207,8 +296,9 @@
         </div>
     </div>
     <div class="clearfix"></div>
+
     <div id="homeMarket">
-        <h2><a href="javascript:;">海上市集</a></h2>
+        <h2><a href="market.html">海上市集</a></h2>
         <p class="textEmphasis">甚麼都買、甚麼都賣、甚麼都不奇怪</p>
         <div id="homeMarketProds">
             <div id="homeMarketBlack">
@@ -220,93 +310,59 @@
                 <p class="textL">造船廠</p>
                 <p class="textM">不定期推出海賊船造型</p>
             </div>
-            <ul>
-                <li class="homeTreaBtn"><img src="image/treasure/trea1.svg" alt="寶物1"></li>
-                <li class="homeTreaBtn"><img src="image/treasure/trea2.svg" alt="寶物2"></li>
-                <li class="homeTreaBtn"><img src="image/treasure/trea3.svg" alt="寶物3"></li>
-                <li class="homeTreaBtn"><img src="image/treasure/trea4.svg" alt="寶物4"></li>
-                <li class="homeTreaBtn"><img src="image/treasure/trea5.svg" alt="寶物5"></li>
-            </ul>
             <div id="homeMarketProdInfo">
-                <div class="homeWrapProd">
-                    <img class="homeProdImg homeProdAct" src="image/treasure/trea6.svg" alt="寶物6">
+                <div id="homeWrapProd" class="homeWrapProd active">
+                    <img id="homeProdImg" class="homeProdImg homeProdAct" src="image/treasure/trea6.svg" alt="寶物6">
                     <div class="homeProdInfoCard">
-                        <p class="homeProdName textM homeProdAct">八加九大刀</p>
+                        <p id="homeProdName" class="homeProdName textM homeProdAct">八加九大刀</p>
                         <p class="homeProdPrice textM homeProdAct">
-                            價格：<strong class="textHiliR">890G</strong>
+                            價格：<strong id="homeProdPrice" class="textHiliR">890G</strong>
                             <p class="btnpri homeProdAct">直接購買</p>
                         </p>
-                        <p class="homeProdSaler textS homeProdAct">賣家：景成</p>
-                        <p class="homeProdTalent textS homeProdAct">天賦分布：<br>
-                            <img src="image/ship/radar.png" alt="天賦圖">
+                        <p class="homeProdSaler textS homeProdAct">賣家：<span id="homeProdSaler">景成</span></p>
+                        <p class="homeProdTalent textS homeProdAct">寶物天賦：<br>
+                            力量：<span id="homeProdStr">10</span><br>
+                            智力：<span id="homeProdInt">10</span><br>
+                            敏捷：<span id="homeProdAgi">10</span><br>
+                            幸運：<span id="homeProdLuc">10</span>
+                            <div id="homeProdTalentImg">
+                                <!-- <canvas id="homeTalentRadar"></canvas> -->
+                            </div>
                         </p>
                     </div>
                 </div>
-                <div class="homeWrapProd">
-                    <img class="homeProdImg" src="image/treasure/trea7.svg" alt="寶物7">
-                    <div class="homeProdInfoCard">
-                        <p class="homeProdName textM">八加十大刀</p>
-                        <p class="homeProdPrice textM">
-                            價格：<strong class="textHiliR">810G</strong>
-                            <p class="btnpri">直接購買</p>
-                        </p>
-                        <p class="homeProdSaler textS">賣家：景成</p>
-                        <p class="homeProdTalent textS">天賦分布：<br>
-                            <img src="image/ship/radar.png" alt="天賦圖">
-                        </p>
-                    </div>
-                </div>
-                <div class="homeWrapProd">
-                    <img class="homeProdImg" src="image/treasure/trea1.svg" alt="寶物1">
-                    <div class="homeProdInfoCard">
-                        <p class="homeProdName textM">八加十一大刀</p>
-                        <p class="homeProdPrice textM">
-                            價格：<strong class="textHiliR">811G</strong>
-                            <p class="btnpri">直接購買</p>
-                        </p>
-                        <p class="homeProdSaler textS">賣家：景成</p>
-                        <p class="homeProdTalent textS">天賦分布：<br>
-                            <img src="image/ship/radar.png" alt="天賦圖">
-                        </p>
-                    </div>
-                </div>
-                <div class="homeWrapProd">
-                    <img class="homeProdImg" src="image/treasure/trea4.svg" alt="寶物4">
-                    <div class="homeProdInfoCard">
-                        <p class="homeProdName textM">八加十二大刀</p>
-                        <p class="homeProdPrice textM">
-                            價格：<strong class="textHiliR">812G</strong>
-                            <p class="btnpri">直接購買</p>
-                        </p>
-                        <p class="homeProdSaler textS">賣家：景成</p>
-                        <p class="homeProdTalent textS">天賦分布：<br>
-                            <img src="image/ship/radar.png" alt="天賦圖">
-                        </p>
-                    </div>
-                </div>
-                <div class="homeWrapProd">
-                    <img class="homeProdImg" src="image/treasure/trea3.svg" alt="寶物3">
-                    <div class="homeProdInfoCard">
-                        <p class="homeProdName textM">八加十三大刀</p>
-                        <p class="homeProdPrice textM">
-                            價格：<strong class="textHiliR">813G</strong>
-                            <p class="btnpri">直接購買</p>
-                        </p>
-                        <p class="homeProdSaler textS">賣家：景成</p>
-                        <p class="homeProdTalent textS">天賦分布：<br>
-                            <img src="image/ship/radar.png" alt="天賦圖">
-                        </p>
-                    </div>
-                </div>
+                <i id="homeProdPrev" class='fas fa-arrow-circle-left '></i>
                 <i id="homeProdNext" class='fas fa-arrow-circle-right'></i>
-                <i id="homeProdPrev" class='fas fa-arrow-circle-left'></i>
             </div>
             <ul>
-                <li class="homeTreaBtn"><img src="image/treasure/trea7.svg" alt="寶物7"></li>
-                <li class="homeTreaBtn"><img src="image/treasure/trea2.svg" alt="寶物2"></li>
-                <li class="homeTreaBtn"><img src="image/treasure/trea2.svg" alt="寶物2"></li>
-                <li class="homeTreaBtn"><img src="image/treasure/trea2.svg" alt="寶物2"></li>
-                <li class="homeTreaBtn"><img src="image/treasure/trea2.svg" alt="寶物2"></li>
+                <li class="homeTreaBtn hide">
+                    <p class="TreaBtnName textS">產品</p>
+                    <img src="image/treasure/trea1.svg" alt="寶物1"></li>
+                <li class="homeTreaBtn hide">
+                    <p class="TreaBtnName textS">產品</p>
+                    <img src="image/treasure/trea2.svg" alt="寶物2"></li>
+                <li class="homeTreaBtn">
+                    
+                    <p class="TreaBtnName textS">產品</p>
+                    <img src="image/treasure/trea3.svg" alt="寶物3"></li>
+                <li class="homeTreaBtn">
+                    <p class="TreaBtnName textS">產品</p>
+                    <img src="image/treasure/trea4.svg" alt="寶物4"></li>
+                <li class="homeTreaBtn">
+                    <p class="TreaBtnName textS">產品</p>
+                    <img src="image/treasure/trea5.svg" alt="寶物5"></li>
+                <li class="homeTreaBtn ">
+                    <p class="TreaBtnName textS">產品</p>
+                    <img src="image/treasure/trea7.svg" alt="寶物6"></li>
+                <li class="homeTreaBtn">
+                    <p class="TreaBtnName textS">產品</p>
+                    <img src="image/treasure/trea2.svg" alt="寶物7"></li>
+                <li class="homeTreaBtn hide">
+                    <p class="TreaBtnName textS">產品</p>
+                    <img src="image/treasure/trea2.svg" alt="寶物8"></li>
+                <li class="homeTreaBtn hide">
+                    <p class="TreaBtnName textS">產品</p>
+                    <img src="image/treasure/trea2.svg" alt="寶物9"></li>
             </ul>
         </div>
         <p class="textS">來去<a href="market.html">海上市集</a>逛逛更多寶物！</p>
@@ -315,7 +371,7 @@
         </div> -->
     </div>
     <div id="homeBar">
-        <h2><a href="javascript:;">情報酒館</a></h2>
+        <h2><a href="bar.html">情報酒館</a></h2>
         <p class="textEmphasis">眾所皆知的<span class="textHiliR">熱門八卦</span>你不能不知道</p>
         <div id="homeBarHot">
             <article class="homeHotCard">
@@ -455,7 +511,7 @@
             </article>
         </div>
         <p class="textS homeMore">噓...你不知道的江湖謠言，聽聽
-            <a href="javascript:;">情報酒館</a>
+            <a href="bar.html">情報酒館</a>
             的大家怎麼說...
         </p>
     </div>
@@ -465,7 +521,7 @@
         </p>
         <p class="textM">
             加入大海賊帝國，立即<br>
-            <a href="javascript:;">成為海賊</a>
+            <a class="scrToDIY" href="javascript:;">成為海賊</a>
         </p>
     </div>
 
@@ -480,12 +536,13 @@
     <script src="js\debug.addIndicators.min.js"></script>
     <script src="js\animation.gsap.min.js"></script>
     <script src="js\pixi.min.js"></script>
-<script src="js/header.js"></script>
+    <script src="js/header.js"></script>
     <script src="js/gameGps.js"></script>
     <script src="js/wavebtn.js"></script>
     <script src="http://maps.google.com/maps/api/js?key=AIzaSyBKB16XDqQ6Qnki2BdJUQXXP4hEpK0_2wo&callback=initMap"></script>
     <script src="js/iro.min.js"></script>
     <script src="js/shipDIY.js"></script>
     <script src="js/home.js"></script>
+    <script src="js/homeMapPIXI.js"></script>
     </body>
 </html>
