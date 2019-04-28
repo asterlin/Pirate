@@ -10,9 +10,9 @@
 //媒體查詢
 @import'../base/media';
 
-* {
-    outline: 1px solid rgb(125, 131, 211);
-}
+// * {
+//     outline: 1px solid rgb(125, 131, 211);
+// }
 
 body {
     background-image: url('../image/background/BgPage.png');
@@ -23,6 +23,10 @@ body {
 .btnpri {
     border: 1px solid transparent;
 }
+
+// #butStore{
+//     transform: rotateX(-50deg);
+// }
 
 
 
@@ -148,6 +152,9 @@ body {
                     a {
                         color: $brown;
                     }
+                    input{
+                        width: 100px;
+                    }
                 }
             }
 
@@ -260,7 +267,8 @@ body {
 // 頁籤內容物
 .content ul {
     display: flex;
-    justify-content: space-around;
+    // justify-content: space-around;
+    justify-content: flex-start;
     flex-wrap: wrap;
 
     li {
@@ -350,9 +358,10 @@ body {
     // width: 100px;
     // height: 100px;
     box-sizing: border-box;
+    border-radius: 25px;
     margin: 10px;
     padding: 10px;
-    background-color: #aaf;
+    background-color: #bcb19e;
 
     li {
         padding: 10px 5px;
@@ -360,7 +369,12 @@ body {
 }
 
 
+
 @media screen and(min-width: 768px) {
+
+    #butStore{
+        transform: rotateX(-50deg);
+    }
 
     .meTitle {
         padding-top: 210px;
@@ -384,8 +398,9 @@ body {
         // flex-wrap: wrap;
         perspective: 1000px;
         margin: 0px auto;
+        padding-top: 100px;
         // margin-top: 20px;
-        z-index: 20;
+        z-index: 1;
         overflow: hidden;
 
 

@@ -1,4 +1,4 @@
-var memPsw,memLv,memExp,memMoney,intelligence,strength,agile,luck,shipImgAll,avatarImg,talentPointsRemain;
+// var memPsw,memLv,memExp,memMoney,intelligence,strength,agile,luck,shipImgAll,avatarImg,talentPointsRemain;
 // 寶物造型頁籤
 function jsTabs(evt, tabId) {
     var tabcontent, tablinks;
@@ -32,81 +32,79 @@ function jsTabs1(evt, tabId) {
     evt.currentTarget.className += " tabs-menu-active1";
     return false;
 }
-// $('.butNews').click(function(){
-//     alert("安安");
-// })
 
+//換船-------------------------------------------------------------
+window.addEventListener("load", function () {
+    //set image click
+    let imgs = document.querySelectorAll(".myCustomer");
+    for (let i = 0; i < imgs.length; i++) {
+        imgs[i].onclick = function (e) {
+            let myImage = e.target;
+            let partNo = myImage.className.substr(1, 1);
+            let partName;
+            console.log(partNo);
+            switch (partNo) {
+                case "1":
+                    partName = "partHead";
+                    break;
 
+                case "2":
+                    partName = "partBody";
+                    break;
 
-// function standUp() {
-//     console.log("123");
-//     $('.boxNews').toggleClass("bbb");
-// }
+                case "3":
+                    partName = "partSail";
+                    break;
 
-
-// function filewrapBox() {
-//     console.log("888");
-//     $('.filewrap').toggleClass("vvv");
-// }
-
-// function init() {
-//     var boxNews = document.getElementById("boxNews");
-//     var qq = document.getElementById("qq");
-
-//     boxNews.addEventListener('click', standUp);
-//     qq.addEventListener('click', filewrapBox);
-// }
-// window.addEventListener('load', init);
-
-
-//--------------------
-// window.onload = function () {
-//     var obt = document.getElementById("edit");
-//     var odiv = document.getElementById("carryOut");
-//     obt.onclick = function () {
-//         if (odiv.style.display == "none") {
-//             odiv.style.display = "inline-block";
-//             obt.value = "隐藏模块";
-//         }
-//         else {
-//             odiv.style.display = "none";
-//             obt.value = "显示模块";
-//         }
-//     }
-// }
-//抓我的所有資料
-function getMyInfo() {
-    var getMyInfo_xhr = new XMLHttpRequest();
-    getMyInfo_xhr.onload = function(){
-        if( getMyInfo_xhr.status == 200 ){
-            var getMyInfo = JSON.parse(getMyInfo_xhr.responseText);
-            console.log(getMyInfo);
-            }else{
-              alert( getMyInfo_xhr.status );
             }
-      
-        
-        //這已經是JSON字串 應該可以用Ajax的方法處理他
-        // memPsw = getMyInfo.memPsw;
-        // memLv = getMyInfo.memLv;
-        // memExp = getMyInfo.memExp;
-        // memMoney = getMyInfo.memMoney;
-        // intelligence = getMyInfo.intelligence;
-        // strength = getMyInfo.strength;
-        // agile = getMyInfo.agile;
-        // luck = getMyInfo.luck;
-        // shipImgAll = getMyInfo.shipImgAll;
-        // avatarImg = getMyInfo.avatarImg;
-        // talentPointsRemain = getMyInfo.talentPointsRemain;
-    };
-    getMyInfo_xhr.open("get","getMyInfo.php?memId=14");
-    getMyInfo_xhr.send(null);
+            console.log(partName);
+            if (partNo == 3) {
+                document.getElementById(partName).data = e.target.src;
+            } else {
+                document.getElementById(partName).src = e.target.src;
+                document.getElementById(partName).data = e.target.data;
+            }
+        }
+    }
+    var penBut = document.querySelectorAll(".fa-pen");
+    // for( var i=0; i<penBut.length; i++){
+    $('.fa-pen').click(function () {
+        $(this).siblings().attr("readonly", false);
+    })
+})
+//-----------------------------------------------------------------
+
+
+// var carryOut = document.querySelector('#carryOut');
+
+// carryOut.addEventListener('click',function(e){
+//     console.log('123');
+// },false)
+function login() {
+    var xhr = new XMLHttpRequest();
+    xhr.onload = function () {
+        if (xhr.status == 200) {
+            alert("修改成功");
+        } else {
+            alert(xhr.status);
+        }
+    }
+
+    var myData = new FormData(document.getElementById("meShipForm"));
+
+    var url = "meShipFormData.php?ID=";
+    xhr.open("Post", url, true);
+    xhr.send(myData);
 }
 
 
+window.addEventListener("load", function () {
+    $id("carryOut").onclick = login;
+})
 
 
- 
+
+
 
 
 
