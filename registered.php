@@ -40,6 +40,8 @@ $errMsg = "";
             $_SESSION["memId"] = $_REQUEST["memId"];
             $_SESSION["memPsw"] = $_REQUEST["memPsw"];
             $_SESSION["memNic"] = $_REQUEST["memNic"];
+
+            header("location:iqtest-pre.php");
         }
 
 

@@ -210,6 +210,9 @@ if(winWidth < 1024){
             data:{tradeId:$(this).attr('tradeId')},
             success: function (response) {
                 console.log(response);
+            },
+            error:function(e){
+                console.log("what??")
             }
         });
     })
