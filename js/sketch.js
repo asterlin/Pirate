@@ -59,6 +59,7 @@ function endGame(){
 	reset();
 	$('#defaultCanvas0').css('display','none');
 	$('.button_border').css('display','block');
+	$('#losebox .lightbox').css('display','block');
 	$('#playSpark').css('clipPath','circle(5px)');
 }
 function wingame(){
@@ -70,6 +71,8 @@ function wingame(){
 	reset();
 	$('#defaultCanvas0').css('display','none');
 	$('.button_border').css('display','block');
+	$('#lightboxTime').text(playTimeCount);
+	$('#winbox .lightbox').css('display','block');
 	$('#playSpark').css('clipPath','circle(5px)');
 }
 function reset(){
@@ -82,10 +85,10 @@ function reset(){
 	rock = createSprite(200,400);
 	rock.addImage(loadImage('image/play/game/rock1.png'));
 
-	rock2 = createSprite(400,300);
+	rock2 = createSprite(400,900);
 	rock2.addImage(loadImage('image/play/game/rock2.png'));
 
-	rock3 = createSprite(800,350);
+	rock3 = createSprite(800,750);
 	rock3.addImage(loadImage('image/play/game/rock2.png'));
 
 	rock4 = createSprite(640,200);
@@ -94,7 +97,7 @@ function reset(){
 	rock5 = createSprite(1240,300);
 	rock5.addImage(loadImage('image/play/game/rock2.png'));
 
-	rock6 = createSprite(1050,440);
+	rock6 = createSprite(1050,840);
 	rock6.addImage(loadImage('image/play/game/rock2.png'));
 
 	rock7 = createSprite(540,300);
