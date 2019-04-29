@@ -17,6 +17,7 @@ require_once("meToDB/meToDB.php");
     <link rel="stylesheet" href="css/me.css">
     <link rel="stylesheet" href="css/wavebtn.css">
     
+    
 
     <style>
    canvas{
@@ -47,6 +48,10 @@ require_once("meToDB/meToDB.php");
 </head>
 
 <body>
+
+
+
+<!-- //---------------------------------------------------------------- -->
 
     <!-- 選單 -->
     <label for="burgerCtrl">
@@ -96,7 +101,6 @@ require_once("meToDB/meToDB.php");
                         <canvas id="drawFlag">
                             <!-- 你看不到我你看不到我你看不到我你看不到我你看不到我你看不到我你看不到我你看不到我....好吧，請你<strong>下載並使用<a href="https://www.google.com/intl/zh-TW_ALL/chrome/">google chrome</a></strong>開啟這個網頁吧(ㄏ￣▽￣)ㄏ   ㄟ(￣▽￣ㄟ) -->
                         </canvas>
-                     <!-- <div id="pen"></div> -->
                 </div>
             </div>
             <a href="#">
@@ -113,27 +117,27 @@ require_once("meToDB/meToDB.php");
                     <li>
                         帳號: <span><?php echo $_SESSION["memId"]; ?></span>
                     </li>
-                    <form method="Post"  id="meShipForm">      
+                    <form method="Post"  id="meShipForm" >      
                     <li>
-                              <input type="hidden" name="memId" value="<?php echo $memId ?>">
-                        密碼: <input type="password" name="memPsw" value=" <?php echo $_SESSION["memPsw"];  ?> " maxlength="12" readonly id="memPsw">
+                              
+                        密碼: <input type="password" name="memPsw" value=" <?php echo $_SESSION["memPsw"];?> " maxlength="12" readonly id="memPsw1">
                               <i class="fas fa-pen"></i>
                     </li>
                     
                     <li>
-                        ID: <input type="text" name="memNic" value="<?php echo $_SESSION["memNic"];  ?>" maxlength="12" readonly id="memNic"> 
+                        ID: <input type="text" name="memNic" value="<?php echo $_SESSION["memNic"];?>" maxlength="12" readonly id="memNic1"> 
                         <i class="fas fa-pen"></i>
                     </li> 
                     </form>
                     <li>
-                        LV: <span> <?php echo $_SESSION["memLv"];  ?> </span>
+                        LV: <span> <?php echo $_SESSION["memLv"];?> </span>
                       
                     </li>
                     <li>
-                          EXP:<span> <?php echo $_SESSION["memExp"];  ?>/100 </span>
+                          EXP:<span> <?php echo $_SESSION["memExp"];?>/100 </span>
                     </li>
                     <li>
-                        金幣: <span> <?php echo $_SESSION["memMoney"];  ?> </span> G
+                        金幣: <span> <?php echo $_SESSION["memMoney"];?> </span> G
                     </li>
                     <li>
                         <button class="btnpri butNews" id="carryOut"><span>確認修改</span></button>
@@ -147,11 +151,9 @@ require_once("meToDB/meToDB.php");
                     <button id="butI" class="but">智力</button>
                     <button id="butL" class="but">幸運</button>
                     <button id="butA" class="but">敏捷</button>
-
                     </div>
                     <h3>天賦值: <span id="points"> <?php echo $_SESSION["talentPointsRemain"];?> </span> 點</h3>
                     <canvas id="myChart"  style="display: inline-block; width:90%; height:90%;"></canvas>
-                    
                 </div>
             </div>
             <!-- 寶物造型頁籤 -->
@@ -166,27 +168,18 @@ require_once("meToDB/meToDB.php");
                         <div id="tab0" class="tabs-panel" style="display:block">
                             <div class="content">
                                 <ul>
-                                
+                                <?php
+                                $memId = $_SESSION["memId"];
+                                    while ($treasurestorageRow = $treasurestorage->fetch(PDO::FETCH_ASSOC)) {
+                                        if ($treasurestorageRow["memId"] == $memId) {
+                                            ?> 
                                     <li>
-                                        <img src="image/treasure/trea1.svg" alt="">
-                                    </li>
-                                    <li>
-                                        <img src="image/treasure/trea2.svg" alt="">
-                                    </li>
-                                    <li>
-                                        <img src="image/treasure/trea3.svg" alt="">
-                                    </li>
-                                    <li>
-                                        <img src="image/treasure/trea4.svg" alt="">
-                                    </li>
-                                    <li>
-                                        <img src="image/treasure/trea5.svg" alt="">
-                                    </li>
-                                    <li>
-                                        <img src="image/treasure/trea6.svg" alt="">
-                                    </li>
-
-                                     
+                                        <img src="image/treasure/<?php echo $treaImg ?>" alt="">
+                                    </li> 
+                                <?php
+                                        }
+                                    }
+                                ?>   
                                 </ul>
                             </div>
                         </div>
@@ -194,9 +187,9 @@ require_once("meToDB/meToDB.php");
                         <div class="content">
                             <ul>
                                 <?php
-                                    $memId = $_SESSION["memId"];
-                                    while ($mycustom->fetch(PDO::FETCH_ASSOC)) {
-                                        if ($memId == $memId) {
+                                $memId = $_SESSION["memId"];
+                                    while ($mycustomrRow = $mycustom->fetch(PDO::FETCH_ASSOC)) {
+                                        if ($mycustomrRow["memId"] == $memId) {
                                             ?>      
                                     <li>
                                         <img src="image/product/<?php echo $modelImg?>" alt="" class="p<?php echo $modelPart?> myCustomer">
@@ -221,12 +214,12 @@ require_once("meToDB/meToDB.php");
                 </div>
                 <div class="tabs-container1">
                     <div id="tab2" class="tabs-panel1" style="display:block">
-                        <?php
-                            $memId = $_SESSION["memId"];
-                            while ($traderecord->fetch(PDO::FETCH_ASSOC)) {
-                                if ($buyerId == $memId) {
-                                    ?>
-                    <div class="tt textS">
+                    <?php
+                    $memId = $_SESSION["memId"];
+                     while ($traderecord->fetch(PDO::FETCH_ASSOC)) {
+                         if ($buyerId == $memId) {
+                             ?>
+                            <div class="tt textS">
                             <ul>
                                 <li>寶物名稱: <span><?php echo $treaName ?></span> </li>
                                 <li>上架時間: <span><?php echo $saleTime?></span> </li>
@@ -236,16 +229,16 @@ require_once("meToDB/meToDB.php");
                             </ul>
                         </div>
                     <?php
-                                }
-                            }
+                         }
+                     }
                     ?>
                     </div>
                     <div id="tab3" class="tabs-panel1">
                     <?php
-                        $memId = $_SESSION["memId"];
-                        while ($articlelist->fetch(PDO::FETCH_ASSOC)) {
-                            if ($memId == $memId) {
-                                ?>
+                    $memId = $_SESSION["memId"];
+                    while ($articlelistRow = $articlelist->fetch(PDO::FETCH_ASSOC)) {
+                        if ($articlelistRow['memId'] == $memId) {
+                            ?>
                             <div class="tt textS">
                             <ul>
                                 <li>主題: <span><?php echo $artTitle ?></span> </li>
@@ -256,10 +249,9 @@ require_once("meToDB/meToDB.php");
                             </ul>
                     </div>
                     <?php
-                            }
                         }
+                    }
                     ?>
-
                     </div>
                 </div>
                 <div style="clear: both"></div>
@@ -271,7 +263,7 @@ require_once("meToDB/meToDB.php");
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/Chart.bundle.min.js"></script>
     <script src="js/header.js"></script>
-    <script src="js/myRadar.js?<?php echo time();?>"></script>
+    <script src="js/radar5.js?<?php echo time();?>"></script>
     <script src="js/me.js?<?php echo time();?>"></script>
     <script src="js/wavebtn.js"></script>
     <!-- <script src="js/meShip.js"></script> -->
@@ -296,12 +288,6 @@ require_once("meToDB/meToDB.php");
 			$('.but').click(plusSkill);
 		});
     </script>
-    
-    <script>
-    
-    
-    </script>
-
 </body>
 
 </html>

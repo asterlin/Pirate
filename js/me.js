@@ -66,6 +66,8 @@ window.addEventListener("load", function () {
             }
         }
     }
+
+    
     var penBut = document.querySelectorAll(".fa-pen");
     // for( var i=0; i<penBut.length; i++){
     $('.fa-pen').click(function () {
@@ -80,6 +82,8 @@ window.addEventListener("load", function () {
 // carryOut.addEventListener('click',function(e){
 //     console.log('123');
 // },false)
+
+
 function login() {
     var xhr = new XMLHttpRequest();
     xhr.onload = function () {
@@ -92,7 +96,7 @@ function login() {
 
     var myData = new FormData(document.getElementById("meShipForm"));
 
-    var url = "meShipFormData.php?ID=";
+    var url = "meToDB/meShipFormData.php";
     xhr.open("Post", url, true);
     xhr.send(myData);
 }

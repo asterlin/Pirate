@@ -8,6 +8,7 @@
  try {
      require_once("php/connectPirates.php");
      $sql = "select * from manager where managerAcc = :managerAcc";
+     
      $manager = $pdo->prepare($sql);
      $manager -> bindValue(':managerAcc', $_REQUEST['managerAcc']);
      $manager ->execute();
@@ -16,6 +17,7 @@
         //  echo "false";
      } else {
          $sql = "insert into manager values(:managerAcc, :managerPsw, now(), 1)";
+         
          $manager = $pdo -> prepare($sql);
          $manager -> bindValue(':managerAcc', $_REQUEST['managerAcc']);
          $manager -> bindValue(':managerPsw', $_REQUEST['managerPsw']);
@@ -28,3 +30,4 @@
      $errMsg .=  "錯誤行號" . $e->getLine() . "<br>";
      echo $errMsg;
  }
+?>
