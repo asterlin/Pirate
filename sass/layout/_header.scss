@@ -83,6 +83,37 @@ header{
         font-size: 1.5rem;
         font-family: $fofaText;
         display: inline-block;
+        position: relative;
+        &::before{
+            content: '';
+            display: inline-block;
+            width: 0%;
+            height: 1px;
+            background: $red;
+            position: absolute;
+            left: 0;
+            top: -4px;
+            transition-duration: 0.2s;
+        }
+        &::after{
+            content: '';
+            display: inline-block;
+            width: 0%;
+            height: 1px;
+            background: $red;
+            position: absolute;
+            bottom: -4px;
+            right: 0;
+            transition-duration: 0.2s;
+        }
+    }
+    li:hover{
+        &>a::before{
+            width: 100%;
+        }
+        &>a::after{
+            width: 100%;
+        }
     }
     i{
         transform-origin: 50% 40% ; 
@@ -106,10 +137,11 @@ header{
 // }
 
 .menuSwitch>a{
-    margin-top: 30px;
+    margin: 30px auto 5px auto;
     width: 100%;
 
 }
+
 
 //漢堡
 #burger{
@@ -152,7 +184,20 @@ header{
     
 }
 
+//收起header的class
+header.hide{
+    top: -200px;
+}
 
+#headerMenu.hide{ //原高256
+    height: 0px; 
+}
+
+#headerMe.hide{
+    top: -70px;
+    // z-index: -1;
+    
+}
 
 //選單下方角色資訊，使用grid
 // #headerMe{
@@ -252,20 +297,6 @@ header{
 // }
 
 
-//收起header的class
-header.hide{
-    top: -200px;
-}
-
-#headerMenu.hide{ //原高256
-    height: 0px; 
-}
-
-#headerMe.hide{
-    top: -70px;
-    // z-index: -1;
-    
-}
 @media screen and (min-width:768px){
     //平板
     #headerMe.hide{
@@ -283,8 +314,7 @@ header.hide{
         height: 65px;
     }
     .menuSwitch>a{
-        padding: 20px 0;
-        margin: auto;
+        margin: 20px 0;
         width: 130px;
     }
     .menuSwitch{

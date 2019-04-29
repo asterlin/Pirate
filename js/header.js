@@ -77,17 +77,14 @@ window.addEventListener('load',function(){
     document.addEventListener('scroll',function(){
         var curScro = document.getElementsByTagName('body')[0].scrollTop;    
 
-        console.log(prevScro,'--',curScro);
         if(curScro>0 && curScro < document.body.scrollHeight - window.innerHeight){
 
             if(curScro > prevScro){
                 setTimeout(scrollHide,300);
-                console.log(prevScro,'--',curScro);
             }else{
                 setTimeout(scrollShow,300);
             }
             prevScro = curScro;
-            console.log(prevScro,'--',curScro);
 
         }
     })
