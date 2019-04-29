@@ -10,11 +10,11 @@ body {
 		background-size: cover;
 }
 *{
-	outline: 1px solid red;
 	box-sizing:border-box;
 	margin:0;
 	padding:0;
 }
+#getSession{color: red; visibility: hidden};
 #checkSession{visibility: hidden};
 #element1{display: none;}
 #element3{display: none;}
@@ -25,6 +25,7 @@ body {
 // #rankArea{display: none;}
 // #rankPaper{display: none;}
 .p5Canvas{display: none;}
+body .lightbox{display: none;}
 
 // #rankArea{display: none;}
 // title
@@ -40,7 +41,6 @@ body {
 }
 .s2 {
   top: 810px;
-	left: 15px;
 	position: absolute;
 	text-align: center;
 	display: inline-block;
@@ -86,7 +86,7 @@ body {
 	position: relative;
 	width: 355px;
 	height: 500px;
-	margin: 0 28px;
+	margin: 0 12px;
 }
 .blueArea{
 	background-color: #114d7c;
@@ -194,7 +194,6 @@ body {
   height: 300px;
   background-color: #a6937c;
   outline: 7px #a6937c double;
-  margin-left: 17px;
 }
 #rankListBox1{
   position: relative;
@@ -310,7 +309,6 @@ body {
   display: inline-block;
   width: 375px;
   height: 400px;
-  margin-left: 17px;
 }
 // paperFrame
 #paperFrame{
@@ -449,9 +447,7 @@ body {
 .playLightbox .clearfix {
   clear: both; }
 
-.playLightbox .lightbox{
-  display: none;
-}
+
 .lightbox p {
 	text-align: center;
     font-family: 王漢宗特明體繁;
@@ -1097,12 +1093,12 @@ body {
 	height: 300px;
 	width: 400px;
 }
-#winbox .checkToLeave{
-	bottom: 100px;
-}
 #losebox .paper{
 	height: 280px;
 	width: 400px;
+}
+#playedTimesBox .checkToLeave{
+	bottom: 0;
 }
 .playLightbox .textEmphasis {
   font-size: 3rem;
@@ -1154,9 +1150,6 @@ body {
 .playLightbox .lightbox .axis{
 	width: 450px;
 	left: 0;
-}
-.lightbox{
-  display: none;
 }
 .lightbox p {
 	text-align: center;

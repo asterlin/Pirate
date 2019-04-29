@@ -10,6 +10,7 @@ session_start();
 	<link rel="stylesheet" href="css/iqtest-result.css">
 	<link rel="stylesheet" href="css/wavebtn.css">
 	<link rel="stylesheet" href="css/lightbox.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
 </head>
 <body>

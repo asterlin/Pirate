@@ -24,8 +24,8 @@
 	position: relative;
 	transition: all 1s;
 	top: 45px;
-	left: -1300px;
-	width: 1150px;
+	left: -1500px;
+	width: 1300px;
 	height: 80px;
 	background-color: #456789;
 }
@@ -52,6 +52,18 @@
 }
 #blueImg{
 	margin-left: 100px;
+}
+#blueStr{
+	width: 100px;
+}
+#blueLuck{
+	width: 100px;
+}
+#blueAgi{
+	width: 100px;
+}
+#blueInt{
+	width: 100px;
 }
 .addAnimate{
 	animation: spin 10s linear infinite;
