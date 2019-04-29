@@ -78,15 +78,70 @@ header{
     height: calc(100vh - 203px);
     overflow: hidden;
     background: $beige;
+    a{
+        color:$brown;
+        font-size: 1.5rem;
+        font-family: $fofaText;
+        display: inline-block;
+        position: relative;
+        &::before{
+            content: '';
+            display: inline-block;
+            width: 0%;
+            height: 1px;
+            background: $red;
+            position: absolute;
+            left: 0;
+            top: -4px;
+            transition-duration: 0.2s;
+        }
+        &::after{
+            content: '';
+            display: inline-block;
+            width: 0%;
+            height: 1px;
+            background: $red;
+            position: absolute;
+            bottom: -4px;
+            right: 0;
+            transition-duration: 0.2s;
+        }
+    }
+    li:hover{
+        &>a::before{
+            width: 100%;
+        }
+        &>a::after{
+            width: 100%;
+        }
+    }
+    i{
+        transform-origin: 50% 40% ; 
+        transform: rotate(-180deg); 
+        transition: all 0.2s cubic-bezier(.5,.11,.37,1.5) 0s;
+     }
+    .headerSub{
+        background: rgba(0, 108, 166,0.1);
+        overflow: hidden;
+        max-height: 50%;
+        transition-duration: 0.2s;
+        a{
+            font-size: 1.25rem;
+            margin: 10px auto;
+        }
+    }
 }
-#headerMenu a{
-    color:$brown;
-    font-size: 1.5rem;
-    font-family: $fofaText;
-    display: inline-block;
-    padding: 15px;
+// .menuSwitch.hide{
+//     .headerSub{max-height: 0px;}
+//     i{ transform: rotate(0deg);}
+// }
+
+.menuSwitch>a{
+    margin: 30px auto 5px auto;
+    width: 100%;
 
 }
+
 
 //漢堡
 #burger{
@@ -129,7 +184,20 @@ header{
     
 }
 
+//收起header的class
+header.hide{
+    top: -200px;
+}
 
+#headerMenu.hide{ //原高256
+    height: 0px; 
+}
+
+#headerMe.hide{
+    top: -70px;
+    // z-index: -1;
+    
+}
 
 //選單下方角色資訊，使用grid
 // #headerMe{
@@ -229,20 +297,6 @@ header{
 // }
 
 
-//收起header的class
-header.hide{
-    top: -200px;
-}
-
-#headerMenu.hide{ //原高256
-    height: 0px; 
-}
-
-#headerMe.hide{
-    top: -70px;
-    // z-index: -1;
-    
-}
 @media screen and (min-width:768px){
     //平板
     #headerMe.hide{
@@ -259,11 +313,11 @@ header.hide{
     #headerMenu{
         height: 65px;
     }
-    #headerMenu a{
-        padding: 20px 0;
+    .menuSwitch>a{
+        margin: 20px 0;
         width: 130px;
     }
-    #headerMenu li{
+    .menuSwitch{
         float: left;
         width: calc((100% - 250px) /4);
     }
@@ -272,10 +326,10 @@ header.hide{
         display: block;
         clear: both;
     }
-    #headerMenu li:nth-child(2){
+    .menuSwitch:nth-child(2){
         margin-right: 123px;
     }
-    #headerMenu li:nth-child(3){
+    .menuSwitch:nth-child(3){
         margin-left: 123px;
     }
 
@@ -339,6 +393,10 @@ header.hide{
         background: transparent;
         width: 100%;
     }
+    header:hover #headerMenu{
+        height: 150px;
+    }
+
     #headerMenu{
         max-width: 1800px;
         margin: auto;
