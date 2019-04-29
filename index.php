@@ -94,10 +94,13 @@ try {
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>《大海賊帝國》說走就走！來場海上冒險吧！</title>
     
-    <link rel="stylesheet" href="css/home.css">
+    
     <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
     <link rel="stylesheet" href="css/wavebtn.css">
     <link rel="stylesheet" href="css/gameGps.css">
+    <link rel="stylesheet" href="css/lightbox.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/home.css">
 </head>
 <body>
     <label for="burgerCtrl">
@@ -108,7 +111,7 @@ try {
         </div>
     </label>
     <header class=""><!-- homeHeadHide-->
-        <h1 id="headerLogo"><a href="javascript:;">
+        <h1 id="headerLogo"><a href="index.php">
             <img src="image/logo.svg" alt="大海賊帝國">
         </a></h1>
         <nav id="headerMenu" >
@@ -131,7 +134,7 @@ try {
                 <li class="menuSwitch">
                     <a href="me.php">俺の海賊船</i></a>
                     <ul class="headerSub">
-                        <li><a href="javascript:;" class="loginHere">登入</a></li>
+                        <li class="loginHere"><a href="javascript:;">登入</a></li>
                     </ul>
                 </li>
             </ul>
@@ -146,7 +149,7 @@ try {
         <div id="wrapShipArea">
             <div id="bannerShip">
                 <img src="image/ship/300.png" alt="船身">
-                <img src="image/ship/200.svg" alt="船帆">
+                <img src="image/ship/200.png.svg" alt="船帆">
                 <img src="image/ship/100.png" alt="船頭">
             </div>
             <button class="btnsec scrToDIY"><span>成為海賊</span></button>
@@ -235,13 +238,14 @@ try {
                 </div>
                 <div id="DIYPreview" class="DIYSlide">
                     <p class="textS">已裁切船帆</p>
-                <!-- <canvas id="shipPreview"></canvas> -->
+                    <img src="" alt="預覽海賊船" id="shipPreview">
+                    <button class="btnpri invisible loginHere" id="finishDIY" ><span>完成製作</span></button>
                     
                 </div>
                 <div class="clearfix"></div>
             </div>
             <button class="btnsec invisible" id="DIYPrev" ><span>上一步</span></button>
-            <button class="btnpri invisible loginHere" id="finishDIY" ><span>完成製作</span></button>
+            
             <button class="btnsec" id="DIYNext"><span>下一步</span></button>
         </div>
     </div>
@@ -483,20 +487,96 @@ try {
         <p class="textS">Copyleft © 2019</p>
     </footer>
 
+
+
+    <div class="lightbox justHide" id="loginBox">
+        <div class="popbg"></div>
+        <div class="info">
+            <div class="axis axis1"></div>
+            <div class="axis axis2"></div>
+            <div class="leave"></div>
+            <div class="paper">
+
+                <div id="tab-demo">
+                    <div id="tab01" class="tab-inner">
+                        <h2 class="textL">成為海賊</h2>
+                        
+                            <label class="textS">帳號:</label>
+                            <input id="signmemId" type="text" name="memId"><br>
+                            <label class="textS">密碼:</label>
+                            <input id="signmemPsw" type="password" name="memPsw"><br>
+                            <a id="signUp"class="btnpri" href="javascript:;">
+                                <span>登入</span>
+                            </a>
+                    </div>
+
+                    <div id="tab02" class="tab-inner">
+                        <h2 class="textL">成為海賊</h2>
+                        <form action="registered.php" id="loginforma">
+                            <div class="Data-Title">
+                                <label class="textS" for="memId">帳號:</label><br>
+                                <label class="textS" for="memNic">暱稱:</label><br>
+                                <label class="textS" for="memPsw">密碼:</label><br>
+                                <label class="textS" for="memCon">確認密碼:</label><br>
+                            </div>
+                            <div class="Data-Items">
+                                <input type="text" id="memId" name="memId"><br>
+                                <input type="text" id="memNic" name="memNic"><br>
+                                <input type="password" id="memPsw" name="memPsw"><br>
+                                <input type="password" id="memCon" name="memCon"><br>
+                            </div>
+                            <div class="verification">
+                                <div class="textM">請旋轉到正確位置</div>
+                                <a id="signlbtn" href="javascript:;">左</a>
+                                <img id="signnew" src="image/new.png" alt="" width="100px" height="100px">
+                                <a id="signrbtn" href="javascript:;">右</a>
+                                <!-- <a id="signconfirm" type="submit">提交0</a> -->
+                                <div id="signcontent"></div>
+                            </div>
+                            <div class="clearfix"></div>
+                            <a id="btnver" class="btnpri" href="javascript:;" >
+                                <span>驗證身份</span>
+                            </a>
+                            
+                        </form>
+                    </div>
+                    <ul class="tab-title">
+                        <li><a class="signIn textS" href="#tab01">登入頁</a></li>
+                        <li>/</li>
+                        <li><a class="register textS" href="#tab02">註冊頁</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="lightbox justHide" id="Msglightbox">
+        <div class="popbg"></div>
+        <div class="info">
+            <div class="axis axis1"></div>
+            <div class="axis axis2"></div>
+            <div class="leave"></div>
+            <div class="paper">
+            
+            </div>
+        </div>
+    </div>
+
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/iro.min.js"></script>
     <script src="js\TweenMax.min.js"></script>
     <script src="js\ScrollMagic.min.js"></script>
     <script src="js\debug.addIndicators.min.js"></script>
     <script src="js\animation.gsap.min.js"></script>
+    <script src="http://maps.google.com/maps/api/js?key=AIzaSyBKB16XDqQ6Qnki2BdJUQXXP4hEpK0_2wo&callback=initMap"></script>
+    <script src="js/iro.min.js"></script>
     <script src="js\pixi.min.js"></script>
     <script src="js/wavebtn.js"></script>
     <script src="js/header.js"></script>
     <script src="js/gameGps.js"></script>
-    <script src="http://maps.google.com/maps/api/js?key=AIzaSyBKB16XDqQ6Qnki2BdJUQXXP4hEpK0_2wo&callback=initMap"></script>
-    <script src="js/iro.min.js"></script>
     <script src="js/shipDIY.js"></script>
     <script src="js/home.js"></script>
+    <script src="js/login.js"></script>
+    <script src="js/verification.js"></script>
     <script src="js/homeMapPIXI.js"></script>
     </body>
 </html>

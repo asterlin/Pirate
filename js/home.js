@@ -93,22 +93,26 @@ $('.scrToDIY').click(function(){
                 DIYPrev.addClass('invisible');
                 DIYNext.removeClass('invisible');
                 finishDIY.addClass('invisible');
+                ctxDraw.restore();
+                // flagFrame();
                 break;
             case 1 :
                 $('#DIYSlides').css({left:'-100%'});
                 DIYPrev.removeClass('invisible');
                 DIYNext.removeClass('invisible');
                 finishDIY.addClass('invisible');
+                ctxDraw.restore();
+                // flagFrame();
                 break;
             case 2 :
                 $('#DIYSlides').css({left:'-200%'});
                 DIYPrev.removeClass('invisible');
                 DIYNext.addClass('invisible');
                 finishDIY.removeClass('invisible');
+                prevDIY();
                 break;
         }
     }
-
 
 
 //更換海賊試煉遊戲內文
@@ -208,11 +212,34 @@ if(winWidth < 1024){
             type: "POST",
             url: "backstage/php/homeBuyTrea.php",
             data:{tradeId:$(this).attr('tradeId')},
-            success: function (response) {
-                console.log(response);
-            }
+            success: function (r) {
+                console.log(r);
+                var obj = JSON.parse(r);
+                console.log(obj.memNic);
+                var paper = document.querySelector('#Msglightbox .paper');
+                msg='';
+                if(obj.buyerMoney){
+                    msg += '<p>您已購買<strong>';
+                    msg +=  obj.treaName;
+                    msg += '</strong></p>';
+                    msg += '<p>金額：';
+                    msg += obj.price;
+                    msg += '</p>';
+                    msg += '<p>您的剩餘金幣：';
+                    msg += obj.buyerMoney;
+                    msg += '</p>';
+                }else{
+                    msg += '<p>';
+                    msg +=  obj.msg;
+                    msg += '</p>';
+                }
+                paper.innerHTML=msg;
+                document.getElementById('Msglightbox').style.display='block';
+
+            },
         });
     })
+
 
 //情報酒館計算字數
 function hotIssueText() {

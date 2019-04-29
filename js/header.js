@@ -56,6 +56,31 @@ window.addEventListener('load',function(){
     }else{
         burgerCtrl.removeEventListener('click',toggleHeader);
         $id('burger').classList.add('justHide');
+
+        //捲動時收起menu
+
+        function scrollHide(){
+            header.classList.add('hide');
+        }
+        function scrollShow(){
+            header.classList.remove('hide');
+        }
+        var prevScro = 0;
+        
+        document.addEventListener('scroll',function(){
+            var curScro = document.getElementsByTagName('body')[0].scrollTop;    
+
+            if(curScro>0 && curScro < document.body.scrollHeight - window.innerHeight){
+
+                if(curScro > prevScro){
+                    setTimeout(scrollHide,300);
+                }else{
+                    setTimeout(scrollShow,300);
+                }
+                prevScro = curScro;
+
+            }
+        })
     }
 
     // for(var i=0;i<subSwitchs.length;i++){
@@ -64,29 +89,6 @@ window.addEventListener('load',function(){
     //     })
     // }
 
-//捲動時收起menu
 
-    function scrollHide(){
-        header.classList.add('hide');
-    }
-    function scrollShow(){
-        header.classList.remove('hide');
-    }
-    var prevScro = 0;
-    
-    document.addEventListener('scroll',function(){
-        var curScro = document.getElementsByTagName('body')[0].scrollTop;    
-
-        if(curScro>0 && curScro < document.body.scrollHeight - window.innerHeight){
-
-            if(curScro > prevScro){
-                setTimeout(scrollHide,300);
-            }else{
-                setTimeout(scrollShow,300);
-            }
-            prevScro = curScro;
-
-        }
-    })
     
 })

@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 
 $errMsg = "";
     try {
@@ -9,14 +9,33 @@ $errMsg = "";
             $errMsg .= "密碼驗證錯誤, <a href='signUp.html'>重新註冊</a><br>";
                     
         }else{
+            
+            $avatarDir = $_SESSION['avatarDir'];
+            $fullShipDir = $_SESSION['fullShipDir'];
+            $custList = $_SESSION['custList'];
+            $tradeDate = date('Y-m-d', time());
+
             require_once("backstage/php/connectPirates.php");
-            $sql = "insert into member (memId, memPsw,memNic) values (:memId, :memPsw, :memNic)";
+            $pdo->beginTransaction();
+            
+            $sql = "insert into member 
+            (memId, memPsw,memNic,shipImgAll,avatarImg) 
+            values (:memId, :memPsw, :memNic, '{$fullShipDir}', '{$avatarDir}')";
             $member = $pdo->prepare( $sql );
             $member->bindValue(":memId", $_REQUEST["memId"]);
             $member->bindValue(":memPsw", $_REQUEST["memPsw"]);
             $member->bindValue(":memNic", $_REQUEST["memNic"]);
             $member->execute();
 
+            // $sql = "insert into mycustom
+            //     values (?, {$custList[0]},'{$tradeDate}',1),
+            //     (?, {$custList[1]},'{$tradeDate}',1),
+            //     (?, {$custList[2]},'{$tradeDate}',1)";
+            // $staCust = $pdo -> prepare($sql);
+            // $staCust -> bindValue(1, $_REQUEST["memId"]);
+            // $staCust -> bindValue(2, $_REQUEST["memId"]);
+            // $staCust -> bindValue(3, $_REQUEST["memId"]);
+            // $member->execute();
 
             //註冊成功,將登入者的資料寫入session
             $sql = "select * from member where memId=:memId";
@@ -24,7 +43,7 @@ $errMsg = "";
             $member->bindValue(":memId", $_REQUEST["memId"]);
             $member->execute();
             $memRow = $member->fetch(PDO::FETCH_ASSOC);
-            session_start();
+            
             $_SESSION["memLv"] = $memRow["memLv"];
             $_SESSION["memExp"] = $memRow["memExp"];
             $_SESSION["memMoney"] = $memRow["memMoney"];
@@ -40,6 +59,9 @@ $errMsg = "";
             $_SESSION["memId"] = $_REQUEST["memId"];
             $_SESSION["memPsw"] = $_REQUEST["memPsw"];
             $_SESSION["memNic"] = $_REQUEST["memNic"];
+            
+            $pdo -> commit();
+            header("location:iqtest-pre.php");
         }
 
 

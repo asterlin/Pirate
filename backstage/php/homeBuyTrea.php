@@ -2,7 +2,7 @@
 session_start();
 
 $tradeId = $_POST['tradeId'];
-
+$msg = [];
 $errMsg ='' ;
 try {
     require_once('connectPirates.php');
@@ -14,16 +14,23 @@ if(isset($_SESSION['memId'])){
     $sql = "select memNic, memMoney from member where memId = '{$_SESSION['memId']}'";
     $staBuyer =  $pdo -> query($sql);
     $rowBuyer = $staBuyer->fetch(PDO::FETCH_ASSOC);
-
+    
     $buyer = $_SESSION['memId'];
+    $msg['memNic']=$rowBuyer['memNic'];
 
     //取得寶物資料
-    $sql = "select salerId, treaId, price from traderecord where tradeId = {$tradeId}";
+    $sql = "select r.salerId, r.treaId, r.price,l.treaName 
+        from traderecord r
+        join treasurelist l on r.treaId = l.treaId
+        where tradeId ={$tradeId}";
     $staTrea = $pdo->query($sql);
     $rowTrea = $staTrea -> fetch(PDO::FETCH_ASSOC);
     $trea = $rowTrea['treaId'];
     $amt = $rowTrea['price'];
     $saler = $rowTrea['salerId'];
+    $msg['price']=$amt;
+    $msg['treaName']=$rowTrea['treaName'];
+
 
     //取得賣家資料
     $sql = "select memNic, memMoney from member where memId = '{$saler}'";
@@ -35,7 +42,6 @@ if(isset($_SESSION['memId'])){
 
     $amt = $rowTrea['price'];
     if($rowBuyer['memMoney'] > $rowTrea['price']){
-        echo "錢錢夠";
 
         
         $buyerMoney = $rowBuyer['memMoney'] - $amt;
@@ -43,6 +49,7 @@ if(isset($_SESSION['memId'])){
         $tradeDate = date('Y-m-d', time());
         $sql = "update member set memMoney = {$buyerMoney} where memId = '{$buyer}'";
         $staPay = $pdo -> exec($sql);
+        $msg['buyerMoney']=$buyerMoney;
 
         $sql = "update member set memMoney = {$salerMoney} where memId = '{$saler}'";
         $staEarn = $pdo ->exec($sql);
@@ -52,22 +59,31 @@ if(isset($_SESSION['memId'])){
             where tradeId = {$tradeId};";
         $staRec = $pdo ->exec($sql);
 
+
+
+
         if($staPay && $staEarn && $staRec){
-            echo "貌似都有成功";
+            echo json_encode($msg, JSON_UNESCAPED_UNICODE);
             $pdo -> commit();
         }else{
-            echo "哪裡不成功...";
+            $msg['staPay']=$staPay;
+            $msg['staEarn']=$staEarn;
+            $msg['staRec']=$staRec;
+            $msg['msg']="未知錯誤，請聯絡景成";
+            echo json_encode($msg, JSON_UNESCAPED_UNICODE);
             $pdo -> rollback();
         }
 
     }else{
-        echo "錢錢不夠";
+        $msg['msg']="錢錢不夠喔";
+        echo json_encode($msg, JSON_UNESCAPED_UNICODE);
         $pdo -> rollback();
     }
 
     
 }else{
-    echo "您尚未登入";
+    $msg['msg']="您尚未登入";
+    echo json_encode($msg, JSON_UNESCAPED_UNICODE);
 }
 
 } catch (PDOException $e) {
