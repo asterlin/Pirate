@@ -1,6 +1,7 @@
 @import '../base/font';
 @import '../base/reset';
 @import '../layout/header';
+@import '../layout/homeBar';
 
 
 #homeGame,#homeMarket,#homeBar{
@@ -73,23 +74,32 @@ p{ //這裡其實不懂為何_font設定的在瀏覽器不執行
 
 //調整成為海賊的船
 #wrapShipArea{
-    position: absolute;
-    width: 100%;
-    top: 28%;
-    left: -30%;
-    text-align: center;
-    cursor: pointer;
+//     position: absolute;
+//     width: 100%;
+//     top: 28%;
+//     left: -30%;
+    // text-align: center;
+//     cursor: pointer;
     .btnsec{
         // margin-top: -15px;
-        position: absolute;
-        top: 65%;
-        right: 0;
+        // position: absolute;
+        // top: 65%;
+        display: block;
+        left: 0; right: 0;margin: auto;
+        top: 300px;
             
     }
-}
-#wrapShipArea img{
-    // width: 100%;
-    position: absolute;
+    #bannerShip{
+        width: 240px;
+        top: 100px;
+        position: relative;
+        margin: auto;
+    }
+    img{
+        width: 100%;
+        position: absolute;
+        
+    }
 }
 
 #btnBePirate{
@@ -150,8 +160,8 @@ p{ //這裡其實不懂為何_font設定的在瀏覽器不執行
 // }
 //調整成為海賊的位置到中間
 #wrapShipArea{
-    // position: absolute;
-    width: 10%;
+    position: absolute;
+    // width: 10%;
     top: 50%;
     // left: 0;
     // right: 0;
@@ -203,10 +213,15 @@ p{ //這裡其實不懂為何_font設定的在瀏覽器不執行
 
     //調整成為海賊的位置到中間
     #wrapShipArea{
-        width: 380px;
-        top: 40%; //9%
-        left: 18%;
-        right: auto;
+        // width: 380px;
+        top: 54%; //9%
+        // left: 18%;
+        // right: auto;
+        left: 0;right: 0;margin: auto;
+        .btnsec{
+            position: relative;
+            left: 0;right: 0;
+        }
     }
     #shipArea{
         // height: 200px;
@@ -416,7 +431,7 @@ header.homeHeadHide{
 
 @media screen and (min-width:1024px){
     #homeDIY .textEmphasis{
-        margin-top: 110px;
+        margin-top: 130px;
     }
     #DIYStatus li:first-child{
         margin-left: auto;
@@ -858,19 +873,12 @@ h2 a{
         width: 300px;
         height: 420px;
     }
-    // #homeMarketProds{ 
-        // ul{
-        //     float: left;
-        //     width: calc(50% - 300px);
-        // }
-        // li{
-        //     float: left;
-        //     margin: 10px 20px;
-        // }
-        // li:nth-child(2n){
-        //     margin: 80px -40px -80px -40px;
-        // }
-    // }
+    #homeMarketProds{ 
+        ul{
+            max-width: 1560px;
+            margin: auto;
+        }
+    }
     #homeMarketProdInfo{
         width:400px;
         margin: auto;
@@ -929,135 +937,135 @@ h2 a{
     letter-spacing: 5px;
     margin: 10px;
 }
-#homeBar i{
-    font-size: 1rem;
-    height: auto;
-}
-.homeHotCard{
-    background: #f5ecdd;
-    border-radius: 10px;
-    margin: 10px;
-    padding: 10px;
-    color: $brown;
-    img{
-        width: 100px;
-        float: left;
-        margin-right: 10px;
-    }
-    .textL{
-        width: 235px;
-        font-size: 1.25rem;
-        font-weight: bold;
-    }
-    .textS{
-        text-align: right;
-    }
-}
-.homeNewsCard{
-    background: #f5ecdd;
-    border-radius: 10px;
-    margin: 10px;
-    padding: 10px;
-    color: $brown;
-    .textL{
-        font-size: 1.25rem;
-        font-weight: bold;
-    }
-    p{
-        float: left;
-    }
-    .cardCat{
-        width: 50px;
-    }
-    .cardTitle{
-        width: 275px;
-        span{
-            font-size: 1rem;
-            background: #7ccbbd;
-            border-radius: 5px;
-            display: inline-block;
-            padding: 3px 10px;
-            font-weight: normal;
+// #homeBar i{
+//     font-size: 1rem;
+//     height: auto;
+// }
+// .homeHotCard{
+//     background: #f5ecdd;
+//     border-radius: 10px;
+//     margin: 10px;
+//     padding: 10px;
+//     color: $brown;
+//     img{
+//         width: 100px;
+//         float: left;
+//         margin-right: 10px;
+//     }
+//     .textL{
+//         width: 235px;
+//         font-size: 1.25rem;
+//         font-weight: bold;
+//     }
+//     .textS{
+//         text-align: right;
+//     }
+// }
+// .homeNewsCard{
+//     background: #f5ecdd;
+//     border-radius: 10px;
+//     margin: 10px;
+//     padding: 10px;
+//     color: $brown;
+//     .textL{
+//         font-size: 1.25rem;
+//         font-weight: bold;
+//     }
+//     p{
+//         float: left;
+//     }
+//     .cardCat{
+//         width: 50px;
+//     }
+//     .cardTitle{
+//         width: 275px;
+//         span{
+//             font-size: 1rem;
+//             background: #7ccbbd;
+//             border-radius: 5px;
+//             display: inline-block;
+//             padding: 3px 10px;
+//             font-weight: normal;
             
-        }
-    }
-    .cardTime{
-        margin-left: 20px;
-    }
-}
+//         }
+//     }
+//     .cardTime{
+//         margin-left: 20px;
+//     }
+// }
 .homeMore{
     margin: 0 20px;
 }
 
 @media screen and (min-width:768px){
-    .homeHotCard{
-        img{
-            width: 150px;
-        }
-        .textL{
-            width: 555px;
-            font-size: 1.5rem;
-            font-weight: normal;
-        }
-    }
+//     .homeHotCard{
+//         img{
+//             width: 150px;
+//         }
+//         .textL{
+//             width: 555px;
+//             font-size: 1.5rem;
+//             font-weight: normal;
+//         }
+//     }
 
-    .homeNewsCard{
-        .textL{
-            font-size: 1.5rem;
-            font-weight: normal;
-        }
-        .cardTitle{
-            width: 400px;
-        }
-        .cardIcon{
-            line-height: 60px;
-        }
-        .cardTime{
-            text-align: center;
-            width: 100px;
-        }
-    }
+//     .homeNewsCard{
+//         .textL{
+//             font-size: 1.5rem;
+//             font-weight: normal;
+//         }
+//         .cardTitle{
+//             width: 400px;
+//         }
+//         .cardIcon{
+//             line-height: 60px;
+//         }
+//         .cardTime{
+//             text-align: center;
+//             width: 100px;
+//         }
+//     }
 
-}
+// }
 @media screen and (min-width:1024px){
     #homeBar{
         max-width: 1200px;
         margin-left:auto;
         margin-right:auto;
     }
-    .homeHotCard{
-        width: calc(50% - 40px);
-        max-width: 560px;
-        height: 200px;
-        float: left;
-        img{
-            width: 200px;
-        }
-        .textL{
-            width: 555px;
-            font-size: 1.5rem;
-            font-weight: normal;
-        }
-    }
-    #homeBarHot::after{
-        content: '';
-        display: block;
-        clear: both;
-    }
+    // .homeHotCard{
+    //     width: calc(50% - 40px);
+    //     max-width: 560px;
+    //     height: 200px;
+    //     float: left;
+    //     img{
+    //         width: 200px;
+    //     }
+    //     .textL{
+    //         width: 555px;
+    //         font-size: 1.5rem;
+    //         font-weight: normal;
+    //     }
+    // }
+    // #homeBarHot::after{
+    //     content: '';
+    //     display: block;
+    //     clear: both;
+    // }
 
-    .homeNewsCard{
-        p{
-            float: left;
-        }
-        .cardCat{
-            width: 100px;
-            line-height: 60px;
-        }
-        .cardTitle{
-            width:calc(100% - 370px);
-            margin: 12px 0;
-        }
-    }
+    // .homeNewsCard{
+    //     p{
+    //         float: left;
+    //     }
+    //     .cardCat{
+    //         width: 100px;
+    //         line-height: 60px;
+    //     }
+    //     .cardTitle{
+    //         width:calc(100% - 370px);
+    //         margin: 12px 0;
+    //     }
+    // }
 
 
 }
@@ -1114,4 +1122,5 @@ footer{
 }
 footer img{
     width: 250px;
+}
 }
