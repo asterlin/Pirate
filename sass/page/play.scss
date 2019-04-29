@@ -26,12 +26,107 @@ body {
 // #rankPaper{display: none;}
 .p5Canvas{display: none;}
 body .lightbox{display: none;}
-
+@keyframes borderCircle{
+	0% {
+		transform: rotate(0);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
 // #rankArea{display: none;}
 // title
+// gameGps
+#gpsWrap .textM{
+	line-height: 1.5;
+	letter-spacing: 1.5px;
+	padding-bottom: 50px;
+}
+
+#gpsWrap .button_border{
+    display: inline-block;
+    position: absolute;
+    transition: all .5s ease 1s;
+    opacity: 1;
+    width: 88px;
+    height: 88px;
+    top: 70%;
+    left: 50%;
+    z-index: 1200;
+    cursor: pointer;
+}
+.button_border:hover .border_in .icon_movie{
+	transform:scale(.8);
+}
+.button_border:hover .border_in{
+	-webkit-transform:scale(1.2);
+	transform:scale(1.2);
+}
+.button_border:hover .border_out{
+	animation: borderCircle 1s linear infinite;
+}
+.border_in:hover {
+	background-color: #fff;
+}
+.border_out {
+    width: 88px;
+    height: 88px;
+    -webkit-animation: borderCircle 3s linear infinite;
+    animation: borderCircle 3s linear infinite;
+}
+.border{
+	fill: none;
+	stroke: #fff;
+}
+.icon_movie {
+    background-image: url('../image/play/iconMovie.png');
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 20px 24px;
+    display: block;
+    transition: all .4s;
+}
+.button_border:hover .border_in .icon_movie{
+	transform:scale(.8);
+}
+.button_border:hover .border_in{
+	-webkit-transform:scale(1.2);
+	transform:scale(1.2);
+}
+.button_border:hover .border_out{
+	animation: borderCircle 1s linear infinite;
+}
+.border_in {
+	transition: 0.4s;
+    width: 60px;
+    height: 60px;
+    background: #fff;
+    border-radius: 50%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -30px;
+    margin-top: -30px;
+    display: block;
+}
+.border_in:hover {
+	background-color: #fff;
+}
 #playTitle {
 	margin: 100px auto 50px;
 	position: relative;
+}
+#gpsWrap .icon_movie {
+    background-image: url('../image/play/iconMovie.png');
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 20px 24px;
+    display: block;
+    transition: all .4s;
 }
 .s1 {
 	position: relative;
@@ -1059,7 +1154,7 @@ body .lightbox{display: none;}
 // playArea
 #playSpark{
 	z-index: 4;
-	top: 0;
+	top: 5px;
 	left: 0;
 	position: absolute;
 	background-color: #33A6B8;
@@ -1263,14 +1358,6 @@ body .lightbox{display: none;}
     50%  {transform: translateX(3%);}
     75%  {transform: translateX(-1%);}
     100% {transform: translateX(0%);}
-}
-@keyframes borderCircle{
-	0% {
-		transform: rotate(0);
-	}
-	100% {
-		transform: rotate(360deg);
-	}
 }
 @keyframes infoMove{
 	0%   {transform: translateY(0%);}
