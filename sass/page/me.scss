@@ -31,6 +31,33 @@ body {
     display: none;
     opacity: 0;
 }
+canvas{
+    outline: 2px solid transparent;
+    width: 100%;
+    height: 100%;
+}
+#tools img{
+    width: 100px;
+}
+#shipArea{
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+/* #shipArea img{
+    width: 750px;
+    position: absolute;
+} */
+#partSail,#partBody,#partHead,#drawFrame{
+    width: 100%;
+    position: absolute;
+}
+#drawFlag,#combineShip{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
 
 
 // 標題
@@ -538,8 +565,9 @@ body {
                 height: 100%;
                 position: absolute;
                 transform: rotateX(-50deg);
-                top: -520px;
-                right: 90px;
+                top: -400px;
+                right: 70px;
+            }
 
             }
 
@@ -550,6 +578,7 @@ body {
         .boxNews {
             padding: 0 20px;
             padding-left: 80px;
+            padding-top: 60px;
             transform-style: preserve-3d;
             transform: rotateX(50deg);
             transform-origin: bottom;
@@ -573,7 +602,7 @@ body {
             animation: lyingDown .5s;
         }
 
-    }
+   
 
 
     //個人資訊動畫站起來
@@ -674,4 +703,4 @@ body {
 
     }
 
-}
+ }
