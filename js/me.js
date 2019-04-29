@@ -95,18 +95,17 @@ function login() {
             alert(xhr.status);
         }
     }
-
-    var myData = new FormData(document.getElementById("meShipForm"));
-    console.log(document.getElementById("meShipForm"));
-    var url = "meToDB/meShipFormData.php";
-    xhr.open("Post", url, true);
-    xhr.send(myData);
+    str = graphDataNew[0];
+    int = graphDataNew[1];
+    lck = graphDataNew[2];
+    age = graphDataNew[3];
+    memPsw = $('#memPsw1').val();
+    // var myData = new FormData(document.getElementById("meShipForm"));
+    // console.log(document.getElementById("meShipForm"));
+    var url = "meToDB/meShipFormData.php?str="+str+"&int="+int+"&lck="+lck+"&age="+age+"&memId="+memId+"&memPsw="+memPsw;
+    xhr.open("Get", url, true);
+    xhr.send(null);
 }
-
-
-window.addEventListener("load", function () {
-    $id("carryOut").onclick = login;
-})
 //------------------------------------------------------------------
 
 

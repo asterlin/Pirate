@@ -17,6 +17,7 @@
         $member ->bindColumn("luck", $luck);//幸運
         $member ->bindColumn("shipImgAll", $shipImgAll);//船完整圖
         $member ->bindColumn("avatarImg", $avatarImg);//海賊旗圖
+        $member ->bindColumn("talentPointsRemain", $TPRemain);//天賦點數
         $member->execute();
         //-----------------------------------------------------------------------------------
 

@@ -27,10 +27,10 @@
                     <a href="backIQTest.html">測驗題目管理</a>
                 </li>
                 <li>
-                    <a href="backBarArticle.html">討論區文章檢舉管理</a>
+                    <a href="backBarArticle.php">討論區文章管理</a>
                 </li>
                 <li>
-                    <a href="backBarCommend.html">討論區留言檢舉管理</a>
+                    <a href="backBarCommend.php">討論區留言管理</a>
                 </li>
                 <a href="backLogout.php" class="btnpri" id="logout">
                     <span>登出</span>

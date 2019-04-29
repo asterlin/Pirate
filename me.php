@@ -54,7 +54,7 @@ require_once("meToDB/meToDB.php");
 
 
     <!--------------------------------- 選單 ------------------------------------->
-    <label for="burgerCtrl">
+    <!-- <label for="burgerCtrl">
         <input type="checkbox" name="" id="burgerCtrl">
         <div id="burger">
             <div class="burgerLine"></div>
@@ -73,7 +73,7 @@ require_once("meToDB/meToDB.php");
                 <li><a href="me.html">俺の海賊船</a></li>
             </ul>
         </nav>
-    </header>
+    </header> -->
 <!------------------------------------------------------------------------------->
 
 
@@ -128,7 +128,7 @@ require_once("meToDB/meToDB.php");
                     <li>
                         帳號: <span><?php echo $memId ?></span>
                     </li>
-                    <form method="Post"  id="meShipForm" >      
+                    <!-- <form method="Post"  id="meShipForm" >       -->
                     <li>
                               <input type="hidden" name="memId" value="<?php echo $memberId ?>">
                         密碼: <input type="password" name="memPsw" value="<?php echo $memPsw?> " maxlength="12" readonly id="memPsw1">
@@ -138,7 +138,7 @@ require_once("meToDB/meToDB.php");
                     <li>
                         ID: <span><?php echo $memNic ?></span>
                     </li> 
-                    </form>
+                    <!-- </form> -->
                     <li>
                         LV: <span> <?php echo $memLv ?> </span>
                       
@@ -155,6 +155,7 @@ require_once("meToDB/meToDB.php");
                         <div id="int"><?php echo $intelligence ?></div>
                         <div id="lck"><?php echo $luck ?></div>
                         <div id="age"><?php echo $agile ?></div>
+                        <div id="memIdx"><?php echo $memId ?></div>
                     </div>
                         <button class="btnpri butNews" id="carryOut"><span>確認修改</span></button>
                     </li>
@@ -308,11 +309,8 @@ require_once("meToDB/meToDB.php");
     int = parseInt($('#int').text());
     lck = parseInt($('#lck').text());
     age = parseInt($('#age').text());
-            console.log(parseInt(int));
-    // str = graphDataNew[0];
-    // int = graphDataNew[1];
-    // lck = graphDataNew[2];
-    // age = graphDataNew[3];
+
+    
             
     var chart;//radar圖名稱
     var graphDataNew = [str, int, lck, age];//從資料庫載入的Radar數值
@@ -328,6 +326,7 @@ require_once("meToDB/meToDB.php");
     $(document).ready(function () {
         chartRadar(graphDataNew);//從資料庫載入的Radar數值,初始化用
         $('.but').click(plusSkill);
+        $id("carryOut").onclick = login;
     });
 
 //-----------------------------------------------------------------
