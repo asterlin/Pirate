@@ -13,10 +13,8 @@ body{
 .lightbox{
 	display: none;
 }
-.checkToLeave{
-	bottom: 100px;
+.lightbox .checkToLeave{
 	left: 10%;
-	top: 50%;
 	transform: translate(-50%,50%);
 }
 .resultSlogan{
@@ -209,7 +207,7 @@ body{
     left: 320px;
 }
 .infoImg:nth-child(3){
-	top: 310px;
+	top: 360px;
     left: 320px;
 }
 .infoImg:nth-child(4){

@@ -1,3 +1,7 @@
+<?php
+ob_start();
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,12 +11,15 @@
 	<link rel="stylesheet" href="css/play.css">
 	<link rel="stylesheet" href="css/compass.css">
 	<link rel="stylesheet" href="css/wavebtn.css">
+    <link rel="stylesheet" href="css/lightbox.css">
+    <link rel="stylesheet" href="css/login.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.6/plugins/animation.gsap.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.6/plugins/debug.addIndicators.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.6/ScrollMagic.min.js"></script>
-	<!-- <script src="js/p5.js" type="text/javascript"></script> -->
-	<!-- <script src="js/p5.play.js" type="text/javascript"></script> -->
-	<!-- <script src="js/p5.dom.js"></script> -->
+	<script src="js/p5.js" type="text/javascript"></script>
+	<script src="js/p5.play.js" type="text/javascript"></script>
+	<script src="js/p5.dom.js"></script>
 	<script src="js/sketch.js" type="text/javascript"></script>
 	<script src="js/TweenMax.min.js"></script>
     <script src="js/ScrollMagic.min.js"></script>
@@ -20,8 +27,30 @@
     <script src="js/animation.gsap.min.js"></script>
 	<script src="js/jquery-3.3.1.min.js"></script>
 	<script src="js/ScrollToPlugin.js"></script>
+	<script src="js/verification.js"></script>
 </head>
 <body>
+	<div id="getSession"><?php echo $_SESSION["memId"] ?></div>
+	<label for="burgerCtrl">
+        <input type="checkbox" name="" id="burgerCtrl">
+        <div id="burger">
+            <div class="burgerLine"></div>
+            <div class="burgerLine"></div>
+        </div>
+    </label>
+    <header>
+        <h1 id="headerLogo"><a href="index.html">
+                <img src="image/logo.svg" alt="大海賊帝國">
+            </a></h1>
+        <nav id="headerMenu">
+            <ul>
+                <li><a href="game.html">海賊試煉場</a></li>
+                <li><a href="market.html">海上市集</a></li>
+                <li><a href="bar.html">情報酒館</a></li>
+                <li><a href="me.html">俺の海賊船</a></li>
+            </ul>
+        </nav>
+    </header>
 	<div id="choose">
 		<div id="playTitle">
 	        <h1 class="titlePri">海賊試煉場</h1>
@@ -284,7 +313,8 @@
 	</div>
 	<!-- lightBox -->
 	<!-- win -->
-	<div class="lightbox" id="winbox">
+	<div class="playLightbox" id="winbox">
+		<div class="lightbox">
 		<div class="popbg"></div>
 		<div class="info">
 			<div class="axis axis1"></div>
@@ -292,248 +322,216 @@
 			<div class="leave"></div>
 			<div class="paper">
 				<!-- 範例 -->
-				<h2 class="titlePri titlePriX" >WIN</h2>
-				<p class="textIQ">恭喜你贏了初級試煉。<br>你的通關時間為<span id="lightboxTime">5</span>秒!<br>獲得了經驗值50點金錢1000G</p>
-				<a class="btnpri checkToLeave" href="game.html"><span>確認</span></a>
+				<h2 class="titlePriX" >WIN</h2>
+				<p class="textIQ">恭喜你贏了初級試煉。<br>你的通關時間為<span id="lightboxTime">5</span>秒!<br>獲得了經驗值150點金錢1000G</p>
+				<a class="btnpri checkToLeave"><span>確認</span></a>
 			</div>
 		</div>
+		</div>
 	</div>
+	
 	<!-- lose -->
-	<div class="lightbox" id="losebox">
+	<div class="playLightbox" id="losebox">
+		<div class="lightbox">
 		<div class="popbg"></div>
 		<div class="info">
-			<div class="axis axis1"></div>
-			<div class="axis axis2"></div>
-			<div class="leave"></div>
-			<div class="paper">
-				<!-- 範例 -->
-				<h2 class="titlePri titlePriX" >LOSE</h2>
-				<p class="textIQ">好可惜!沒通過初級試煉,請再接再厲。</p>
-				<a class="btnpri checkToLeave" href="game.html"><span>確認</span></a>
+				<div class="axis axis1"></div>
+				<div class="axis axis2"></div>
+				<div class="leave"></div>
+				<div class="paper">
+					<!-- 範例 -->
+					<h2 class="titlePriX" >LOSE</h2>
+					<p class="textIQ">好可惜!沒通過初級試煉,請再接再厲。</p>
+					<a class="btnpri checkToLeave"><span>確認</span></a>
+				</div>
 			</div>
 		</div>
 	</div>
+	<!-- playedTimes -->
+	<div class="playLightbox" id="playedTimesBox">
+		<div class="lightbox">
+		<div class="popbg"></div>
+		<div class="info">
+				<div class="axis axis1"></div>
+				<div class="axis axis2"></div>
+				<div class="leave"></div>
+				<div class="paper">
+					<!-- 範例 -->
+					<h2 class="titlePriX" >體力值不足!</h2>
+					<p class="textIQ">體力每小時回復1點,請1小時後再來挑戰~</p>
+					<a class="btnpri checkToLeave"><span>確認</span></a>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div id="loginbox">
+		<div class="lightbox">
+        <div class="popbg"></div>
+        <div class="info">
+            <div class="axis axis1"></div>
+            <div class="axis axis2"></div>
+            <div class="leave"></div>
+            <div class="paper">
+                <div id="tab-demo">
+                    <div id="tab01" class="tab-inner">
+                        <h2 class="titlePri" >成為海賊</h2>
+                            <label>帳號:</label>
+                            <input id="signmemId" type="text" name="memId"><br>
+                            <label>密碼:</label>
+                            <input id="signmemPsw" type="password" name="memPsw"><br>
+                            <a id="signUp"class="btnpri" href="javascript:;">
+                                <span>登入</span>
+                            </a>
+                    </div>
+
+                    <div id="tab02" class="tab-inner">
+                        <h2 class="titlePri" >成為海賊</h2>
+                        <form action="registered.php" id="loginforma">
+                            <div class="Data-Title">
+                                <label for="memId">帳號:</label><br>
+                                <label for="memNic">暱稱:</label><br>
+                                <label for="memPsw">密碼:</label><br>
+                                <label for="memCon">確認密碼:</label><br>
+                            </div>
+                            <div class="Data-Items">
+                                <input type="text" id="memId" name="memId"><br>
+                                <input type="text" id="memNic" name="memNic"><br>
+                                <input type="password" id="memPsw" name="memPsw"><br>
+                                <input type="password" id="memCon" name="memCon"><br>
+                            </div>
+                            <div class="verification">
+                                <h2>請旋轉到正確位置</h2>
+                                <a id="signlbtn" href="javascript:;">左</a>
+                                <img id="signnew" src="image/new.png" alt="" width="100px" height="100px">
+                                <a id="signrbtn" href="javascript:;">右</a>
+                                <!-- <a id="signconfirm" type="submit">提交</a> -->
+                                <div id="signcontent"></div>
+                            </div>
+                            <div class="clearfix"></div>
+                            <a id="btnver" class="btnpri" href="javascript:;" >
+                                <span>驗證身份</span>
+                            </a> 
+                        </form>
+                    </div>
+                    <ul class="tab-title">
+                        <li><a class="signIn" href="#tab01">登入頁</a></li>
+                        <li>/</li>
+                        <li><a class="register" href="#tab02">註冊頁</a></li>
+                    </ul>
+	             	</div>
+	         	</div>
+	    	</div>
+	    </div>
+	</div>
+	
+	
 	<!-- compass -->
 	<div id="compass">
 		<img src="image/compass_inner.png" alt="in" id="in">
 		<img src="image/compass_outter.png" alt="out" id="out">
 		<div id="compassBlue">
 			<div id="blueImg" class="blueInfo"><img src="" alt=""></div>
-			<div id="blueName" class="blueInfo">林以騰</div>
-			<div id="blueLv" class="blueInfo">Lv<span>7</span></div>
-			<div id="blueExp" class="blueInfo"><span>50</span>/100</div>
-			<div id="blueMoney" class="blueInfo">金幣<span>1000</span>G</div>
-			<div id="blueStr" class="blueInfo">力量<span>50</span></div>
-			<div id="blueLuck" class="blueInfo">幸運<span>60</span></div>
-			<div id="blueAgi" class="blueInfo">敏捷<span>50</span></div>
-			<div id="blueInt" class="blueInfo">智力<span>70</span></div>
-			<div id="blueGameTime" class="blueInfo">體力值<span>5</span></div>
+			<div id="blueName" class="blueInfo"><?php echo $_SESSION["memNic"] ?></div>
+			<div id="blueLv" class="blueInfo">Lv<span><?php echo $_SESSION["memLv"] ?></span></div>
+			<div id="blueExp" class="blueInfo"><span><?php echo $_SESSION["memExp"] ?></span>/100</div>
+			<div id="blueMoney" class="blueInfo">金幣<span><?php echo $_SESSION["memMoney"] ?></span>G</div>
+			<div id="blueStr" class="blueInfo">力量<span><?php echo $_SESSION["strength"] ?></span></div>
+			<div id="blueLuck" class="blueInfo">幸運<span><?php echo $_SESSION["luck"] ?></span></div>
+			<div id="blueAgi" class="blueInfo">敏捷<span><?php echo $_SESSION["agile"] ?></span></div>
+			<div id="blueInt" class="blueInfo">智力<span><?php echo $_SESSION["intelligence"] ?></span></div>
+			<div id="blueGameTime" class="blueInfo">體力值<span><?php echo $_SESSION["playedTimes"] ?></span></div>
 		</div>
 	</div>
+<script src="js/playTime_update.js"></script>
+<script src="js/header.js"></script>
+<script src="js/wavebtn.js"></script>
+<script src="js/login.js"></script>
 <script type="js/TweenMaxPlay.js"></script>
 <script src="js/compass.js"></script>
 <script src="js/playRank.js"></script>
 <script src="js/playFrameChange.js"></script>
+<script src="js/playTweenMax.js"></script>
+<script src="js/reset.js"></script>
+<script src="js/getStatus.js"></script>
 <script>
 var compass;
-var rwd=0;//判斷如果為手機螢幕不執行動畫
 var playTimeCount=0;
-var animation_04;
-var animation_08;
-var section_04;
 var rankFly;
 var gameStartTimer;
-var controller = new ScrollMagic.Controller();
-var flag = 0;
-var w = $('#playTitleSec').width();
-if(w==375)rwd=1;
 var bazierRank;
-if(rwd==0){
+var memId=$('#getSession').text();
+var memLv=parseInt($('#blueLv span').text());
+var memExp=parseInt($('#blueLv span').text());
+var memMoney=parseInt($('#blueLv span').text());
+var playedTimes=parseInt($('#blueGameTime span').text());
+var int=parseInt($('#blueInt span').text());
+var str=parseInt($('#blueStr span').text());
+var lcu=parseInt($('#blueLuck span').text());
+var agi=parseInt($('#blueAgi span').text());
+var rwd=$('#playTitleSec').width();
+memLv=100;
+memExp=100;
+memMoney=1000;
+playedTimes=2000;
+int=100;
+str=200;
+lcu=300;
+agi=400;
+
+
 $(document).ready(function(){
-// 從資料庫中拿到compass資訊
-getCompass();
-// 滑到第二屏時藍色布幕動畫
-animation_04 = TweenMax.to(`#blueAppear`,10, {
-	top:0,
-	left:0,
-	opacity:1,
-});
-section_04 = new ScrollMagic.Scene({
-    triggerElement: "#trigger_02",
-    duration: 300,
-    reverse:false,
-}).setTween(animation_04)
-.addIndicators()
-.addTo(controller);
-// 滑到第二屏時小船動畫
-animation_08 = TweenMax.to(`#boat`,10, {
-	left:120,
-});
-section_04 = new ScrollMagic.Scene({
-    triggerElement: "#trigger_02",
-    duration: 300,
-    reverse:false,
-}).setTween(animation_08)
-.addIndicators()
-.addTo(controller);
-	
-// gps第一屏到第二屏的動畫變化
-// next
-$('#next').click(function(){
-if(flag==1||flag==0){
-	$("#eleImg2").css('display','block');
-	$("#eleImg1").css('display','none');
-	$("#element2 .black").css('display','none');
-	$("#element1 .black").css('display','block');
-	$('#prev').css('display','block');
-	TweenMax.to(`#element1`,1, {
-	y: 0,
-	x: 0,
-	webkitClipPath:'polygon(50px 0, 0 250px, 50px 500px, 150px 500px, 100px 250px, 150px 0)',
-	});
-	TweenMax.to(`#eleImg1`,1, {
-		y: 0,
-		x: 0,
-	});
-	TweenMax.to(`#element2`,1, {
-	y: 742,
-	x: -75,
-	webkitClipPath:'polygon(0 0, 0 250px, 0px 500px, 450px 500px, 450px 250px, 450px 0)',
-	});
-	TweenMax.to(`#eleImg2`,1, {
-		y: 390,
-		x: -77,
-	});
-	flag=2;
-}else if(flag==2){
-	$("#eleImg3").css('display','block');
-	$("#eleImg2").css('display','none');
-	$("#element3 .black").css('display','none');
-	$("#element2 .black").css('display','block');
-	$('#next').css('display','none');
-	TweenMax.to(`#element2`,1, {
-		y: 0,
-		x: 0,
-		webkitClipPath:'polygon(50px 0, 0 250px, 50px 500px, 150px 500px, 100px 250px, 150px 0)',
-	});
-	TweenMax.to(`#eleImg2`,1, {
-		y: 0,
-		x: 0,
-	});
-	TweenMax.to(`#eleImg3`,1, {
-		y: 390,
-		x: -181,
-	});
-	TweenMax.to(`#element3`,1, {
-		y: 742,
-		x: -180,
-		webkitClipPath:'polygon(0 0, 0 250px, 0px 500px, 450px 500px, 450px 250px, 450px 0)',
-	});
-	flag=3;
+//還沒登入compass = none
+if(memId!=''){
+	$('#compass').css('display','block');
+}else{
+	$('#compass').css('display','none');
 }
-});
-$('#prev').click(function(){
-if(flag==3){
-	$("#eleImg2").css('display','block');
-	$("#eleImg3").css('display','none');
-	$("#element3 .black").css('display','block');
-	$("#element2 .black").css('display','none');
-	$('#next').css('display','block');
-	TweenMax.to(`#element3`,1, {
-		y: 0,
-		x: 0,
-		webkitClipPath:'polygon(300px 0, 350px 250px, 300px 500px, 400px 500px, 450px 250px, 400px 0)',
-	});
-	TweenMax.to(`#eleImg3`,1, {
-		y: 0,
-		x: 0,
-	});
-	TweenMax.to(`#eleImg2`,1, {
-		y: 390,
-		x: -77,
-	});
-	TweenMax.to(`#element2`,1, {
-		y: 742,
-		x: -75,
-		webkitClipPath:'polygon(0 0, 0 250px, 0px 500px, 450px 500px, 450px 250px, 450px 0)',
-	});
-	flag=2;
-}else if(flag==2){
-	$("#eleImg1").css('display','block');
-	$("#eleImg2").css('display','none');
-	$("#element1 .black").css('display','none');
-	$("#element2 .black").css('display','block');
-	$('#prev').css('display','none');
-	flag=1;
-	TweenMax.to(`#element2`,1, {
-		y: 0,
-		x: 0,
-		webkitClipPath:'polygon(300px 0, 350px 250px, 300px 500px, 400px 500px, 450px 250px, 400px 0)',
-	});
-	TweenMax.to(`#eleImg2`,1, {
-		y: 0,
-		x: 0,
-	});
-	TweenMax.to(`#eleImg1`,1, {
-		y: 390,
-		x: 28,
-	});
-	TweenMax.to(`#element1`,1, {
-		y: 742,
-		x: 30,
-		webkitClipPath:'polygon(0 0, 0 250px, 0px 500px, 450px 500px, 450px 250px, 450px 0)',
-	});
+//rwd compass = none
+if(rwd==375){
+	$('#compass').css('display','none');
+}else{
+	$('#compass').css('display','block');
 }
+reset();
+getStatus();
+//lightbox 離開
+$('.checkToLeave').click(function(){$('.lightbox').css('display','none');});
+$('.popbg').click(function(){$('.lightbox').css('display','none');});
+$('.leave').click(function(){$('.lightbox').css('display','none');})
+
+// 寫入遊戲測驗時間
+$('#winbox .checkToLeave').click(function(){
+	playedTimes-=1;
+	updateScore();
+	getScoreL();
+	getStatus();
+	playTimeCount=0;
 });
-// click
-$('#element1').click(function(){
-	flag = 1;
-	TweenLite.to(window, 1, {scrollTo:{y:"#game", offsetY:70, autoKill:false}});
-	TweenMax.to(`#element1`,1, {
-		y: 742,
-		x: 30,
-		webkitClipPath:'polygon(0 0, 0 250px, 0px 500px, 450px 500px, 450px 250px, 450px 0)',
-	});
-	TweenMax.to(`#eleImg1`,1, {
-		y: 390,
-		x: 28,
-	});
-	$('#prev').css('display','none');
+$('#losebox .checkToLeave').click(function(){
+	playedTimes-=1;
+	updateScore();
+	getScoreL();
+	getStatus();
+	playTimeCount=0;
 });
-$('#element2').click(function(){
-	flag = 2;
-	TweenLite.to(window, 1, {scrollTo:{y:"#game", offsetY:70, autoKill:false}});
-	TweenMax.to(`#element2`,1, {
-		y: 742,
-		x: -75,
-		webkitClipPath:'polygon(0 0, 0 250px, 0px 500px, 450px 500px, 450px 250px, 450px 0)',
-	});
-	TweenMax.to(`#eleImg2`,1, {
-		y: 390,
-		x: -77,
-	});
-	$('#prev').css('display','block');
-});
-$('#element3').click(function(){
-	flag = 3;
-	TweenLite.to(window, 1, {scrollTo:{y:"#game", offsetY:70, autoKill:false}});
-	TweenMax.to(`#element3`,1, {
-		y: 742,
-		x: -180,
-		webkitClipPath:'polygon(0 0, 0 250px, 0px 500px, 450px 500px, 450px 250px, 450px 0)',
-	});
-	TweenMax.to(`#eleImg3`,1, {
-		y: 390,
-		x: -181,
-	});
-	$('#prev').css('display','block');
-	$('#next').css('display','block');
-});
+// 跑tweenmax
+playTweenMax();
+
 // playBtn
-$('.button_border').click(function(){
-	$('#playSpark').css('clipPath','circle(1900px)');
-	gameStartTimer = setInterval(play,1000);
-});
+if(memId!=''){
+	$('.button_border').click(function(){
+		if(playedTimes==0){
+			$('#playedTimesBox .lightbox').css('display','block');
+		}else{
+			$('#playSpark').css('clipPath','circle(1900px)');
+			gameStartTimer = setInterval(play,1000);
+		}
+	});
+}else{
+	$('#loginbox .lightbox').css('display','block');
+}
+
 function play(){
 	clearInterval(gameStartTimer);
 	$('.button_border').css('display','none');
@@ -545,7 +543,7 @@ function playTime(){
 	console.log('playTimeCount: ',playTimeCount);
 }
 });
-}
+
 		
 		
 		

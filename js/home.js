@@ -139,25 +139,13 @@ if(winWidth < 1024){
             $('.homeTreaBtn').eq(1).addClass('justHide');
             $('.homeTreaBtn').eq(7).addClass('justHide');
             $('.homeTreaBtn').eq(8).addClass('justHide');
+        }else{
+            $('.homeTreaBtn').removeClass('justHide');
         }
     }
     showTreaBtn();   
+
     //市集更換商品
-
-    
-
-    // var homeProdArr = [
-    //     {'tradeId':1,'prodName':'產品1','prodPrice':100,'saler':'人物1','str':10,'int':10,'agi':10,'luc':10,'img':"trea1.svg"},
-    //     {'tradeId':2,'prodName':'產品2','prodPrice':200,'saler':'人物2','str':12,'int':12,'agi':12,'luc':12,'img':"trea2.svg"},
-    //     {'tradeId':3,'prodName':'產品3','prodPrice':300,'saler':'人物3','str':13,'int':13,'agi':13,'luc':13,'img':"trea3.svg"},
-    //     {'tradeId':4,'prodName':'產品4','prodPrice':400,'saler':'人物4','str':14,'int':14,'agi':14,'luc':14,'img':"tre41.svg"},
-    //     {'tradeId':5,'prodName':'產品5','prodPrice':100,'saler':'人物1','str':10,'int':10,'agi':10,'luc':10,'img':"trea5.svg"},
-    //     {'tradeId':6,'prodName':'產品6','prodPrice':200,'saler':'人物2','str':12,'int':12,'agi':12,'luc':12,'img':"trea6.svg"},
-    //     {'tradeId':7,'prodName':'產品7','prodPrice':300,'saler':'人物3','str':13,'int':13,'agi':13,'luc':13,'img':"trea3.svg"},
-    //     {'tradeId':8,'prodName':'產品8','prodPrice':400,'saler':'人物4','str':14,'int':14,'agi':14,'luc':14,'img':"trea1.svg"},
-    //     {'tradeId':9,'prodName':'產品9','prodPrice':200,'saler':'人物2','str':12,'int':12,'agi':12,'luc':12,'img':"trea6.svg"},
-    // ]
-
     var prodPrev = $('#homeProdPrev');
     var prodNext = $('#homeProdNext');
     var prodImgS = $('.homeTreaBtn img');
@@ -174,11 +162,8 @@ if(winWidth < 1024){
         if(ProdIndex == -1) ProdIndex=8; //重製索引值
         changeProdBig(ProdIndex);
     })
-    prodBtns.click(function(e){
+    prodBtns.click(function(e){//homeProdArr是從首頁php接近來的
         ProdIndex = homeProdArr.map(function(e) { return e.tradeId; }).indexOf($(this).children('img').attr('tradeId'));
-
-        console.log(ProdIndex);
-
         changeProdBig(ProdIndex);
     })
 
@@ -189,14 +174,15 @@ if(winWidth < 1024){
         $('#homeWrapProd').removeClass('active');
         //內文再依序出現
         setTimeout(() => {
-            $('#homeProdImg').attr({'src':`image/treasure/${homeProdArr[i].treaImg}`,'tradeId':homeProdArr[i].tradeId});
+            $('#homeProdImg').attr({'src':`image/treasure/${homeProdArr[i].treaImg}`,});
+            $('#homeProdBuy').attr('tradeId',homeProdArr[i].tradeId)
             $('#homeProdName').text(homeProdArr[i].treaName);
             $('#homeProdPrice').text(homeProdArr[i].price);
-            $('#homeProdSaler').text(homeProdArr[i].salerId);
+            $('#homeProdSaler').text(homeProdArr[i].memNic);
             $('#homeProdStr').text(homeProdArr[i].treaStr);
             $('#homeProdInt').text(homeProdArr[i].treaInt);
-            $('#homeProdAgi').text(homeProdArr[i].treaAgi);
             $('#homeProdLuc').text(homeProdArr[i].treaLuk);
+            $('#homeProdAgi').text(homeProdArr[i].treaAgi);
             $('#homeWrapProd').addClass('active');
         }, 400);
 
@@ -215,7 +201,54 @@ if(winWidth < 1024){
 
         }
     }
-    
+
+//購買黑市商品
+    $('#homeProdBuy').click(function(){
+        $.ajax({
+            type: "POST",
+            url: "backstage/php/homeBuyTrea.php",
+            data:{tradeId:$(this).attr('tradeId')},
+            success: function (response) {
+                console.log(response);
+            }
+        });
+    })
+
+//情報酒館計算字數
+function hotIssueText() {
+    let innerWidth = window.innerWidth;
+    let text, titLength;
+    let title = document.getElementsByClassName('artTit');
+    let arrhotIssue = document.getElementsByClassName('arrhotIssue');
+    for (let i = 0; i < arrhotIssue.length; i++) {
+        titLength = title[i].innerText.length;
+        text = arrhotIssue[i];
+        if (titLength > 15) {
+            title[i].style.fontSize = "18px";
+            if (innerWidth <= 960) {
+                if(arrhotIssue[i].length > 30){
+                    text = text.substr(0,30);
+                    text += `...`;
+                }
+            }else{
+                if(arrhotIssue[i].length > 10){
+                    text = text.substr(0,10);
+                    text += `...`;
+                }
+            }
+        }else{
+            if(arrhotIssue[i].length > 30){
+                text = text.substr(0,30);
+                text += `...`;
+            }
+        }
+        document.getElementsByClassName('hotIssueBoxContText')[i].innerText = text;
+    }
+}
+
+hotIssueText()
+
+
 //要來做船的動畫了唷
     // document.addEventListener('scroll',function(){
     //     var pageY = window.pageYOffset;

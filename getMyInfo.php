@@ -1,7 +1,7 @@
 <?php
 $errMsg = "";
     try{
-        require_once("backstage/php/connectPirate.php");
+        require_once("backstage/php/connectPirates.php");
         $sql = "select * from member where memId=:memId";
         $getMyInfo = $pdo->prepare($getMyInfo);
         $addClickAmt->bindValue(":memId", $_REQUEST["memId"]);

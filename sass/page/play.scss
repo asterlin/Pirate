@@ -2,17 +2,20 @@
 @import '../base/font';
 // reset
 @import '../base/reset';
+// header
+@import '../layout/header';
 body {
     background-image: url(../image/background/BgPage.png);
     background-repeat: no-repeat;
 		background-size: cover;
 }
 *{
-	outline: 1px solid red;
 	box-sizing:border-box;
 	margin:0;
 	padding:0;
 }
+#getSession{color: red; visibility: hidden};
+#checkSession{visibility: hidden};
 #element1{display: none;}
 #element3{display: none;}
 #eleImg1{display: none;}
@@ -22,6 +25,7 @@ body {
 // #rankArea{display: none;}
 // #rankPaper{display: none;}
 .p5Canvas{display: none;}
+body .lightbox{display: none;}
 
 // #rankArea{display: none;}
 // title
@@ -37,7 +41,6 @@ body {
 }
 .s2 {
   top: 810px;
-	left: 15px;
 	position: absolute;
 	text-align: center;
 	display: inline-block;
@@ -47,7 +50,13 @@ body {
 	width: 375px;
 	margin: 0 auto;
 }
-.titleSec {
+#playTitle .titlePri {
+    font-family: 王漢宗特明體繁;
+    color: #006ca6;
+    font-size: 3rem;
+    text-align: center;
+}
+#playTitleSec .titleSec {
 	margin: 0 10px 50px;
 }
 .titFrame{
@@ -77,7 +86,7 @@ body {
 	position: relative;
 	width: 355px;
 	height: 500px;
-	margin: 0 28px;
+	margin: 0 12px;
 }
 .blueArea{
 	background-color: #114d7c;
@@ -185,7 +194,6 @@ body {
   height: 300px;
   background-color: #a6937c;
   outline: 7px #a6937c double;
-  margin-left: 17px;
 }
 #rankListBox1{
   position: relative;
@@ -301,7 +309,6 @@ body {
   display: inline-block;
   width: 375px;
   height: 400px;
-  margin-left: 17px;
 }
 // paperFrame
 #paperFrame{
@@ -390,59 +397,57 @@ body {
 	height: 280px;
 	width: 300px;
 }
-.lightbox .axis {
+.playLightbox .lightbox .axis {
   left: 46px;
   width: 350px;
   height: 20px;}
-.textEmphasis {
+.playLightbox .textEmphasis {
   font-size: 3rem;
   color: #362e2b;
   font-family: 王漢宗特明體繁;
   letter-spacing: 10px; }
 
-.textHiliR {
+.playLightbox .textHiliR {
   color: #a34f49; }
 
-.textHiliB {
+.playLightbox .textHiliB {
   color: #006ca6; }
 
-.titlePriX{
+.playLightbox .titlePriX{
   padding: 40px 0 20px;
   color: #006ca6;
 }
 
-.titleThi {
+.playLightbox .titleThi {
   position: relative;
   color: #443c3a;
   font-size: 1.35rem;
   font-family: Adobe Heiti Std R;
   text-align: center; }
 
-.titleFou {
+.playLightbox .titleFou {
   position: relative;
   color: #554e4d;
   font-size: 1.25rem;
   font-family: Adobe Heiti Std R; }
 
-.titleSec img {
+.playLightbox .titleSec img {
   width: 110px;
   position: absolute;
   left: 50%;
   top: 100%;
   transform: translateX(-50%) translateY(-50%);
   z-index: -1; }
-.textL {
+.playLightbox .textL {
   font-family: Adobe Heiti Std R;
   font-size: 1.5rem; }
-.textS {
+.playLightbox .textS {
   font-family: Adobe Heiti Std R;
   font-size: 1rem; }
-.clearfix {
+.playLightbox .clearfix {
   clear: both; }
 
-.lightbox{
-  display: none;
-}
+
 .lightbox p {
 	text-align: center;
     font-family: 王漢宗特明體繁;
@@ -453,15 +458,12 @@ body {
     letter-spacing: 2px;
     padding: 0px 20px 100px;
 }
-.checkToLeave{
+.playLightbox .checkToLeave{
 	bottom: 100px;
 	left: 10%;
 	transform: translate(-50%,50%);
 }
-#winbox .checkToLeave{
-	top: -130px;
-}
-.popbg{
+.playLightbox .popbg{
   position: fixed;
   z-index: 19;
   width: 100vw;
@@ -471,7 +473,7 @@ body {
   background-color: rgba(0,0,0,.5); 
 }
 
-.info{
+.playLightbox .info{
   z-index: 20;
   left: 50%;
   top: 50%;
@@ -480,7 +482,7 @@ body {
   position: fixed;
 }
 
-.axis {
+.playLightbox .axis {
   width: 450px;
   height: 20px;
   background-image: linear-gradient(0deg, rgba(175, 69, 7, 0.5) 0%, transparent 80%), linear-gradient(90deg, #af4507 30px, #f5ba61 30px, #f5ba61 60px, #af4507 60px);
@@ -489,14 +491,14 @@ body {
   border-radius: 15px;
   position: absolute; }
 
-.axis1 {
+.playLightbox .axis1 {
   top: 0; }
 
-.axis2 {
+.playLightbox .axis2 {
   left: 0;
   bottom: 0px; }
 
-.paper {
+.playLightbox .paper {
   text-align: center;
   margin: auto;
   width: 400px;
@@ -505,14 +507,14 @@ body {
   background-image: linear-gradient(0deg, rgba(255, 211, 130, 1) 0%, rgba(255, 211, 130, 1) 100%);
   border: 2px solid #c28c3a; }
 
-.leave{
+.playLightbox .leave{
   width: 45px;
   height: 45px;
   position: absolute;
   right: 70px;
   top: 32px;
 }
-.leave::after{
+.playLightbox .leave::after{
   content: " ";
   width: 40px;
   height: 8px;
@@ -522,7 +524,7 @@ body {
   right: 7%;
   top: 40%;
 }
-.leave::before {
+.playLightbox .leave::before {
   content: " ";
   width: 40px;
   height: 8px;
@@ -532,18 +534,18 @@ body {
   right: 7%;
   top: 40%;
 }
-.btnpri {
+.playLightbox .btnpri {
   margin: 10px; }
 @media screen and (min-width: 768px){
 .list4,.list5,.list6,.list7,.list8,.list9,.list10{display: block;}
 .rank3,.rank4,.rank5,.rank6,.rank7,.rank8,.rank9{display: block;}
-#playTitle{margin: 100px auto;}
+#playTitle{margin: 200px auto 50px;}
 // titleSec
 #choose{
 	height: 100vh;
 }
 #playTitleSec {width: 1200px;margin: 0 auto 25px;}
-.titleSec {
+#playTitleSec .titleSec {
 	margin: 0 10px 50px;
 }
 .s1 {margin: 0 10px;width: 750px;}
@@ -1082,7 +1084,7 @@ body {
 	top: 0;
 	left: 50%;
 	transform: translateX(-50%);
-	// display: none;
+	display: none;
 }
 
 
@@ -1091,64 +1093,63 @@ body {
 	height: 300px;
 	width: 400px;
 }
-#winbox .checkToLeave{
-	bottom: 100px;
-}
 #losebox .paper{
 	height: 280px;
 	width: 400px;
 }
-.textEmphasis {
+#playedTimesBox .checkToLeave{
+	bottom: 0;
+}
+.playLightbox .textEmphasis {
   font-size: 3rem;
   color: #362e2b;
   font-family: 王漢宗特明體繁;
   letter-spacing: 10px; }
 
-.textHiliR {
+.playLightbox .textHiliR {
   color: #a34f49; }
 
-.textHiliB {
+.playLightbox .textHiliB {
   color: #006ca6; }
 
-.titlePriX{
+.playLightbox .titlePriX{
+  font-size: 32px;
+  font-family: 王漢宗特明體繁;
   padding: 40px 0 20px;
   color: #006ca6;
 }
 
-.titleThi {
+.playLightbox .titleThi {
   position: relative;
   color: #443c3a;
   font-size: 1.35rem;
   font-family: Adobe Heiti Std R;
   text-align: center; }
 
-.titleFou {
+.playLightbox .titleFou {
   position: relative;
   color: #554e4d;
   font-size: 1.25rem;
   font-family: Adobe Heiti Std R; }
 
-.titleSec img {
+.playLightbox .titleSec img {
   width: 110px;
   position: absolute;
   left: 50%;
   top: 100%;
   transform: translateX(-50%) translateY(-50%);
   z-index: -1; }
-.textL {
+.playLightbox .textL {
   font-family: Adobe Heiti Std R;
   font-size: 1.5rem; }
-.textS {
+.playLightbox .textS {
   font-family: Adobe Heiti Std R;
   font-size: 1rem; }
 .clearfix {
   clear: both; }
-.lightbox .axis{
+.playLightbox .lightbox .axis{
 	width: 450px;
 	left: 0;
-}
-.lightbox{
-  display: none;
 }
 .lightbox p {
 	text-align: center;
@@ -1160,8 +1161,8 @@ body {
     letter-spacing: 2px;
     padding: 0px 20px 100px;
 }
-.checkToLeave{
-	bottom: 100px;
+.playLightbox .checkToLeave{
+	bottom: 30px;
 	left: 10%;
 	top: 50%;
 	transform: translate(-50%,50%);
@@ -1185,7 +1186,7 @@ body {
   position: fixed;
 }
 
-.axis {
+.playLightbox .axis {
   width: 450px;
   height: 20px;
   background-image: linear-gradient(0deg, rgba(175, 69, 7, 0.5) 0%, transparent 80%), linear-gradient(90deg, #af4507 30px, #f5ba61 30px, #f5ba61 60px, #af4507 60px);
@@ -1194,28 +1195,28 @@ body {
   border-radius: 15px;
   position: absolute; }
 
-.axis1 {
+.playLightbox .axis1 {
   top: 0; }
 
-.axis2 {
+.playLightbox .axis2 {
   left: 0;
   bottom: 0px; }
 
-.paper {
+.playLightbox .paper {
   text-align: center;
   margin: auto;
   width: 400px;
   background-image: linear-gradient(0deg, rgba(255, 211, 130, 1) 0%, rgba(255, 211, 130, 1) 100%);
   border: 2px solid #c28c3a; }
 
-.leave{
+.playLightbox .leave{
   width: 45px;
   height: 45px;
   position: absolute;
   right: 70px;
   top: 32px;
 }
-.leave::after{
+.playLightbox .leave::after{
   content: " ";
   width: 40px;
   height: 8px;
@@ -1225,7 +1226,7 @@ body {
   right: 7%;
   top: 40%;
 }
-.leave::before {
+.playLightbox .leave::before {
   content: " ";
   width: 40px;
   height: 8px;
@@ -1235,7 +1236,7 @@ body {
   right: 7%;
   top: 40%;
 }
-.btnpri {
+.playLightbox .btnpri {
   margin: 10px; }
 // animation
 @keyframes gametop{

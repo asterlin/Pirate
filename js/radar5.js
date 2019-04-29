@@ -1,13 +1,13 @@
-function chartRadar(graphData){
+	function chartRadar(graphData){
 var ctx = document.getElementById('myChart').getContext('2d');
 Chart.defaults.global.legend.display = false;//讓label消失
-Chart.defaults.global.responsive = false;//不fit screen
+Chart.defaults.global.responsive = true;//不fit screen
 graphDataNew = graphData;
 // var graphData =[1,2,2,3];
 chart = new Chart(ctx, {
 type: 'radar',
 data: {
-    labels: ["A","B","C","D"],
+    labels: ["力量","智力","幸運","敏捷"],
     datasets: [{
         label: "",
         backgroundColor: "rgba(0, 255, 0,0.1)",
@@ -15,7 +15,7 @@ data: {
         pointBackgroundColor: ['#f1c40f','#e67e22','#16a085','#2980b9'],
         pointLabelFontSize : 20,
         borderWidth: 2,
-        pointBorderWidth: 20,
+        pointBorderWidth: 5,
         pointBorderColor: ['#f1c40f','#e67e22','#16a085','#2980b9'],
         data: graphData}]
 },
@@ -30,13 +30,13 @@ options: {
 			beginAtZero: true,
 			maxTicksLimit: 7,
 			min:0,
-			max:5
+			max:100
 		},
 		pointLabels:
 		{
-			fontSize: 50,
+			fontSize: 10,
 			color: '#0044BB',
-			boxWidth: 70
+			boxWidth: 20
 		},
 		gridLines: 
 		{
