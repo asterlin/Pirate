@@ -27,7 +27,10 @@ body {
 // #butStore{
 //     transform: rotateX(-50deg);
 // }
-
+// #OOXX{
+//     display: none;
+//     opacity: 0;
+// }
 
 
 // 標題
@@ -516,6 +519,7 @@ body {
         flex-wrap: nowrap;
         perspective: 1000px;
         margin: 0px auto;
+        padding-top: 0px;
         // margin-top: 20px;
         z-index: 20;
         overflow: hidden;

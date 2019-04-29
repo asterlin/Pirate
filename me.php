@@ -51,9 +51,9 @@ require_once("meToDB/meToDB.php");
 
 
 
-<!-- //---------------------------------------------------------------- -->
 
-    <!-- 選單 -->
+
+    <!--------------------------------- 選單 ------------------------------------->
     <label for="burgerCtrl">
         <input type="checkbox" name="" id="burgerCtrl">
         <div id="burger">
@@ -74,13 +74,19 @@ require_once("meToDB/meToDB.php");
             </ul>
         </nav>
     </header>
+<!------------------------------------------------------------------------------->
 
 
+<!-- --------------------------------標題---------------------------------------->
     <div class="meTitle">
         <h1 class="titlePri">俺の海賊船</h1>
     </div>
+<!-- --------------------------------------------------------------------------->
 
+
+<!-- ------------------------------wrap----------------------------------------->
     <div class="wrap">
+        <!-------------------------------- 左邊船體設計圖------------------------>
         <div class="col-12 col-md-12 col-xl-4 drawing">
             <img src="image/background/blueprint.png" alt="">
             <form id="Form">
@@ -96,10 +102,10 @@ require_once("meToDB/meToDB.php");
                     <object data="image/ship/200.svg" type="image/svg+xml" id="partSail"></object>
                     <img src="image/ship/100.png" alt="挑選船頭" id="partHead">
                         <canvas id="combineShip">
-                            <!-- 你看不到我你看不到我你看不到我你看不到我你看不到我你看不到我你看不到我你看不到我....好吧，請你<strong>下載並使用<a href="https://www.google.com/intl/zh-TW_ALL/chrome/">google chrome</a></strong>開啟這個網頁吧 -->
+                           
                         </canvas>
                         <canvas id="drawFlag">
-                            <!-- 你看不到我你看不到我你看不到我你看不到我你看不到我你看不到我你看不到我你看不到我....好吧，請你<strong>下載並使用<a href="https://www.google.com/intl/zh-TW_ALL/chrome/">google chrome</a></strong>開啟這個網頁吧(ㄏ￣▽￣)ㄏ   ㄟ(￣▽￣ㄟ) -->
+                            
                         </canvas>
                 </div>
             </div>
@@ -107,56 +113,74 @@ require_once("meToDB/meToDB.php");
                 <button id="butStore" class="btnpri"><span>儲存</span></button>
             </a>
         </div>
+        <!-- ------------------------------------------------------------------->
 
-
-        <!-- 個人資訊 -->
+        <!--------------------------------- 中間個人資訊 ------------------------->
         <div class="col-12 col-md-12 col-xl-4 boxNews">
             <div class="meNews">
                 
                 <ul class="col-12 col-md-5 field">
+                     <?php
+                    $memId = $_SESSION["memId"];
+                        while ($member->fetch(PDO::FETCH_ASSOC)) {
+                            if ($memberId == $memId) {
+                                ?> 
                     <li>
-                        帳號: <span><?php echo $_SESSION["memId"]; ?></span>
+                        帳號: <span><?php echo $memId ?></span>
                     </li>
                     <form method="Post"  id="meShipForm" >      
                     <li>
-                              
-                        密碼: <input type="password" name="memPsw" value=" <?php echo $_SESSION["memPsw"];?> " maxlength="12" readonly id="memPsw1">
+                              <input type="hidden" name="memId" value="<?php echo $memberId ?>">
+                        密碼: <input type="password" name="memPsw" value="<?php echo $memPsw?> " maxlength="12" readonly id="memPsw1">
                               <i class="fas fa-pen"></i>
                     </li>
                     
                     <li>
-                        ID: <input type="text" name="memNic" value="<?php echo $_SESSION["memNic"];?>" maxlength="12" readonly id="memNic1"> 
-                        <i class="fas fa-pen"></i>
+                        ID: <span><?php echo $memNic ?></span>
                     </li> 
                     </form>
                     <li>
-                        LV: <span> <?php echo $_SESSION["memLv"];?> </span>
+                        LV: <span> <?php echo $memLv ?> </span>
                       
                     </li>
                     <li>
-                          EXP:<span> <?php echo $_SESSION["memExp"];?>/100 </span>
+                        EXP:<span> <?php echo $memExp ?>/100 </span>
                     </li>
                     <li>
-                        金幣: <span> <?php echo $_SESSION["memMoney"];?> </span> G
+                        金幣: <span> <?php echo $memMoney ?> </span> G
                     </li>
                     <li>
+                    <div id="OOXX">
+                        <div id="str"><?php echo $strength ?></div>
+                        <div id="int"><?php echo $intelligence ?></div>
+                        <div id="lck"><?php echo $luck ?></div>
+                        <div id="age"><?php echo $agile ?></div>
+                    </div>
                         <button class="btnpri butNews" id="carryOut"><span>確認修改</span></button>
                     </li>
+                    <?php
+                            }
+                        }
+                    ?>  
                 </ul>
-           
-                <!-- 雷達圖 -->
+                <!-- --------------------------------------------------------------------------->
+                
+                <!--------------------------------------------- 雷達圖 ------------------------->
                 <div  class="col-12 col-md-7 radar">
                     <div id="btnArea">
-                    <button id="butS" class="but">力量</button>
-                    <button id="butI" class="but">智力</button>
-                    <button id="butL" class="but">幸運</button>
-                    <button id="butA" class="but">敏捷</button>
+                    <button id="butS" class="but" >力量</button>
+                    <button id="butI" class="but" >智力</button>
+                    <button id="butL" class="but" >幸運</button>
+                    <button id="butA" class="but" >敏捷</button>
                     </div>
                     <h3>天賦值: <span id="points"> <?php echo $_SESSION["talentPointsRemain"];?> </span> 點</h3>
                     <canvas id="myChart"  style="display: inline-block; width:90%; height:90%;"></canvas>
                 </div>
             </div>
-            <!-- 寶物造型頁籤 -->
+            <!-- --------------------------------------------------------------------------->
+
+
+            <!-- -------------------------------寶物造型頁籤 ------------------------------------>
             <div class="col-12  bookMark">
                 <div id="js-tabs">
                     <div id="tabs-nav">
@@ -171,7 +195,7 @@ require_once("meToDB/meToDB.php");
                                 <?php
                                 $memId = $_SESSION["memId"];
                                     while ($treasurestorageRow = $treasurestorage->fetch(PDO::FETCH_ASSOC)) {
-                                        if ($treasurestorageRow["memId"] == $memId) {
+                                        if ($treasurestorageId == $memId) {
                                             ?> 
                                     <li>
                                         <img src="image/treasure/<?php echo $treaImg ?>" alt="">
@@ -189,7 +213,7 @@ require_once("meToDB/meToDB.php");
                                 <?php
                                 $memId = $_SESSION["memId"];
                                     while ($mycustomrRow = $mycustom->fetch(PDO::FETCH_ASSOC)) {
-                                        if ($mycustomrRow["memId"] == $memId) {
+                                        if ($mycustomrId == $memId) {
                                             ?>      
                                     <li>
                                         <img src="image/product/<?php echo $modelImg?>" alt="" class="p<?php echo $modelPart?> myCustomer">
@@ -204,7 +228,13 @@ require_once("meToDB/meToDB.php");
                     </div>
                 </div>
             </div>
+            <!-- --------------------------------------------------------------------------->
+       
+       
         </div>
+        <!-- -------------------------------------------------------------------->
+
+        <!-- -----------------------------右邊紀錄攔------------------------------>
         <div class="col-12 col-md-12 col-xl-4 filewrap">
             <div id="js-tabs1" class="js-tabs1">
                 <div id="tabs-nav1">
@@ -217,7 +247,7 @@ require_once("meToDB/meToDB.php");
                     <?php
                     $memId = $_SESSION["memId"];
                      while ($traderecord->fetch(PDO::FETCH_ASSOC)) {
-                         if ($buyerId == $memId) {
+                         if ($traderecordId == $memId) {
                              ?>
                             <div class="tt textS">
                             <ul>
@@ -237,7 +267,7 @@ require_once("meToDB/meToDB.php");
                     <?php
                     $memId = $_SESSION["memId"];
                     while ($articlelistRow = $articlelist->fetch(PDO::FETCH_ASSOC)) {
-                        if ($articlelistRow['memId'] == $memId) {
+                        if ($articlelistId == $memId) {
                             ?>
                             <div class="tt textS">
                             <ul>
@@ -257,7 +287,10 @@ require_once("meToDB/meToDB.php");
                 <div style="clear: both"></div>
             </div>
         </div>
+        <!-- --------------------------------------------------------------------->
     </div>
+    <!-- ------------------------------wrap結束------------------------------------>
+
 
 
     <script src="js/jquery-3.3.1.min.js"></script>
@@ -267,26 +300,34 @@ require_once("meToDB/meToDB.php");
     <script src="js/me.js?<?php echo time();?>"></script>
     <script src="js/wavebtn.js"></script>
     <!-- <script src="js/meShip.js"></script> -->
+
     <script>
-        // window.addEventListener("load", getMyInfo());
-    </script>
-    <script>
-        
-		var chart;//radar圖名稱
-		var graphDataNew = [1,2,3,4];//從資料庫載入的Radar數值
-		function plusSkill(e){
-			point = parseInt($('#points').text());
-			if(point){
-				$('#points').text(point-1);
-				graphDataNew[$(this).index()] += 10;
-				chart.data.datasets[0].data=graphDataNew;
-				chart.update();//更新radar圖
-			}
-		}
-		$(document).ready(function(){
-			chartRadar(graphDataNew);//從資料庫載入的Radar數值,初始化用
-			$('.but').click(plusSkill);
-		});
+    //雷達圖--------------------------------------------------------------
+
+    str = parseInt($('#str').text());
+    int = parseInt($('#int').text());
+    lck = parseInt($('#lck').text());
+    age = parseInt($('#age').text());
+            console.log(parseInt(int));
+    str = graphDataNew[0];
+            
+    var chart;//radar圖名稱
+    var graphDataNew = [str, 20, 23, 60];//從資料庫載入的Radar數值
+    function plusSkill(e) {
+        point = parseInt($('#points').text());
+        if (point) {
+        $('#points').text(point - 1);
+        graphDataNew[$(this).index()] += 10;
+        chart.data.datasets[0].data = graphDataNew;
+        chart.update();//更新radar圖
+        }
+    }
+    $(document).ready(function () {
+        chartRadar(graphDataNew);//從資料庫載入的Radar數值,初始化用
+        $('.but').click(plusSkill);
+    });
+
+//-----------------------------------------------------------------
     </script>
 </body>
 

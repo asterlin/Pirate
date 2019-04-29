@@ -1,5 +1,4 @@
-// var memPsw,memLv,memExp,memMoney,intelligence,strength,agile,luck,shipImgAll,avatarImg,talentPointsRemain;
-// 寶物造型頁籤
+// 寶物造型頁籤----------------------------------------------------------------
 function jsTabs(evt, tabId) {
     var tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("tabs-panel");
@@ -15,8 +14,9 @@ function jsTabs(evt, tabId) {
     evt.currentTarget.className += " tabs-menu-active";
     return false;
 }
+//-----------------------------------------------------------------------------
 
-//交易發文頁籤
+//交易發文頁籤-------------------------------------------------------------------
 function jsTabs1(evt, tabId) {
     var tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("tabs-panel1");
@@ -32,6 +32,7 @@ function jsTabs1(evt, tabId) {
     evt.currentTarget.className += " tabs-menu-active1";
     return false;
 }
+//----------------------------------------------------------------
 
 //換船-------------------------------------------------------------
 window.addEventListener("load", function () {
@@ -66,8 +67,9 @@ window.addEventListener("load", function () {
             }
         }
     }
+    //---------------------------------------------------------------------
 
-    
+    //改密碼按鈕-------------------------------------------------------------
     var penBut = document.querySelectorAll(".fa-pen");
     // for( var i=0; i<penBut.length; i++){
     $('.fa-pen').click(function () {
@@ -83,7 +85,7 @@ window.addEventListener("load", function () {
 //     console.log('123');
 // },false)
 
-
+//改密碼XML---------------------------------------------------------
 function login() {
     var xhr = new XMLHttpRequest();
     xhr.onload = function () {
@@ -95,7 +97,7 @@ function login() {
     }
 
     var myData = new FormData(document.getElementById("meShipForm"));
-
+    console.log(document.getElementById("meShipForm"));
     var url = "meToDB/meShipFormData.php";
     xhr.open("Post", url, true);
     xhr.send(myData);
@@ -105,6 +107,10 @@ function login() {
 window.addEventListener("load", function () {
     $id("carryOut").onclick = login;
 })
+//------------------------------------------------------------------
+
+
+
 
 
 
