@@ -114,24 +114,24 @@ try {
         <nav id="headerMenu" >
             <ul>
                 <li class="menuSwitch">
-                    <a href="play.html">海賊試煉場</i></a>
+                    <a href="play.php">海賊試煉場</i></a>
                     <ul class="headerSub">
-                        <li><a href="javascript:;">海賊試煉</a></li>
-                        <li><a href="javascript:;">啟航尋寶</a></li>
+                        <li><a href="play.php#game">海賊試煉</a></li>
+                        <li><a href="play.php#gpsWrap">啟航尋寶</a></li>
                     </ul>
                 </li>
                 <li class="menuSwitch">
-                    <a href="market.html">海上市集</i></a>
+                    <a href="market.php">海上市集</i></a>
                     <ul class="headerSub">
-                        <li><a href="javascript:;">黑市</a></li>
-                        <li><a href="javascript:;">造船廠</a></li>
+                        <li><a href="market.php">黑市</a></li>
+                        <li><a href="market.php">造船廠</a></li>
                     </ul>
                 </li>
-                <li class="menuSwitch"><a href="bar.html">情報酒館</a></li>
+                <li class="menuSwitch"><a href="bar.php">情報酒館</a></li>
                 <li class="menuSwitch">
-                    <a href="me.html">俺の海賊船</i></a>
+                    <a href="me.php">俺の海賊船</i></a>
                     <ul class="headerSub">
-                        <li><a href="javascript:;">登入</a></li>
+                        <li><a href="javascript:;" class="loginHere">登入</a></li>
                     </ul>
                 </li>
             </ul>
@@ -155,9 +155,9 @@ try {
     <div id="homeDIY">
         <p class="textEmphasis">四個步驟打造<strong class="textHiliR">專屬海賊船</strong></p>
         <div id="shipArea">
-            <img src="image/ship/<?php echo $DIYbodys[count($DIYbodys)-1] ?>.png" alt="挑選船身" id="partBody">
+            <img src="image/ship/<?php echo $DIYbodys[count($DIYbodys)-1] ?>" alt="挑選船身" id="partBody">
             <object data="image/ship/<?php echo $DIYSails[count($DIYSails)-1] ?>.svg" type="image/svg+xml" id="partSail"></object>
-            <img src="image/ship/<?php echo $DIYheads[count($DIYheads)-1] ?>.png" alt="挑選船頭" id="partHead">
+            <img src="image/ship/<?php echo $DIYheads[count($DIYheads)-1] ?>" alt="挑選船頭" id="partHead">
             <canvas id="combineShip">
                 你看不到我你看不到我你看不到我你看不到我你看不到我你看不到我你看不到我你看不到我....好吧，請你<strong>下載並使用<a href="https://www.google.com/intl/zh-TW_ALL/chrome/">google chrome</a></strong>開啟這個網頁吧
             </canvas>
@@ -188,7 +188,7 @@ try {
                         ?>
                         <label>
                             <input type="radio" name="DIYbody" id="" checked>
-                            <img src="image/ship/<?php echo $value ?>.png" alt="船身<?php echo $key ?>" class="DIYbody" id="DIYbody<?php echo $key ?>">
+                            <img src="image/ship/<?php echo $value ?>" alt="船身<?php echo $key ?>" class="DIYbody" id="DIYbody<?php echo $key ?>">
                         </label>
                         <?php
                         }
@@ -201,7 +201,7 @@ try {
                         ?>
                         <label>
                             <input type="radio" name="DIYhead" id="" checked>
-                            <img src="image/ship/<?php echo $value ?>.png" alt="船頭<?php echo $key ?>" class="DIYhead" id="DIYhead<?php echo $key ?>">
+                            <img src="image/ship/<?php echo $value ?>" alt="船頭<?php echo $key ?>" class="DIYhead" id="DIYhead<?php echo $key ?>">
                         </label>
                         <?php
                         }
@@ -241,7 +241,7 @@ try {
                 <div class="clearfix"></div>
             </div>
             <button class="btnsec invisible" id="DIYPrev" ><span>上一步</span></button>
-            <button class="btnpri invisible" id="finishDIY" ><span>完成製作</span></button>
+            <button class="btnpri invisible loginHere" id="finishDIY" ><span>完成製作</span></button>
             <button class="btnsec" id="DIYNext"><span>下一步</span></button>
         </div>
     </div>
@@ -272,7 +272,7 @@ try {
                         <img class="wantedPaper" src="image/home/wanted.svg" alt="懸賞單低階第一">
                         <p class="wantName"><?php echo $rowGameHiL['memNic']; ?></p>
                         <p class="wantScore">高階試煉 <?php echo $rowGameHiL['highscoreL'];  ?>秒</p>
-                        <img class="wantedShip" src="image/ship/<?php echo $rowGameHiL['shipImgAll'];  ?>" alt="<?php echo $rowGameHiL['memNic']; ?>的海賊船">
+                        <img class="wantedShip" src="image/ship/ship.png" alt="我是大帥哥的海賊船">
                     </div>
                 </div>
                 <div class="wrapWanted">
@@ -280,7 +280,7 @@ try {
                         <img class="wantedPaper" src="image/home/wanted.svg" alt="懸賞單中階第一">
                         <p class="wantName"><?php echo $rowGameHiM['memNic']; ?></p>
                         <p class="wantScore">中階試煉 <?php echo $rowGameHiM['highscoreM'];  ?>秒</p>
-                        <img class="wantedShip" src="image/ship/<?php echo $rowGameHiM['shipImgAll'];  ?>" alt="<?php echo $rowGameHiM['memNic']; ?>的海賊船">
+                        <img class="wantedShip" src="image/ship/ship.png" alt="我是大帥哥的海賊船">
                     </div>
                 </div>
                 <div class="wrapWanted">
@@ -288,7 +288,7 @@ try {
                         <img class="wantedPaper" src="image/home/wanted.svg" alt="懸賞單初階第一">
                         <p class="wantName"><?php echo $rowGameHiH['memNic']; ?></p>
                         <p class="wantScore">初階試煉 <?php echo $rowGameHiH['highscoreH'];  ?>秒</p>
-                        <img class="wantedShip" src="image/ship/<?php echo $rowGameHiH['shipImgAll'];  ?>" alt="<?php echo $rowGameHiH['memNic']; ?>的海賊船">
+                        <img class="wantedShip" src="image/ship/ship.png" alt="我是大帥哥的海賊船">
                     </div>
                 </div>
             </div>
@@ -483,9 +483,6 @@ try {
         <p class="textS">Copyleft © 2019</p>
     </footer>
 
-
-
-    <!-- 下列為套件 -->
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/iro.min.js"></script>
     <script src="js\TweenMax.min.js"></script>
@@ -493,12 +490,11 @@ try {
     <script src="js\debug.addIndicators.min.js"></script>
     <script src="js\animation.gsap.min.js"></script>
     <script src="js\pixi.min.js"></script>
-    <script src="js/iro.min.js"></script>
-    <script src="http://maps.google.com/maps/api/js?key=AIzaSyBKB16XDqQ6Qnki2BdJUQXXP4hEpK0_2wo&callback=initMap"></script>
-    <!-- 以下為我們的js -->
     <script src="js/wavebtn.js"></script>
     <script src="js/header.js"></script>
     <script src="js/gameGps.js"></script>
+    <script src="http://maps.google.com/maps/api/js?key=AIzaSyBKB16XDqQ6Qnki2BdJUQXXP4hEpK0_2wo&callback=initMap"></script>
+    <script src="js/iro.min.js"></script>
     <script src="js/shipDIY.js"></script>
     <script src="js/home.js"></script>
     <script src="js/homeMapPIXI.js"></script>
