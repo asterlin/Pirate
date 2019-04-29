@@ -8,7 +8,7 @@ try {
     $member = $pdo->prepare( $sql ); //先編譯好
     $member->bindValue(":memId", $memId); //代入資料
     $member->bindValue(":memPsw", $memPsw);
-    $member->execute();//執行之
+    $member->execute();//
 
     if( $member->rowCount() == 0 ){//找不到
         echo 0;

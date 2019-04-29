@@ -158,7 +158,19 @@ input {
   margin-left: 0; }
 
 .verification {
+<<<<<<< HEAD
+  padding: 20px 0;
+  text-align: center;
+  margin: auto;
+  width:400px;
+  display: none;
+  /* position: absolute0; */
+  top: 100px;
+  
+}
+=======
   float: left; }
+>>>>>>> 2319e0d00a4dca0195babaedbe4d4604981d9b10
 
 .Data-Title > label {
   margin: 10px; }

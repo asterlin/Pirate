@@ -61,16 +61,33 @@ require_once("meToDB/meToDB.php");
             <div class="burgerLine"></div>
         </div>
     </label>
-    <header>
-        <h1 id="headerLogo"><a href="index.html">
-                <img src="image/logo.svg" alt="大海賊帝國">
-            </a></h1>
-        <nav id="headerMenu">
+    <header class=""><!-- homeHeadHide-->
+        <h1 id="headerLogo"><a href="javascript:;">
+            <img src="image/logo.svg" alt="大海賊帝國">
+        </a></h1>
+        <nav id="headerMenu" >
             <ul>
-                <li><a href="game.html">海賊試煉場</a></li>
-                <li><a href="market.html">海上市集</a></li>
-                <li><a href="bar.html">情報酒館</a></li>
-                <li><a href="me.html">俺の海賊船</a></li>
+                <li class="menuSwitch">
+                    <a href="play.php">海賊試煉場</i></a>
+                    <ul class="headerSub">
+                        <li><a href="play.php#game">海賊試煉</a></li>
+                        <li><a href="play.php#gpsWrap">啟航尋寶</a></li>
+                    </ul>
+                </li>
+                <li class="menuSwitch">
+                    <a href="market.php">海上市集</i></a>
+                    <ul class="headerSub">
+                        <li><a href="market.php">黑市</a></li>
+                        <li><a href="market.php">造船廠</a></li>
+                    </ul>
+                </li>
+                <li class="menuSwitch"><a href="bar.php">情報酒館</a></li>
+                <li class="menuSwitch">
+                    <a href="me.php">俺の海賊船</i></a>
+                    <ul class="headerSub">
+                        <li><a href="javascript:;" class="loginHere">登入</a></li>
+                    </ul>
+                </li>
             </ul>
         </nav>
     </header>
@@ -309,10 +326,13 @@ require_once("meToDB/meToDB.php");
     lck = parseInt($('#lck').text());
     age = parseInt($('#age').text());
             console.log(parseInt(int));
-    str = graphDataNew[0];
+    // str = graphDataNew[0];
+    // int = graphDataNew[1];
+    // lck = graphDataNew[2];
+    // age = graphDataNew[3];
             
     var chart;//radar圖名稱
-    var graphDataNew = [str, 20, 23, 60];//從資料庫載入的Radar數值
+    var graphDataNew = [str, int, lck, age];//從資料庫載入的Radar數值
     function plusSkill(e) {
         point = parseInt($('#points').text());
         if (point) {

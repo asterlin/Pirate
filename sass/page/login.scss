@@ -48,7 +48,7 @@ input{
 
 .Data-Title {
     float: left;
-    width: 25%; /* Label寬度，視情況調整 */
+    width: 25%; /* Label寬度，視情況調整0 */
     margin-right:0px;
     margin-left: 60px;
     text-align: right;
@@ -64,7 +64,13 @@ input{
     
 }
 .verification{
-    float: left;
+    padding: 20px 0;
+    text-align: center;
+    margin: auto;
+    width:400px;
+    display: none;
+    /* position: absolute0; */
+    top: 100px;
     
 }
 
@@ -75,7 +81,7 @@ input{
 
 
 .paper{
-    width: 450px;
+    width: 410px;
     padding: 50px 0;
 }
 @media screen and (max-width: 768px){
