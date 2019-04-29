@@ -309,10 +309,13 @@ require_once("meToDB/meToDB.php");
     lck = parseInt($('#lck').text());
     age = parseInt($('#age').text());
             console.log(parseInt(int));
-    str = graphDataNew[0];
+    // str = graphDataNew[0];
+    // int = graphDataNew[1];
+    // lck = graphDataNew[2];
+    // age = graphDataNew[3];
             
     var chart;//radar圖名稱
-    var graphDataNew = [str, 20, 23, 60];//從資料庫載入的Radar數值
+    var graphDataNew = [str, int, lck, age];//從資料庫載入的Radar數值
     function plusSkill(e) {
         point = parseInt($('#points').text());
         if (point) {
