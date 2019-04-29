@@ -28,8 +28,13 @@ require_once("meToDB/meToDB.php");
             <div class="burgerLine"></div>
         </div>
     </label>
+<<<<<<< HEAD
     <header class="homeHeadHide">
         <h1 id="headerLogo"><a href="javascript:;">
+=======
+    <header class=""><!-- homeHeadHide-->
+        <h1 id="headerLogo"><a href="index.php">
+>>>>>>> 9e3a882294bd5004ff6317b0417fdeb2e4cdc0d5
             <img src="image/logo.svg" alt="大海賊帝國">
         </a></h1>
         <nav id="headerMenu" >

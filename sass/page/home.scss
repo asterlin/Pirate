@@ -108,13 +108,15 @@ p{ //這裡其實不懂為何_font設定的在瀏覽器不執行
 }
 //船
 #shipArea{
-    position: relative;
+    position: absolute;
     // height: 240px;
     // width: 180px;
     width: 600px;
     height: 650px;
     // margin: auto;
-    transform: scale(0.3);//大螢幕為0.4吧，修改時，前面的shiparea寬度也要修改
+    transform: scale(0.6);//大螢幕為0.4吧，修改時，前面的shiparea寬度也要修改
+    transform-origin: 0%;
+    top:-30px;
 }
 #partSail,#partHead,#partBody,#drawFrame{
     width: 100%;
@@ -226,6 +228,7 @@ p{ //這裡其實不懂為何_font設定的在瀏覽器不執行
     #shipArea{
         // height: 200px;
         transform: scale(1); //0.4
+        position: static;
         float: left;
     }
 
@@ -302,7 +305,7 @@ header.homeHeadHide{
         width: 100%;
     }
     .btnsec span{
-        padding: 10px;
+        padding: 8px;
     }
     .btnpri span{
         padding: 10px;
@@ -338,6 +341,9 @@ header.homeHeadHide{
     &:hover{
         box-shadow:0 3px 5px #a67c52;
         transform: translateY(-3px);
+    }
+    &#shipPreview{
+        width: 300px;
     }
 }
 #DIYHeads,#DIYSails{
@@ -1027,7 +1033,7 @@ h2 a{
 //         }
 //     }
 
-// }
+}
 @media screen and (min-width:1024px){
     #homeBar{
         max-width: 1200px;
@@ -1124,5 +1130,4 @@ footer{
 }
 footer img{
     width: 250px;
-}
 }
