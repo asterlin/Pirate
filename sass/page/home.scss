@@ -37,7 +37,7 @@ p{ //這裡其實不懂為何_font設定的在瀏覽器不執行
     padding-left: 10px; //此處為了校正字距
 }
 .btnsec{
-    padding: 10px;
+    // padding: 10px;
     font-size: 1.25rem;
     // -webkit-tap-highlight-color: transparent;
 }
@@ -286,6 +286,12 @@ header.homeHeadHide{
     .DIYStatLine.active{
         width: 100%;
     }
+    .btnsec span{
+        padding: 10px;
+    }
+    .btnpri span{
+        padding: 10px;
+    }
 
 }
 #DIYSlides{
@@ -380,6 +386,7 @@ header.homeHeadHide{
     text-align: center;
     line-height: 30px;
     border-radius: 100px;
+    cursor: pointer;
 }
 #eraser{
     border: 2px solid $brown;
@@ -739,6 +746,7 @@ h2 a{
         color: #736357;
         // background: $beige;
         transition-duration: 0.1s;
+        cursor: pointer;
     }
     .fa-arrow-circle-right{
         right: -25px;
@@ -903,9 +911,6 @@ h2 a{
             }
         }
         
-        &.hide{
-            display: none;
-        }
         &:nth-child(5){ //此處將與大卡片相同商品的隱藏起來
             margin-left: 310px;
             visibility: hidden;
@@ -913,12 +918,9 @@ h2 a{
         &:hover{
             box-shadow: 0 5px 10px rgba(166, 124, 82, 0.8);
             transform: translateY(-5px);
-        }
-        
+        }        
     }
 
-
-    
 }
 
 //情報酒館

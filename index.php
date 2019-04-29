@@ -40,9 +40,13 @@ try {
 
     //取得最新寶物
     $sql = "
-        select r.tradeId, l.treaName, r.price, r.salerId, l.treaStr, l.treaInt, l.treaLuk, l.treaAgi, l.treaImg 
-        from traderecord r join treasurelist l on r.treaId = l.treaId 
-        order by saleTime desc limit 9";
+        select *
+        from traderecord r 
+        join treasurelist l on r.treaId = l.treaId 
+        join member m on r.salerId = m.memId
+        where r.buyerId is null and datediff(CURDATE() , r.saleTime) <= 3
+        order by saleTime desc limit 9
+        ;";
     $staProds = $pdo -> query($sql);
     $rowsProds = $staProds->fetchAll(PDO::FETCH_ASSOC);
    ?>
@@ -71,6 +75,7 @@ try {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>《大海賊帝國》說走就走！來場海上冒險吧！</title>
+    
     <link rel="stylesheet" href="css/home.css">
     <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
     <link rel="stylesheet" href="css/wavebtn.css">
@@ -116,7 +121,7 @@ try {
                 </canvas>
                 <div id="pen"></div>
             </div> -->
-            <button class="btnsec scrToDIY">成為海賊</button>
+            <button class="btnsec scrToDIY"><span>成為海賊</span></button>
         </div>
     </div>
     <div id="homeDIY">
@@ -207,9 +212,9 @@ try {
                 </div>
                 <div class="clearfix"></div>
             </div>
-            <button class="btnsec invisible" id="DIYPrev" >上一步</button>
-            <button class="btnpri invisible" id="finishDIY" >完成製作</button>
-            <button class="btnsec" id="DIYNext">下一步</button>
+            <button class="btnsec invisible" id="DIYPrev" ><span>上一步</span></button>
+            <button class="btnpri invisible" id="finishDIY" ><span>完成製作</span></button>
+            <button class="btnsec" id="DIYNext"><span>下一步</span></button>
         </div>
     </div>
     <div id="homeGame">
@@ -252,7 +257,7 @@ try {
                 </div>
                 <div class="wrapWanted">
                     <div class="wanted">
-                        <img class="wantedPaper" src="image/home/wanted.svg" alt="懸賞單高階第一">
+                        <img class="wantedPaper" src="image/home/wanted.svg" alt="懸賞單初階第一">
                         <p class="wantName"><?php echo $rowGameHiH['memNic']; ?></p>
                         <p class="wantScore">初階試煉 <?php echo $rowGameHiH['highscoreH'];  ?>秒</p>
                         <img class="wantedShip" src="image/ship/ship.png" alt="我是大帥哥的海賊船">
@@ -296,13 +301,13 @@ try {
     <div id="homeGameTrea">
         <img src="image/gpsGame/treaBoxOpen.svg" alt="藏寶箱">
         <div class="homeTreaImg">
-            <img src="image/treasure/trea4.svg" alt="寶物">
+            <img src="image/treasure/004.png" alt="寶物">
         </div>
         <div class="homeTreaImg">
-            <img src="image/treasure/trea5.svg" alt="寶物">
+            <img src="image/treasure/005.png" alt="寶物">
         </div>
         <div class="homeTreaImg">
-            <img src="image/treasure/trea6.svg" alt="寶物">
+            <img src="image/treasure/006.png" alt="寶物">
         </div>
     </div>
     <div class="clearfix"></div>
@@ -327,9 +332,9 @@ try {
                         <p id="homeProdName" class="homeProdName textM"><?php echo $rowsProds[0]['treaName'] ?></p>
                         <p class="homeProdPrice textM">
                             價格：<strong id="homeProdPrice" class="textHiliR"><?php echo $rowsProds[0]['price'] ?></strong> G
-                            <a href="javascript:;" class="btnpri"><span>直接購買</span></a>
+                            <a href="javascript:;" class="btnpri" id="homeProdBuy" tradeId="<?php echo $rowsProds[0]['tradeId'] ?>"><span>直接購買</span></a>
                         </p>
-                        <p class="homeProdSaler textS">賣家：<span id="homeProdSaler"><?php echo $rowsProds[0]['salerId'] ?></span></p>
+                        <p class="homeProdSaler textS">賣家：<span id="homeProdSaler"><?php echo $rowsProds[0]['memNic'] ?></span></p>
                         <p class="homeProdTalent textS">寶物天賦：<br>
                             力量：<span id="homeProdStr"><?php echo $rowsProds[0]['treaStr'] ?></span><br>
                             智力：<span id="homeProdInt"><?php echo $rowsProds[0]['treaInt'] ?></span><br>
@@ -528,9 +533,9 @@ try {
     <script src="js\debug.addIndicators.min.js"></script>
     <script src="js\animation.gsap.min.js"></script>
     <script src="js\pixi.min.js"></script>
+    <script src="js/wavebtn.js"></script>
     <script src="js/header.js"></script>
     <script src="js/gameGps.js"></script>
-    <script src="js/wavebtn.js"></script>
     <script src="http://maps.google.com/maps/api/js?key=AIzaSyBKB16XDqQ6Qnki2BdJUQXXP4hEpK0_2wo&callback=initMap"></script>
     <script src="js/iro.min.js"></script>
     <script src="js/shipDIY.js"></script>
