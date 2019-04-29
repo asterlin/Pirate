@@ -10,9 +10,9 @@
 //媒體查詢
 @import'../base/media';
 
-* {
-    outline: 1px solid rgb(125, 131, 211);
-}
+// * {
+//     outline: 1px solid rgb(125, 131, 211);
+// }
 
 body {
     background-image: url('../image/background/BgPage.png');
@@ -24,6 +24,13 @@ body {
     border: 1px solid transparent;
 }
 
+// #butStore{
+//     transform: rotateX(-50deg);
+// }
+// #OOXX{
+//     display: none;
+//     opacity: 0;
+// }
 
 
 // 標題
@@ -79,6 +86,7 @@ body {
         position: relative;
         box-sizing: border-box;
         padding: 30px 0;
+        margin-top: 20px;
 
         img {
             height: 100%;
@@ -141,12 +149,16 @@ body {
                 justify-content: space-evenly;
 
                 li {
-                    margin: 10px 0;
-                    padding: 0px 20px;
+                    // margin: 10px 0;
+                    // padding-top: 20px;
+                    padding: 10px 20px;
                     font-family: $fofaText;
 
                     a {
                         color: $brown;
+                    }
+                    input{
+                        width: 100px;
                     }
                 }
             }
@@ -260,7 +272,8 @@ body {
 // 頁籤內容物
 .content ul {
     display: flex;
-    justify-content: space-around;
+    // justify-content: space-around;
+    justify-content: flex-start;
     flex-wrap: wrap;
 
     li {
@@ -350,9 +363,10 @@ body {
     // width: 100px;
     // height: 100px;
     box-sizing: border-box;
+    border-radius: 25px;
     margin: 10px;
     padding: 10px;
-    background-color: #aaf;
+    background-color: #bcb19e;
 
     li {
         padding: 10px 5px;
@@ -360,7 +374,12 @@ body {
 }
 
 
+
 @media screen and(min-width: 768px) {
+
+    #butStore{
+        transform: rotateX(-50deg);
+    }
 
     .meTitle {
         padding-top: 210px;
@@ -384,8 +403,9 @@ body {
         // flex-wrap: wrap;
         perspective: 1000px;
         margin: 0px auto;
+        padding-top: 100px;
         // margin-top: 20px;
-        z-index: 20;
+        z-index: 1;
         overflow: hidden;
 
 
@@ -499,6 +519,7 @@ body {
         flex-wrap: nowrap;
         perspective: 1000px;
         margin: 0px auto;
+        padding-top: 0px;
         // margin-top: 20px;
         z-index: 20;
         overflow: hidden;

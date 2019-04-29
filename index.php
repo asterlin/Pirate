@@ -38,21 +38,31 @@ try {
    if(!isset($rowGameHiM))$rowGameHiM = array('memNic'=>'從缺','highscoreM'=>'--');
    if(!isset($rowGameHiH))$rowGameHiH = array('memNic'=>'從缺','highscoreH'=>'--');
 
-    //取得最新寶物
+    //取得最新寶物(篩選條件1.無購買人2.三天內)
     $sql = "
-        select r.tradeId, l.treaName, r.price, r.salerId, l.treaStr, l.treaInt, l.treaLuk, l.treaAgi, l.treaImg 
-        from traderecord r join treasurelist l on r.treaId = l.treaId 
-        order by saleTime desc limit 9";
+        select *
+        from traderecord r 
+        join treasurelist l on r.treaId = l.treaId 
+        join member m on r.salerId = m.memId
+        where r.buyerId is null and datediff(CURDATE() , r.saleTime) <= 3
+        order by saleTime desc limit 9
+        ;";
     $staProds = $pdo -> query($sql);
     $rowsProds = $staProds->fetchAll(PDO::FETCH_ASSOC);
+    //送商品列表資料給js
    ?>
    <script>var homeProdArr = <?php echo json_encode($rowsProds) ?>;</script>
    <?php
 
-    
+    //酒館熱門消息
+    $sqlHotIssue = "select * from articlelist join member on(articlelist.memId = member.memId) order by clickAmt desc limit 4";
+    $hotIssue = $pdo->prepare( $sqlHotIssue );
+    $hotIssue->execute();
 
-
-
+    //酒館最新消息
+    $sqlNews = "select * from articlelist join member on(articlelist.memId = member.memId) order by artTime desc limit 4";
+    $news = $pdo->prepare( $sqlNews );
+    $news->execute();
 
 } catch (PDOException $e) {
     $errMsg .= "錯誤行：".$e->getLine()."<br>";
@@ -71,6 +81,7 @@ try {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>《大海賊帝國》說走就走！來場海上冒險吧！</title>
+    
     <link rel="stylesheet" href="css/home.css">
     <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
     <link rel="stylesheet" href="css/wavebtn.css">
@@ -90,10 +101,27 @@ try {
         </a></h1>
         <nav id="headerMenu" >
             <ul>
-                <li><a href="play.html">海賊試煉場</a></li>
-                <li><a href="market.html">海上市集</a></li>
-                <li><a href="bar.html">情報酒館</a></li>
-                <li><a href="me.html">俺の海賊船</a></li>
+                <li class="menuSwitch">
+                    <a href="play.html">海賊試煉場</i></a>
+                    <ul class="headerSub">
+                        <li><a href="javascript:;">海賊試煉</a></li>
+                        <li><a href="javascript:;">啟航尋寶</a></li>
+                    </ul>
+                </li>
+                <li class="menuSwitch">
+                    <a href="market.html">海上市集</i></a>
+                    <ul class="headerSub">
+                        <li><a href="javascript:;">黑市</a></li>
+                        <li><a href="javascript:;">造船廠</a></li>
+                    </ul>
+                </li>
+                <li class="menuSwitch"><a href="bar.html">情報酒館</a></li>
+                <li class="menuSwitch">
+                    <a href="me.html">俺の海賊船</i></a>
+                    <ul class="headerSub">
+                        <li><a href="javascript:;">登入</a></li>
+                    </ul>
+                </li>
             </ul>
         </nav>
     </header>
@@ -104,19 +132,12 @@ try {
         <img id="homeBannerLogo" src="image/logo.svg" alt="大海賊帝國">
         <div id="homepixiCanvas"></div>
         <div id="wrapShipArea">
-            <!-- <div id="shipArea">
-                <img src="image/ship/300.png" alt="挑選船身" id="partBody">
-                <object data="image/ship/200.svg" type="image/svg+xml" id="partSail"></object>
-                <img src="image/ship/100.png" alt="挑選船頭" id="partHead">
-                <canvas id="combineShip">
-                    你看不到我你看不到我你看不到我你看不到我你看不到我你看不到我你看不到我你看不到我....好吧，請你<strong>下載並使用<a href="https://www.google.com/intl/zh-TW_ALL/chrome/">google chrome</a></strong>開啟這個網頁吧
-                </canvas>
-                <canvas id="drawFlag">
-                    你看不到我你看不到我你看不到我你看不到我你看不到我你看不到我你看不到我你看不到我....好吧，請你<strong>下載並使用<a href="https://www.google.com/intl/zh-TW_ALL/chrome/">google chrome</a></strong>開啟這個網頁吧(ㄏ￣▽￣)ㄏ   ㄟ(￣▽￣ㄟ)
-                </canvas>
-                <div id="pen"></div>
-            </div> -->
-            <button class="btnsec scrToDIY">成為海賊</button>
+            <div id="bannerShip">
+                <img src="image/ship/300.png" alt="船身">
+                <img src="image/ship/200.svg" alt="船帆">
+                <img src="image/ship/100.png" alt="船頭">
+            </div>
+            <button class="btnsec scrToDIY"><span>成為海賊</span></button>
         </div>
     </div>
     <div id="homeDIY">
@@ -207,9 +228,9 @@ try {
                 </div>
                 <div class="clearfix"></div>
             </div>
-            <button class="btnsec invisible" id="DIYPrev" >上一步</button>
-            <button class="btnpri invisible" id="finishDIY" >完成製作</button>
-            <button class="btnsec" id="DIYNext">下一步</button>
+            <button class="btnsec invisible" id="DIYPrev" ><span>上一步</span></button>
+            <button class="btnpri invisible" id="finishDIY" ><span>完成製作</span></button>
+            <button class="btnsec" id="DIYNext"><span>下一步</span></button>
         </div>
     </div>
     <div id="homeGame">
@@ -252,7 +273,7 @@ try {
                 </div>
                 <div class="wrapWanted">
                     <div class="wanted">
-                        <img class="wantedPaper" src="image/home/wanted.svg" alt="懸賞單高階第一">
+                        <img class="wantedPaper" src="image/home/wanted.svg" alt="懸賞單初階第一">
                         <p class="wantName"><?php echo $rowGameHiH['memNic']; ?></p>
                         <p class="wantScore">初階試煉 <?php echo $rowGameHiH['highscoreH'];  ?>秒</p>
                         <img class="wantedShip" src="image/ship/ship.png" alt="我是大帥哥的海賊船">
@@ -296,13 +317,13 @@ try {
     <div id="homeGameTrea">
         <img src="image/gpsGame/treaBoxOpen.svg" alt="藏寶箱">
         <div class="homeTreaImg">
-            <img src="image/treasure/trea4.svg" alt="寶物">
+            <img src="image/treasure/004.png" alt="寶物">
         </div>
         <div class="homeTreaImg">
-            <img src="image/treasure/trea5.svg" alt="寶物">
+            <img src="image/treasure/005.png" alt="寶物">
         </div>
         <div class="homeTreaImg">
-            <img src="image/treasure/trea6.svg" alt="寶物">
+            <img src="image/treasure/006.png" alt="寶物">
         </div>
     </div>
     <div class="clearfix"></div>
@@ -327,9 +348,9 @@ try {
                         <p id="homeProdName" class="homeProdName textM"><?php echo $rowsProds[0]['treaName'] ?></p>
                         <p class="homeProdPrice textM">
                             價格：<strong id="homeProdPrice" class="textHiliR"><?php echo $rowsProds[0]['price'] ?></strong> G
-                            <a href="javascript:;" class="btnpri"><span>直接購買</span></a>
+                            <a href="javascript:;" class="btnpri" id="homeProdBuy" tradeId="<?php echo $rowsProds[0]['tradeId'] ?>"><span>直接購買</span></a>
                         </p>
-                        <p class="homeProdSaler textS">賣家：<span id="homeProdSaler"><?php echo $rowsProds[0]['salerId'] ?></span></p>
+                        <p class="homeProdSaler textS">賣家：<span id="homeProdSaler"><?php echo $rowsProds[0]['memNic'] ?></span></p>
                         <p class="homeProdTalent textS">寶物天賦：<br>
                             力量：<span id="homeProdStr"><?php echo $rowsProds[0]['treaStr'] ?></span><br>
                             智力：<span id="homeProdInt"><?php echo $rowsProds[0]['treaInt'] ?></span><br>
@@ -365,142 +386,70 @@ try {
     <div id="homeBar">
         <h2><a href="bar.html">情報酒館</a></h2>
         <p class="textEmphasis">眾所皆知的<span class="textHiliR">熱門八卦</span>你不能不知道</p>
-        <div id="homeBarHot">
-            <article class="homeHotCard">
-                <p>
-                    <img src="image/home/hot1.png" alt="【競技】如何打贏大媽">
-                    <span class="textL">【尋寶】聽說大祕寶在綠島石朗!?</span><br>
-                    <span class="textM">
-                        官方釋出消息，最新限定活動以潛水為主題，需潛入海中才能獲得...閱讀更多
-                    </span>
-                </p>
-                <p class="textS">
-                    <i class='fas fa-eye'></i>
-                    717
-                    <i class='fas fa-comment-dots'></i>
-                    7214
-                </p>
-                <div class="clearfix"></div>
-            </article>
-            <article class="homeHotCard">
-                <p>
-                    <img src="image/home/hot2.png" alt="【競技】如何打贏大媽">
-                    <span class="textL">【競技】如何打贏大媽</span><br>
-                    <span class="textM">
-                        這次活動角竟然是酒吞，讚嘆營運 為了不讓縮圖停在怪怪的地方先上個預覽圖，請見諒ˊˋ 以下是全...繼...閱讀更多
-                    </span>
-                </p>
-                <p class="textS">
-                    <i class='fas fa-eye'></i>
-                    824
-                    <i class='fas fa-comment-dots'></i>
-                    412
-                </p>
-                <div class="clearfix"></div>
-            </article>
-            <article class="homeHotCard">
-                <p>
-                    <img src="image/home/hot1.png" alt="【競技】如何打贏大媽">
-                    <span class="textL">【尋寶】聽說大祕寶在綠島石朗!?</span><br>
-                    <span class="textM">
-                        官方釋出消息，最新限定活動以潛水為主題，需潛入海中才能獲得...閱讀更多
-                    </span>
-                </p>
-                <p class="textS">
-                    <i class='fas fa-eye'></i>
-                    717
-                    <i class='fas fa-comment-dots'></i>
-                    7214
-                </p>
-                <div class="clearfix"></div>
-            </article>
-            <article class="homeHotCard">
-                <p>
-                    <img src="image/home/hot2.png" alt="【競技】如何打贏大媽">
-                    <span class="textL">【競技】如何打贏大媽</span><br>
-                    <span class="textM">
-                        這次活動角竟然是酒吞，讚嘆營運 為了不讓縮圖停在怪怪的地方先上個預覽圖，請見諒ˊˋ 以下是全...繼...閱讀更多
-                    </span>
-                </p>
-                <p class="textS">
-                    <i class='fas fa-eye'></i>
-                    824
-                    <i class='fas fa-comment-dots'></i>
-                    412
-                </p>
-                <div class="clearfix"></div>
-            </article>
-        </div>
+        <div id="hotIssue">
+            <?php 
+            while($hotIssueRow = $hotIssue ->fetch(PDO::FETCH_ASSOC)){
+            ?>
+            <div class="hotIssueBox">
+                <a href="bar.php?artId=<?php echo $hotIssueRow["artId"];?>" class="hotIssueBoxLink artShow">
+                    <div class="hotIssueBoxInfo">
+                        <img src="image/bar/DB/<?php echo $hotIssueRow["artImg"];?>" alt="情報圖片">
+                    </div>
+                    <div class="hotIssueBoxCont">
+                        <h4 class="textM artTit"><?php echo $hotIssueRow["artTitle"];?></h4>
+                        <p class="textS hotIssueBoxContText"></p>
+                        <span class="hotIssueBoxView newsBoxView"><?php echo $hotIssueRow["clickAmt"]?></span>
+                        <span class="hotIssueBoxCommend newsBoxCommend"><?php echo $hotIssueRow["msgAmt"]?></span>
+                    </div>
+                </a>
+            </div>
+            <?php    
+            $arr[]=$hotIssueRow["artText"];
+            }
+            $jsonStr = json_encode($arr);
+            ?>        
+        </div>    
         <p class="textEmphasis">Follow<strong class="textHiliR">最新消息</strong>走在時代尖端</p>
-        <div id="homeBarNew">
-            <article class="homeNewsCard">
-                <p class="textM cardCat">綜合討論</p>
-                <p class="textL cardTitle">【尋寶】2019新地圖
-                    <span>尋寶</span>
-                </p>
-                <p class="textS cardIcon">
-                    <i class='fas fa-eye'></i>
-                    82
-                    <i class='fas fa-comment-dots'></i>
-                    412
-                </p>
-                <p class="textS cardTime">
-                    2019/10/10
-                    景成
-                </p>
-                <div class="clearfix"></div>
-            </article>
-            <article class="homeNewsCard">
-                <p class="textM cardCat">綜合討論</p>
-                <p class="textL cardTitle">【尋寶】2019新地圖
-                    <span>尋寶</span>
-                </p>
-                <p class="textS cardIcon">
-                    <i class='fas fa-eye'></i>
-                    82
-                    <i class='fas fa-comment-dots'></i>
-                    42
-                </p>
-                <p class="textS cardTime">
-                    2019/10/10
-                    景成
-                </p>
-                <div class="clearfix"></div>
-            </article>
-            <article class="homeNewsCard">
-                <p class="textM cardCat">綜合討論</p>
-                <p class="textL cardTitle">【尋寶】2019新地圖
-                    <span>尋寶</span>
-                </p>
-                <p class="textS cardIcon">
-                    <i class='fas fa-eye'></i>
-                    84
-                    <i class='fas fa-comment-dots'></i>
-                    14
-                </p>
-                <p class="textS cardTime">
-                    2019/10/10
-                    景成
-                </p>
-                <div class="clearfix"></div>
-            </article>
-            <article class="homeNewsCard">
-                <p class="textM cardCat">綜合討論</p>
-                <p class="textL cardTitle">【尋寶】2019新地圖
-                    <span>尋寶</span>
-                </p>
-                <p class="textS cardIcon">
-                    <i class='fas fa-eye'></i>
-                    8
-                    <i class='fas fa-comment-dots'></i>
-                    0
-                </p>
-                <p class="textS cardTime">
-                    2019/10/10
-                    景成
-                </p>
-                <div class="clearfix"></div>
-            </article>
+        <div id="newsBoxWrap">
+            <?php
+            while ($newsRow = $news ->fetch(PDO::FETCH_ASSOC)){
+            $newsCat;
+            $newsBoxNameColor;
+            switch ($newsRow["artCat"]) {
+            case "1": $newsCat = "尋寶"; 
+            $newsBoxNameColor = "newsBoxNameGps";break;
+            case "2": $newsCat = "試煉";
+            $newsBoxNameColor = "newsBoxNameTraining"; break;
+            case "3": $newsCat = "其他";
+            $newsBoxNameColor = "newsBoxNameOther" ; break;
+            case "4": $newsCat = "官方";
+            $newsBoxNameColor = "newsBoxNameNavy" ; break;
+            default:break;
+            };
+            $artTime = substr( $newsRow["artTime"] , 0, 10);
+            $artTimeStr = str_replace("-","","$artTime");
+            ?>
+            <div class="newsBox artShow">
+                <div class="newsBoxInfo">
+                    <div class="newsBoxInfoCont">
+                        <span class="newsBoxName <?php echo $newsBoxNameColor;?>"><?php echo $newsCat;?></span>
+                        <div class="newsBoxTit artTit"><a href="<?php echo $newsRow["artId"];?>"><?php echo $newsRow["artTitle"];?></a>
+                        </div>
+                    </div>
+                    <div class="newsInfo">
+                        <span class="newsBoxView"><?php echo $newsRow["clickAmt"];?></span>
+                        <span class="newsBoxCommend"><?php echo $newsRow["msgAmt"];?></span>
+                    </div>
+                    <div class="newsOwner">
+                        <a href="javascript:;"><?php echo $newsRow["memNic"];?></a>
+                        <span class="newsBoxTime"><?php echo $artTimeStr ?></span>
+                    </div>
+                </div>
+                <div class="newsBoxArti"><?php echo $newsRow["artText"];?></div>
+            </div>
+            <?php
+            }
+            ?>
         </div>
         <p class="textS homeMore">噓...你不知道的江湖謠言，聽聽
             <a href="bar.html">情報酒館</a>
@@ -519,6 +468,7 @@ try {
 
     <footer>
         <img src="image/logo.svg" alt="logo">
+        <p class="textS">Copyleft © 2019</p>
     </footer>
 
     <script src="js/jquery-3.3.1.min.js"></script>
@@ -528,9 +478,9 @@ try {
     <script src="js\debug.addIndicators.min.js"></script>
     <script src="js\animation.gsap.min.js"></script>
     <script src="js\pixi.min.js"></script>
+    <script src="js/wavebtn.js"></script>
     <script src="js/header.js"></script>
     <script src="js/gameGps.js"></script>
-    <script src="js/wavebtn.js"></script>
     <script src="http://maps.google.com/maps/api/js?key=AIzaSyBKB16XDqQ6Qnki2BdJUQXXP4hEpK0_2wo&callback=initMap"></script>
     <script src="js/iro.min.js"></script>
     <script src="js/shipDIY.js"></script>

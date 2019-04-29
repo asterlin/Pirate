@@ -7,6 +7,8 @@ window.addEventListener('load',function(){
     var burgerCtrl = document.getElementById('burgerCtrl');
     var headerMenu = document.querySelector('#headerMenu');
     var header = document.getElementsByTagName('header')[0];
+    var subSwitchs = document.getElementsByClassName('menuSwitch');
+
     //關閉與開啟header
     function toggleHeader(){
         if(burgerCtrl.checked){
@@ -19,6 +21,13 @@ window.addEventListener('load',function(){
             header.classList.add('hide');
         }
     }
+
+    //關閉與開啟次選單
+    // function toggleSub(e){
+    //     console.log(e.target);
+    //     e.target.classList.toggle('hide');
+    // }
+
     //取得視窗寬度，與resize寬度
     var winWidth = window.innerWidth;
     window.addEventListener('resize',function(){
@@ -38,6 +47,7 @@ window.addEventListener('load',function(){
             header.classList.remove('hide');
         }
     })
+
     //網頁剛開啟時螢幕寬度小於1200啟動toggleHeader，大於就remove
     if(winWidth<1024){
         burgerCtrl.addEventListener('click',toggleHeader);
@@ -48,6 +58,35 @@ window.addEventListener('load',function(){
         $id('burger').classList.add('justHide');
     }
 
+    // for(var i=0;i<subSwitchs.length;i++){
+    //     subSwitchs[i].addEventListener('click',function(e){
+    //         toggleSub(e);
+    //     })
+    // }
 
+//捲動時收起menu
 
+    function scrollHide(){
+        header.classList.add('hide');
+    }
+    function scrollShow(){
+        header.classList.remove('hide');
+    }
+    var prevScro = 0;
+    
+    document.addEventListener('scroll',function(){
+        var curScro = document.getElementsByTagName('body')[0].scrollTop;    
+
+        if(curScro>0 && curScro < document.body.scrollHeight - window.innerHeight){
+
+            if(curScro > prevScro){
+                setTimeout(scrollHide,300);
+            }else{
+                setTimeout(scrollShow,300);
+            }
+            prevScro = curScro;
+
+        }
+    })
+    
 })
