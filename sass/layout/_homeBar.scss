@@ -1,6 +1,6 @@
 $padV: 768px;
 $padH: 960px;
-$pc: 1200px;
+$pc: 1024px;
 $pcMax: 2500px;
 
 $brownO40: rgba(54,46,43,0.4);
@@ -15,17 +15,17 @@ $paddingBetweenHeader: 150px;
     justify-content: center;
     flex-wrap: wrap;
     margin: auto;
-    width: 90%;
+    // width: 90%;
     @media screen and (min-width: $pc){
-        width: 1200px;
+        max-width: 1200px;
         height: 550px;
     }
     .hotIssueBox{
-        //margin: 1rem 1rem 0;
-        margin: 0.5rem 0.5rem;
+        margin: 10px;
         width: calc(100% - 1rem);
+        border-radius: 10px;
         @media screen and (min-width: $pc){
-            width: calc(20rem + 120px);
+            width: calc(50% - 20px);
         }
     }
     .hotIssueBoxLink{
@@ -36,6 +36,7 @@ $paddingBetweenHeader: 150px;
         font-size: 1rem;
         line-height: 1.5;
         padding: 1rem;
+        border-radius: 10px;
         @media screen and (min-width: $padV){
             margin: auto;
         }

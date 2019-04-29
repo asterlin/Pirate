@@ -58,7 +58,7 @@ function right(){
 //         content.innerHTML = "驗證失敗";
 //     }
 
-// }
+// 
 function verification(){
     
     if($('#btnver span').text() == "驗證身份"){

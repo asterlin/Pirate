@@ -58,7 +58,7 @@ function endGame(){
 	marine.remove();
 	reset();
 	$('#defaultCanvas0').css('display','none');
-	$('.button_border').css('display','block');
+	$('#playArea .button_border').css('display','block');
 	$('#losebox .lightbox').css('display','block');
 	$('#playSpark').css('clipPath','circle(5px)');
 }
@@ -70,7 +70,7 @@ function wingame(){
 
 	reset();
 	$('#defaultCanvas0').css('display','none');
-	$('.button_border').css('display','block');
+	$('#playArea .button_border').css('display','block');
 	$('#lightboxTime').text(playTimeCount);
 	$('#winbox .lightbox').css('display','block');
 	$('#playSpark').css('clipPath','circle(5px)');

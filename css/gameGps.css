@@ -1,9 +1,97 @@
+#gpsWrap{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
 #gpsMap{
     width: 100%;
     height: 500px;
-    border: 2px #000 solid;
+    margin: auto;
+    max-width: 100%;
+    /* border: 2px #000 solid; */
+}
+#gpsCloudLeft,#gpsCloudRight{
+    width: 100%;
+}
+#gpsCloudLeft{
+    position: absolute;
+    bottom: 400px;
+    left: 0;
+    animation-name: cloudLeftMove;
+}
+#gpsCloudRight{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    animation-name: cloudRightMove;
+    animation-delay: 3s;
+}
+#gpsCloudLeft, #gpsCloudRight{
+    animation-duration: 40s;
+    animation-iteration-count: infinite;
+    transition-timing-function: ease-in-out;
+}
+@keyframes cloudLeftMove {
+    0%   {transform: translateX(0%);}
+    25%   {transform: translateX(3%);}
+    50%  {transform: translateX(5%);}
+    75%  {transform: translateX(3%);}
+    100% {transform: translateX(0%);}
+}
+@keyframes cloudRightMove {
+    0%   {transform: translateX(0%);}
+    25%   {transform: translateX(-10%);}
+    50%  {transform: translateX(3%);}
+    75%  {transform: translateX(-1%);}
+    100% {transform: translateX(0%);}
 }
 #luckyWheel{
     display: block;
     margin: auto;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1000;
+}
+#showPrize{
+    display: none;
+}
+#showPrizePic{
+    width: 200px;
+    margin: auto;
+}
+#showPrizePic>img{
+    width: 100%;
+    /* text-align: center; */
+}
+@media screen and (min-width: 768px) {
+    #gpsCloudRight{
+        width: 90%;
+    }
+    #gpsCloudLeft{
+        top: 0;
+        left: -100px;
+    }
+    #gpsCloudRight{
+        bottom: 0;
+        right: -100px;
+    }
+}
+@media screen and (min-width: 1200px) {
+    #gpsMap{
+        max-width: 1200px;
+    }
+    #gpsCloudLeft,#gpsCloudRight{
+        width: 60%;
+    }
+    #gpsCloudLeft{
+        left: 0;
+    }
+    #gpsCloudRight{
+        bottom: 0;
+        right: 0;
+    }
 }

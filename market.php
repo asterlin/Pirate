@@ -15,40 +15,42 @@
 
 <body>
     <div class="marWrap">
-        <header>
-            <h1 class="titlePri" id="headerLogo"><a href="index.html">
-                    <img src="image/logo.svg" alt="大海賊帝國">
-                </a></h1>
-            <nav id="headerMenu">
+        <label for="burgerCtrl">
+            <input type="checkbox" name="" id="burgerCtrl">
+            <div id="burger">
+                <div class="burgerLine"></div>
+                <div class="burgerLine"></div>
+            </div>
+        </label>
+        <header class=""><!-- homeHeadHide-->
+            <h1 id="headerLogo"><a href="javascript:;">
+                <img src="image/logo.svg" alt="大海賊帝國">
+            </a></h1>
+            <nav id="headerMenu" >
                 <ul>
-                    <li><a href="game.html">海賊試煉場</a></li>
-                    <li><a href="market.html">海上市集</a></li>
-                    <li><a href="bar.html">情報酒館</a></li>
-                    <li><a href="me.html">俺の海賊船</a></li>
+                    <li class="menuSwitch">
+                        <a href="play.php">海賊試煉場</i></a>
+                        <ul class="headerSub">
+                            <li><a href="play.php#game">海賊試煉</a></li>
+                            <li><a href="play.php#gpsWrap">啟航尋寶</a></li>
+                        </ul>
+                    </li>
+                    <li class="menuSwitch">
+                        <a href="market.php">海上市集</i></a>
+                        <ul class="headerSub">
+                            <li><a href="market.php">黑市</a></li>
+                            <li><a href="market.php">造船廠</a></li>
+                        </ul>
+                    </li>
+                    <li class="menuSwitch"><a href="bar.php">情報酒館</a></li>
+                    <li class="menuSwitch">
+                        <a href="me.php">俺の海賊船</i></a>
+                        <ul class="headerSub">
+                            <li><a href="javascript:;" class="loginHere">登入</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </nav>
-            <div>
-                <ul id="headerMe">
-                    <li id="headerMeID">
-                        <a href="javascript:;">我是大帥哥</a>
-                    </li>
-                    <li id="headerMeLv">lv.<span>7</span>
-                        <div id="headerExpBar">
-                            <div id="headerExpLine"></div>
-                            <p id="headerExp"><span>1000</span>/<span>10000</span></p>
-                        </div>
-
-                    </li>
-                    <li id="headerMeMoney">金幣<span>100</span>G</li>
-                    <li id="headerMeShip"><a href="javascript:;">
-                            <img src="image/ship/shipTemp.png" alt="角色頭像">
-                        </a></li>
-                    <li id="headerMeTalentS">力量<span>◆◆◆◆◇</span></li>
-                    <li id="headerMeTalentL">幸運<span>5</span></li>
-                    <li id="headerMeTalentA">敏捷<span>5</span></li>
-                    <li id="headerMeTalentI">智力<span>5</span></li>
-                </ul>
-            </div>
         </header>
         <div class="marBanner">
             <div class="mlslBox">

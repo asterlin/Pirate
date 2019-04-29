@@ -1,4 +1,5 @@
 <?php
+session_start();
 $errMsg ='' ;
 try {
     require_once('backstage\php\connectPirates.php');
@@ -22,11 +23,11 @@ try {
     }
 
     //取得懸賞排行
-    $sql = "SELECT memNic, highscoreL FROM `member` where highscoreL is NOT null order by highscoreL ASC LIMIT 1;";
+    $sql = "SELECT memNic, highscoreL, shipImgAll FROM `member` where highscoreL is NOT null order by highscoreL ASC LIMIT 1;";
     $staGameHiL = $pdo -> query($sql);
-    $sql = "SELECT memNic, highscoreM FROM `member` where highscoreM is NOT null order by highscoreM ASC LIMIT 1;";
+    $sql = "SELECT memNic, highscoreM, shipImgAll FROM `member` where highscoreM is NOT null order by highscoreM ASC LIMIT 1;";
     $staGameHiM = $pdo -> query($sql);
-    $sql = "SELECT memNic, highscoreH FROM `member` where highscoreH is NOT null order by highscoreH ASC LIMIT 1;";
+    $sql = "SELECT memNic, highscoreH, shipImgAll FROM `member` where highscoreH is NOT null order by highscoreH ASC LIMIT 1;";
     $staGameHiH = $pdo -> query($sql);
 
     $rowGameHiL = $staGameHiL->fetch(PDO::FETCH_ASSOC);
@@ -39,7 +40,17 @@ try {
    if(!isset($rowGameHiH))$rowGameHiH = array('memNic'=>'從缺','highscoreH'=>'--');
 
     //取得最新寶物(篩選條件1.無購買人2.三天內)
-    $sql = "
+    if(isset($_SESSION['memId'])){ //如果是登入中，就不顯示他的商品
+        $sql = "
+        select *
+        from traderecord r 
+        join treasurelist l on r.treaId = l.treaId 
+        join member m on r.salerId = m.memId
+        where r.buyerId is null and datediff(CURDATE() , r.saleTime) <= 3 and salerId != '{$_SESSION['memId']}'
+        order by saleTime desc limit 9
+        ;";
+    }else{
+        $sql = "
         select *
         from traderecord r 
         join treasurelist l on r.treaId = l.treaId 
@@ -47,6 +58,7 @@ try {
         where r.buyerId is null and datediff(CURDATE() , r.saleTime) <= 3
         order by saleTime desc limit 9
         ;";
+    }
     $staProds = $pdo -> query($sql);
     $rowsProds = $staProds->fetchAll(PDO::FETCH_ASSOC);
     //送商品列表資料給js
@@ -102,24 +114,24 @@ try {
         <nav id="headerMenu" >
             <ul>
                 <li class="menuSwitch">
-                    <a href="play.html">海賊試煉場</i></a>
+                    <a href="play.php">海賊試煉場</i></a>
                     <ul class="headerSub">
-                        <li><a href="javascript:;">海賊試煉</a></li>
-                        <li><a href="javascript:;">啟航尋寶</a></li>
+                        <li><a href="play.php#game">海賊試煉</a></li>
+                        <li><a href="play.php#gpsWrap">啟航尋寶</a></li>
                     </ul>
                 </li>
                 <li class="menuSwitch">
-                    <a href="market.html">海上市集</i></a>
+                    <a href="market.php">海上市集</i></a>
                     <ul class="headerSub">
-                        <li><a href="javascript:;">黑市</a></li>
-                        <li><a href="javascript:;">造船廠</a></li>
+                        <li><a href="market.php">黑市</a></li>
+                        <li><a href="market.php">造船廠</a></li>
                     </ul>
                 </li>
-                <li class="menuSwitch"><a href="bar.html">情報酒館</a></li>
+                <li class="menuSwitch"><a href="bar.php">情報酒館</a></li>
                 <li class="menuSwitch">
-                    <a href="me.html">俺の海賊船</i></a>
+                    <a href="me.php">俺の海賊船</i></a>
                     <ul class="headerSub">
-                        <li><a href="javascript:;">登入</a></li>
+                        <li><a href="javascript:;" class="loginHere">登入</a></li>
                     </ul>
                 </li>
             </ul>
@@ -144,7 +156,7 @@ try {
         <p class="textEmphasis">四個步驟打造<strong class="textHiliR">專屬海賊船</strong></p>
         <div id="shipArea">
             <img src="image/ship/<?php echo $DIYbodys[count($DIYbodys)-1] ?>" alt="挑選船身" id="partBody">
-            <object data="image/ship/<?php echo $DIYSails[count($DIYSails)-1] ?>" type="image/svg+xml" id="partSail"></object>
+            <object data="image/ship/<?php echo $DIYSails[count($DIYSails)-1] ?>.svg" type="image/svg+xml" id="partSail"></object>
             <img src="image/ship/<?php echo $DIYheads[count($DIYheads)-1] ?>" alt="挑選船頭" id="partHead">
             <canvas id="combineShip">
                 你看不到我你看不到我你看不到我你看不到我你看不到我你看不到我你看不到我你看不到我....好吧，請你<strong>下載並使用<a href="https://www.google.com/intl/zh-TW_ALL/chrome/">google chrome</a></strong>開啟這個網頁吧
@@ -202,7 +214,7 @@ try {
                         ?>
                         <label>
                             <input type="radio" name="DIYSail" id="" checked>
-                            <img src="image/ship/<?php echo $value ?>" alt="船頭<?php echo $key ?>" class="DIYSail" id="DIYSail<?php echo $key ?>">
+                            <img src="image/ship/<?php echo $value ?>.svg" alt="船頭<?php echo $key ?>" class="DIYSail" id="DIYSail<?php echo $key ?>">
                         </label>
                         <?php
                         }
@@ -229,7 +241,7 @@ try {
                 <div class="clearfix"></div>
             </div>
             <button class="btnsec invisible" id="DIYPrev" ><span>上一步</span></button>
-            <button class="btnpri invisible" id="finishDIY" ><span>完成製作</span></button>
+            <button class="btnpri invisible loginHere" id="finishDIY" ><span>完成製作</span></button>
             <button class="btnsec" id="DIYNext"><span>下一步</span></button>
         </div>
     </div>
