@@ -214,6 +214,40 @@ if(winWidth < 1024){
         });
     })
 
+//情報酒館計算字數
+function hotIssueText() {
+    let innerWidth = window.innerWidth;
+    let text, titLength;
+    let title = document.getElementsByClassName('artTit');
+    let arrhotIssue = document.getElementsByClassName('arrhotIssue');
+    for (let i = 0; i < arrhotIssue.length; i++) {
+        titLength = title[i].innerText.length;
+        text = arrhotIssue[i];
+        if (titLength > 15) {
+            title[i].style.fontSize = "18px";
+            if (innerWidth <= 960) {
+                if(arrhotIssue[i].length > 30){
+                    text = text.substr(0,30);
+                    text += `...`;
+                }
+            }else{
+                if(arrhotIssue[i].length > 10){
+                    text = text.substr(0,10);
+                    text += `...`;
+                }
+            }
+        }else{
+            if(arrhotIssue[i].length > 30){
+                text = text.substr(0,30);
+                text += `...`;
+            }
+        }
+        document.getElementsByClassName('hotIssueBoxContText')[i].innerText = text;
+    }
+}
+
+hotIssueText()
+
 
 //要來做船的動畫了唷
     // document.addEventListener('scroll',function(){
