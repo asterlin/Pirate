@@ -149,7 +149,7 @@ try {
         <div id="wrapShipArea">
             <div id="bannerShip">
                 <img src="image/ship/300.png" alt="船身">
-                <img src="image/ship/200.svg" alt="船帆">
+                <img src="image/ship/200.png.svg" alt="船帆">
                 <img src="image/ship/100.png" alt="船頭">
             </div>
             <button class="btnsec scrToDIY"><span>成為海賊</span></button>
@@ -238,13 +238,14 @@ try {
                 </div>
                 <div id="DIYPreview" class="DIYSlide">
                     <p class="textS">已裁切船帆</p>
-                <!-- <canvas id="shipPreview"></canvas> -->
+                    <img src="" alt="預覽海賊船" id="shipPreview">
+                    <button class="btnpri invisible loginHere" id="finishDIY" ><span>完成製作</span></button>
                     
                 </div>
                 <div class="clearfix"></div>
             </div>
             <button class="btnsec invisible" id="DIYPrev" ><span>上一步</span></button>
-            <button class="btnpri invisible" id="finishDIY" ><span>完成製作</span></button>
+            
             <button class="btnsec" id="DIYNext"><span>下一步</span></button>
         </div>
     </div>
@@ -488,7 +489,7 @@ try {
 
 
 
-    <div class="lightbox" id="loginBox">
+    <div class="lightbox justHide" id="loginBox">
         <div class="popbg"></div>
         <div class="info">
             <div class="axis axis1"></div>
@@ -544,10 +545,20 @@ try {
                         <li>/</li>
                         <li><a class="register textS" href="#tab02">註冊頁</a></li>
                     </ul>
-             </div>
-   
-  
-         </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="lightbox justHide" id="Msglightbox">
+        <div class="popbg"></div>
+        <div class="info">
+            <div class="axis axis1"></div>
+            <div class="axis axis2"></div>
+            <div class="leave"></div>
+            <div class="paper">
+            
+            </div>
+        </div>
     </div>
 
     <script src="js/jquery-3.3.1.min.js"></script>
