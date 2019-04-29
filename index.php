@@ -1,4 +1,5 @@
 <?php
+session_start();
 $errMsg ='' ;
 try {
     require_once('backstage\php\connectPirates.php');
@@ -22,11 +23,11 @@ try {
     }
 
     //取得懸賞排行
-    $sql = "SELECT memNic, highscoreL FROM `member` where highscoreL is NOT null order by highscoreL ASC LIMIT 1;";
+    $sql = "SELECT memNic, highscoreL, shipImgAll FROM `member` where highscoreL is NOT null order by highscoreL ASC LIMIT 1;";
     $staGameHiL = $pdo -> query($sql);
-    $sql = "SELECT memNic, highscoreM FROM `member` where highscoreM is NOT null order by highscoreM ASC LIMIT 1;";
+    $sql = "SELECT memNic, highscoreM, shipImgAll FROM `member` where highscoreM is NOT null order by highscoreM ASC LIMIT 1;";
     $staGameHiM = $pdo -> query($sql);
-    $sql = "SELECT memNic, highscoreH FROM `member` where highscoreH is NOT null order by highscoreH ASC LIMIT 1;";
+    $sql = "SELECT memNic, highscoreH, shipImgAll FROM `member` where highscoreH is NOT null order by highscoreH ASC LIMIT 1;";
     $staGameHiH = $pdo -> query($sql);
 
     $rowGameHiL = $staGameHiL->fetch(PDO::FETCH_ASSOC);
@@ -39,7 +40,17 @@ try {
    if(!isset($rowGameHiH))$rowGameHiH = array('memNic'=>'從缺','highscoreH'=>'--');
 
     //取得最新寶物(篩選條件1.無購買人2.三天內)
-    $sql = "
+    if(isset($_SESSION['memId'])){ //如果是登入中，就不顯示他的商品
+        $sql = "
+        select *
+        from traderecord r 
+        join treasurelist l on r.treaId = l.treaId 
+        join member m on r.salerId = m.memId
+        where r.buyerId is null and datediff(CURDATE() , r.saleTime) <= 3 and salerId != '{$_SESSION['memId']}'
+        order by saleTime desc limit 9
+        ;";
+    }else{
+        $sql = "
         select *
         from traderecord r 
         join treasurelist l on r.treaId = l.treaId 
@@ -47,6 +58,7 @@ try {
         where r.buyerId is null and datediff(CURDATE() , r.saleTime) <= 3
         order by saleTime desc limit 9
         ;";
+    }
     $staProds = $pdo -> query($sql);
     $rowsProds = $staProds->fetchAll(PDO::FETCH_ASSOC);
     //送商品列表資料給js
@@ -143,9 +155,9 @@ try {
     <div id="homeDIY">
         <p class="textEmphasis">四個步驟打造<strong class="textHiliR">專屬海賊船</strong></p>
         <div id="shipArea">
-            <img src="image/ship/<?php echo $DIYbodys[count($DIYbodys)-1] ?>" alt="挑選船身" id="partBody">
-            <object data="image/ship/<?php echo $DIYSails[count($DIYSails)-1] ?>" type="image/svg+xml" id="partSail"></object>
-            <img src="image/ship/<?php echo $DIYheads[count($DIYheads)-1] ?>" alt="挑選船頭" id="partHead">
+            <img src="image/ship/<?php echo $DIYbodys[count($DIYbodys)-1] ?>.png" alt="挑選船身" id="partBody">
+            <object data="image/ship/<?php echo $DIYSails[count($DIYSails)-1] ?>.svg" type="image/svg+xml" id="partSail"></object>
+            <img src="image/ship/<?php echo $DIYheads[count($DIYheads)-1] ?>.png" alt="挑選船頭" id="partHead">
             <canvas id="combineShip">
                 你看不到我你看不到我你看不到我你看不到我你看不到我你看不到我你看不到我你看不到我....好吧，請你<strong>下載並使用<a href="https://www.google.com/intl/zh-TW_ALL/chrome/">google chrome</a></strong>開啟這個網頁吧
             </canvas>
@@ -176,7 +188,7 @@ try {
                         ?>
                         <label>
                             <input type="radio" name="DIYbody" id="" checked>
-                            <img src="image/ship/<?php echo $value ?>" alt="船身<?php echo $key ?>" class="DIYbody" id="DIYbody<?php echo $key ?>">
+                            <img src="image/ship/<?php echo $value ?>.png" alt="船身<?php echo $key ?>" class="DIYbody" id="DIYbody<?php echo $key ?>">
                         </label>
                         <?php
                         }
@@ -189,7 +201,7 @@ try {
                         ?>
                         <label>
                             <input type="radio" name="DIYhead" id="" checked>
-                            <img src="image/ship/<?php echo $value ?>" alt="船頭<?php echo $key ?>" class="DIYhead" id="DIYhead<?php echo $key ?>">
+                            <img src="image/ship/<?php echo $value ?>.png" alt="船頭<?php echo $key ?>" class="DIYhead" id="DIYhead<?php echo $key ?>">
                         </label>
                         <?php
                         }
@@ -202,7 +214,7 @@ try {
                         ?>
                         <label>
                             <input type="radio" name="DIYSail" id="" checked>
-                            <img src="image/ship/<?php echo $value ?>" alt="船頭<?php echo $key ?>" class="DIYSail" id="DIYSail<?php echo $key ?>">
+                            <img src="image/ship/<?php echo $value ?>.svg" alt="船頭<?php echo $key ?>" class="DIYSail" id="DIYSail<?php echo $key ?>">
                         </label>
                         <?php
                         }
@@ -260,7 +272,7 @@ try {
                         <img class="wantedPaper" src="image/home/wanted.svg" alt="懸賞單低階第一">
                         <p class="wantName"><?php echo $rowGameHiL['memNic']; ?></p>
                         <p class="wantScore">高階試煉 <?php echo $rowGameHiL['highscoreL'];  ?>秒</p>
-                        <img class="wantedShip" src="image/ship/ship.png" alt="我是大帥哥的海賊船">
+                        <img class="wantedShip" src="image/ship/<?php echo $rowGameHiL['shipImgAll'];  ?>" alt="<?php echo $rowGameHiL['memNic']; ?>的海賊船">
                     </div>
                 </div>
                 <div class="wrapWanted">
@@ -268,7 +280,7 @@ try {
                         <img class="wantedPaper" src="image/home/wanted.svg" alt="懸賞單中階第一">
                         <p class="wantName"><?php echo $rowGameHiM['memNic']; ?></p>
                         <p class="wantScore">中階試煉 <?php echo $rowGameHiM['highscoreM'];  ?>秒</p>
-                        <img class="wantedShip" src="image/ship/ship.png" alt="我是大帥哥的海賊船">
+                        <img class="wantedShip" src="image/ship/<?php echo $rowGameHiM['shipImgAll'];  ?>" alt="<?php echo $rowGameHiM['memNic']; ?>的海賊船">
                     </div>
                 </div>
                 <div class="wrapWanted">
@@ -276,7 +288,7 @@ try {
                         <img class="wantedPaper" src="image/home/wanted.svg" alt="懸賞單初階第一">
                         <p class="wantName"><?php echo $rowGameHiH['memNic']; ?></p>
                         <p class="wantScore">初階試煉 <?php echo $rowGameHiH['highscoreH'];  ?>秒</p>
-                        <img class="wantedShip" src="image/ship/ship.png" alt="我是大帥哥的海賊船">
+                        <img class="wantedShip" src="image/ship/<?php echo $rowGameHiH['shipImgAll'];  ?>" alt="<?php echo $rowGameHiH['memNic']; ?>的海賊船">
                     </div>
                 </div>
             </div>
@@ -471,6 +483,9 @@ try {
         <p class="textS">Copyleft © 2019</p>
     </footer>
 
+
+
+    <!-- 下列為套件 -->
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/iro.min.js"></script>
     <script src="js\TweenMax.min.js"></script>
@@ -478,11 +493,12 @@ try {
     <script src="js\debug.addIndicators.min.js"></script>
     <script src="js\animation.gsap.min.js"></script>
     <script src="js\pixi.min.js"></script>
+    <script src="js/iro.min.js"></script>
+    <script src="http://maps.google.com/maps/api/js?key=AIzaSyBKB16XDqQ6Qnki2BdJUQXXP4hEpK0_2wo&callback=initMap"></script>
+    <!-- 以下為我們的js -->
     <script src="js/wavebtn.js"></script>
     <script src="js/header.js"></script>
     <script src="js/gameGps.js"></script>
-    <script src="http://maps.google.com/maps/api/js?key=AIzaSyBKB16XDqQ6Qnki2BdJUQXXP4hEpK0_2wo&callback=initMap"></script>
-    <script src="js/iro.min.js"></script>
     <script src="js/shipDIY.js"></script>
     <script src="js/home.js"></script>
     <script src="js/homeMapPIXI.js"></script>
