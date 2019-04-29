@@ -139,6 +139,8 @@ if(winWidth < 1024){
             $('.homeTreaBtn').eq(1).addClass('justHide');
             $('.homeTreaBtn').eq(7).addClass('justHide');
             $('.homeTreaBtn').eq(8).addClass('justHide');
+        }else{
+            $('.homeTreaBtn').removeClass('justHide');
         }
     }
     showTreaBtn();   

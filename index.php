@@ -38,7 +38,7 @@ try {
    if(!isset($rowGameHiM))$rowGameHiM = array('memNic'=>'從缺','highscoreM'=>'--');
    if(!isset($rowGameHiH))$rowGameHiH = array('memNic'=>'從缺','highscoreH'=>'--');
 
-    //取得最新寶物
+    //取得最新寶物(篩選條件1.無購買人2.三天內)
     $sql = "
         select *
         from traderecord r 
@@ -95,10 +95,27 @@ try {
         </a></h1>
         <nav id="headerMenu" >
             <ul>
-                <li><a href="play.html">海賊試煉場</a></li>
-                <li><a href="market.html">海上市集</a></li>
-                <li><a href="bar.html">情報酒館</a></li>
-                <li><a href="me.html">俺の海賊船</a></li>
+                <li class="menuSwitch">
+                    <a href="play.html">海賊試煉場</i></a>
+                    <ul class="headerSub">
+                        <li><a href="javascript:;">海賊試煉</a></li>
+                        <li><a href="javascript:;">啟航尋寶</a></li>
+                    </ul>
+                </li>
+                <li class="menuSwitch">
+                    <a href="market.html">海上市集</i></a>
+                    <ul class="headerSub">
+                        <li><a href="javascript:;">黑市</a></li>
+                        <li><a href="javascript:;">造船廠</a></li>
+                    </ul>
+                </li>
+                <li class="menuSwitch"><a href="bar.html">情報酒館</a></li>
+                <li class="menuSwitch">
+                    <a href="me.html">俺の海賊船</i></a>
+                    <ul class="headerSub">
+                        <li><a href="javascript:;">登入</a></li>
+                    </ul>
+                </li>
             </ul>
         </nav>
     </header>
@@ -109,18 +126,11 @@ try {
         <img id="homeBannerLogo" src="image/logo.svg" alt="大海賊帝國">
         <div id="homepixiCanvas"></div>
         <div id="wrapShipArea">
-            <!-- <div id="shipArea">
-                <img src="image/ship/300.png" alt="挑選船身" id="partBody">
-                <object data="image/ship/200.svg" type="image/svg+xml" id="partSail"></object>
-                <img src="image/ship/100.png" alt="挑選船頭" id="partHead">
-                <canvas id="combineShip">
-                    你看不到我你看不到我你看不到我你看不到我你看不到我你看不到我你看不到我你看不到我....好吧，請你<strong>下載並使用<a href="https://www.google.com/intl/zh-TW_ALL/chrome/">google chrome</a></strong>開啟這個網頁吧
-                </canvas>
-                <canvas id="drawFlag">
-                    你看不到我你看不到我你看不到我你看不到我你看不到我你看不到我你看不到我你看不到我....好吧，請你<strong>下載並使用<a href="https://www.google.com/intl/zh-TW_ALL/chrome/">google chrome</a></strong>開啟這個網頁吧(ㄏ￣▽￣)ㄏ   ㄟ(￣▽￣ㄟ)
-                </canvas>
-                <div id="pen"></div>
-            </div> -->
+            <div id="bannerShip">
+                <img src="image/ship/300.png" alt="船身">
+                <img src="image/ship/200.svg" alt="船帆">
+                <img src="image/ship/100.png" alt="船頭">
+            </div>
             <button class="btnsec scrToDIY"><span>成為海賊</span></button>
         </div>
     </div>
@@ -524,6 +534,7 @@ try {
 
     <footer>
         <img src="image/logo.svg" alt="logo">
+        <p class="textS">Copyleft © 2019</p>
     </footer>
 
     <script src="js/jquery-3.3.1.min.js"></script>
