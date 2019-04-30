@@ -19,9 +19,8 @@ $custList = [];
 foreach($rowsModelId as $i => $row){
     $custList[] = $row['modelId'];
 }
-//將船各部位ID以一陣列存入server session
-$_SESSION['custList'] = $custList;
-
+//將船各部位ID以一陣列改存到web session
+// $_SESSION['custList'] = $custList; 
 
 //圖片儲存路徑
 define('UPLOAD_PATH','../../image/ship/');
@@ -40,8 +39,10 @@ $success = file_put_contents($file, $data);
 
 //到底會不會成功呢
 $output = ($success)? "<img src='{$file}'>" : "<p>what's wrong?</p>";
-$_SESSION['fullShipDir'] = $imgName; //全船路徑存入server session，之後給註冊使用
-echo $imgName;
+//$_SESSION['fullShipDir'] = $imgName; //全船路徑改存入web session，之後給註冊使用
+
+$msg = ["custList" => $custList, "fullShipDir" => $imgName];
+echo json_encode($msg);;
 
 } catch (PDOException $e) {
     $errMsg .= "錯誤行：".$e->getLine()."<br>";
