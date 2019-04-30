@@ -11,18 +11,17 @@ function signUp(){
         data: {signmemId:signmemId,signmemPsw:signmemPsw},
         type: 'GET',
         success: function(data){
+            console.log(data);
+            console.log('sucess');
             if(data == 1){
-                document.getElementsByClassName("lightbox")[0].style.display="none";
+                document.getElementsByClassName("idot")[0].style.display="none";
                 console.log(data);
+                getStatus();
             } 
         },
     });
 
 }
-
-
-
-
 function left(){
     number -= 90;
     document.getElementById("signnew").style.transform = `rotate(${number}deg)`;
@@ -60,6 +59,11 @@ function right(){
 
 // 
 function verification(){
+    number = getrandom(3)*90;
+    var imgrotate = document.getElementById("signnew");
+    imgrotate.style.transform = "rotate(" + number + "deg)";
+    document.getElementById("signlbtn").addEventListener("click",left );
+    document.getElementById("signrbtn").addEventListener("click",right );
     
     if($('#btnver span').text() == "驗證身份"){
         $('#btnver span').text("註冊");
@@ -77,26 +81,6 @@ function verification(){
 
 }
 
-
-
-
-function init(){
-    document.getElementById("signUp").addEventListener("click",signUp );
-
-    function getrandom(x){
-        return Math.floor(Math.random()*x)+1;
-    }
-    number = getrandom(3)*90;
-    
-
-    var imgrotate = document.getElementById("signnew");
-    imgrotate.style.transform = "rotate(" + number + "deg)";
-    
-    document.getElementById("btnver").addEventListener("click",verification );
-    document.getElementById("signlbtn").addEventListener("click",left );
-    document.getElementById("signrbtn").addEventListener("click",right );
-    // document.getElementById("signconfirm").addEventListener("click",confirm );
-    // myBody_click, myForm_click, btn_click, forFun
-  }
-
-window.onload = init;	
+function getrandom(x){
+    return Math.floor(Math.random()*x)+1;
+}

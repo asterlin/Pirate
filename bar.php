@@ -2,7 +2,7 @@
 <!-- 熱門話題 -->
 <?php
 session_start();
-// $_SESSION["memId"] = "test01";
+$_SESSION["memId"] = "test01";
 // echo $_SESSION["memId"];
 ?>
 <script>
@@ -312,8 +312,11 @@ session_start();
             <div class="contents">
                 <div class="leave"></div>
                 <div>
-                    <form action="get" method="post" id="addNavyReportForm" enctype="multipart/form-data">
+                    <form action="barphp/addArtreport.php" method="post" id="addNavyReportForm" enctype="multipart/form-data">
                         <h2 class="titleThi">讓海軍為你主持公道吧</h2>
+                        <input type="hiddle">
+                        <input type="hidden" name="memId" value="">
+                        <input type="hidden" name="artId" value="">
                         <input type="text" name="navyReport" id="navyReportCont" placeholder="請點擊此處填入通報項目">
                         <a class="btnpri" href="javascript:;" ><span><label for="submitNavyReport">一鍵通報海軍</label></span>
                         </a>
@@ -351,7 +354,7 @@ session_start();
         hotIssueText();
         addArt();
         //get queryString
-        if (location.search.match("from=index") || location.search.match("from=me")) {
+        if (location.search.match("from=index") || location.search.match("from=me") ||  location.search.match("from=artRespond")) {
             // var location = location.search;
             console.log(location.search);
             console.log(location.search.indexOf("artId"));
@@ -361,10 +364,13 @@ session_start();
             artId = artId.substring((artId.indexOf("=")+1),artId.length);
             console.log(artId);
             artBox(artId);
+            document.getElementById("articleBoxWrapMask").style.display = "block";
         }else{
             artBox();
         }
+        artId="";
         news();
+        artReport()
         // readArt();
         // alert(location.search);
         
