@@ -54,7 +54,7 @@ require_once("meToDB/meToDB.php");
 
 
     <!--------------------------------- 選單 ------------------------------------->
-    <!-- <label for="burgerCtrl">
+    <label for="burgerCtrl">
         <input type="checkbox" name="" id="burgerCtrl">
         <div id="burger">
             <div class="burgerLine"></div>
@@ -85,12 +85,12 @@ require_once("meToDB/meToDB.php");
                 <li class="menuSwitch">
                     <a href="me.php">俺の海賊船</i></a>
                     <ul class="headerSub">
-                        <li><a href="javascript:;" class="loginHere">登入</a></li>
+                        <li class="loginHere"><a href="javascript:;">登入</a></li>
                     </ul>
                 </li>
             </ul>
         </nav>
-    </header> -->
+    </header>
 <!------------------------------------------------------------------------------->
 
 
