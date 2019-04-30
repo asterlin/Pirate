@@ -110,10 +110,13 @@ var artBox, artTit ,msgAmt,clickAmt, artText ,memNic ,memLv ,memMoney ,shipImgAl
 var artBoxContText = [];
 function artBox(artId) {
     // var artBoxContText, artBoxContTextMain, artBoxContTextMeg=[],artBoxContTextRespond;
+    
     if (artId == undefined) {
         console.log("bar");
         for (let i = 0; i < $class('artShow').length; i++) {
             $class('artShow')[i].addEventListener('click',function(e) {
+                document.getElementById("articleBoxWrapMask").style.display = "block";
+                body[0].classList.add("lightboxShow");
                 artBoxContText='';
                 artBox = e.currentTarget;
                 let inputs = artBox.getElementsByTagName("input");
@@ -185,6 +188,7 @@ function artBox(artId) {
         artBoxText_xhr.onload = function () {
             var artBoxText = JSON.parse(artBoxText_xhr.responseText);
             // console.log(artBoxText);
+            
             switch (artBoxText.artCat) {
                 case "1": artType = "尋寶"; 
                             newsBoxNameColor = "#7ccbbd";break;
