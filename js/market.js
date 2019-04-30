@@ -32,11 +32,9 @@ $(document).on('ready', function () {
     function currentMarket(n) {
 
         showMarket(switchMarket = n);
-        
+
         repositionFrame(n);
-        if(n==1){
-            blackMarketStart();
-        }
+
     }
     var executedHot = false;
 
@@ -481,53 +479,53 @@ $(document).on('ready', function () {
         }
 
         setTimeout(function () {
-        switch (previewMerchType) {
-            case 1:
-                if (w < 1024) {
-                    if (executedHead == false) {
-                        $(".typeHead").slick({
-                            arrows: false,
-                            dots: false,
-                            infinite: false,
-                            slidesToShow: 2.5,
-                            slidesToScroll: 2
-                        });
-                        executedHead = true;
-                        buyMerchActivity();
+            switch (previewMerchType) {
+                case 1:
+                    if (w < 1024) {
+                        if (executedHead == false) {
+                            $(".typeHead").slick({
+                                arrows: false,
+                                dots: false,
+                                infinite: false,
+                                slidesToShow: 2.5,
+                                slidesToScroll: 2
+                            });
+                            executedHead = true;
+                            buyMerchActivity();
+                        }
                     }
-                }
-                break;
-            case 2:
-                if (w < 1024) {
-                    if (executedBody == false) {
-                        $(".typeBody").slick({
-                            arrows: false,
-                            dots: false,
-                            infinite: false,
-                            slidesToShow: 2.5,
-                            slidesToScroll: 2
-                        });
-                        executedBody = true;
-                        buyMerchActivity();
+                    break;
+                case 2:
+                    if (w < 1024) {
+                        if (executedBody == false) {
+                            $(".typeBody").slick({
+                                arrows: false,
+                                dots: false,
+                                infinite: false,
+                                slidesToShow: 2.5,
+                                slidesToScroll: 2
+                            });
+                            executedBody = true;
+                            buyMerchActivity();
+                        }
                     }
-                }
-                break;
-            case 3:
-                if (w < 1024) {
-                    if (executedSail == false) {
-                        $(".typeSail").slick({
-                            arrows: false,
-                            dots: false,
-                            infinite: false,
-                            slidesToShow: 2.5,
-                            slidesToScroll: 2
-                        });
-                        executedSail = true;
-                        buyMerchActivity();
+                    break;
+                case 3:
+                    if (w < 1024) {
+                        if (executedSail == false) {
+                            $(".typeSail").slick({
+                                arrows: false,
+                                dots: false,
+                                infinite: false,
+                                slidesToShow: 2.5,
+                                slidesToScroll: 2
+                            });
+                            executedSail = true;
+                            buyMerchActivity();
+                        }
                     }
-                }
-                break;
-        }
+                    break;
+            }
         }, 10);
     }
 
@@ -863,7 +861,7 @@ function changesYbuymerchesBtn() {
     } else {
         var buyAllWaves = document.getElementsByClassName("sYbuymerchesBtn")[0].getElementsByClassName("wave");
         for (var i = 0; i < buyAllWaves.length; i++) {
-            buyAllWaves[i].style.backgroundColor = 'rgba(56, 84, 120,0.4)';
+            buyAllWaves[i].style.backgroundColor = 'rgba(175, 96, 82,0.4)';
         }
         document.getElementsByClassName("buyAllIntro")[0].innerHTML = "尚無預覽";
     }
@@ -1620,3 +1618,16 @@ console.log("goToShipYard", goToShipYard, "previewMerchId", previewMerchId, "pre
 // if ( memid !== "tourist") {
 //     document.getElementsByClassName("lightbox")[0].style.display = "none";
 // }
+
+if (w < 768) {
+    setTimeout(function () {
+        var ownedCountInphone = document.getElementsByClassName("ownedMerch");
+        for (var i = 0; i < ownedCountInphone.length; i++) {
+            ownedCountInphone[i].parentNode.parentNode.style.order = "-1";
+            // alert(ownedCountInphone[i].parentNode.parentNode.style.order);
+        }
+    },2000);
+    document.getElementsByClassName("sYMTypeBox")[0].onclick = function(){
+        window.scrollTo(0, 200);
+    };
+}

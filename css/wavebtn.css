@@ -20,9 +20,9 @@
 
 }
 .btnpri{background-color: #c98366;}
-.wave{background-color: rgba(175, 96, 82,0.4)}
+.btnpri .wave{background-color: rgba(175, 96, 82,0.4)}
 .btnsec{background-color: #45a0c7;}
-.wave{background-color: rgba(56, 84, 120,0.4);}
+.btnsec .wave{background-color: rgba(56, 84, 120,0.4);}
 
 
 .btnpri:hover .wave,  .btnsec:hover .wave{

@@ -8,43 +8,7 @@ function cLog(content) {
     console.log(content)
 }
 
-if ($(window).width() > 768) {
-    $(document).on("mouseover", ".sRitem", function (_event, _element) {
 
-        var sRItem = document.querySelectorAll('.sRitem');
-        sRItem.forEach(function (element, index) {
-            element.addEventListener('mouseover', function () {
-                var x = this.parentNode.getBoundingClientRect().left;
-                if(bgblock == false){
-                    var y = sliderItem.parentNode.offsetTop + 278;
-                    bgblock = true;
-                }
-                var width = this.parentNode.getBoundingClientRect().width;
-                var height = this.parentNode.getBoundingClientRect().height;
-
-                $('.sYItem-bg').addClass('active');
-                // $('.sRitem').removeClass('active');
-
-                bg.style.width = width + 'px';
-                bg.style.height = height + 'px';
-                bg.style.transform = 'translateX(' + x + 'px ) translateY(' + y + 'px)';
-            });
-
-            element.addEventListener('mouseleave', function () {
-                $('.sYItem-bg').removeClass('active');
-                $('.sRitem').removeClass('active');
-
-                setTimeout(function () {
-                    if (!document.getElementsByClassName("active")[0]) {
-                        document.getElementsByClassName("swiper-slide-active")[0].getElementsByClassName("sRitem")[0].classList.add('active');
-                    }
-                }, 100);
-            });
-
-        });
-
-    });
-}
 
 if ($(window).width() > 768) {
     var centerOrNot = true;
@@ -87,7 +51,7 @@ var swiper = new Swiper('.sR-slider', {
     on: {
         init: function () {
             var activeItem = document.querySelector('.swiper-slide-active');
-
+            var defaultX = document.getElementsByClassName("swiper-slide-prev")[0].offsetWidth;
             var sliderItem = activeItem.querySelector('.sRitem');
 
             $('.swiper-slide-active .sRitem').addClass('active');
@@ -96,10 +60,10 @@ var swiper = new Swiper('.sR-slider', {
 
             if ($(window).width() > 768) {
 
-                if(bgblock == false){
+                // if(bgblock == false){
                     var y = sliderItem.parentNode.offsetTop + 278;
-                    bgblock = true;
-                }
+                //     bgblock = true;
+                // }
                 
             } else {
                 
@@ -113,6 +77,8 @@ var swiper = new Swiper('.sR-slider', {
 
 
             $('.sYItem-bg').addClass('active');
+
+            x = x - defaultX;
 
             bg.style.width = width + 'px';
             bg.style.height = height + 'px';
@@ -133,7 +99,7 @@ swiper.on('slideChange', function () {
 swiper.on('slideChangeTransitionEnd', function () {
     $('.sRitem').removeClass('active');
     var activeItem = document.querySelector('.swiper-slide-active');
-
+    var defaultX = document.getElementsByClassName("swiper-slide-prev")[0].offsetWidth;
     var sliderItem = activeItem.querySelector('.sRitem');
 
     $('.swiper-slide-active .sRitem').addClass('active');
@@ -141,10 +107,10 @@ swiper.on('slideChangeTransitionEnd', function () {
         var x = sliderItem.parentNode.getBoundingClientRect().left;
         if ($(window).width() > 768) {
             
-                if(bgblock == false){
+                // if(bgblock == false){
                     var y = sliderItem.parentNode.offsetTop + 278;
-                    bgblock = true;
-                }
+                //     bgblock = true;
+                // }
         } else {
 
                 if(bgblock == false){
@@ -152,6 +118,9 @@ swiper.on('slideChangeTransitionEnd', function () {
                     bgblock = true;
                 }
         }
+
+        // x = x - defaultX;
+
         var width = sliderItem.parentNode.getBoundingClientRect().width;
         var height = sliderItem.parentNode.getBoundingClientRect().height;
 
@@ -173,10 +142,10 @@ if ($(window).width() > 768) {
         var sliderItem = activeItem.querySelector('.sRitem');
         var defaultX = document.getElementsByClassName("swiper-slide-prev")[0].offsetWidth;
         var x = sliderItem.parentNode.getBoundingClientRect().left;
-        if(bgblock == false){
+        // if(bgblock == false){
             var y = sliderItem.parentNode.offsetTop + 278;
-            bgblock = true;
-        }
+        //     bgblock = true;
+        // }
         x = x - defaultX;
 
         bg.style.transform = 'translateX(' + x + 'px ) translateY(' + y + 'px)';
@@ -195,6 +164,45 @@ if ($(window).width() > 768) {
 
         document.getElementsByClassName('swiper-slide-prev')[0].classList.remove("swiper-slide-prev");
         document.getElementsByClassName('swiper-slide-next')[0].nextElementSibling.classList.add('swiper-slide-prev');
+
+        if ($(window).width() > 768) {
+            $(document).on("mouseover", ".sRitem", function (_event, _element) {
+        
+                var sRItem = document.querySelectorAll('.sRitem');
+                sRItem.forEach(function (element, index) {
+                    element.addEventListener('mouseover', function () {
+                        var x = this.parentNode.getBoundingClientRect().left;
+
+                        // if(bgblock == false){
+                            var y = sliderItem.parentNode.offsetTop + 278;
+                            // bgblock = true;
+                        // }
+                        var width = this.parentNode.getBoundingClientRect().width;
+                        var height = this.parentNode.getBoundingClientRect().height;
+                        
+                        $('.sYItem-bg').addClass('active');
+                        // $('.sRitem').removeClass('active');
+        
+                        bg.style.width = width + 'px';
+                        bg.style.height = height + 'px';
+                        bg.style.transform = 'translateX(' + x + 'px ) translateY(' + y + 'px)';
+                    });
+        
+                    element.addEventListener('mouseleave', function () {
+                        $('.sYItem-bg').removeClass('active');
+                        $('.sRitem').removeClass('active');
+        
+                        setTimeout(function () {
+                            if (!document.getElementsByClassName("active")[0]) {
+                                document.getElementsByClassName("swiper-slide-active")[0].getElementsByClassName("sRitem")[0].classList.add('active');
+                            }
+                        }, 100);
+                    });
+        
+                });
+        
+            });
+        }
     }, 60);
 
 }
@@ -353,7 +361,7 @@ for (var i = 0; i < checkSail.length; i++) {
 if(memid == "tourist"){
     document.getElementsByClassName("sRGetRewardTips")[0].style.display = "none";
 }else{
-    console.log(memid);
+
     document.getElementsByClassName("sRGetRewardTips")[0].onclick = function(){
         var reward = parseInt(document.getElementsByClassName("sRmyShip")[0].getElementsByClassName("sRranktxt")[0].innerHTML);
     
