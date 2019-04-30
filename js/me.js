@@ -102,7 +102,7 @@ function login() {
     lck = graphDataNew[2];
     age = graphDataNew[3];
     // var myData = new FormData(document.getElementById("meShipForm"));
-    // console.log(document.getElementById("meShipForm"));
+    console.log(document.getElementById("meShipForm"));
     var url = "meToDB/meShipFormData.php?str="+str+"&int="+int+"&lck="+lck+"&age="+age+"&memId="+memId+"&memPsw="+memPsw;
     xhr.open("Get", url, true);
     xhr.send(null);

@@ -12,16 +12,13 @@
                     <a href="backMember.php">會員帳號管理</a>
                 </li>
                 <li>
-                    <a href="backOfficialMerch.html">官方商品管理</a>
+                    <a href="backOfficialMerch.php">官方商品管理</a>
                 </li>
                 <li>
-                    <a href="backMerchRecord.html">造型記錄查詢</a>
+                    <a href="backTreasure.php">寶物商品管理</a>
                 </li>
                 <li>
-                    <a href="backTreasure.html">寶物商品管理</a>
-                </li>
-                <li>
-                    <a href="backTreasureRocard.html">寶物拍賣紀錄查詢</a>
+                    <a href="backTreasureRocard.php">寶物拍賣紀錄查詢</a>
                 </li>
                 <li>
                     <a href="backIQTest.html">測驗題目管理</a>

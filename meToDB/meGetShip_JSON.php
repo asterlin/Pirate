@@ -3,7 +3,7 @@ session_start();
 $errMsg = "";
 try{
   require_once("../backstage/php/connectPirates.php");
-  $sql = "select * from customlist JOIN mycustom ON customlist.modelId = mycustom.modelId where memId = 'test03'";
+  $sql = "select * from customlist JOIN mycustom ON customlist.modelId = mycustom.modelId where memId = :memId";
   $mycustom = $pdo->query( $sql );
   $mycustom->bindValue(":memId",$_REQUEST["memId"]);
   // $mycustom->bindValue(":memId","test03");

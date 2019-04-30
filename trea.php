@@ -25,7 +25,7 @@
         <p>寶物</p>
         <div class="holdtrealist">
             <?php
-                $memId = 'test01';//$_SESSION["memId"]
+                // $memId = 'test01';//$_SESSION["memId"]
                 while( $treaRow = $treasurestorage -> fetch(PDO::FETCH_ASSOC)){ 
                 if($treaRow["memId"] == $memId){
             ?>

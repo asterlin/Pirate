@@ -13,7 +13,7 @@ function getShip(){
 	        alert( xhr.status );
 	    }
     }
-    memId = "test03";
+    // memId = "test03";
     var url = "meToDB/meGetShip_JSON.php?memId="+memId;
     xhr.open("Get", url, true);
     xhr.send( null );
