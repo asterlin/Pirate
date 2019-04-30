@@ -58,7 +58,9 @@ echo $errMsg;
                             <td><?php echo $artrespondRow["msgText"]; ?></td>
                             <td><?php echo $msgTimeStr; ?></td>
                         </tr>
-            <?php}?>
+            <?php
+        }
+        ?>
                     </table>
                 </div>
                 <div class="pagination">

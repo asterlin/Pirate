@@ -68,6 +68,7 @@
 
         $treasurestorage->bindColumn("memId", $treasurestorageId);//持有者ID
         $treasurestorage->bindColumn("treaName", $treaName);//寶物名
+        $treasurestorage->bindColumn("treaId", $treaId);//寶物編號
         $treasurestorage->bindColumn("treaImg", $treaImg);//寶物圖
         $treasurestorage->bindColumn("treaStr", $treaStr);//力量
         $treasurestorage->bindColumn("treaInt", $treaInt);//智力
@@ -75,6 +76,20 @@
         $treasurestorage->bindColumn("treaLuk", $treaLuk);//幸運
         $treasurestorage->execute();
         //--------------------------------------------------------------------------------------------------
+
+        //----------------------------------------------------------------------------------------------------
+        $PK = "select * from treasurestorage JOIN treasurelist ON treasurestorage.treaId = treasurelist.treaId ";
+        $PK = $pdo->query($PK);
+
+        $PK->bindColumn("memId", $treasurestorageIdBox);//持有者ID
+        $PK->bindColumn("treaName", $treaNameBox);//寶物名
+        $PK->bindColumn("treaId", $treaIdBox);//寶物編號
+        $PK->bindColumn("treaImg", $treaImgBox);//寶物圖
+        $PK->bindColumn("treaStr", $treaStrBox);//力量
+        $PK->bindColumn("treaInt", $treaIntBox);//智力
+        $PK->bindColumn("treaAgi", $treaAgiBox);//敏捷
+        $PK->bindColumn("treaLuk", $treaLukBox);//幸運
+        $PK->execute();
         
     } catch (PDOException $e) {
         $errMsg .=  "錯誤原因" . $e->getMessage() . "<br>";

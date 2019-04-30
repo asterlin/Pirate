@@ -102,8 +102,13 @@ function login() {
     lck = graphDataNew[2];
     age = graphDataNew[3];
     // var myData = new FormData(document.getElementById("meShipForm"));
-    console.log(document.getElementById("meShipForm"));
-    var url = "meToDB/meShipFormData.php?str="+str+"&int="+int+"&lck="+lck+"&age="+age+"&memId="+memId+"&memPsw="+memPsw;
+    memId = $('#memId1').val();
+    memPsw = $('#memPsw1').val();
+    console.log(typeof str);
+    
+    points = parseInt($('#points').text());
+    console.log(typeof points);
+    var url = "meToDB/meShipFormData.php?str="+str+"&int="+int+"&lck="+lck+"&age="+age+"&memId="+memId+"&memPsw="+memPsw+"&points="+points;
     xhr.open("Get", url, true);
     xhr.send(null);
 }
