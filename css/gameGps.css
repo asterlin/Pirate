@@ -16,7 +16,7 @@
 }
 #gpsCloudLeft{
     position: absolute;
-    bottom: 400px;
+    top: 0;
     left: 0;
     animation-name: cloudLeftMove;
 }
@@ -88,6 +88,7 @@
         width: 60%;
     }
     #gpsCloudLeft{
+        top: -100px;
         left: 0;
     }
     #gpsCloudRight{

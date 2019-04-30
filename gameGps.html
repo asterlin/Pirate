@@ -5,14 +5,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/gameGps.css">
+    <link rel="stylesheet" href="css/lightbox.css">\
+    <link rel="stylesheet" href="css/wavebtn.css">
     <title>gameGps</title>
 </head>
 <body>
 <!-- gps地圖開始 -->
+<input type="button" value="playGame" id="playGame">
+<div id="gpsWrap">
     <div id="gpsMap"></div>
+    <!-- <img src="image/gpsGame/cloudLeft.png" alt="雲" id="gpsCloudLeft"> 
+    <img src="image/gpsGame/cloudRight.png" alt="雲" id="gpsCloudRight"> -->
     <canvas id="luckyWheel"></canvas>
+    <div class="lightbox" id="showPrize">
+        <div class="popbg"></div>
+        <div class="info">
+            <div class="axis axis1"></div>
+            <div class="axis axis2"></div>
+            <div class="leave"></div>
+            <div class="paper">
+                <!-- 範例 -->
+                <p class="textM">恭喜您獲得</p>
+                <div id="showPrizePic"></div>
+                <div class="textM" id="showPrizeMeg"></div>
+                <a class="btnsec" id="closeWheelBtn" href="javascript:">
+                    <span>繼續航行</span>
+                </a>
+                <a class="btnsec" href="me.php">
+                    <span>清點船艙</span>
+                </a>
+            </div>
+        </div>
+    </div>
     <script src="js/gameGps.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKB16XDqQ6Qnki2BdJUQXXP4hEpK0_2wo&callback=initMap"></script> -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKB16XDqQ6Qnki2BdJUQXXP4hEpK0_2wo&callback=initMap&libraries=geometry"></script>
+    <script src="js/wavebtn.js"></script>
+</div>
+<script>
+    var gpsCloudLeft,gpsCloudRight;
+    gpsCloudLeft = document.getElementById("gpsCloudLeft");
+    gpsCloudRight = document.getElementById("gpsCloudRight");
+    document.getElementById("playGame").addEventListener("click",function() {
+        //  
+        gpsCloudLeft.style.display = "none";
+        gpsCloudRight.style.display = "none";
+        playGps();
+    });
+</script>
+
     <!-- <script src="image/gpsGame/wheel.js"></script>
 
 </body>

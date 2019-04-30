@@ -106,14 +106,17 @@ function news() {
     }
 }
 //文章燈箱的內容放置
+var artBox, artTit ,msgAmt,clickAmt, artText ,memNic ,memLv ,memMoney ,shipImgAll ,artType ,artImg;
+var artBoxContText = [];
 function artBox(artId) {
-    var artBox, artTit ,msgAmt,clickAmt, artId,artText ,memNic ,memLv ,memMoney ,shipImgAll ,artType ,artImg;
-    var artBoxContText = [];
     // var artBoxContText, artBoxContTextMain, artBoxContTextMeg=[],artBoxContTextRespond;
+    
     if (artId == undefined) {
         console.log("bar");
         for (let i = 0; i < $class('artShow').length; i++) {
             $class('artShow')[i].addEventListener('click',function(e) {
+                document.getElementById("articleBoxWrapMask").style.display = "block";
+                body[0].classList.add("lightboxShow");
                 artBoxContText='';
                 artBox = e.currentTarget;
                 let inputs = artBox.getElementsByTagName("input");
@@ -183,8 +186,9 @@ function artBox(artId) {
         artBoxContText='';
         var artBoxText_xhr = new XMLHttpRequest();
         artBoxText_xhr.onload = function () {
-            var artBoxText = JSON.parse(artBoxText.responseText);
+            var artBoxText = JSON.parse(artBoxText_xhr.responseText);
             // console.log(artBoxText);
+            
             switch (artBoxText.artCat) {
                 case "1": artType = "尋寶"; 
                             newsBoxNameColor = "#7ccbbd";break;
@@ -200,7 +204,7 @@ function artBox(artId) {
             artBoxContText +=`<div id="articleBox">
             <div id="articleBoxTit">
                 <span id="articleBoxType" style="background-color:${newsBoxNameColor}">${artType}</span>
-                <h3 class="textL">${artBoxText.artTit}</h3>
+                <h3 class="textL">${artBoxText.artTitle}</h3>
                 <a href="javascript:;" id="closeArt"></a>
                 <a href="javascript:;" id="artReport"></a>
             </div>
@@ -226,9 +230,13 @@ function artBox(artId) {
             </div>
         </div>`;
         addMeg();
+        artId = "";
         }
         artBoxText_xhr.open("Get","barphp/artBoxText.php?artId=" + artId);
         artBoxText_xhr.send( null );
+        $id('closeArt').addEventListener('click',function() {
+            artId = "";
+        });
     }
     function addMeg() {
         var artBox_xhr = new XMLHttpRequest();
@@ -254,10 +262,12 @@ function artBox(artId) {
                 // console.log(artBoxContText);
             };
             artBoxContText += ` <div id="addArtRespondBox">
-            <form action="addArtRespond.php?artId=${artId}&memId=${thisMemId}" method="post" id="addArtRespond">
+            <form action="barphp/addArtRespond.php" method="get" id="addArtRespond">
+                <input type="hidden" name="memId" value="${thisMemId}">
+                <input type="hidden" name="artId" value="${artId}">
                 <textarea name="addArtRespondCont" id="addArtRespondCont" placeholder="加入回覆"></textarea>
                 <a class="btnpri" href="javascript:;">
-                    <span><label for="submitAddArtRespond"></label>發送留言</span>
+                    <span><label for="submitAddArtRespond">發送留言</label></span>
                 </a>
                 <input type="submit" id="submitAddArtRespond">
             </form>
@@ -268,12 +278,14 @@ function artBox(artId) {
             // artBoxContText += `${artBoxContTextRespond}`;
             $id('articleBoxWrap').innerHTML=artBoxContText;
             readArt();
-            artId= 0;
             // console.log(artId);
             // $id('closeArt').addEventListener('click',function() {
             //     $id('articleBoxWrapMask').style.display = 'none';
             //     body[0].classList.remove("lightboxShow");
             // });
+            $id('closeArt').addEventListener('click',function() {
+                artId = "";
+            });
         }
         artBox_xhr.open("Get", "barphp/artBoxCont.php?artId="+artId );
         artBox_xhr.send( null );
@@ -282,21 +294,18 @@ function artBox(artId) {
 }
 //文章燈箱
 function readArt() {
-    for (let i = 0; i < $class('hotIssueBoxLink').length; i++) {
-        $class('hotIssueBoxLink')[i].addEventListener('click',function() {
+    for (let i = 0; i < $class('artShow').length; i++) {
+        $class('artShow')[i].addEventListener('click',function(e) {
             body[0].classList.add("lightboxShow");
-            $id('articleBoxWrapMask').style.display = 'block';
-        });
-    }
-    for (let i = 0; i < $class('newsBoxTit').length; i++) {
-        $class('newsBoxTit')[i].addEventListener('click',function() {
-            body[0].classList.add("lightboxShow");
+            console.log(e.currentTarget);
+            artBox(e.currentTarget.firstElementChild.value);
             $id('articleBoxWrapMask').style.display = 'block';
         });
     }
     $id('closeArt').addEventListener('click',function() {
         $id('articleBoxWrapMask').style.display = 'none';
         body[0].classList.remove("lightboxShow");
+        artId = "";
     });
 }
 //新增討論燈箱
@@ -346,6 +355,11 @@ function addArt() {
     }
 }
 //通報海軍燈箱
+// function artReport() {
+//     $id("artReport").addEventListener('click',function() {
+//         $id('lightBoxReport').style.display = 'block';
+//     });
+// }
 // artReport
 //判斷
 function checkSession() {

@@ -2,7 +2,7 @@
 <!-- 熱門話題 -->
 <?php
 session_start();
-// $_SESSION["memId"] = "test01";
+$_SESSION["memId"] = "test01";
 // echo $_SESSION["memId"];
 ?>
 <script>
@@ -41,6 +41,43 @@ session_start();
   crossorigin="anonymous"></script>  -->
 </head>
 <body>
+<label for="burgerCtrl">
+        <input type="checkbox" name="" id="burgerCtrl">
+        <div id="burger">
+            <div class="burgerLine"></div>
+            <div class="burgerLine"></div>
+        </div>
+    </label>
+    <header class=""><!-- homeHeadHide-->
+        <h1 id="headerLogo"><a href="index.php">
+            <img src="image/logo.svg" alt="大海賊帝國">
+        </a></h1>
+        <nav id="headerMenu" >
+            <ul>
+                <li class="menuSwitch">
+                    <a href="play.php">海賊試煉場</i></a>
+                    <ul class="headerSub">
+                        <li><a href="play.php#game">海賊試煉</a></li>
+                        <li><a href="play.php#gpsWrap">啟航尋寶</a></li>
+                    </ul>
+                </li>
+                <li class="menuSwitch">
+                    <a href="market.php">海上市集</i></a>
+                    <ul class="headerSub">
+                        <li><a href="market.php">黑市</a></li>
+                        <li><a href="market.php">造船廠</a></li>
+                    </ul>
+                </li>
+                <li class="menuSwitch"><a href="bar.php">情報酒館</a></li>
+                <li class="menuSwitch">
+                    <a href="me.php">俺の海賊船</i></a>
+                    <ul class="headerSub">
+                        <li class="loginHere"><a href="javascript:;">登入</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
 <!-- 頁面標題 -->
 <div id="bartitle">
     <h1 class="titlePri">情報酒館</h1>
@@ -294,7 +331,7 @@ session_start();
         </div> -->
     </div>
     <!-- <div id="addArtRespondBox">
-        <form action="barphp/addArtRespond.php?&memId=<?php echo $_SESSION["memId"]; ?>" method="post" id="addArtRespond">
+        <form action="barphp/addArtRespond.php?&memId=" method="post" id="addArtRespond">
             <input type="hidden" name="addArtRespondArtId" id="addArtRespondArtId">
             <textarea name="addArtRespondCont" id="addArtRespondCont" placeholder="加入回覆"></textarea>
             <a class="btnpri" href="javascript:">
@@ -312,8 +349,11 @@ session_start();
             <div class="contents">
                 <div class="leave"></div>
                 <div>
-                    <form action="get" method="post" id="addNavyReportForm" enctype="multipart/form-data">
+                    <form action="barphp/addArtreport.php" method="post" id="addNavyReportForm" enctype="multipart/form-data">
                         <h2 class="titleThi">讓海軍為你主持公道吧</h2>
+                        <input type="hiddle">
+                        <input type="hidden" name="memId" value="<?php?>">
+                        <input type="hidden" name="artId" value="<?php?>">
                         <input type="text" name="navyReport" id="navyReportCont" placeholder="請點擊此處填入通報項目">
                         <a class="btnpri" href="javascript:;" ><span><label for="submitNavyReport">一鍵通報海軍</label></span>
                         </a>
@@ -350,21 +390,25 @@ session_start();
     function doFirst() {
         hotIssueText();
         addArt();
+        news();
         //get queryString
-        if (location.search.match("from=index") || location.search.match("from=me")) {
+        if (location.search.match("from=index") || location.search.match("from=me") ||  location.search.match("from=artRespond")) {
             // var location = location.search;
-            console.log(location.search);
-            console.log(location.search.indexOf("artId"));
-            console.log(location.search.substring(location.search.indexOf("artId"),location.search.length));
+            // console.log(location.search);
+            // console.log(location.search.indexOf("artId"));
+            // console.log(location.search.substring(location.search.indexOf("artId"),location.search.length));
+            artBoxContText='';
             var locationSearch = location.search;
             var artId = location.search.substring(location.search.indexOf("artId"),location.search.length);
             artId = artId.substring((artId.indexOf("=")+1),artId.length);
-            console.log(artId);
+            // console.log(artId);
             artBox(artId);
+            document.getElementById("articleBoxWrapMask").style.display = "block";
         }else{
             artBox();
         }
-        news();
+        artId="";
+        artReport()
         // readArt();
         // alert(location.search);
         
@@ -373,4 +417,5 @@ session_start();
 </script>
 <!-- <script src="js/bar.js>"></script> -->
 <script src="js/wavebtn.js"></script>
+<script src="js/header.js"></script>
 </body>
