@@ -16,15 +16,15 @@ body {
 h1, h2, h3, h4 {
     text-shadow: .1px .1px .1px #443c3a;
 }
-
+.sRContWrap{
 h1 {
-    font-family: $fofaTitle;
-	color: $blue;
-	font-size: 3rem;
-	text-align: center;
-    margin: 30px auto;
+      font-family: $fofaTitle;
+      color: $blue;
+      font-size: 3rem;
+      text-align: center;
+      margin: 30px auto;
+  }
 }
-
 span,a {
     color: rgb(15, 15, 15);
     font-size: 1rem;
@@ -165,13 +165,20 @@ a, a:hover {
   left: -30px;
   //left: 50%;
   //transform: translateX(-50%);
-
+  // overflow: hidden;
   &.active {
     left: 0;
     top: 0;
     opacity: 1;
   }
-
+  .sRDNWrap {
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+  }
 }
 
 .swiper-wrapper {
@@ -193,13 +200,13 @@ a, a:hover {
 }
 
 .sR-sliderctr .sR-sliderarrow.sR-slider-prev {
-    left: 15%;
+    left: 16%;
     transform: translateY(200%);
     display: block;
   }
 
 .sR-sliderctr .sR-sliderarrow.sR-slider-next {
-    right: 30.5%;
+    right: 31%;
     transform: translateY(200%);
     display: block;
 }
@@ -517,6 +524,10 @@ a, a:hover {
   z-index: 1;
 }
 
+.sRmyShip .sRtitle {
+  margin-top: 42px;
+}
+
 .sRtitle a{
     color: rgb(32, 32, 32);
     text-shadow: .1px .1px .1px #000000;
@@ -549,13 +560,34 @@ a, a:hover {
     h1 {
         margin-top: 60px;
     }
+    .sRContWrap {
+      .sRmyShip{
+      .sRrank .sRClaimReward {
+        z-index: 1;
+        opacity: 1;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 160px;
+      }
+    }
+   }
+.sRContWrap {
+  h1 {
+    margin: 0 auto;
+    margin-top: 30px;
+  }
+}
+    
 }
 
 ///////////////////
+.sRBPromoBox  {
+  transition: .6s;
+}
 
 .SRWaveBox {
     width: 100%;
-    height: 18rem;
+    height: 20rem;
     overflow: hidden;
     display: block;
     margin: 0 auto;
@@ -617,6 +649,7 @@ a, a:hover {
 .sR-slideritem {
     position: relative;
     overflow: hidden;
+    transition: .6s;
     cursor: pointer;
     .sRitem {
         position: relative;
@@ -694,7 +727,7 @@ a, a:hover {
 
 @keyframes moveship {
     from {
-        transform: rotate(0deg) translate(70px, 20px);
+        transform: rotate(5deg) translate(50px, 25px);
     }
     25%{
         
@@ -703,10 +736,10 @@ a, a:hover {
         
     }
     65%{
-        transform: rotate(30deg) translate(-40px, -10px);
+        transform: rotate(20deg) translate(-10px, 55px);
     }
     to {
-        transform: rotate(0deg) translate(70px, 20px);
+        transform: rotate(5deg) translate(50px, 25px);
     }
 }
 
@@ -724,6 +757,28 @@ a, a:hover {
 
 .sYItem-bg {
     animation: sYBgColor 15s ease-in-out infinite;
+}
+
+.sRRainBg {
+  animation: sYBgRain 15s ease-in-out infinite;
+}
+
+@keyframes sYBgRain {
+  from {
+      opacity: 0;
+  }
+  25%{
+    opacity: 1;
+  }
+  50%{
+    opacity: 1;
+  }
+  65%{
+
+  }
+  to {
+    opacity: 0;
+  }
 }
 
 @keyframes sYBgColor {
@@ -791,7 +846,7 @@ a, a:hover {
 .sYPartHead {
   margin-left: 16%;
   position: relative;
-  top: -50px;
+  top: 200px;
   opacity: 0;
   transition: .6s;
 }
@@ -799,14 +854,16 @@ a, a:hover {
 .sYPartBody {
   margin-left: -12%;
   position: relative;
-  top: -30px;
+  top: 300px;
   opacity: 0;
   transition: .6s;
 }
 
 .sYPartSail {
   margin-left: -40%;
+  position: relative;
   opacity: 0;
+  top: 300px;
   transition: .6s;
 }
 
@@ -837,6 +894,7 @@ a, a:hover {
 .sRmyShip .sRimg {
   position: relative;
   z-index: 0;
+  top: 25px;
 }
 
 .sRmyShip:hover{
@@ -849,3 +907,245 @@ a, a:hover {
 .sRmyShip .sRranktxt {
   color: #c73030;
 }
+
+
+/////////////////////////////////////
+
+
+.sRDayNightBox {
+  position: absolute;
+  width: 100%;
+  height: 0;
+  padding-top: 100%;
+  left: 0;
+  z-index: -2;
+  animation: dayAndNight 15s ease infinite;
+  transform-origin: bottom;
+}
+
+.sun {
+  background: rgb(250, 236, 107);
+  box-shadow: 0 0 20px rgba(255, 255, 255, .5);
+  top: 30%;
+  right: 10%;
+
+  width: 20%;
+  height: 20%;
+  border-radius: 50%;
+  position: absolute;
+
+  animation: sunAnimation 15s ease infinite;
+	transition: all 1.1s 0.4s ease;
+}
+
+.moon {
+  position: absolute;
+  background: #d9d8d0;
+  box-shadow: inset -10px 2px 0 0px #899098, 0 0 20px rgba(255, 255, 255, .5);
+  top: 150%;
+  left: 10%;
+  width: 20%;
+  height: 20%;
+  border-radius: 100%;
+  position: absolute;
+
+  animation: moonAnimation 15s ease infinite;
+	transition: all 1.1s 0s ease;
+}
+
+.stars {
+  opacity: 1;
+  transition: all 0.8s 0s ease;
+  position: absolute;
+  top: 150%;
+  left: 10%;
+  width: 100%;
+  height: 100%;
+}
+.night .stars {
+  opacity: 1;
+	transition: all 3s 0.4s ease;
+}
+.stars div:nth-child(n) {
+  position: absolute;
+  background: radial-gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 1);
+  overflow: hidden;
+  width: .5%;
+  height: .5%;
+
+  margin-left: 20%;
+  margin-top: -20%;
+
+	transition: all 1s 0s ease;
+}
+
+.stars div:nth-child(1) {
+  left: 25%;
+  top: 30%;
+}
+.stars div:nth-child(2) {
+  left: 55%;
+  top: 20%;
+}
+.stars div:nth-child(3) {
+  left: 40%;
+  top: 10%;
+}
+.stars div:nth-child(4) {
+  left: 80%;
+  top: 55%;
+}
+
+@keyframes dayAndNight {
+  from {
+    transform: rotate(360deg);
+  }
+  25%{
+      
+  }
+  50%{
+      
+  }
+  65%{
+    transform: rotate(180deg);
+  }
+  to {
+      transform: rotate(0deg);
+  }
+}
+
+@keyframes sunAnimation {
+  from {
+    opacity: 1;
+  }
+  55%{
+    opacity: 0;
+  }
+
+  85%{
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes moonAnimation {
+  from {
+    opacity: 0;
+  }
+  25%{
+    opacity: 0;
+  }
+  50%{
+    
+  }
+  65%{
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+///////////////////////
+
+.lightbox{
+  display: none;
+  position: fixed;
+  top: 0;
+  right:0;
+  left: 50%;
+  bottom: 50%;
+  z-index: 99;
+  input{
+      height: 20px;
+      border-radius:2px;
+      background:#fff;
+      border:1px  #aaa solid;
+      cursor:pointer;
+      margin: 5px;
+  }
+  .btnpri{
+      margin: 10px;
+  }
+  // .lightbox{
+  //     width: 450px;
+  //     height: 320px;
+  // }
+  // .axis{
+  //     width: 450px;
+  // }
+  // .paper{
+  //     text-align: center;
+  //     padding: 50px 0px;
+  //     width: 400px;
+  //     height: 200px;
+  // }
+  // .paper::after{
+  //     right: 7%;
+  //     top: 15%;
+  // }
+  
+  // .paper::before{
+  //     right: 7%;
+  //     top: 15%;
+  // }
+  
+  #tab-demo ul > li{
+      display: inline;
+  }
+  
+  .titlePri{
+      margin: 10px;
+      font-size: 20px;
+  }
+  
+  .Data-Title {
+      float: left;
+      width: 25%; /* Label寬度，視情況調整 */
+      margin-right:0px;
+      margin-left: 60px;
+      text-align: right;
+      line-height: 2.2;
+     
+  }
+  
+  .Data-Items {
+      float: left;
+      width: 20%;
+      padding-bottom: 10px;
+      margin-left:0;
+      
+  }
+  .verification{
+      float: left;
+      
+  }
+  
+  .Data-Title > label{
+      margin: 10px;
+  }
+  
+  
+  
+  .paper{
+      width: 450px;
+      padding: 50px 0;
+  }
+  @media screen and (max-width: 768px){
+      .info{
+          width: 370px;
+      }
+      .axis{
+          width: 370px;
+      }
+      .paper{
+          width: 350px;
+      }
+  
+  }
+}
+////////////////////////////////////

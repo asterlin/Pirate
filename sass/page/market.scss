@@ -48,20 +48,20 @@ img {
         opacity: .65;
         transition: .6s;
         left: 7%;
-        top: 420px;
+        top: 200px;
         transform: perspective(1000px) rotateY(42deg) skewY(-12deg); 
         display: none;
     }
 
     .marBoard + .marBoard{
         left: 30%;
-        top: 250px;
+        top: 50px;
         transform: perspective(1000px) rotateY(42deg) skewY(-12deg) scale(.5); 
     }
 
     .marBoard + .marBoard + .marBoard{
         left: 50%;
-        top: 150px;
+        top: -50px;
         transform: perspective(1000px) rotateY(42deg) skewY(-12deg) scale(.3);
         opacity: 0;
     }
@@ -332,6 +332,11 @@ img {
                 &:first-of-type span{
                     color: #a34f49;
                 }
+                &:hover {
+                    h4 {
+                        color: #a34f49;
+                    }
+                }
             }
         }
 
@@ -386,6 +391,23 @@ img {
                 img {
                     width: 1rem;
                     margin: 0 0 0 .5rem;
+                }
+                &:hover{
+                    img {
+                        animation: reverseAnimation 20s infinite;
+                    }
+                    span {
+                        color: #1d5370;
+                    }
+                }
+                
+                @keyframes reverseAnimation {
+                    from {
+                        transform: rotate(3600deg);
+                    }
+                    to {
+                        transform: rotate(0deg);
+                    }
                 }
             }
         }
@@ -467,6 +489,7 @@ img {
     position: absolute;
     bottom: 2.5rem;
     right: 3%;
+    color: #4b4b4b;
 }
 .SYPriceTag {
     color: #303030;
@@ -744,7 +767,16 @@ img {
     .shipYard .shipYardCont .merchSail img {
         top: 25px;
         left: -19%;
+        color: rgba(32, 32, 32,4);
+        color: rgba(77, 77, 77,4);
+        color: rgba(112, 112, 112,4);
+        color: rgba(194, 194, 194,4);
+        color: rgba(0, 0, 0,4);
     }
+    @keyframes previewMoveParts {
+        
+    }
+
     .shipYard .shipYardCont .sYShipPreviewBox .sYPreviewBtn {
         display: none;
     }
@@ -756,14 +788,14 @@ img {
     }
     .merchPartintro {
         margin: 0 0 0 2rem;
-        padding-top: 50px;
+        padding-top: 40px;
         width: 50%;
     }
     .SYremoveMerch {
         font-size: 1.5rem;
         position: relative;
         top: -70px;
-        right: -6rem;
+        right: -7rem;
         display: none;
     }
     .merchPartBox:hover .SYremoveMerch{
@@ -773,6 +805,7 @@ img {
         bottom: 5rem;
         z-index: 2;
         right: 30px;
+        
     }
     .shipYard .shipYardCont .sYToolBox {
         position: absolute;
@@ -785,7 +818,7 @@ img {
         width: auto;
     }
     .merchPartintro h3 {
-        margin-bottom: 10px;
+        margin-bottom: 20px;
     }
     .shipYard .shipYardCont .mSSDCont #drawLineCanvas {
         display: block;
@@ -893,17 +926,889 @@ img {
         right: -10px;
     }
     .shipYard .shipYardCont .sYMerchBtn .btnpri span {
-        padding: 10px 20px;
+        padding: 10px 10px;
     }
     .shipYard .shipYardCont .sYMTypeBox {
         height: 500px;
     }
 }
-
+.shipYard .shipYardCont .currentPreview {
+    box-shadow: 1px 1px 4px 0px #000, 0 0 4px 4px #574934, 0 0 4px 8px #ce6c6c;
+}
 @media screen and (min-width: 1024px){
     .marMain {
 
         margin-bottom: 60px;
     }
 }
+
+.slick-slider {
+    transition: .6s;
+}
+
+
+.shipYardBanner {
+    overflow: hidden;
+    transition: 1s;
+}
+
+
+    
+    h3 {
+        font-size: 1.25rem;
+    }
+
+    .shipYard {
+        overflow: visible;
+    }
+
+    .shipYard .shipYardCont {
+        // margin-top: -600px;
+        position: relative;
+        z-index: 5;
+    }
+
+    .marBanner {
+        position: relative;
+        z-index: 1;
+    }
+
+
+    .marMain {
+        // margin-top: -300px;
+    }
+
+    .shipYardBanner {
+        .slick-slider .slick-track{
+            display: block;
+        }
+
+    .slider {
+        width: 50%;
+        margin: 100px auto;
+    }
+
+    .slick-slide {
+        margin: 0px 20px;
+    }
+
+    .slick-slide img {
+        width: 100%;
+    }
+
+    .slick-slide {
+        transition: all ease-in-out .3s;
+        opacity: 0;
+    }
+
+    .slick-active {
+        opacity: 1;
+    }
+
+    // .sRBPromoBox .slick-active{
+    //     -webkit-filter:brightness(.5) blur(1px);
+    // }
+
+    // .sRBPromoBox .slick-current {
+    //     opacity: 1;
+    //     -webkit-filter:brightness(1)blur(0px);
+    // }
+
+    // .sRPBoxRight .slick-current {
+    //     -webkit-filter:brightness(.5) blur(1px);
+    // }
+
+    *{
+        &:focus {
+        outline: rgba(0, 0, 0, 0) 0px;
+        }
+    } 
+
+    .shipYardBanner {
+        width: 100%;
+    }
+    .sRBCont {
+            width: 1200px;
+            margin: auto;
+            display: flex;
+            position: relative;
+    }
+
+    .sRBPromoBox {
+        width: 25%;
+        position: relative;
+        .slick-slide {
+            transition: .6s;
+            transform: rotate(-60deg);
+            // margin-bottom: 100px;
+        }
+        .sRPDShipisplay {
+            width: 100%;
+            position: relative; 
+            &:nth-of-type(2){
+                
+            }
+            &:nth-of-type(3){
+                
+            }
+        }
+        .sRPromoImg {
+            position: absolute;
+            top: 0;
+            
+        }
+        .sRPromoBody {
+            position: relative;
+            top: 0;
+        }
+    }
+    .sRPBoxLeft {
+        transform: rotate(60deg) translate(-380px,125px);
+        z-index: 4;
+    }
+    .sRPBoxRight {
+        transform: rotate(-60deg) translate(380px,125px);
+        z-index: 4;
+            .slick-slide {
+                transform: rotate(60deg);
+            }    
+    }
+
+    .sRPBoxmain {
+        width: 50%;
+        box-sizing: border-box;
+        padding: 0 10%;
+    }
+    @keyframes sRShip {
+        from {
+            left: 0px;
+            transform: rotate(-2deg);
+        }
+        16%{
+            left: 15px;
+            transform: rotate(2deg);
+        }
+        33%{
+            left: 10px;  
+            transform: rotate(-2deg);
+        }
+        50%{
+            left: 20px;
+            transform: rotate(2deg);
+        }
+        66%{
+            left: 15px;
+            transform: rotate(-2deg);
+        }
+        83%{
+            left: 10px;
+            transform: rotate(2deg);
+        }
+        to {
+            left: 0px;
+            transform: rotate(-2deg);
+        }
+    }
+
+    .sYPPreviewshelf {
+        box-sizing: border-box;
+        // padding: 30px;
+        position: relative;
+        .promoPartBox {
+            // width: 50%;
+            text-align: left;
+            // display: flex;
+            
+            .promoPartImg {
+                width: 50%;
+                position: relative;
+                
+                .spromoCircle {
+                    transition: .6s;
+                    position: absolute;
+                    z-index: -1;
+                    top: 1vw;
+                    left: 0;
+                    width: 96px;
+                    height: 96px;
+                    border-radius: 50%;
+                    background-color: #bdaa8f;
+                    box-shadow: 
+                                0px 0px 1px 1px #70665c,
+                                0px 0px 20px 1px rgb(0, 0, 0) inset,
+                                0 0 0 4px #635950,
+                                0px 0px 4px 5px #ffffff,
+                                0px 0px 4px 11px #ac4d4d,
+                                0px 0px 4px 12px #742e2e;
+                                display: none;
+                }
+                .pPreviewHeadBox {
+                    // left: 30%;
+                    // transform: scale(1.3);
+                    // position: relative;
+                }
+                .pPreviewBodyBox {
+                    // top: 4px;
+                    // left: -3px;
+                    // position: relative;
+                }
+                .pPreviewSailBox {
+                    // top: 25px;
+                    // left: -19%;
+                    // transform: scale(1.3);
+                    // position: relative;
+                }
+
+            }
+            .promoPartintro {
+                // margin: 0 0 0 2rem;
+                // padding-top: 50px;
+                // width: 50%;
+                    span {
+                        color: #303030;
+                    }
+                    .promoPartPrice {
+                        color: #a34f49; 
+                        margin-left: 1rem;
+                    }
+                    h3 {
+                        margin-bottom: -50px;
+                    }
+            }
+        }
+        .promoHead {
+            position: absolute;
+            top: 0;
+            left: 0;
+            .promoPartImg {
+                // margin-left: 28%;
+                margin: auto;
+                img {
+                    margin-left: -20%;
+                    opacity: 0;
+                }
+            }
+            .promoPartintro  {
+                position: absolute;
+                bottom: 100px;
+            }
+            
+        }
+        .promoBody {
+            position: relative;
+            top: 0;
+            left: 0;
+                .promoPartImg {
+                    margin: auto;
+                    img {
+                        opacity: 0;
+                    }
+                }
+                .promoPartintro  {
+                    position: absolute;
+                    margin-top: -20px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                }
+        }
+        .promoSail {
+            position: absolute;
+            top: 0;
+            left: 0;
+            .promoPartImg {
+                margin: auto;
+                img {
+                    margin-left: 50%;
+                    // margin-top: 20px;
+                    opacity: 0;
+                }
+            }
+            .promoPartintro  {
+                position: absolute;
+                right: 7%;
+                bottom: 100px;
+            }
+        }
+    }
+
+    .sRPLBoxmain, .sRPRBoxmain {
+        margin-top: 250px;
+        z-index: 3;
+        position: absolute;
+        margin-left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .sRPRBoxmain {
+        opacity: 0;
+    }
+    .sYPPreviewBox {
+        position: relative;
+        .sYPbuymerchesBtn {
+        position: relative;
+        left: 75%;
+        bottom: 46px;
+        }
+    }
+    .slick-current .sYPPreviewshelf .promoHead .promoPartImg img{
+        opacity: 1;
+    }
+    .slick-current .sYPPreviewshelf .promoBody .promoPartImg img{
+        opacity: 1;
+    }
+    .slick-current .sYPPreviewshelf .promoSail .promoPartImg img{
+        opacity: 1;
+    }
+
+}
+
+html {
+    scroll-behavior: smooth;
+  }
+
+
+/////////////light-box
+
+.clearfix {
+    clear: both; }
+  
+  .lightbox{
+    display: none;
+  }
+  
+  .popbg{
+    position: fixed;
+    z-index: 19;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,.5); 
+  }
+  
+  .info{
+    z-index: 20;
+    left: 50%;
+    top: 50%;
+    /* right: 0; */
+    /* bottom: 0; */
+    width: 450px;
+    /* height: 100%; */
+    transform: translate(-50%, -50%);
+  
+    position: fixed; }
+  
+  
+  .axis {
+    width: 450px;
+    height: 20px;
+    background-image: linear-gradient(0deg, rgba(175, 69, 7, 0.5) 0%, transparent 80%), linear-gradient(90deg, #af4507 30px, #f5ba61 30px, #f5ba61 60px, #af4507 60px);
+    background-size: 60px 100%;
+    border: 3px solid #724a0e;
+    border-radius: 15px;
+    position: absolute; }
+  
+  .axis1 {
+    top: 0; }
+  
+  .axis2 {
+    left: 0;
+    bottom: 0px; }
+  
+  .paper {
+    padding: 80px 0;
+    text-align: center;
+    margin: auto;
+    width: 400px;
+    /* height: 100%; */
+    /* padding: 50px 0px; */
+    background-image: linear-gradient(0deg, rgba(255, 211, 130, 1) 0%, rgba(255, 211, 130, 1) 100%);
+    border: 2px solid #c28c3a;
+        .titleThi {
+            color:$blue;
+            margin: 10px;
+            font-size: 1.5rem;
+        }
+    }
+  
+  .leave{
+    width: 45px;
+    height: 45px;
+    position: absolute;
+    right: 32px;
+    top: 32px;
+    cursor: pointer;
+  }
+  .leave::after{
+    content: " ";
+    width: 40px;
+    height: 8px;
+    position: absolute;
+    background-color: brown;
+    transform: rotate(45deg);
+    right: 7%;
+    top: 40%;
+  }
+  .leave::before {
+    content: " ";
+    width: 40px;
+    height: 8px;
+    background-color: brown;
+    transform: rotate(135deg);
+    position: absolute;
+    right: 7%;
+    top: 40%;
+  }
+  .leavebuy{
+    width: 45px;
+    height: 45px;
+    position: absolute;
+    right: 32px;
+    top: 32px;
+    cursor: pointer;
+  }
+  .leavebuy::after{
+    content: " ";
+    width: 40px;
+    height: 8px;
+    position: absolute;
+    background-color: brown;
+    transform: rotate(45deg);
+    right: 7%;
+    top: 40%;
+  }
+  .leavebuy::before {
+    content: " ";
+    width: 40px;
+    height: 8px;
+    background-color: brown;
+    transform: rotate(135deg);
+    position: absolute;
+    right: 7%;
+    top: 40%;
+  }
+    .lightbox{
+        .btnpri {
+    margin: 10px; }
+    } 
+  
+   .lightbox p{
+      font-family: 王漢宗特明體繁;
+      font-size: 20px;
+      line-height: 1.6;
+      text-align: left;
+      color: #362e2b;
+      letter-spacing: 2px;
+      padding: 0 20px;
+    }
+    .sYMerchBtn {
+        .sYBuyBtn {
+            margin: 0;
+        }
+    }
+
+.sYLtext {
+    display: block;
+    margin: 30px 0 20px 0;
+    color: #303030;
+}
+
+.sYLBtnBox {
+    position: relative;
+    display: flex;
+
+    justify-content: space-evenly;
+}
+
+.sYLWearBtn {
+    display: block;
+    
+}
+
+.sYLStorBtn {
+    display: block;
+    line-height: 60px;
+    span {
+        padding: 10px 0px 10px 20px;
+        margin: 10px 0 10px 10px;
+    }
+    &:hover span {
+        color: rgba(175, 96, 82,1);
+    }
+}
+
+.sRPRBoxmain .slick-slide {
+    opacity: 0;
+}
+
+.sRPRBoxmain .slick-current {
+    opacity: 1;
+}
+
+@media screen and (max-width: 1200px){
+    .shipYardBanner {
+        display: none;
+    }
+    .marMain {
+        overflow: hidden;
+    }
+    .shipYard .shipYardCont {
+        // margin-top: 350px;
+    }
+}
+
+@media screen and (max-width: 768px){
+    .slick-slide {
+        height: auto;
+    }
+    .shipYard .shipYardCont .sYMerch {
+        padding: 0 1vw 2vw 1vw;
+    }
+    .buyAllinfo {
+        display: none;
+    }
+
+    .shipYard .shipYardCont .sYMerch .sYMerchImg .visibleBtn {
+        position: absolute;
+        bottom: auto;
+        left: auto;
+        right: 3%;
+        top: 24vw;
+        transform: scale(1);
+        width: 20%;
+        display: none !important;
+    }
+    .shipYard .shipYardCont .slick-slide {
+        transform: translateX(0);
+    }
+}
+
+.lightbox{
+
+    display: none;
+  }
+  
+  .popbg{
+    position: fixed;
+    z-index: 19;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,.5); 
+  }
+  
+  .info{
+    z-index: 20;
+    left: 50%;
+    top: 50%;
+    /* right: 0; */
+    /* bottom: 0; */
+    width: 450px;
+    /* height: 100%; */
+    transform: translate(-50%, -50%);
+    position: fixed; 
+  }
+  
+  .axis {
+    width: 450px;
+    height: 20px;
+    background-image: linear-gradient(0deg, rgba(175, 69, 7, 0.5) 0%, transparent 80%), linear-gradient(90deg, #af4507 30px, #f5ba61 30px, #f5ba61 60px, #af4507 60px);
+    background-size: 60px 100%;
+    border: 3px solid #724a0e;
+    border-radius: 15px;
+    position: absolute; }
+  
+  .axis1 {
+    top: 0; }
+  
+  .axis2 {
+    left: 0;
+    bottom: 0px; }
+  
+  .paper {
+    padding: 80px 0;
+    text-align: center;
+    margin: auto;
+    width: 400px;
+    /* height: 100%; */
+    /* padding: 50px 0px; */
+    background-image: linear-gradient(0deg, rgba(255, 211, 130, 1) 0%, rgba(255, 211, 130, 1) 100%);
+    border: 2px solid #c28c3a; }
+  
+  .leave{
+    width: 45px;
+    height: 45px;
+    position: absolute;
+    right: 32px;
+    top: 32px;
+  }
+  .leave::after{
+    content: " ";
+    width: 40px;
+    height: 8px;
+    position: absolute;
+    background-color: brown;
+    transform: rotate(45deg);
+    right: 7%;
+    top: 40%;
+  }
+  .leave::before {
+    content: " ";
+    width: 40px;
+    height: 8px;
+    background-color: brown;
+    transform: rotate(135deg);
+    position: absolute;
+    right: 7%;
+    top: 40%;
+  }
+  .lightbox .btnpri {
+    margin: 10px; }
+  
+   .lightbox p{
+      font-family: 王漢宗特明體繁;
+      font-size: 20px;
+      line-height: 1.6;
+      text-align: left;
+      color: #362e2b;
+      letter-spacing: 2px;
+      padding: 0 20px;
+    }
+
+.lightbox {
+    input {
+        height: 20px;
+        border-radius: 2px;
+        background: #fff;
+        border: 1px  #aaa solid;
+        cursor: pointer;
+        margin: 5px; }
+      
+      .btnpri {
+        margin: 10px; }
+      
+      #tab-demo ul > li {
+        display: inline; }
+      
+      .titlePri {
+        margin: 10px;
+        font-size: 20px; }
+      
+      .Data-Title {
+        float: left;
+        width: 25%;
+        /* Label寬度，視情況調整 */
+        margin-right: 0px;
+        margin-left: 60px;
+        text-align: right;
+        line-height: 2.2; }
+      
+      .Data-Items {
+        float: left;
+        width: 20%;
+        padding-bottom: 10px;
+        margin-left: 0; }
+      
+      .verification {
+        margin-left: 50%;
+        transform: translateX(-50%);
+        float: left; 
+        a {
+            border: 1px solid #aaa;
+            background-color: rgb(255,239,215);
+            border-radius: 5px;
+            padding: 0 10px;
+            text-decoration: none;
+            color: #333;
+        }
+        img {
+            width: 100px;
+            height: 100px;
+        }
+    }
+      
+      .Data-Title > label {
+        margin: 10px; }
+      
+    //   .paper {
+    //     width: 450px;
+    //     padding: 50px 0; }
+      
+      @media screen and (max-width: 768px) {
+        .info {
+          width: 370px; }
+        .axis {
+          width: 370px; }
+        .paper {
+          width: 350px; } }
+}
 //-----黑市
+.blackMarket{
+    width: 1200px;
+    margin: auto;
+    position: relative;
+    z-index: 10;
+
+    #baBase {
+        width: 30%;
+
+    }
+    #baRod {
+        width: 80%;
+    }
+    #baLcsl, #baRcsl {
+        width: 20%;
+    }
+    .card {
+        width: 10%;
+        height: 10%;
+    }
+}
+
+*{
+    padding: 0;
+    margin: 0;
+}
+.col-3,
+.col-4,
+.col-6,
+.col-12{
+    padding-left: 10px; 
+    padding-right: 10px;
+    box-sizing: border-box;
+    margin: 10px;
+}
+.col-3{ width: 25%;}
+.col-4{ width: 33.333333%; }
+.col-6{ width: 50%;}
+.col-12{ width: calc(100% - 20px); }
+.treawrap,.sellpage{
+        box-sizing: border-box;
+        padding: 20px;
+    }
+@media screen and (min-width:768px){
+    .col-md-3{ width: 25%;}
+    .col-md-4{ width: calc(33.333333% - 20px); 
+                margin: 10px;}
+    .col-md-6{ width: 50%; }
+    .col-md-12{ width: 100%; }
+    .treawrap,.sellpage{
+        box-sizing: border-box;
+        padding: 10px;
+    }
+    
+   
+}
+
+@media screen and (min-width:1024px){
+    .col-xl-3{ width: calc(25% - 20px);
+                margin: 10px;}
+    .col-xl-4{ width: 33.333333%; }
+    .col-xl-6{ width: 50%; }
+    .col-xl-12{ width: 100%; }
+}
+.flex{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+.filterCheck{
+    width: 100%;
+}
+.treawrap{
+    border: 1px red solid;
+    width: 100%;
+    max-width: 1200px;
+    
+    
+    
+}
+.treaRecommend{
+    position: relative;
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding: 15px;
+    line-height: 1.5;
+    background-color: #f5ecdd;
+}
+.treaImg{
+    margin:10px 0px;
+    width: 100%;
+    height: 50px;
+}
+.treaName{
+    display: inline-block;
+}
+.salerId{
+    position: absolute;
+    right: 15px;
+    top: 15px;
+}
+.treabuywrap{
+    margin: 10px 0;
+    width: 100%;
+    text-align: center;
+}
+.treaRadar{
+    display: none;
+}
+.buysuccess{
+    margin-bottom: 30px;
+}
+.buysucbox{
+     display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.sellpage{
+    border: 1px red solid;
+    width: 100%;
+    max-width: 1200px;
+    display: none;
+  
+}
+
+.sellnew{
+    width: 100%;
+    text-align: center;
+}
+
+.selltreabox {
+    display: none;
+    .info,.axis{width: 800px;}
+    .paper{width: 710px;
+            padding: 100px 20px;
+    }
+        
+        
+        
+}
+.holdtrea{
+    width: 100%;
+    border: 1px solid red;
+    padding: 10px 0;
+}
+.holdtrealist{
+    padding: 20px;
+    margin: 10px 10px;
+    border: 1px solid white;
+}
+.sellshelf{
+    width: 100%;
+    text-align: center;
+}
