@@ -1,6 +1,7 @@
 @import '../base/font';
 @import '../base/reset';
 @import '../layout/header';
+@import '../layout/homeBar';
 
 
 #homeGame,#homeMarket,#homeBar{
@@ -37,7 +38,7 @@ p{ //這裡其實不懂為何_font設定的在瀏覽器不執行
     padding-left: 10px; //此處為了校正字距
 }
 .btnsec{
-    padding: 10px;
+    // padding: 10px;
     font-size: 1.25rem;
     // -webkit-tap-highlight-color: transparent;
 }
@@ -73,23 +74,32 @@ p{ //這裡其實不懂為何_font設定的在瀏覽器不執行
 
 //調整成為海賊的船
 #wrapShipArea{
-    position: absolute;
-    width: 100%;
-    top: 28%;
-    left: -30%;
-    text-align: center;
-    cursor: pointer;
+//     position: absolute;
+//     width: 100%;
+//     top: 28%;
+//     left: -30%;
+    // text-align: center;
+//     cursor: pointer;
     .btnsec{
         // margin-top: -15px;
-        position: absolute;
-        top: 65%;
-        right: 0;
+        // position: absolute;
+        // top: 65%;
+        display: block;
+        left: 0; right: 0;margin: auto;
+        top: 300px;
             
     }
-}
-#wrapShipArea img{
-    // width: 100%;
-    position: absolute;
+    #bannerShip{
+        width: 240px;
+        top: 100px;
+        position: relative;
+        margin: auto;
+    }
+    img{
+        width: 100%;
+        position: absolute;
+        
+    }
 }
 
 #btnBePirate{
@@ -98,13 +108,15 @@ p{ //這裡其實不懂為何_font設定的在瀏覽器不執行
 }
 //船
 #shipArea{
-    position: relative;
+    position: absolute;
     // height: 240px;
     // width: 180px;
     width: 600px;
     height: 650px;
     // margin: auto;
-    transform: scale(0.3);//大螢幕為0.4吧，修改時，前面的shiparea寬度也要修改
+    transform: scale(0.6);//大螢幕為0.4吧，修改時，前面的shiparea寬度也要修改
+    transform-origin: 0%;
+    top:-30px;
 }
 #partSail,#partHead,#partBody,#drawFrame{
     width: 100%;
@@ -150,8 +162,8 @@ p{ //這裡其實不懂為何_font設定的在瀏覽器不執行
 // }
 //調整成為海賊的位置到中間
 #wrapShipArea{
-    // position: absolute;
-    width: 10%;
+    position: absolute;
+    // width: 10%;
     top: 50%;
     // left: 0;
     // right: 0;
@@ -203,14 +215,20 @@ p{ //這裡其實不懂為何_font設定的在瀏覽器不執行
 
     //調整成為海賊的位置到中間
     #wrapShipArea{
-        width: 380px;
-        top: 40%; //9%
-        left: 18%;
-        right: auto;
+        // width: 380px;
+        top: 54%; //9%
+        // left: 18%;
+        // right: auto;
+        left: 0;right: 0;margin: auto;
+        .btnsec{
+            position: relative;
+            left: 0;right: 0;
+        }
     }
     #shipArea{
         // height: 200px;
         transform: scale(1); //0.4
+        position: static;
         float: left;
     }
 
@@ -286,6 +304,12 @@ header.homeHeadHide{
     .DIYStatLine.active{
         width: 100%;
     }
+    .btnsec span{
+        padding: 8px;
+    }
+    .btnpri span{
+        padding: 10px;
+    }
 
 }
 #DIYSlides{
@@ -317,6 +341,9 @@ header.homeHeadHide{
     &:hover{
         box-shadow:0 3px 5px #a67c52;
         transform: translateY(-3px);
+    }
+    &#shipPreview{
+        width: 300px;
     }
 }
 #DIYHeads,#DIYSails{
@@ -380,6 +407,7 @@ header.homeHeadHide{
     text-align: center;
     line-height: 30px;
     border-radius: 100px;
+    cursor: pointer;
 }
 #eraser{
     border: 2px solid $brown;
@@ -409,7 +437,7 @@ header.homeHeadHide{
 
 @media screen and (min-width:1024px){
     #homeDIY .textEmphasis{
-        margin-top: 110px;
+        margin-top: 130px;
     }
     #DIYStatus li:first-child{
         margin-left: auto;
@@ -739,6 +767,7 @@ h2 a{
         color: #736357;
         // background: $beige;
         transition-duration: 0.1s;
+        cursor: pointer;
     }
     .fa-arrow-circle-right{
         right: -25px;
@@ -779,7 +808,7 @@ h2 a{
     transition-duration: 0.3s;
 }
 .homeProdInfoCard{
-    width: 170px;
+    width: 150px;
     margin: 10px;
     float: right;
     p{
@@ -850,19 +879,12 @@ h2 a{
         width: 300px;
         height: 420px;
     }
-    // #homeMarketProds{ 
-        // ul{
-        //     float: left;
-        //     width: calc(50% - 300px);
-        // }
-        // li{
-        //     float: left;
-        //     margin: 10px 20px;
-        // }
-        // li:nth-child(2n){
-        //     margin: 80px -40px -80px -40px;
-        // }
-    // }
+    #homeMarketProds{ 
+        ul{
+            max-width: 1560px;
+            margin: auto;
+        }
+    }
     #homeMarketProdInfo{
         width:400px;
         margin: auto;
@@ -883,6 +905,7 @@ h2 a{
         float: initial;
         text-align: left;
         padding-left: 170px;
+        width: 170px;
         // .btnpri{
         //     position: absolute;    
         //     right: 20px;
@@ -903,9 +926,6 @@ h2 a{
             }
         }
         
-        &.hide{
-            display: none;
-        }
         &:nth-child(5){ //此處將與大卡片相同商品的隱藏起來
             margin-left: 310px;
             visibility: hidden;
@@ -913,12 +933,9 @@ h2 a{
         &:hover{
             box-shadow: 0 5px 10px rgba(166, 124, 82, 0.8);
             transform: translateY(-5px);
-        }
-        
+        }        
     }
 
-
-    
 }
 
 //情報酒館
@@ -927,94 +944,94 @@ h2 a{
     letter-spacing: 5px;
     margin: 10px;
 }
-#homeBar i{
-    font-size: 1rem;
-    height: auto;
-}
-.homeHotCard{
-    background: #f5ecdd;
-    border-radius: 10px;
-    margin: 10px;
-    padding: 10px;
-    color: $brown;
-    img{
-        width: 100px;
-        float: left;
-        margin-right: 10px;
-    }
-    .textL{
-        width: 235px;
-        font-size: 1.25rem;
-        font-weight: bold;
-    }
-    .textS{
-        text-align: right;
-    }
-}
-.homeNewsCard{
-    background: #f5ecdd;
-    border-radius: 10px;
-    margin: 10px;
-    padding: 10px;
-    color: $brown;
-    .textL{
-        font-size: 1.25rem;
-        font-weight: bold;
-    }
-    p{
-        float: left;
-    }
-    .cardCat{
-        width: 50px;
-    }
-    .cardTitle{
-        width: 275px;
-        span{
-            font-size: 1rem;
-            background: #7ccbbd;
-            border-radius: 5px;
-            display: inline-block;
-            padding: 3px 10px;
-            font-weight: normal;
+// #homeBar i{
+//     font-size: 1rem;
+//     height: auto;
+// }
+// .homeHotCard{
+//     background: #f5ecdd;
+//     border-radius: 10px;
+//     margin: 10px;
+//     padding: 10px;
+//     color: $brown;
+//     img{
+//         width: 100px;
+//         float: left;
+//         margin-right: 10px;
+//     }
+//     .textL{
+//         width: 235px;
+//         font-size: 1.25rem;
+//         font-weight: bold;
+//     }
+//     .textS{
+//         text-align: right;
+//     }
+// }
+// .homeNewsCard{
+//     background: #f5ecdd;
+//     border-radius: 10px;
+//     margin: 10px;
+//     padding: 10px;
+//     color: $brown;
+//     .textL{
+//         font-size: 1.25rem;
+//         font-weight: bold;
+//     }
+//     p{
+//         float: left;
+//     }
+//     .cardCat{
+//         width: 50px;
+//     }
+//     .cardTitle{
+//         width: 275px;
+//         span{
+//             font-size: 1rem;
+//             background: #7ccbbd;
+//             border-radius: 5px;
+//             display: inline-block;
+//             padding: 3px 10px;
+//             font-weight: normal;
             
-        }
-    }
-    .cardTime{
-        margin-left: 20px;
-    }
-}
+//         }
+//     }
+//     .cardTime{
+//         margin-left: 20px;
+//     }
+// }
 .homeMore{
     margin: 0 20px;
 }
 
 @media screen and (min-width:768px){
-    .homeHotCard{
-        img{
-            width: 150px;
-        }
-        .textL{
-            width: 555px;
-            font-size: 1.5rem;
-            font-weight: normal;
-        }
-    }
+//     .homeHotCard{
+//         img{
+//             width: 150px;
+//         }
+//         .textL{
+//             width: 555px;
+//             font-size: 1.5rem;
+//             font-weight: normal;
+//         }
+//     }
 
-    .homeNewsCard{
-        .textL{
-            font-size: 1.5rem;
-            font-weight: normal;
-        }
-        .cardTitle{
-            width: 400px;
-        }
-        .cardIcon{
-            line-height: 60px;
-        }
-        .cardTime{
-            text-align: center;
-            width: 100px;
-        }
-    }
+//     .homeNewsCard{
+//         .textL{
+//             font-size: 1.5rem;
+//             font-weight: normal;
+//         }
+//         .cardTitle{
+//             width: 400px;
+//         }
+//         .cardIcon{
+//             line-height: 60px;
+//         }
+//         .cardTime{
+//             text-align: center;
+//             width: 100px;
+//         }
+//     }
 
 }
 @media screen and (min-width:1024px){
@@ -1023,39 +1040,39 @@ h2 a{
         margin-left:auto;
         margin-right:auto;
     }
-    .homeHotCard{
-        width: calc(50% - 40px);
-        max-width: 560px;
-        height: 200px;
-        float: left;
-        img{
-            width: 200px;
-        }
-        .textL{
-            width: 555px;
-            font-size: 1.5rem;
-            font-weight: normal;
-        }
-    }
-    #homeBarHot::after{
-        content: '';
-        display: block;
-        clear: both;
-    }
+    // .homeHotCard{
+    //     width: calc(50% - 40px);
+    //     max-width: 560px;
+    //     height: 200px;
+    //     float: left;
+    //     img{
+    //         width: 200px;
+    //     }
+    //     .textL{
+    //         width: 555px;
+    //         font-size: 1.5rem;
+    //         font-weight: normal;
+    //     }
+    // }
+    // #homeBarHot::after{
+    //     content: '';
+    //     display: block;
+    //     clear: both;
+    // }
 
-    .homeNewsCard{
-        p{
-            float: left;
-        }
-        .cardCat{
-            width: 100px;
-            line-height: 60px;
-        }
-        .cardTitle{
-            width:calc(100% - 370px);
-            margin: 12px 0;
-        }
-    }
+    // .homeNewsCard{
+    //     p{
+    //         float: left;
+    //     }
+    //     .cardCat{
+    //         width: 100px;
+    //         line-height: 60px;
+    //     }
+    //     .cardTitle{
+    //         width:calc(100% - 370px);
+    //         margin: 12px 0;
+    //     }
+    // }
 
 
 }
@@ -1099,7 +1116,8 @@ h2 a{
     }
     #homeEnd .textHiliR{
         font-size: 3rem;
-        letter-spacing: 50px;
+        letter-spacing: 40px;
+        padding-left: 40px;
     }
 
 }

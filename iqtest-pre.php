@@ -1,9 +1,14 @@
+<?php
+ob_start();
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<title>iqtest-pre</title>
 	<link rel="stylesheet" href="css/iqtest-pre.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 </head>
 <body>
 	<div class="fontbox1">
@@ -26,7 +31,7 @@
 		<img class="fonts z6" src="image/iqtest/font/006.png" alt="font">
 	</div>
 	<div class="iqbtn">
-		<a href="iqtest.html">
+		<a href="iqtest.php">
 			<img src="image/iqtest/qabtn0.png" alt="btn">
 		</a>
 	</div>

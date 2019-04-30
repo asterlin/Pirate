@@ -179,36 +179,47 @@
 				</svg>
 			</div>
 		</div>
-    <div id="gameGpsMap">
-    </div>
-    <script src="js/gameGps.js"></script>
-    <script src="http://maps.google.com/maps/api/js?key=AIzaSyBKB16XDqQ6Qnki2BdJUQXXP4hEpK0_2wo&callback=initMap"></script>
-    <div id="gameGpsLotto">
-        <table>
-            <tr>
-                <td class="gameGpsLottoUnit" id="gameGpsLottoUnit_0"></td>
-                <td class="gameGpsLottoUnit" id="gameGpsLottoUnit_1"></td>
-                <td class="gameGpsLottoUnit" id="gameGpsLottoUnit_2"></td>
-                <td class="gameGpsLottoUnit" id="gameGpsLottoUnit_3"></td>
-            </tr>
-            <tr>
-                <td class="gameGpsLottoUnit" id="gameGpsLottoUnit_11"></td>
-                <td colspan="2" rowspan="2" id="gameGpsLottoShow">
-                </td>
-                <td class="gameGpsLottoUnit" id="gameGpsLottoUnit_4"></td>
-            </tr>
-            <tr>
-                <td class="gameGpsLottoUnit" id="gameGpsLottoUnit_10"></td>
-                <td class="gameGpsLottoUnit" id="gameGpsLottoUnit_5"></td>
-            </tr>
-            <tr>
-                <td class="gameGpsLottoUnit" id="gameGpsLottoUnit_9"></td>
-                <td class="gameGpsLottoUnit" id="gameGpsLottoUnit_8"></td>
-                <td class="gameGpsLottoUnit" id="gameGpsLottoUnit_7"></td>
-                <td class="gameGpsLottoUnit" id="gameGpsLottoUnit_6"></td>
-            </tr>
-        </table>   
-    </div>
+	    <div id="gpsWrap">
+	    <div id="gpsMap"></div>
+	    <img src="image/gpsGame/cloudLeft.png" alt="雲" id="gpsCloudLeft"> 
+	    <img src="image/gpsGame/cloudRight.png" alt="雲" id="gpsCloudRight">
+	    <canvas id="luckyWheel"></canvas>
+	    <div class="lightbox" id="showPrize">
+	        <div class="popbg"></div>
+	        <div class="info">
+	            <div class="axis axis1"></div>
+	            <div class="axis axis2"></div>
+	            <div class="leave"></div>
+	            <div class="paper">
+	                <!-- 範例 -->
+	                <p class="textM">恭喜您獲得</p>
+	                <div id="showPrizePic"></div>
+	                <div class="textM" id="showPrizeMeg"></div>
+	                <a class="btnsec" id="closeWheelBtn" href="javascript:">
+	                    <span>繼續航行</span>
+	                </a>
+	                <a class="btnsec" href="me.php">
+	                    <span>清點船艙</span>
+	                </a>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+	<script src="js/gameGps.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKB16XDqQ6Qnki2BdJUQXXP4hEpK0_2wo&callback=initMap&libraries=geometry"></script> -->
+    <script src="js/wavebtn.js"></script>
+	<script>
+	    var gpsCloudLeft,gpsCloudRight;
+	    gpsCloudLeft = document.getElementById("gpsCloudLeft");
+	    gpsCloudRight = document.getElementById("gpsCloudRight");
+	    document.getElementById("playGame").addEventListener("click",function() {
+	        //  
+	        gpsCloudLeft.style.display = "none";
+	        gpsCloudRight.style.display = "none";
+	        playGps();
+	    });
+	</script>
+
 	</div>
 	<div id="rank">
 		<div class="intro">

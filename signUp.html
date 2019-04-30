@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="css/wavebtn.css">
     <link rel="stylesheet" href="css/lightbox.css">
     <link rel="stylesheet" href="css/login.css">
-    <script src="verification.js"></script>
+    <script src="js/verification.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
     
 </head>
@@ -24,16 +24,16 @@
                 
                     <div id="tab01" class="tab-inner">
                         <h2 class="titlePri" >成為海賊</h2>
-                        <form action="signup.php" id="loginform" method="POST">
+                        
                             <label>帳號:</label>
-                            <input type="text" name="memId"><br>
+                            <input id="signmemId" type="text" name="memId"><br>
                             <label>密碼:</label>
-                            <input type="password" name="memPsw"><br>
-
-                            <a class="btnpri" href="#" onclick="document.getElementById('loginform').submit()">
+                            <input id="signmemPsw" type="password" name="memPsw"><br>
+                            
+                            <a id="signUp"class="btnpri" href="javascript:;">
                                 <span>登入</span>
                             </a>
-                        </form>
+                       
                     </div>
 
                     <div id="tab02" class="tab-inner">
@@ -56,7 +56,7 @@
                                 <a id="signlbtn" href="javascript:;">左</a>
                                 <img id="signnew" src="image/new.png" alt="" width="100px" height="100px">
                                 <a id="signrbtn" href="javascript:;">右</a>
-                                <!-- <a id="signconfirm" type="submit">提交</a> -->
+                                <!-- <a id="signconfirm" type="submit">提交0</a> -->
                                 <div id="signcontent"></div>
                             </div>
                             <div class="clearfix"></div>
@@ -72,8 +72,6 @@
                         <li><a class="register" href="#tab02">註冊頁</a></li>
                     </ul>
              </div>
-   
-  
          </div>
     </div>
 <script src="js/wavebtn.js"></script>
