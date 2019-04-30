@@ -216,7 +216,6 @@ if(winWidth < 1024){
                 console.log(r);
                 var obj = JSON.parse(r);
                 console.log(obj.memNic);
-                var paper = document.querySelector('#Msglightbox .paper');
                 msg='';
                 if(obj.buyerMoney){
                     msg += '<p>您已購買<strong>';
@@ -233,8 +232,7 @@ if(winWidth < 1024){
                     msg +=  obj.msg;
                     msg += '</p>';
                 }
-                paper.innerHTML=msg;
-                document.getElementById('Msglightbox').style.display='block';
+                showMsglitbo(msg);
 
             },
         });

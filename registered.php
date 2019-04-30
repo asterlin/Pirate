@@ -1,10 +1,14 @@
 <?php
 session_start();
 
+$memPsw = $_REQUEST["memPsw"];
+$memCon = $_REQUEST["memCon"];
+$memId =  $_REQUEST["memId"];
+
 $errMsg = "";
     try {
         
-        if($_REQUEST["memPsw"] != $_REQUEST["memCon"]){
+        if($memPsw != $memCon){
 
             $errMsg .= "密碼驗證錯誤, <a href='signUp.html'>重新註冊</a><br>";
                     
@@ -14,7 +18,6 @@ $errMsg = "";
             $fullShipDir = $_SESSION['fullShipDir'];
             $custList = $_SESSION['custList'];
             $tradeDate = date('Y-m-d', time());
-            $memId =  $_REQUEST["memId"];
 
             require_once("backstage/php/connectPirates.php");
             $pdo->beginTransaction();
@@ -24,7 +27,7 @@ $errMsg = "";
             values (:memId, :memPsw, :memNic, '{$fullShipDir}', '{$avatarDir}')";
             $member = $pdo->prepare( $sql );
             $member->bindValue(":memId", $memId);
-            $member->bindValue(":memPsw", $_REQUEST["memPsw"]);
+            $member->bindValue(":memPsw", $memPsw);
             $member->bindValue(":memNic", $_REQUEST["memNic"]);
             $member->execute();
 
@@ -32,7 +35,7 @@ $errMsg = "";
                 values (?, ?,'{$tradeDate}',1)";
             $staCust = $pdo -> prepare($sql);
             foreach($custList as $data){
-                $staCust -> bindValue(1, $_REQUEST["memId"]);
+                $staCust -> bindValue(1, $memId);
                 $staCust -> bindValue(2, $data);
                 $staCust->execute();
             };      
@@ -40,7 +43,7 @@ $errMsg = "";
             //註冊成功,將登入者的資料寫入session
             $sql = "select * from member where memId=:memId";
             $member = $pdo->prepare( $sql );
-            $member->bindValue(":memId", $_REQUEST["memId"]);
+            $member->bindValue(":memId", $memId);
             $member->execute();
             $memRow = $member->fetch(PDO::FETCH_ASSOC);
             
@@ -56,8 +59,8 @@ $errMsg = "";
             $_SESSION["avatarImg"] = $memRow["avatarImg"];
             $_SESSION["playedTimes"] = $memRow["playedTimes"];
             $_SESSION["talentPointsRemain"] = $memRow["talentPointsRemain"];
-            $_SESSION["memId"] = $_REQUEST["memId"];
-            $_SESSION["memPsw"] = $_REQUEST["memPsw"];
+            $_SESSION["memId"] = $memId;
+            $_SESSION["memPsw"] = $memPsw;
             $_SESSION["memNic"] = $_REQUEST["memNic"];
             
             $pdo -> commit();
