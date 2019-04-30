@@ -34,6 +34,8 @@ body .lightbox{display: none;}
 		transform: rotate(360deg);
 	}
 }
+#element2{display: none;}
+#eleImg2{display: none;}
 // #rankArea{display: none;}
 // title
 // gameGps
@@ -131,11 +133,11 @@ body .lightbox{display: none;}
 .s1 {
 	position: relative;
 	text-align: center;
-	display: inline-block;
+	display: none;
 	width: 375px;
 }
 .s2 {
-  top: 810px;
+  // top: 810px;
 	position: absolute;
 	text-align: center;
 	display: inline-block;
@@ -177,7 +179,7 @@ body .lightbox{display: none;}
 	left: -100px;
 }
 #gameArea{
-	display: inline-block;
+	display: none;
 	position: relative;
 	width: 355px;
 	height: 500px;
@@ -214,6 +216,7 @@ body .lightbox{display: none;}
   top: 150px;
 }
 #gpsArea{
+  margin-top: 100px;
 	cursor: pointer;
 	position: relative;
 	display: inline-block;
@@ -280,6 +283,7 @@ body .lightbox{display: none;}
   font-size: 1.25rem;
 	text-align: center;
 	line-height: 1.5;
+  letter-spacing: 1.5px;
 }
 #rankList{
   font-family: Adobe Heiti Std R;
@@ -492,6 +496,9 @@ body .lightbox{display: none;}
 	height: 280px;
 	width: 300px;
 }
+#loginbox .lightbox{
+  display: none;
+}
 .playLightbox .lightbox .axis {
   left: 46px;
   width: 350px;
@@ -636,14 +643,11 @@ body .lightbox{display: none;}
 .rank3,.rank4,.rank5,.rank6,.rank7,.rank8,.rank9{display: block;}
 #playTitle{margin: 200px auto 50px;}
 // titleSec
-#choose{
-	height: 100vh;
-}
 #playTitleSec {width: 1200px;margin: 0 auto 25px;}
 #playTitleSec .titleSec {
 	margin: 0 10px 50px;
 }
-.s1 {margin: 0 10px;width: 750px;}
+.s1 {display:inline-block;margin: 0 10px;width: 750px;}
 .s2 {
 	position: relative;
 	top: 0;
@@ -669,7 +673,7 @@ body .lightbox{display: none;}
 	width: 1200px;
 	height: 500px;
 }
-#gameArea{width: 750px;margin: 0;}
+#gameArea{display:inline-block;width: 750px;margin: 0;}
 #gpsArea{height: 500px;margin: 0 10px;}
 #gpsArea::before{width: 350px;height: 350px;top: 0px;left: -100px;}
 #gpsArea::after{width: 350px;height: 350px;bottom: 0px;right: -100px;}
@@ -798,7 +802,6 @@ body .lightbox{display: none;}
 #game{
 	display: block;
 	position: relative;
-	height: 100vh;
 }
 #gameTitle{
 	position: relative;

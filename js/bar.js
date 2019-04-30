@@ -335,6 +335,7 @@ function addArt() {
             $id("showArticleImg").src = "";
             $id("submitArticle").style.display= "none";
             $id("submitArticleLabel").style.display= "none";
+            $id("showArticleImg").style.display = "none";
         }else{
             $id("submitArticle").style.display= "inline";
             $id("submitArticleLabel").style.display= "inline-block";
@@ -345,6 +346,7 @@ function addArt() {
         
         var reader = new FileReader();
         reader.onload = function(e){
+            $id("showArticleImg").style.display = "block";
             $id("showArticleImg").src = reader.result;
             // let fileName = $id('showArticleImg').src.split("/").pop();
             // console.log(fileName);

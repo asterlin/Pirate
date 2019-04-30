@@ -1,10 +1,11 @@
+
+function playTweenMax(){
 var controller = new ScrollMagic.Controller();
 var animation_04;
 var animation_08;
 var section_04;
 var flag = 0;
 var rwd=$('#playTitleSec').width();
-function playTweenMax(){
 if(rwd!=375){
 // 滑到第二屏時藍色布幕動畫
 animation_04 = TweenMax.to(`#blueAppear`,10, {
@@ -49,12 +50,12 @@ y: 0,
 x: 0,
 });
 TweenMax.to(`#element2`,1, {
-y: 742,
-x: -75,
+y: 776,
+x: -65,
 webkitClipPath:'polygon(0 0, 0 250px, 0px 500px, 450px 500px, 450px 250px, 450px 0)',
 });
 TweenMax.to(`#eleImg2`,1, {
-y: 390,
+y: 430,
 x: -77,
 });
 flag=2;
@@ -74,12 +75,12 @@ y: 0,
 x: 0,
 });
 TweenMax.to(`#eleImg3`,1, {
-y: 390,
+y: 430,
 x: -181,
 });
 TweenMax.to(`#element3`,1, {
-y: 742,
-x: -180,
+y: 776,
+x: -170,
 webkitClipPath:'polygon(0 0, 0 250px, 0px 500px, 450px 500px, 450px 250px, 450px 0)',
 });
 flag=3;
@@ -102,12 +103,12 @@ y: 0,
 x: 0,
 });
 TweenMax.to(`#eleImg2`,1, {
-y: 390,
+y: 430,
 x: -77,
 });
 TweenMax.to(`#element2`,1, {
-y: 742,
-x: -75,
+y: 776,
+x: -65,
 webkitClipPath:'polygon(0 0, 0 250px, 0px 500px, 450px 500px, 450px 250px, 450px 0)',
 });
 flag=2;
@@ -128,12 +129,12 @@ y: 0,
 x: 0,
 });
 TweenMax.to(`#eleImg1`,1, {
-y: 390,
+y: 430,
 x: 28,
 });
 TweenMax.to(`#element1`,1, {
-y: 742,
-x: 30,
+y: 776,
+x: 39,
 webkitClipPath:'polygon(0 0, 0 250px, 0px 500px, 450px 500px, 450px 250px, 450px 0)',
 });
 }
@@ -143,12 +144,12 @@ $('#element1').click(function(){
 flag = 1;
 TweenLite.to(window, 1, {scrollTo:{y:"#game", offsetY:70, autoKill:false}});
 TweenMax.to(`#element1`,1, {
-y: 742,
-x: 30,
+y: 776,
+x: 39,
 webkitClipPath:'polygon(0 0, 0 250px, 0px 500px, 450px 500px, 450px 250px, 450px 0)',
 });
 TweenMax.to(`#eleImg1`,1, {
-y: 390,
+y: 430,
 x: 28,
 });
 $('#prev').css('display','none');
@@ -157,12 +158,12 @@ $('#element2').click(function(){
 flag = 2;
 TweenLite.to(window, 1, {scrollTo:{y:"#game", offsetY:70, autoKill:false}});
 TweenMax.to(`#element2`,1, {
-y: 742,
-x: -75,
+y: 776,
+x: -65,
 webkitClipPath:'polygon(0 0, 0 250px, 0px 500px, 450px 500px, 450px 250px, 450px 0)',
 });
 TweenMax.to(`#eleImg2`,1, {
-y: 390,
+y: 430,
 x: -77,
 });
 $('#prev').css('display','block');
@@ -171,12 +172,12 @@ $('#element3').click(function(){
 flag = 3;
 TweenLite.to(window, 1, {scrollTo:{y:"#game", offsetY:70, autoKill:false}});
 TweenMax.to(`#element3`,1, {
-y: 742,
-x: -180,
+y: 776,
+x: -170,
 webkitClipPath:'polygon(0 0, 0 250px, 0px 500px, 450px 500px, 450px 250px, 450px 0)',
 });
 TweenMax.to(`#eleImg3`,1, {
-y: 390,
+y: 430,
 x: -181,
 });
 $('#prev').css('display','block');

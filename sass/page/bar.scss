@@ -754,7 +754,7 @@ body {
                 #showArticleImg{
                     width: 50%;
                     text-align: center;
-                    display: block;
+                    display: none;
                     margin: auto;
                     @media screen and (min-width: $pc){
                         width: 30%;

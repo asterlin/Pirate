@@ -352,8 +352,13 @@ session_start();
                     <form action="barphp/addArtreport.php" method="post" id="addNavyReportForm" enctype="multipart/form-data">
                         <h2 class="titleThi">讓海軍為你主持公道吧</h2>
                         <input type="hiddle">
+<<<<<<< HEAD
+                        <input type="hidden" name="memId" value="">
+                        <input type="hidden" name="artId" value="">
+=======
                         <input type="hidden" name="memId" value="<?php?>">
                         <input type="hidden" name="artId" value="<?php?>">
+>>>>>>> 6e17014e939b58e711f8123d3aa0913cc9330654
                         <input type="text" name="navyReport" id="navyReportCont" placeholder="請點擊此處填入通報項目">
                         <a class="btnpri" href="javascript:;" ><span><label for="submitNavyReport">一鍵通報海軍</label></span>
                         </a>
@@ -408,6 +413,10 @@ session_start();
             artBox();
         }
         artId="";
+<<<<<<< HEAD
+        news();
+=======
+>>>>>>> 6e17014e939b58e711f8123d3aa0913cc9330654
         artReport()
         // readArt();
         // alert(location.search);

@@ -131,6 +131,8 @@ session_start();
 		  //註冊callback function
 		  xhr.onload = function(){
 			      if( xhr.status == 200){ //server端可以正確的執行
+			      	console.log('sucess');
+			      	console.log(xhr.responseText);
 			      }else{ //其它
 			          alert( xhr.status );
 			      }

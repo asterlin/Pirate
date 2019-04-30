@@ -14,7 +14,8 @@ $(document).ready(function () {
     //         $('header').addClass('homeHeadHide')
     //     }
     // })
-    
+    hotIssueText();
+
     var winWidth = window.innerWidth;
     window.addEventListener('resize',function(){
         winWidth = window.innerWidth;
@@ -246,7 +247,6 @@ function hotIssueText() {
     let innerWidth = window.innerWidth;
     let text, titLength;
     let title = document.getElementsByClassName('artTit');
-    let arrhotIssue = document.getElementsByClassName('arrhotIssue');
     for (let i = 0; i < arrhotIssue.length; i++) {
         titLength = title[i].innerText.length;
         text = arrhotIssue[i];

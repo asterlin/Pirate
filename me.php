@@ -52,7 +52,7 @@ require_once("meToDB/meToDB.php");
                 <li class="menuSwitch">
                     <a href="me.php">俺の海賊船</i></a>
                     <ul class="headerSub">
-                        <li><a href="javascript:;" class="loginHere">登入</a></li>
+                        <li class="loginHere"><a href="javascript:;">登入</a></li>
                     </ul>
                 </li>
             </ul>
