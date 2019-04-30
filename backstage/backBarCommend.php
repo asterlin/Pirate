@@ -46,14 +46,17 @@ echo $errMsg;
                             <th>留言內容</th>
                             <th>留言時間</th>
                         </tr>
-            <?php if ($artrespond->fetch(PDO::FETCH_ASSOC)) {
-              ?>  
+            <?php while (($artrespondRow = $artrespond->fetch(PDO::FETCH_ASSOC)) {
+                    $msgTime = substr( $artrespondRow["msgTime"] , 0, 10);
+                    $msgTimeStr = str_replace("-","","$msgTime");
+            ?>  
+                        
                         <tr>
-                            <td><?php echo $msgId ?></td>
-                            <td><?php echo $artId ?></td>
-                            <td><?php echo $memId ?></td>
-                            <td><?php echo $msgText ?></td>
-                            <td><?php echo $msgTime ?></td>
+                            <td><?php echo $artrespondRow["msgId"];?></td>
+                            <td><?php echo $artrespondRow["artId"]; ?></td>
+                            <td><?php echo $artrespondRow["memId"]; ?></td>
+                            <td><?php echo $artrespondRow["msgText"]; ?></td>
+                            <td><?php echo $msgTimeStr; ?></td>
                         </tr>
             <?php}?>
                     </table>

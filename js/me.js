@@ -43,7 +43,7 @@ window.addEventListener("load", function () {
             let myImage = e.target;
             let partNo = myImage.className.substr(1, 1);
             let partName;
-            console.log(partNo);
+            console.log(meShip);
             switch (partNo) {
                 case "1":
                     partName = "partHead";
@@ -60,8 +60,10 @@ window.addEventListener("load", function () {
             }
             console.log(partName);
             if (partNo == 3) {
+                changeMyShip(e.target.src,document.getElementById(partName).data);
                 document.getElementById(partName).data = e.target.src;
             } else {
+                changeMyShip(e.target.src,document.getElementById(partName).src);
                 document.getElementById(partName).src = e.target.src;
                 document.getElementById(partName).data = e.target.data;
             }
@@ -99,7 +101,6 @@ function login() {
     int = graphDataNew[1];
     lck = graphDataNew[2];
     age = graphDataNew[3];
-    memPsw = $('#memPsw1').val();
     // var myData = new FormData(document.getElementById("meShipForm"));
     // console.log(document.getElementById("meShipForm"));
     var url = "meToDB/meShipFormData.php?str="+str+"&int="+int+"&lck="+lck+"&age="+age+"&memId="+memId+"&memPsw="+memPsw;

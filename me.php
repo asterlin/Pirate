@@ -16,43 +16,10 @@ require_once("meToDB/meToDB.php");
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="css/me.css">
     <link rel="stylesheet" href="css/wavebtn.css">
-    
-    
-
-    <style>
-   canvas{
-        outline: 2px solid rgb(46, 44, 44);
-    }
-    #tools img{
-        width: 100px;
-    }
-    #shipArea{
-        position: relative;
-        height: 100%;
-        width: 100%;
-    }
-    /* #shipArea img{
-        width: 750px;
-        position: absolute;
-    } */
-    #partSail,#partBody,#partHead,#drawFrame{
-        width: 100%;
-        position: absolute;
-    }
-    #drawFlag,#combineShip{
-        width: 100%;
-        height: 100%;
-        position: absolute;
-    }
-    </style>
 </head>
 
 <body>
-
-
-
-
-
+    
     <!--------------------------------- 選單 ------------------------------------->
     <label for="burgerCtrl">
         <input type="checkbox" name="" id="burgerCtrl">
@@ -106,24 +73,15 @@ require_once("meToDB/meToDB.php");
         <!-------------------------------- 左邊船體設計圖------------------------>
         <div class="col-12 col-md-12 col-xl-4 drawing">
             <img src="image/background/blueprint.png" alt="">
-            <form id="Form">
-                <input type="hidden" name="">
-                <input type="hidden" name="">
-                <input type="hidden" name="">
-            </form>
             <div class="meShip">
                 <div id="shipArea">
                     <!-- 為了取得外聯SVG的內文使用於船帆遮罩，使用object標籤 -->
                     <img src="image/ship/300.png" alt="挑選船身" id="partBody">
                     <!-- <img src="image/ship/200.svg" id="partSail" alt=""> -->
-                    <object data="image/ship/200.svg" type="image/svg+xml" id="partSail"></object>
-                    <img src="image/ship/100.png" alt="挑選船頭" id="partHead">
-                        <canvas id="combineShip">
-                           
-                        </canvas>
-                        <canvas id="drawFlag">
-                            
-                        </canvas>
+                    <object data="image/product/200.svg" type="image/svg+xml" id="partSail"></object>
+                    <img src="image/ship/101.png" alt="挑選船頭" id="partHead">
+                        <canvas id="combineShip"></canvas>
+                        <canvas id="drawFlag"></canvas>
                 </div>
             </div>
             <a href="#">
@@ -135,19 +93,18 @@ require_once("meToDB/meToDB.php");
         <!--------------------------------- 中間個人資訊 ------------------------->
         <div class="col-12 col-md-12 col-xl-4 boxNews">
             <div class="meNews">
-                
                 <ul class="col-12 col-md-5 field">
-                     <?php
-                    $memId = $_SESSION["memId"];
-                        while ($member->fetch(PDO::FETCH_ASSOC)) {
-                            if ($memberId == $memId) {
-                                ?> 
+                    <?php
+                        $memId = $_SESSION["memId"];
+                            while ($member->fetch(PDO::FETCH_ASSOC)) {
+                                if ($memberId == $memId) {
+                                    ?> 
                     <li>
                         帳號: <span><?php echo $memId ?></span>
                     </li>
                     <!-- <form method="Post"  id="meShipForm" >       -->
                     <li>
-                              <input type="hidden" name="memId" value="<?php echo $memberId ?>">
+                              <input type="hidden" name="memId" value="<?php echo $memberId ?>" id="memId1">
                         密碼: <input type="password" name="memPsw" value="<?php echo $memPsw?> " maxlength="12" readonly id="memPsw1">
                               <i class="fas fa-pen"></i>
                     </li>
@@ -157,8 +114,7 @@ require_once("meToDB/meToDB.php");
                     </li> 
                     <!-- </form> -->
                     <li>
-                        LV: <span> <?php echo $memLv ?> </span>
-                      
+                        LV: <span> <?php echo $memLv ?> </span>     
                     </li>
                     <li>
                         EXP:<span> <?php echo $memExp ?>/100 </span>
@@ -172,13 +128,13 @@ require_once("meToDB/meToDB.php");
                         <div id="int"><?php echo $intelligence ?></div>
                         <div id="lck"><?php echo $luck ?></div>
                         <div id="age"><?php echo $agile ?></div>
-                        <div id="memIdx"><?php echo $memId ?></div>
+                        <div id="TPRemain"><?php echo $TPRemain?></div> 
                     </div>
                         <button class="btnpri butNews" id="carryOut"><span>確認修改</span></button>
                     </li>
                     <?php
+                                }
                             }
-                        }
                     ?>  
                 </ul>
                 <!-- --------------------------------------------------------------------------->
@@ -211,16 +167,16 @@ require_once("meToDB/meToDB.php");
                             <div class="content">
                                 <ul>
                                 <?php
-                                $memId = $_SESSION["memId"];
-                                    while ($treasurestorageRow = $treasurestorage->fetch(PDO::FETCH_ASSOC)) {
-                                        if ($treasurestorageId == $memId) {
-                                            ?> 
+                                    $memId = $_SESSION["memId"];
+                                        while ($treasurestorageRow = $treasurestorage->fetch(PDO::FETCH_ASSOC)) {
+                                            if ($treasurestorageId == $memId) {
+                                                ?> 
                                     <li>
                                         <img src="image/treasure/<?php echo $treaImg ?>" alt="">
                                     </li> 
                                 <?php
+                                            }
                                         }
-                                    }
                                 ?>   
                                 </ul>
                             </div>
@@ -229,16 +185,16 @@ require_once("meToDB/meToDB.php");
                         <div class="content">
                             <ul>
                                 <?php
-                                $memId = $_SESSION["memId"];
-                                    while ($mycustomrRow = $mycustom->fetch(PDO::FETCH_ASSOC)) {
-                                        if ($mycustomrId == $memId) {
-                                            ?>      
+                                    $memId = $_SESSION["memId"];
+                                        while ($mycustomrRow = $mycustom->fetch(PDO::FETCH_ASSOC)) {
+                                            if ($mycustomrId == $memId) {
+                                                ?>      
                                     <li>
                                         <img src="image/product/<?php echo $modelImg?>" alt="" class="p<?php echo $modelPart?> myCustomer">
                                     </li>
                                 <?php
+                                            }
                                         }
-                                    }
                                 ?>
                             </ul>
                             </div>
@@ -247,10 +203,9 @@ require_once("meToDB/meToDB.php");
                 </div>
             </div>
             <!-- --------------------------------------------------------------------------->
-       
-       
         </div>
         <!-- -------------------------------------------------------------------->
+
 
         <!-- -----------------------------右邊紀錄攔------------------------------>
         <div class="col-12 col-md-12 col-xl-4 filewrap">
@@ -263,10 +218,10 @@ require_once("meToDB/meToDB.php");
                 <div class="tabs-container1">
                     <div id="tab2" class="tabs-panel1" style="display:block">
                     <?php
-                    $memId = $_SESSION["memId"];
-                     while ($traderecord->fetch(PDO::FETCH_ASSOC)) {
-                         if ($traderecordId == $memId) {
-                             ?>
+                        $memId = $_SESSION["memId"];
+                            while ($traderecord->fetch(PDO::FETCH_ASSOC)) {
+                                if ($traderecordId == $memId) {
+                                    ?>
                             <div class="tt textS">
                             <ul>
                                 <li>寶物名稱: <span><?php echo $treaName ?></span> </li>
@@ -277,16 +232,16 @@ require_once("meToDB/meToDB.php");
                             </ul>
                         </div>
                     <?php
-                         }
-                     }
+                                }
+                            }
                     ?>
                     </div>
                     <div id="tab3" class="tabs-panel1">
                     <?php
-                    $memId = $_SESSION["memId"];
-                    while ($articlelistRow = $articlelist->fetch(PDO::FETCH_ASSOC)) {
-                        if ($articlelistId == $memId) {
-                            ?>
+                        $memId = $_SESSION["memId"];
+                            while ($articlelistRow = $articlelist->fetch(PDO::FETCH_ASSOC)) {
+                                if ($articlelistId == $memId) {
+                                    ?>
                             <div class="tt textS">
                             <ul>
                                 <li>主題: <span><?php echo $artTitle ?></span> </li>
@@ -297,8 +252,8 @@ require_once("meToDB/meToDB.php");
                             </ul>
                     </div>
                     <?php
-                        }
-                    }
+                                }
+                            }
                     ?>
                     </div>
                 </div>
@@ -317,6 +272,8 @@ require_once("meToDB/meToDB.php");
     <script src="js/radar5.js?<?php echo time();?>"></script>
     <script src="js/me.js?<?php echo time();?>"></script>
     <script src="js/wavebtn.js"></script>
+    <script src="js/meGetShip.js?<?php echo time();?>"></script>
+    <script src="js/meShipUpdate.js"></script>
     <!-- <script src="js/meShip.js"></script> -->
 
     <script>
@@ -326,8 +283,10 @@ require_once("meToDB/meToDB.php");
     int = parseInt($('#int').text());
     lck = parseInt($('#lck').text());
     age = parseInt($('#age').text());
-
-    
+    memId = $('#memId1').val();
+    memPsw = $('#memPsw1').val();
+    console.log(memPsw);
+    var meship;
             
     var chart;//radar圖名稱
     var graphDataNew = [str, int, lck, age];//從資料庫載入的Radar數值
@@ -344,6 +303,8 @@ require_once("meToDB/meToDB.php");
         chartRadar(graphDataNew);//從資料庫載入的Radar數值,初始化用
         $('.but').click(plusSkill);
         $id("carryOut").onclick = login;
+        getShip();
+        $('#butStore').click(changeMeShip);
     });
 
 //-----------------------------------------------------------------
