@@ -643,9 +643,6 @@ body .lightbox{display: none;}
 .rank3,.rank4,.rank5,.rank6,.rank7,.rank8,.rank9{display: block;}
 #playTitle{margin: 200px auto 50px;}
 // titleSec
-#choose{
-	height: 100vh;
-}
 #playTitleSec {width: 1200px;margin: 0 auto 25px;}
 #playTitleSec .titleSec {
 	margin: 0 10px 50px;
@@ -805,7 +802,6 @@ body .lightbox{display: none;}
 #game{
 	display: block;
 	position: relative;
-	height: 100vh;
 }
 #gameTitle{
 	position: relative;

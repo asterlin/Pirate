@@ -58,6 +58,9 @@ a {
 @font-face {
   font-family: "Adobe Heiti Std R";
   src: url(../font/ADOBEHEITISTD-REGULAR.OTF); }
+.justHide {
+  display: none; }
+
 p {
   line-height: 1.5; }
 
@@ -126,9 +129,6 @@ body {
   background-image: url("../image/iqtest/qabg.jpg");
   background-size: 100% 204vh;
   background-repeat: no-repeat; }
-
-* {
-  outline: 1px solid red; }
 
 .lightbox {
   display: none; }
@@ -216,7 +216,7 @@ body {
   position: absolute; }
 
 .infoImg:nth-child(1) {
-  top: 190px;
+  top: 210px;
   left: 330px; }
 
 .infoImg:nth-child(2) {
@@ -224,12 +224,12 @@ body {
   left: 225px; }
 
 .infoImg:nth-child(3) {
-  top: 310px;
+  top: 360px;
   left: 225px; }
 
 .infoImg:nth-child(4) {
-  top: 190px;
-  left: 38px; }
+  top: 220px;
+  left: 10px; }
 
 .info {
   position: fixed; }

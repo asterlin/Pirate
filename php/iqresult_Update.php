@@ -8,11 +8,11 @@ try{
   require_once("../backstage/php/connectPirates.php");
   $sql = "update member set intelligence = :intelligence,strength= :strength,agile = :agile, luck = :luck,memLv = 7,memExp = 0,memMoney = 1000,playedTimes = 5  where memId = ':memId'";
   $statement = $pdo->prepare($sql);
-  $statement->bindValue(":intelligence",pasrInt($_REQUEST["int"]));
-  $statement->bindValue(":strength",pasrInt($_REQUEST["str"]));
-  $statement->bindValue(":agile",pasrInt($_REQUEST["agi"]));
-  $statement->bindValue(":luck",pasrInt($_REQUEST["lcu"]));
-  $statement->bindValue(":memId",pasrInt($_SESSION["memId"]));
+  $statement->bindValue(":intelligence",$_REQUEST["int"]);
+  $statement->bindValue(":strength",$_REQUEST["str"]);
+  $statement->bindValue(":agile",$_REQUEST["agi"]);
+  $statement->bindValue(":luck",$_REQUEST["lcu"]);
+  $statement->bindValue(":memId",$_SESSION["memId"]);
   $statement->execute();
 
   // echo "異動{$affectedRows}筆資料成功";

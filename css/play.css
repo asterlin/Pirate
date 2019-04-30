@@ -5,6 +5,9 @@
 @font-face {
   font-family: "Adobe Heiti Std R";
   src: url(../font/ADOBEHEITISTD-REGULAR.OTF); }
+.justHide {
+  display: none; }
+
 p {
   line-height: 1.5; }
 
@@ -965,9 +968,6 @@ body .lightbox {
   #playTitle {
     margin: 200px auto 50px; }
 
-  #choose {
-    height: 100vh; }
-
   #playTitleSec {
     width: 1200px;
     margin: 0 auto 25px; }
@@ -1150,8 +1150,7 @@ body .lightbox {
 
   #game {
     display: block;
-    position: relative;
-    height: 100vh; }
+    position: relative; }
 
   #gameTitle {
     position: relative;
