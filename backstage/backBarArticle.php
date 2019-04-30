@@ -8,8 +8,9 @@ $errMsg = "";
 
 try {
     require_once("php/connectPirates.php");
-    $sql = "select * from manager";
-    $manager = $pdo->query($sql);
+    $sql = "select * from articlelist";
+    $articlelist = $pdo->query($sql);
+    $articlelist->execute();
 } catch (PDOException $e) {
     $errMsg .=  "錯誤原因" . $e->getMessage() . "<br>";
     $errMsg .=  "錯誤行號" . $e->getLine() . "<br>";
@@ -42,23 +43,28 @@ echo $errMsg;
                     <table>
                         <tr>
                             <th>文章編號</th>
-                            <th>檢舉編號</th>
                             <th>文章主題</th>
-                            <th>檢舉會員</th>
-                            <th>檢舉原因</th>
-                            <th>檢舉時間</th>
-                            <th>審核狀態</th>
+                            <th>發表會員</th>
+                            <th>文章內容</th>
+                            <th>文章留言數</th>
+                            <th>文章觀看數</th>
+                            <th>發表時間</th>
                         </tr>
+        <?php while($articlelistRow = $articlelist->fetch(PDO::FETCH_ASSOC)) {
+                    $artTime = substr( $articlelistRow["artTime"] , 0, 10);
+                    $artTimeStr = str_replace("-","","$artTime");
+              ?>
                         <tr>
-                            <td>1314520</td>
-                            <td>131452</td>
-                            <td>誠實的傑夫</td>
-                            <td>景成</td>
-                            <td>人家是男生耶 森77</td>
-                            <td>19/02/30</td>
-                            <td><input type="button" value="刪除"></td>
+                            <td><?php echo $articlelistRow["artId"];?></td>
+                            <td><?php echo $articlelistRow["artTitle"];?></td>
+                            <td><?php echo $articlelistRow["memId"];?></td>
+                            <td><?php echo $articlelistRow["artText"];?></td>
+                            <td><?php echo $articlelistRow["msgAmt"];?></td>
+                            <td><?php echo $articlelistRow["clickAmt"];?></td>
+                            <td><?php echo $artTimeStr?></td>
                         </tr>
-                        <tr>
+        <?php}?>
+                        <!-- <tr>
                             <td>1314520</td>
                             <td>131452</td>
                             <td>【競技】如何打贏大媽</td>
@@ -66,7 +72,7 @@ echo $errMsg;
                             <td>我討厭大媽</td>
                             <td>19/02/30</td>
                             <td><input type="button" value="刪除"></td>
-                        </tr>
+                        </tr> -->
                     </table>
                 </div>
                 <div class="pagination">

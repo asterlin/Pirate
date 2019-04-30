@@ -39,7 +39,7 @@ session_start();
         </div>
     </label>
     <header class=""><!-- homeHeadHide-->
-        <h1 id="headerLogo"><a href="javascript:;">
+        <h1 id="headerLogo"><a href="index.php">
             <img src="image/logo.svg" alt="大海賊帝國">
         </a></h1>
         <nav id="headerMenu" >

@@ -1,6 +1,8 @@
 function $id(id){
     return document.getElementById(id); 
 }
+
+var prevDIY;
 window.addEventListener('load',function(){
     //取得工具列的船身船帆們
     var DIYsails=document.getElementsByClassName('DIYSail');
@@ -73,7 +75,9 @@ window.addEventListener('load',function(){
     //畫海賊旗
     //取得canvas
     var cavDraw= document.getElementById('drawFlag');
-    var ctxDraw = cavDraw.getContext('2d');
+    ctxDraw = cavDraw.getContext('2d');
+        
+
 
     //取得提示筆刷寬度
     var lineWs = document.getElementsByClassName('penWidth');
@@ -129,15 +133,21 @@ window.addEventListener('load',function(){
     //當刪除被按了
     $id('cleanDraw').addEventListener('click',function(){
         cleanCav(ctxDraw);
+        flagFrame();
+        // ctxDraw.restore();
     })
 
     //畫線的函數
     function draw(e){
         //檢查是觸控還是滑鼠，抓不同的XY值
         if(e.touches){
-            let rect = e.target.getBoundingClientRect();
-            var drawX = (e.touches[0].pageX-rect.left); //這裡要隨著scale給值
-            var drawY = (e.touches[0].pageY-rect.top);
+            var touch = e.touches[0]
+            var elm = $(this).offset();
+            var drawX = (touch.pageX - elm.left)/0.6;//這裡要隨著scale給值
+            var drawY = (touch.pageY - elm.top)/0.6;
+            // let rect = e.target.getBoundingClientRect();
+            // var drawX = ((e.touches[0].pageX - e.touches[0].target.offsetLeft)/0.6); 
+            // var drawY = ((e.touches[0].pageY - e.touches[0].target.offsetTop)/1.6); //e.touches[0].target.offsetLeft
         }else{
             var drawX = e.offsetX;
             var drawY = e.offsetY;
@@ -178,6 +188,7 @@ window.addEventListener('load',function(){
         //開始，移動到被點的位置，執行畫線
         ctxDraw.beginPath();
         cavDraw.addEventListener('touchmove',draw)
+        
         
     })
 
@@ -225,8 +236,39 @@ window.addEventListener('load',function(){
     }
     flagFrame();
 
+    //這是御覽圖
+    prevDIY = function(){
+        //先建立目前圖案的儲存點
+        ctxDraw.save();
+
+        //清空畫布
+        cleanCav(ctxCombine);
+        //取得船帆路徑，將所畫的海賊旗裁切
+        var area = new Path2D($id('partSail').contentDocument.getElementById('flagArea').getAttribute('d'));
+        ctxDraw.fillStyle="#000";
+        ctxDraw.globalCompositeOperation="destination-in"; //這裡會裁切，未來使用時，回到上一步記得要設定回source-over
+        ctxDraw.fill(area);
+
+        ctxDraw.clip(area);
+        var shipSail = new Image();
+        shipSail.src = $id('partSail').data;
+        shipSail.addEventListener('load',function(){
+            //將各部位畫到全船畫布上
+            ctxCombine.drawImage($id('partBody'),0,0);
+            ctxCombine.drawImage(shipSail,0,0);
+            ctxCombine.drawImage(cavDraw,0,0);
+            ctxCombine.drawImage($id('partHead'),0,0);
+
+            //取得圖片檔編碼
+            var shipUrl = cavCombine.toDataURL();
+            // $id('finishDIY').href=shipUrl; //這是用來讓使用者下載的
+            $id('shipPreview').src = shipUrl;
+        })
+    }
 
     $id('finishDIY').addEventListener('click',function(){
+        
+        
         cleanCav(ctxCombine);
         
         //儲存海賊旗頭像
@@ -270,7 +312,7 @@ window.addEventListener('load',function(){
                     fullShipImg:shipUrl,
                     headSrc:$id('partHead').src.slice(-7),
                     bodySrc:$id('partBody').src.slice(-7),
-                    sailSrc:shipSail.src.slice(-7),
+                    sailSrc:shipSail.src.slice(-11,-4),
                 },
                 success: function (response) {
                     console.log("It's fullShip:"+response)

@@ -10,9 +10,9 @@
 //媒體查詢
 @import'../base/media';
 
-// * {
-//     outline: 1px solid rgb(125, 131, 211);
-// }
+* {
+    outline: 1px solid rgb(125, 131, 211);
+}
 
 body {
     background-image: url('../image/background/BgPage.png');
@@ -27,10 +27,53 @@ body {
 // #butStore{
 //     transform: rotateX(-50deg);
 // }
-#OOXX{
+#btnArea {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+#OOXX {
     display: none;
     opacity: 0;
 }
+
+canvas {
+    outline: 2px solid transparent;
+    width: 100%;
+    height: 100%;
+}
+
+#tools img {
+    width: 100px;
+}
+
+#shipArea {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+/* #shipArea img{
+    width: 750px;
+    position: absolute;
+} */
+#partSail,
+#partBody,
+#partHead,
+#drawFrame {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+#drawFlag,
+#combineShip {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
 
 
 // 標題
@@ -157,7 +200,8 @@ body {
                     a {
                         color: $brown;
                     }
-                    input{
+
+                    input {
                         width: 100px;
                     }
                 }
@@ -166,7 +210,7 @@ body {
             //雷達圖
             .radar {
                 box-sizing: border-box;
-                padding: 15px;
+                // padding: 15px;
                 position: relative;
 
                 h3 {
@@ -190,23 +234,25 @@ body {
                 }
 
                 #butS {
-                    top: 30px;
-                    left: 140px;
+                    bottom: 0;
+                    left: 0;
                 }
 
                 #butI {
-                    right: 15px;
-                    top: 150px;
+                    left: 50px;
+                    /* right: 15px; */
+                    /* top: 150px; */
+                    bottom: 0;
                 }
 
                 #butL {
-                    bottom: 35px;
-                    left: 140px;
+                    bottom: 0;
+                    left: 100px;
                 }
 
                 #butA {
-                    left: 15px;
-                    top: 150px;
+                    bottom: 0;
+                    left: 150px;
                 }
             }
         }
@@ -377,7 +423,7 @@ body {
 
 @media screen and(min-width: 768px) {
 
-    #butStore{
+    #butStore {
         transform: rotateX(-50deg);
     }
 
@@ -538,42 +584,44 @@ body {
                 height: 100%;
                 position: absolute;
                 transform: rotateX(-50deg);
-                top: -520px;
-                right: 90px;
-
+                top: -400px;
+                right: 70px;
             }
 
-
         }
 
-
-        .boxNews {
-            padding: 0 20px;
-            padding-left: 80px;
-            transform-style: preserve-3d;
-            transform: rotateX(50deg);
-            transform-origin: bottom;
-            animation: lyingDown .5s;
-
-
-            &:hover {
-                transform: rotateX(0deg);
-                animation: standUp .5s;
-            }
-
-            // .meNews {
-            //     display: flex;
-            // }
-
-        }
-
-        .bbb {
-            transform: rotateX(0deg);
-            animation: standUp .5s;
-            animation: lyingDown .5s;
-        }
 
     }
+
+
+    .boxNews {
+        padding: 0 20px;
+        padding-left: 80px;
+        padding-top: 60px;
+        transform-style: preserve-3d;
+        transform: rotateX(50deg);
+        transform-origin: bottom;
+        animation: lyingDown .5s;
+
+
+        &:hover {
+            transform: rotateX(0deg);
+            animation: standUp .5s;
+        }
+
+        // .meNews {
+        //     display: flex;
+        // }
+
+    }
+
+    .bbb {
+        transform: rotateX(0deg);
+        animation: standUp .5s;
+        animation: lyingDown .5s;
+    }
+
+
 
 
     //個人資訊動畫站起來

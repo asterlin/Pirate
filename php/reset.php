@@ -2,7 +2,7 @@
 $errMsg = "";
 try{
   require_once("../backstage/php/connectPirates.php");
-  $sql = "update member set playedTimes=:playedTimes,memMoney=:memMoney,memLv=:memLv,memExp=:memExp,intelligence=:intelligence,strength=:strength,agile=:agile,luck=:luck where memId=:memId";
+  $sql = "updateintelligence=:intelligence,strength=:strength,agile=:agile,luck=:luck where memId=:memId" member set playedTimes=:playedTimes,memMoney=:memMoney,memLv=:memLv,memExp=:memExp,;
   $statement = $pdo->prepare($sql);
   $statement->bindValue(":memId",$_REQUEST["memId"]);
   $statement->bindValue(":playedTimes",$_REQUEST["playedTimes"]);
