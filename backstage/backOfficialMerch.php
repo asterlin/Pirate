@@ -65,7 +65,7 @@
                 <div class="dataTable">
                     <table id="merchTable">
 
-                        <form action="editMerch.php" method="GET">
+
                         <tr>
                             <th>造型編號</th>
                             <th>造型名稱</th>
@@ -161,8 +161,7 @@ try {
             <?php
             ?>
             </tr>
-            </tbody>
-            </form>
+
           <?php
         }
     }
