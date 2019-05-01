@@ -327,20 +327,20 @@ try {
             </div>
 
             <div id="homeMarketProdInfo">
-                <div id="homeWrapProd" class="homeWrapProd active">
-                    <img id="homeProdImg" class="homeProdImg" src="image/treasure/006.png" alt="寶物6">
+            <div id="homeWrapProd" class="homeWrapProd active">
+                    <img id="homeProdImg" class="homeProdImg" src="image/treasure/<?php echo $rowsProds[0]['treaImg'] ?>" alt="寶物6">
                     <div class="homeProdInfoCard">
-                        <p id="homeProdName" class="homeProdName textM"></p>
+                        <p id="homeProdName" class="homeProdName textM"><?php echo $rowsProds[0]['treaName'] ?></p>
                         <p class="homeProdPrice textM">
-                            價格：<strong id="homeProdPrice" class="textHiliR"></strong> G
-                            <a href="javascript:;" class="btnpri" id="homeProdBuy" tradeId=""><span>直接購買</span></a>
+                            價格：<strong id="homeProdPrice" class="textHiliR"><?php echo $rowsProds[0]['price'] ?></strong> G
+                            <a href="javascript:;" class="btnpri" id="homeProdBuy" tradeId="<?php echo $rowsProds[0]['tradeId'] ?>"><span>直接購買</span></a>
                         </p>
-                        <p class="homeProdSaler textS">賣家：<span id="homeProdSaler"></span></p>
+                        <p class="homeProdSaler textS">賣家：<span id="homeProdSaler"><?php echo $rowsProds[0]['memNic'] ?></span></p>
                         <p class="homeProdTalent textS">寶物天賦：<br>
-                            力量：<span id="homeProdStr"></span><br>
-                            智力：<span id="homeProdInt"></span><br>
-                            幸運：<span id="homeProdLuc"></span><br>
-                            敏捷：<span id="homeProdAgi"></span>
+                            力量：<span id="homeProdStr"><?php echo $rowsProds[0]['treaStr'] ?></span><br>
+                            智力：<span id="homeProdInt"><?php echo $rowsProds[0]['treaInt'] ?></span><br>
+                            幸運：<span id="homeProdLuc"><?php echo $rowsProds[0]['treaLuk'] ?></span><br>
+                            敏捷：<span id="homeProdAgi"><?php echo $rowsProds[0]['treaAgi'] ?></span>
                             <div id="homeProdTalentImg">
                                 <!-- <canvas id="homeTalentRadar"></canvas> -->
                             </div>
