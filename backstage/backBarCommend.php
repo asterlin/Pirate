@@ -8,8 +8,26 @@ $errMsg = "";
 
 try {
     require_once("php/connectPirates.php");
-    $sql = "select * from artrespond";
-    $artrespond = $pdo->query($sql);
+    $sql = "select count(*) totalRecord from artrespond";
+    $artresponds = $pdo->query($sql);
+    $artrespondsRow = $artresponds->fetch();
+
+    $totalRecCount = $artrespondsRow["totalRecord"];
+    //determin: record per page
+    $numPerPage = 8;
+    //get total page
+    $totalPages = ceil($totalRecCount / $numPerPage);   
+
+    //get current page data
+    if(isset($_REQUEST["pageNo"]) == true){
+        $pageNo = $_REQUEST["pageNo"];
+    }else{
+        $pageNo = 1;
+    }
+
+    $start = ($pageNo-1) * $numPerPage;
+    $sql = "select * from artrespond limit $start, $numPerPage";
+    $artresponds = $pdo->query($sql);
 } catch (PDOException $e) {
     $errMsg .=  "錯誤原因" . $e->getMessage() . "<br>";
     $errMsg .=  "錯誤行號" . $e->getLine() . "<br>";
@@ -46,29 +64,29 @@ echo $errMsg;
                             <th>留言內容</th>
                             <th>留言時間</th>
                         </tr>
-            <?php while ( $artrespondRow = $artrespond->fetch(PDO::FETCH_ASSOC )) {
-                    $msgTime = substr( $artrespondRow["msgTime"] , 0, 10);
-                    $msgTimeStr = str_replace("-","","$msgTime");
-            ?>
+            <?php while ($artrespondsRow = $artresponds->fetch(PDO::FETCH_ASSOC)) {
+        $msgTime = substr($artrespondRow["msgTime"], 0, 10);
+        $msgTimeStr = str_replace("-", "", "$msgTime"); ?>
                         <tr>
-                            <td><?php echo $artrespondRow["msgId"]; ?></td>
-                            <td><?php echo $artrespondRow["artId"]; ?></td>
-                            <td><?php echo $artrespondRow["memId"]; ?></td>
-                            <td><?php echo $artrespondRow["msgText"]; ?></td>
+                            <td><?php echo $artrespondsRow["msgId"]; ?></td>
+                            <td><?php echo $artrespondsRow["artId"]; ?></td>
+                            <td><?php echo $artrespondsRow["memId"]; ?></td>
+                            <td><?php echo $artrespondsRow["msgText"]; ?></td>
                             <td><?php echo $msgTime; ?></td>
                         </tr>
-            <?php }?>
+            <?php
+    }?>
                     </table>
                 </div>
                 <div class="pagination">
                     <ul>
-                        <li id="left"> <a href="#">
-                                < </a> </li> <li> <a href="#">1</a></li>
-                        <li> <a href="#">2</a></li>
-                        <li> <a href="#">3</a></li>
-                        <li> <a href="#">4</a></li>
-                        <li> <a href="#">5</a></li>
-                        <li class="right"> <a href="#"> > </a></li>
+                    <?php
+                        for ($i=1; $i<=$totalPages; $i++) {
+                            ?>
+                            <li> <a href="?pageNo=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+                        <?php
+                        }
+                        ?>
                     </ul>
                 </div>
             </div>

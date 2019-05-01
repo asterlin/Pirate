@@ -1,3 +1,18 @@
+@import '../base/font';
+@import '../base/reset';
+@import '../layout/header';
+@import '../layout/footer';
+
+
+body {
+    
+    background-image: url('../image/background/BgPage.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.black{
+    padding-top: 200px;
+}
 *{
     padding: 0;
     margin: 0;

@@ -8,12 +8,6 @@ session_start();
 	<meta charset="UTF-8">
 	<title>iqtest-pre</title>
 	<link rel="stylesheet" href="css/iqtest-pre.css">
-	<!--  -->
-	<link rel="stylesheet" href="css/wavebtn.css">
-    <link rel="stylesheet" href="css/lightbox.css">
-    <link rel="stylesheet" href="css/login.css">
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
-	<!--  -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<style type="text/css">
 		#hi{
@@ -76,6 +70,8 @@ session_start();
         <div class="bubble x22"></div>
         <div class="bubble x23"></div>
 	</div>
+<<<<<<< HEAD
+=======
 	<!-- test -->
 	<button id="hi">hi</button>
     <div class="lightbox" id="loginBox">
@@ -146,5 +142,6 @@ session_start();
     });
 	</script>
 	<!-- test -->
+>>>>>>> 529c3531c7dbb69e13e44762411989a565677bd0
 </body>
 </html>

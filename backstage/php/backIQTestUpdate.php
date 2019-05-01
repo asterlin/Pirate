@@ -3,7 +3,7 @@ session_start();
 $errMsg = "";
 try{
   require_once("connectPirates.php");
-  $sql = "update iqtest set testId = :testId, testText = :testText, poin = :point, option1 = :option1, option2 = :option2, option3 = :option3, option4 = :option4, answer = :answer where testId = :testId;";
+  $sql = "update iqtest set testId = :testId, testText = :testText, point = :point, option1 = :option1, option2 = :option2, option3 = :option3, option4 = :option4, answer = :answer where testId = :testId;";
   $iqtest = $pdo->prepare($sql);
   
 
@@ -16,7 +16,7 @@ try{
   $iqtest->bindValue(":option4",$_REQUEST["option4"]);
   $iqtest->bindValue(":answer",$_REQUEST["answer"]);
   $iqtest->execute();
-
+  
 }catch (PDOException $e) {
   $errMsg .=  "錯誤原因" . $e->getMessage() . "<br>"; 
   $errMsg .=  "錯誤行號" . $e->getLine() . "<br>";

@@ -8,9 +8,26 @@ $errMsg = "";
 
 try {
     require_once("php/connectPirates.php");
-    $sql = "select * from articlelist";
-    $articlelist = $pdo->query($sql);
-    $articlelist->execute();
+    $sql = "select count(*) totalRecord from articlelist";
+    $articlelists = $pdo->query($sql);
+    $articlelistRow = $articlelists->fetch();
+
+    $totalRecCount = $articlelistRow["totalRecord"];
+
+    $numPerPage = 8;
+
+    $totalPages = ceil($totalRecCount / $numPerPage);
+
+    if (isset($_REQUEST["pageNo"]) == true) {
+        $pageNo = $_REQUEST["pageNo"];
+    } else {
+        $pageNo = 1;
+    }
+    
+    $start = ($pageNo-1) * $numPerPage;
+    $sql = "select * from articlelist limit $start, $numPerPage";
+    $articlelists = $pdo->query($sql);
+    // $articlelist->execute();
 } catch (PDOException $e) {
     $errMsg .=  "錯誤原因" . $e->getMessage() . "<br>";
     $errMsg .=  "錯誤行號" . $e->getLine() . "<br>";
@@ -50,17 +67,16 @@ echo $errMsg;
                             <th>文章觀看數</th>
                             <th>發表時間</th>
                         </tr>
-        <?php while($articlelistRow = $articlelist->fetch(PDO::FETCH_ASSOC)) {
-                    $artTime = substr( $articlelistRow["artTime"] , 0, 10);
-                    $artTimeStr = str_replace("-","","$artTime");
-              ?>
+        <?php while ($articlelistRow = $articlelists->fetch(PDO::FETCH_ASSOC)) {
+            $artTime = substr($articlelistRow["artTime"], 0, 10);
+            $artTimeStr = str_replace("-", "", "$artTime"); ?>
                         <tr>
-                            <td><?php echo $articlelistRow["artId"];?></td>
-                            <td><?php echo $articlelistRow["artTitle"];?></td>
-                            <td><?php echo $articlelistRow["memId"];?></td>
-                            <td><?php echo $articlelistRow["artText"];?></td>
-                            <td><?php echo $articlelistRow["msgAmt"];?></td>
-                            <td><?php echo $articlelistRow["clickAmt"];?></td>
+                            <td><?php echo $articlelistRow["artId"]; ?></td>
+                            <td><?php echo $articlelistRow["artTitle"]; ?></td>
+                            <td><?php echo $articlelistRow["memId"]; ?></td>
+                            <td><?php echo $articlelistRow["artText"]; ?></td>
+                            <td><?php echo $articlelistRow["msgAmt"]; ?></td>
+                            <td><?php echo $articlelistRow["clickAmt"]; ?></td>
                             <td><?php echo $artTimeStr?></td>
                         </tr>
         <?php
@@ -79,13 +95,21 @@ echo $errMsg;
                 </div>
                 <div class="pagination">
                     <ul>
-                        <li id="left"> <a href="#">
+
+                    <?php
+                        for ($i=1; $i<=$totalPages; $i++) {
+                            ?>
+                            <li> <a href="?pageNo=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+                        <?php
+                        }
+                        ?>
+                        <!-- <li id="left"> <a href="#">
                                 < </a> </li> <li> <a href="#">1</a></li>
                         <li> <a href="#">2</a></li>
                         <li> <a href="#">3</a></li>
                         <li> <a href="#">4</a></li>
                         <li> <a href="#">5</a></li>
-                        <li class="right"> <a href="#"> > </a></li>
+                        <li class="right"> <a href="#"> > </a></li> -->
                     </ul>
                 </div>
             </div>
