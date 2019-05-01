@@ -134,7 +134,7 @@ try {
                 <li class="menuSwitch">
                     <a href="me.php">俺の海賊船</i></a>
                     <ul class="headerSub">
-                        <li class="loginHere"><a href="javascript:;">登入</a></li>
+                        <li class="loginHere"><a href="javascript:;">登船</a></li>
                     </ul>
                 </li>
             </ul>
@@ -276,7 +276,7 @@ try {
                         <img class="wantedPaper" src="image/home/wanted.svg" alt="懸賞單低階第一">
                         <p class="wantName"><?php echo $rowGameHiL['memNic']; ?></p>
                         <p class="wantScore">高階試煉 <?php echo $rowGameHiL['highscoreL'];  ?>秒</p>
-                        <img class="wantedShip" src="image/ship/ship.png" alt="我是大帥哥的海賊船">
+                        <img class="wantedShip" src="image/ship/<?php echo $rowGameHiL['shipImgAll'];  ?>" alt="<?php echo $rowGameHiL['memNic']; ?>的海賊船">
                     </div>
                 </div>
                 <div class="wrapWanted">
@@ -284,7 +284,7 @@ try {
                         <img class="wantedPaper" src="image/home/wanted.svg" alt="懸賞單中階第一">
                         <p class="wantName"><?php echo $rowGameHiM['memNic']; ?></p>
                         <p class="wantScore">中階試煉 <?php echo $rowGameHiM['highscoreM'];  ?>秒</p>
-                        <img class="wantedShip" src="image/ship/ship.png" alt="我是大帥哥的海賊船">
+                        <img class="wantedShip" src="image/ship/<?php echo $rowGameHiM['shipImgAll'];  ?>" alt="<?php echo $rowGameHiM['memNic']; ?>的海賊船">
                     </div>
                 </div>
                 <div class="wrapWanted">
@@ -292,7 +292,7 @@ try {
                         <img class="wantedPaper" src="image/home/wanted.svg" alt="懸賞單初階第一">
                         <p class="wantName"><?php echo $rowGameHiH['memNic']; ?></p>
                         <p class="wantScore">初階試煉 <?php echo $rowGameHiH['highscoreH'];  ?>秒</p>
-                        <img class="wantedShip" src="image/ship/ship.png" alt="我是大帥哥的海賊船">
+                        <img class="wantedShip" src="image/ship/<?php echo $rowGameHiH['shipImgAll'];  ?>" alt="<?php echo $rowGameHiH['memNic']; ?>的海賊船">
                     </div>
                 </div>
             </div>
@@ -583,9 +583,9 @@ try {
     <script src="js/header.js"></script>
     <script src="js/gameGps.js"></script>
     <script src="js/shipDIY.js"></script>
-    <script src="js/home.js"></script>
     <script src="js/login.js"></script>
     <script src="js/verification.js"></script>
     <script src="js/homeMapPIXI.js"></script>
+    <script src="js/home.js"></script>
     </body>
 </html>
