@@ -35,24 +35,13 @@ function judgeWearing(jsonSTR){
     }
 }
 
+// 換船配件
 function changeMyShip(newSrc,oldSrc){
     onstr = newSrc.substring(newSrc.length-7);
     ofstr = oldSrc.substring(oldSrc.length-7);
     console.log('on: ',onstr);
     console.log('off: ',ofstr);
-    // for(i=0; i<meShip.length; i++){
-    //     if(ofstr==meShip[i].modelImg){
-    //         meShip[i].wearing = 0;
-    //         console.log('me wear off: ',meShip[i].wearing);
-    //         for(j=0; j<meShip.length; j++){
-    //             if(onstr==meShip[j].modelImg){
-    //                 meShip[j].wearing = 1;
-    //                 console.log('me wear: ',meShip[j].wearing);
-    //             }
-    //         }
-    //     }
-    // }
-
+   
     //...............
     for(i=0; i<meShip.length; i++){
         if(ofstr==meShip[i].modelImg){

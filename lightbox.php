@@ -3,13 +3,15 @@
     <div class="info">
         <div class="axis axis1"></div>
         <div class="axis axis2"></div>
-        <div class="leave"></div>
+        <div class="leaveLightbox">
+        <i class="fa fa-close"></i>
+        </div>
         <div class="paper">
 
             <div id="tab-demo">
             
                 <div id="tab01" class="tab-inner">
-                    <h2 class="titlePri" >登船</h2>
+                    <h2 class="textL" >登船</h2>
                     
                         <label class="textS">帳號:</label>
                         <input id="signmemId" type="text" name="memId" placeholder="請輸入帳號"  class="textS"><br>
@@ -32,7 +34,7 @@
                 </div>
 
                 <div id="tab02" class="tab-inner">
-                    <h2 class="titlePri" class="textS">成為海賊</h2>
+                    <h2 class="textL" class="textS">成為海賊</h2>
                     <form action="registered.php" id="loginforma">
                         <div class="Data-Title">
                             <label for="memId" class="textS">帳號:<input type="text" id="memId" name="memId"   class="textS"placeholder="請設定帳號"></label><br>
@@ -55,9 +57,9 @@
                     </form>
                 </div>
                 <ul class="tab-title textS">
-                    <li><a class="signIn" href="#tab01">登入頁</a></li>
+                    <li><a class="signIn" href="#tab01">登入</a></li>
                     <li>/</li>
-                    <li><a class="register" href="#tab02">註冊頁</a></li>
+                    <li><a class="register" href="#tab02">註冊</a></li>
                 </ul>
             </div>
         </div>
@@ -69,7 +71,9 @@
     <div class="info">
         <div class="axis axis1"></div>
         <div class="axis axis2"></div>
-        <div class="leave"></div>
+        <div class="leaveLightbox">
+            <i class="fa fa-close"></i>
+        </div>
         <div class="paper">
         
         </div>
