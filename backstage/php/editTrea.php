@@ -1,4 +1,5 @@
 <?php
+
 $doType = $_GET["doType"];
 $treaId = $_GET["treaId"];
 $treaName = $_GET["treaName"];
@@ -31,7 +32,7 @@ try {
 		
 	}elseif ($doType=='update') {
 		require_once("connectPirates.php");
-        $sqlUpd = "UPDATE treasurelist SET treaName=:treaName, treaImg=:treaImg,treaInt=:treaInt, treaStr=:treaStr, treaAgi=:treaAgi, treaLuk=:treaLuk,treaStatus=:saleYN WHERE treaId=:treaId";
+        $sqlUpd = "UPDATE treasurelist SET treaName=:treaName, treaImg=:treaImg,treaInt=:treaInt, treaStr=:treaStr, treaAgi=:treaAgi, treaLuk=:treaLuk,treaStatus=:saleYN WHERE treaId=:treaId;";
         $treaUpd = $pdo->prepare($sqlUpd);
         $treaUpd->bindValue(":treaName", $treaName);
         $treaUpd->bindValue(":treaImg", $treaImg);
@@ -44,7 +45,7 @@ try {
         $treaUpd->execute();
         
         
-	 }
+	// }
 	
 
 } catch (PDOException $e) {
