@@ -114,7 +114,7 @@ echo $errMsg;
             </div>
             <div class="pagination">
                 <ul>
-                        <li id="left"> <a href="#">  < </a> 
+                        
                         <?php
                         for( $i=1; $i<=$totalPages; $i++){
                         ?>
@@ -122,7 +122,7 @@ echo $errMsg;
                         <?php    
                         }
                         ?>
-                        <li class="right"> <a href="#"> > </a></li>
+                        
                     </ul>
 
             </div>
