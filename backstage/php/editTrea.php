@@ -7,7 +7,7 @@ $treaInt = $_GET["treaInt"];
 $treaStr = $_GET["treaStr"];
 $treaAgi = $_GET["treaAgi"];
 $treaLuk = $_GET["treaLuk"];
-$saleYN = $_GET["saleYN"];
+$saleYN = $_GET["saleYN"];//
 try {
     if ($doType=='insert') {
         require_once("connectPirates.php");

@@ -18,7 +18,7 @@ try {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>大海賊帝國</title>
     <link rel="stylesheet" href="css/wavebtn.css">
     <link rel="stylesheet" href="css/balance.css">
     <link rel="stylesheet" href="css/login.css">
@@ -32,7 +32,7 @@ try {
 </head>
 <body>
     <?php require_once('header.php') ?>
-    <h1 class="titlePri">海上市集</h1>
+    <h1 class="titlePri top">海上市集</h1>
     <div class="marTitBox">
         
         <a class=" marTitInBox" href="black.php">
@@ -46,12 +46,14 @@ try {
     </div>
     <div class="marMain blackMarket">
     <div class="black">
-      
-    <a id="gosellpage" class="btnsec " href="#">
-        <span>販賣寶物</span>
-    </a>
+    <div class="gosellpagewrap">
+        <a id="gosellpage" class="btnsec " href="#">
+            <span>販賣寶物</span>
+        </a>
+    </div>
+    
     <div class="treawrap flex"> 
-        <div class="filterCheck ">
+        <div class="filterCheck " style="display:none">
             <input class="treaCheckbox" type="checkbox" value="treaInt" name="ckbox0"><label>智力</label>
             <input class="treaCheckbox" type="checkbox" value="treaStr" name="ckbox1"><label>力量</label>
             <input class="treaCheckbox" type="checkbox" value="treaAgi" name="ckbox2"><label>敏捷</label>
@@ -92,7 +94,7 @@ while( $treaRow = $treasurelist->fetch(PDO::FETCH_ASSOC)){
 ?>
     
             
-        <div class="treaRecommend col-12 col-md-4 col-xl-3">
+        <div class="textS treaRecommend col-12 col-md-4 col-xl-3">
             <h3 class="treaName"><?php echo $treaRow["treaName"]; ?></h3>
             <div class="salerId">
                 <span>賣家:<?php echo $tradRow["salerId"]; ?></span>
@@ -116,7 +118,7 @@ while( $treaRow = $treasurelist->fetch(PDO::FETCH_ASSOC)){
                 <input class="tradeId" type="hidden" name="tradeId" value=<?php echo $tradRow["tradeId"];?>>
                 <input class="price" type="hidden" name="price" value=<?php echo $tradRow["price"];?>>
                 <input type="submit" style="display:none">
-                <input id="memMoney" type="hidden" value = 600><?php $_SESSION["memMoney"];?>
+                <input id="memMoney" type="hidden" value = <?php $_SESSION["memMoney"];?>>
                 <input type="hidden" value="<?php echo $tradRow["price"]; ?>">
                 
                 <div class="treabuywrap">

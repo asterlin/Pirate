@@ -4,7 +4,7 @@ window.onload = function () {
 
     // Date.now = function now() {
     //     return new Date().getSeconds();
-    // };
+    /// };
 
 
     function addRemove() {
