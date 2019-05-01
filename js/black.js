@@ -1,15 +1,31 @@
 
 function buy(e){
-    var memMoney = parseInt(document.getElementById("memMoney").value);
+    // var memMoney = parseInt(document.getElementById("memMoney").value);
     var buyprice = e.target.parentNode.parentNode.previousSibling.previousSibling.value;
-    console.log(memMoney);
     
-    if( memMoney >= buyprice){
-        document.getElementsByClassName("buysucbox")[0].style.display = 'block'; // i代入這個頁面的第幾個燈箱
-        e.target.parentNode.parentNode.parentNode.setAttribute("tradeId","tradeId");
-    }else{
-        alert('金錢不足');
-    }
+    var memIdmoney = document.getElementById("memId").value;
+	$.ajax({
+        url: 'php/memIdmoney.php',
+        data: {memId:memIdmoney},
+        type: 'GET',
+        success: function(data){
+            var memIdmoney = parseInt(data);
+            if(memIdmoney >= buyprice){
+                document.getElementsByClassName("buysucbox")[0].style.display = 'block'; // i代入這個頁面的第幾個燈箱
+                e.target.parentNode.parentNode.parentNode.setAttribute("tradeId","tradeId");
+            }else{
+                console.log(data);
+                console.log(buyprice);
+                
+                alert('金錢不足');
+            } 
+            
+        },error: function(e){
+            console.log(123);
+        }
+    });
+    
+   
     
 }
 function off(){

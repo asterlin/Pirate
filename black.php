@@ -1,3 +1,19 @@
+<?php
+// $memId = $_SESSION["memId"];
+// try {
+// 	require_once("backstage/php/connectPirates.php");
+//     $sql = "select * from member where memId = '$memId'";
+//     $member=$pdo->query($sql);
+// } catch (PDOException $e) {
+
+//     $errMsg .= "錯誤 : ".$e -> getMessage()."<br>";
+//     $errMsg .= "行號 : ".$e -> getLine()."<br>";
+//     echo $errMsg;
+// }
+// while( $tradRow = $member->fetch(PDO::FETCH_ASSOC)){ 
+    
+//   $memIdMoney = $tradRow["memMoney"];}
+?>
 
 <?php 
 $errMsg = '';
@@ -88,6 +104,7 @@ try {
 
 <?php 
 
+
 while( $treaRow = $treasurelist->fetch(PDO::FETCH_ASSOC)){
     $count+=1; 
         if($treaRow["treaStatus"] == 1 ){ 
@@ -121,11 +138,13 @@ while( $treaRow = $treasurelist->fetch(PDO::FETCH_ASSOC)){
                 <input type="submit" style="display:none">
                 <input id="memMoney" type="hidden" value= "<?php echo $_SESSION["memMoney"];?>">
                 <input type="hidden" value="<?php echo $tradRow["price"]; ?>">
+                
                 <div class="treabuywrap">
                     <a class="btnpri treabuy" >
                         <span>購買</span>
                     </a>
                 </div>
+                <input id = "memId" type="hidden" value="<?php echo $_SESSION["memId"]; ?>">
             </form>
         </div>
         <?php  
