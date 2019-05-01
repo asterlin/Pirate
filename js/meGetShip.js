@@ -29,7 +29,7 @@ function judgeWearing(jsonSTR){
             }else if(meShip[i].modelPart=='2'){
                 $('#partBody').attr('src','image/ship/'+meShip[i].modelImg);
             }else if(meShip[i].modelPart=='3'){
-                $('#partSail').attr('src','image/ship/'+meShip[i].modelImg);
+                $('#partSail').attr('data','image/product/'+meShip[i].modelImg);
             }
         }
     }
