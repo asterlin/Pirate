@@ -13,8 +13,11 @@ function getclick(e){
         data: {treaId:treaId,storId:storId,no:'1'},
         type: 'GET',
         success: function(data){
+<<<<<<< HEAD
             $('#bapromptprice').html(data);
             $('#baprice').val(data);
+=======
+>>>>>>> 344067362c5974d4e1621648a2ef097cf7645002
             var thistreaId = treaId;
             var thisstorId = storId;
             document.getElementById("sellshelfbtn").onclick = function(){
@@ -33,7 +36,12 @@ function getclick(e){
                     }
                 });
             };
+<<<<<<< HEAD
             
+=======
+            $('#bapromptprice').html(data);
+            $('#baprice').val(data);
+>>>>>>> 344067362c5974d4e1621648a2ef097cf7645002
         },
     });
     // $.ajax.response;

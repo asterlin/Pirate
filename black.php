@@ -17,7 +17,11 @@ session_start();
     
 //   $memIdMoney = $tradRow["memMoney"];}
 ?>
+<<<<<<< HEAD
 >>>>>>> 丞
+=======
+>>>>>>> 65e3e418819622fabfefe5dfdd4077e0ec7de5a5
+>>>>>>> 344067362c5974d4e1621648a2ef097cf7645002
 
 <?php 
 $errMsg = '';
@@ -94,7 +98,11 @@ try {
 <<<<<<< HEAD
 =======
     $count = 0;
+<<<<<<< HEAD
 >>>>>>> 丞
+=======
+>>>>>>> 65e3e418819622fabfefe5dfdd4077e0ec7de5a5
+>>>>>>> 344067362c5974d4e1621648a2ef097cf7645002
 while( $treaRow = $treasurelist->fetch(PDO::FETCH_ASSOC)){
     $count+=1; 
         if($treaRow["treaStatus"] == 1 ){ 
@@ -299,7 +307,11 @@ while( $treaRow = $treasurelist->fetch(PDO::FETCH_ASSOC)){
                                     <span>上架</span>
                                 </a>
                                
+<<<<<<< HEAD
 >>>>>>> 丞
+=======
+>>>>>>> 65e3e418819622fabfefe5dfdd4077e0ec7de5a5
+>>>>>>> 344067362c5974d4e1621648a2ef097cf7645002
                                  
                             </div>
                             <p>上架期限: 72小時</p>
