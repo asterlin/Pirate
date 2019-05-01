@@ -118,8 +118,14 @@ $('.scrToDIY').click(function(){
 
 //更換海賊試煉遊戲內文
 if(winWidth < 1024){
+    console.log($('#homeGameMsg .button_border').eq(0));
     $('#homeGameMsg').text("請在電腦進行海賊試煉～");
+    $('#homeGameMsg .button_border').eq(0).addClass('justHide');
+    
 }
+
+// document.querySelector('#homeGamePlay video').play();
+
 
 //動態調整懸賞排行的文字大小
     var getFontSize = (textLength) => {
