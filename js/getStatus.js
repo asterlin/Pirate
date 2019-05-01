@@ -13,7 +13,8 @@ function getStatus(){
 }
 function getStatusJSON(jsonStr){
     var mystatus = JSON.parse(jsonStr);
-    $('#blueName span').text(`${mystatus[0].memNic}`);
+    console.log(mystatus);
+    $('#blueName').text(`${mystatus[0].memNic}`);
     $('#blueLv span').text(`${mystatus[0].memLv}`);
     $('#blueExp span').text(`${mystatus[0].memExp}`);
     $('#blueMoney span').text(`${mystatus[0].memMoney}`);
