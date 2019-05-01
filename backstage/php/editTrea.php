@@ -44,7 +44,7 @@ try {
         $treaUpd->bindValue(":treaId", $treaId);
         $treaUpd->execute();
         
-        
+    }   
 	// }
 	
 

@@ -50,11 +50,11 @@ echo $errMsg;
     <title>Document</title>
     <link rel="stylesheet" href="../css/wavebtn.css">
     <link rel="stylesheet" href="../css/backStage.css">
-    <style>
+    <!-- <style>
         .btnpri{
             border: 1px solid transparent;
         }
-    </style>
+    </style> -->
 </head>
 
 <body>
@@ -103,7 +103,7 @@ echo $errMsg;
                         </td>
                         <td>
                             <input type="hidden" name="memId" value="<?php echo $memberRow['memId'] ?>">
-                            <button type="submit" class="btnpri"><span>修改</span></button>
+                            <button type="submit"><span>修改</span></button>
                         </td>
                     </form>
                         </tr>

@@ -68,7 +68,7 @@ echo $errMsg;
                             <td> <input class="option4" type="text" value="<?php echo $iqtestRow['option4'] ?>"></td>
                             <td> <input class="answer" type="text" value="<?php echo $iqtestRow['answer'] ?>"></td>
                             <td>
-                            <button type="submit" class="btnpri IQmodify"><span>修改</span></button>
+                            <button type="submit" class="IQmodify"><span>修改</span></button>
                             </td>
                         </tr>
                         <?php
