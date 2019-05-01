@@ -1,0 +1,242 @@
+@import '../base/font';
+@import '../base/reset';
+@import '../layout/header';
+@import '../layout/footer';
+
+
+body {
+    
+    background-image: url('../image/background/BgPage.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.titlePri{
+    padding-top: 200px;
+}
+*{
+    padding: 0;
+    margin: 0;
+}
+.col-3,
+.col-4,
+.col-6,
+.col-12{
+    padding-left: 10px; 
+    padding-right: 10px;
+    box-sizing: border-box;
+    margin: 10px;
+}
+.col-3{ width: 25%;}
+.col-4{ width: 33.333333%; }
+.col-6{ width: 50%;}
+.col-12{ width: calc(100% - 20px); }
+.treawrap,.sellpage{
+        box-sizing: border-box;
+        padding: 20px;
+    }
+@media screen and (min-width:768px){
+    .col-md-3{ width: 25%;}
+    .col-md-4{ width: calc(33.333333% - 20px); 
+                margin: 10px;}
+    .col-md-6{ width: 50%; }
+    .col-md-12{ width: 100%; }
+    .treawrap,.sellpage{
+        box-sizing: border-box;
+        padding: 10px;
+    }
+    
+   
+}
+
+@media screen and (min-width:1024px){
+    .col-xl-3{ width: calc(25% - 20px);
+                margin: 10px;}
+    .col-xl-4{ width: 33.333333%; }
+    .col-xl-6{ width: 50%; }
+    .col-xl-12{ width: 100%; }
+}
+.flex{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+.filterCheck{
+    width: 100%;
+}
+.treawrap{
+    border: 1px red solid;
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    
+    
+    
+}
+.treaRecommend{
+    position: relative;
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding: 15px;
+    line-height: 1.5;
+    background-color: #f5ecdd;
+}
+.treaImg{
+    margin:10px 0px;
+    width: 60%;
+    padding: 0 20% ;
+    
+}
+.treaName{
+    display: inline-block;
+}
+.salerId{
+    position: absolute;
+    right: 15px;
+    top: 15px;
+}
+.treabuywrap{
+    margin: 10px 0;
+    width: 100%;
+    text-align: center;
+}
+.treaRadar{
+    display: none;
+}
+.buysuccess{
+    margin-bottom: 30px;
+}
+.buysucbox{
+     display: none;
+}
+.buysucbox {
+    .axis,.info{
+      width: 370px;
+    }
+    .paper{
+        width: 350px;
+    }
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.sellpage{
+    border: 1px red solid;
+    width: 100%;
+    max-width: 1200px;
+    display: none;
+    margin: auto;
+ 
+}
+
+.sellnew{
+    width: 100%;
+    text-align: center;
+}
+
+.selltreabox {
+    display: block;
+    .info,.axis,{width: 370px;}
+    .paper{width: 350px;
+    padding-bottom: 10px;}
+        
+        
+        
+}
+
+.holdtrea{
+    width: 100%;
+    border: 1px solid red;
+    padding: 10px 0;
+}
+.holdtrealist{
+    padding: 20px;
+    margin: 10px 10px;
+    border: 1px solid white;
+}
+.sellshelf{
+    width: 100%;
+    text-align: center;
+}
+.black{
+    width: 100%;
+    
+    margin: auto;
+}
+
+@media screen and (min-width:768px){
+    .selltreabox {
+       
+        .info,.axis,{width: 740px;}
+        .paper{width: 680px;
+                padding: 100px 20px;
+        }
+    }
+}
+
+
+.titlePri {
+    margin: 10px;
+    font-size: 20px; }
+.marTitBox + span {
+    display: block;
+    margin-top: 70px;
+}
+.marTitBox {
+    width: 200px;
+    margin: auto;
+    display: flex;
+    justify-content: space-evenly;
+    position: relative;
+
+    .titFrame {
+        position: absolute;
+        margin: 3px 0 0 -46px;
+        display: block;
+        transform: translateX(0px);
+        transition: 1s;
+        width: 110px;
+    }
+
+    
+}
+.marTitInBox {
+    position: relative;
+    margin: 20px 0 0 10%;
+}
+
+.marTitInBox:hover h2 {
+    color: #fff;
+    text-shadow: 0 0 2px #000;
+}
+.marMain {
+    width: 100%;
+}
+@media screen and (min-width: 1024px){
+    .marMain {
+
+        margin-bottom: 60px;
+    }
+}
+@media screen and (max-width: 1200px){
+ 
+    .marMain {
+        overflow: hidden;
+        margin-top: 0;
+    }
+   
+}

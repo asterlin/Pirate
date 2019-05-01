@@ -55,6 +55,7 @@ window.onload = function () {
                     var merchInsert = e.target.parentNode.parentNode;
                     var treaName = merchInsert.getElementsByClassName('treaName')[0].childNodes[0].value;
                     var treaImg = merchInsert.getElementsByClassName('treaImg')[0].getElementsByTagName('input')[0].value;
+                    treaImg = treaImg.substr(treaImg.length-7,7);
                     var treaInt = merchInsert.getElementsByClassName('treaInt')[0].getElementsByTagName('input')[0].value;
                     var treaStr = merchInsert.getElementsByClassName('treaStr')[0].getElementsByTagName('input')[0].value;
                     var treaAgi = merchInsert.getElementsByClassName('treaAgi')[0].getElementsByTagName('input')[0].value;
@@ -178,14 +179,31 @@ window.onload = function () {
     }
 
     var updateBtn = document.getElementsByClassName('updateList');
-
+    $('.addToList').click(function(){
+        index = $(this).index;
+    });
+    
     for(var i=0;i<updateBtn.length;i++){
 
     updateBtn[i].onclick = function (e) {
+        index = $(this).parent().parent().parent().index();
         e.target.style.display= "none";
         var merchUpdate = e.target.parentNode.parentNode;
+        
+        index-=2;
+        console.log(index);
+        // str = merchUpdate.getElementsByClassName('treaImg')[0].getElementsByTagName('input')[0].value;
+        // console.log(str);
+        // // str = str.substr(0,3);
+        // console.log(str);
         var treaName = merchUpdate.getElementsByClassName('treaName')[0].childNodes[0].value;
+<<<<<<< HEAD
         var treaImg = "0";//merchUpdate.getElementsByClassName('treaImg')[0].getElementsByTagName('input')[0].value;
+=======
+        // var treaImg = merchUpdate.getElementsByClassName('treaImg')[0].getElementsByTagName('input')[0].value;
+        var treaImg = $('.treaImg img').eq(index).attr('src');
+        treaImg = treaImg.substr(treaImg.length-7,7);
+>>>>>>> 丞
         var treaInt = merchUpdate.getElementsByClassName('treaInt')[0].getElementsByTagName('input')[0].value;
         var treaStr = merchUpdate.getElementsByClassName('treaStr')[0].getElementsByTagName('input')[0].value;
         var treaAgi = merchUpdate.getElementsByClassName('treaAgi')[0].getElementsByTagName('input')[0].value;
