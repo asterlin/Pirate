@@ -10,7 +10,6 @@ body {
 }
 .sRWrap {
     font-family: $fofaText;
-    
 }
 
 h1, h2, h3, h4 {
@@ -149,7 +148,6 @@ a, a:hover {
         }
     }
 }
-
 
 .sYItem-bg {
   width: 300px;
@@ -833,6 +831,9 @@ a, a:hover {
         margin-top: 0;
         width: 100%;
     }
+    #compass {
+      display: none;
+  }
 }    
 
 .sRCheckPartBox {

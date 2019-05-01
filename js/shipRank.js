@@ -64,7 +64,7 @@ var swiper = new Swiper('.sR-slider', {
                     var y = sliderItem.parentNode.offsetTop + 278;
                 //     bgblock = true;
                 // }
-                
+                    x = x - defaultX;
             } else {
                 
                 if(bgblock == false){
@@ -78,7 +78,7 @@ var swiper = new Swiper('.sR-slider', {
 
             $('.sYItem-bg').addClass('active');
 
-            x = x - defaultX;
+            
 
             bg.style.width = width + 'px';
             bg.style.height = height + 'px';

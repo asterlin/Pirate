@@ -117,7 +117,7 @@ try {
             <?php
             ?>
             <td class="merchImg">
-                <img src="../<?php echo $prodRow["modelImg"]; ?>" class="imgPreview">
+                <img src="image/merchProduct/<?php echo $prodRow["modelImg"]; ?>" class="imgPreview">
                 <input class="merchInputImg" type="file" value="../<?php echo $prodRow["modelImg"]; ?>">
             </td>   
             </td>

@@ -17,7 +17,8 @@
 
 <body>
 <script>
-        <?php if (isset($_SESSION['goToShipYard'])) { ?>
+        <?php if (isset($_SESSION['goToShipYard'])) {
+    ?>
             var goToShipYard  = "<?php echo $_SESSION['goToShipYard']; ?>";
             <?php
 } else {
@@ -37,7 +38,7 @@
             <?php
             } else {
                 ?>  var previewMerchType = -1; <?php ;
-            } 
+            }
             if (isset($_SESSION["memId"])) {
                 ?>
                 var memid = "<?php echo $_SESSION["memId"]; ?>";
@@ -55,71 +56,7 @@
 ?>
 
 </script>
-<div class="lightbox">
-        <div class="popbg"></div>
-        <div class="info">
-            <div class="axis axis1"></div>
-            <div class="axis axis2"></div>
-            <div class="leave"></div>
-            <div class="paper">
 
-                <div id="tab-demo">
-                
-                    <div id="tab01" class="tab-inner">
-                        <h2 class="titlePri" >成為海賊</h2>
-                        
-                            <label>帳號:</label>
-                            <input id="signmemId" type="text" name="memId"><br>
-                            <label>密碼:</label>
-                            <input id="signmemPsw" type="password" name="memPsw"><br>
-                            
-                            <a id="signUp"class="btnpri" href="javascript:;">
-                                <span>登入</span>
-                            </a>
-                       
-                    </div>
-
-                    <div id="tab02" class="tab-inner">
-                        <h2 class="titlePri" >成為海賊</h2>
-                        <form action="registered.php" id="loginforma">
-                            <div class="Data-Title">
-                                <label for="memId">帳號:</label><br>
-                                <label for="memNic">暱稱:</label><br>
-                                <label for="memPsw">密碼:</label><br>
-                                <label for="memCon">確認密碼:</label><br>
-                            </div>
-                            <div class="Data-Items">
-                                <input type="text" id="memId" name="memId"><br>
-                                <input type="text" id="memNic" name="memNic"><br>
-                                <input type="password" id="memPsw" name="memPsw"><br>
-                                <input type="password" id="memCon" name="memCon"><br>
-                            </div>
-                            <div class="verification">
-                                <h2>請旋轉到正確位置</h2>
-                                <a id="signlbtn" href="javascript:;">左</a>
-                                <img id="signnew" src="image/new.png" alt="" width="100px" height="100px">
-                                <a id="signrbtn" href="javascript:;">右</a>
-                                <!-- <a id="signconfirm" type="submit">提交</a> -->
-                                <div id="signcontent"></div>
-                            </div>
-                            <div class="clearfix"></div>
-                            <a id="btnver" class="btnpri" href="javascript:;" >
-                                <span>驗證身份</span>
-                            </a>
-                            
-                        </form>
-                    </div>
-                    <ul class="tab-title">
-                        <li><a class="signIn" href="#tab01">登入頁</a></li>
-                        <li>/</li>
-                        <li><a class="register" href="#tab02">註冊頁</a></li>
-                    </ul>
-             </div>
-   
-  
-         </div>
-    </div>
-        </div>
     <div class="marWrap">
     <label for="burgerCtrl">
         <input type="checkbox" name="" id="burgerCtrl">
@@ -158,7 +95,50 @@
             </ul>
         </nav>
     </header>
+
+    
         <div class="marBanner">
+            <!-- 廣告動畫 -->
+    <div class="marketADCont" data-hover-only="true" >
+            <div class="piratesLoadingWrap">
+                <div class="loadingWavesBox lWBFront">
+                    <img src="image/market//loadingWaves.png">
+                    <img src="image/market//loadingWaves.png">
+                    <img src="image/market//loadingWaves.png">
+                    <img src="image/market//loadingWaves.png">
+                    <img src="image/market//loadingWaves.png">
+                </div>
+                <div class="loadingsYItembg">
+                    <div class="loadingsRDNWrap"></div>
+                </div>
+
+                <div class="pirateLoadingShip">
+                    <img class="loadingBody" src="image/merchProduct/300.png">
+                    <img class="loadingHead" src="image/merchProduct/102.png">
+                    <img class="loadingSail" src="image/merchProduct/204.png">
+                </div>
+                <div class="pirateLoadingShip pirateShipSec">
+                    <img class="loadingBody" src="image/merchProduct/302.png">
+                    <img class="loadingHead" src="image/merchProduct/101.png">
+                    <img class="loadingSail" src="image/merchProduct/203.png">
+                </div>
+                <div class="pirateLoadingShip pirateShipThird">
+                    <img class="loadingBody" src="image/merchProduct/305.png">
+                    <img class="loadingHead" src="image/merchProduct/105.png">
+                    <img class="loadingSail" src="image/merchProduct/201.png">
+                </div>
+                <div class="loadingWavesBox lWBBack">
+                    <img src="image/market//loadingWaves.png">
+                    <img src="image/market//loadingWaves.png">
+                    <img src="image/market//loadingWaves.png">
+                    <img src="image/market//loadingWaves.png">
+                    <img src="image/market//loadingWaves.png">
+                </div>
+            </div>
+
+    </div>
+
+            <!-- 廣告動畫 -->
             <div class="mlslBox">
                 <img class="mlsl" src="image/market/mlsl.png" alt="">
             </div>
@@ -181,6 +161,12 @@
             </div>
 
             <span>購買海賊船造型，追趕年度最新流行！(單押skr)</span>
+            <span class="thisWeekTitle">本周新品</span>
+            <a href="javascript:;" class="goToSMarketTitle" href="javascript:;">
+                <img class="sYDownarrow" src="image/market/lArrow.png">
+                <span>立即前往商城</span>
+                <img class="sYDownarrow" src="image/market/lArrow.png">
+            </a>
         </div>
         <div class="marMain blackMarket">
             <!------------ 黑市在這 --------------------->
@@ -189,7 +175,8 @@
         </div>
         <div class="marMain shipYard">
 
-        
+        <span class="sYShopTitle">造船廠商城</span>
+        <a href="shipRank.php" class="goToSSRTitle" href="javascript:;"><span>查看其他玩家造型</span></a>
             <div class="shipYardCont">
                 <div class="sYMList">
                     <div class="sYTypeTagBox">
@@ -213,7 +200,7 @@
                         <section class="typeHot regular slider">
                             <div class="sYMerch">
                                 <a class="sYMerchImg" href="javascript:;">
-                                    <img class="sYMerchHeadImg" merchId="1" src="image/product/100.png">
+                                    <img class="sYMerchHeadImg" merchId="1" src="image/merchProduct/100.png">
                                     <img class="unvisibleBtn" src="image/market/unvisable.png">
                                     <img class="visibleBtn" src="image/market/visible.png">
                                 </a>
@@ -231,7 +218,7 @@
                             </div>
                             <div class="sYMerch">
                                 <a class="sYMerchImg" href="javascript:;">
-                                    <img class="sYMerchBodyImg" merchId="2" src="image/product/300.png">
+                                    <img class="sYMerchBodyImg" merchId="2" src="image/merchProduct/300.png">
                                     <img class="unvisibleBtn" src="image/market/unvisable.png">
                                     <img class="visibleBtn" src="image/market/visible.png">
                                 </a>
@@ -249,7 +236,7 @@
                             </div>
                             <div class="sYMerch">
                                 <a class="sYMerchImg" href="javascript:;">
-                                    <img class="sYMerchSailImg" merchId="3" src="image/product/200.png">
+                                    <img class="sYMerchSailImg" merchId="3" src="image/merchProduct/200.png">
                                     <img class="unvisibleBtn" src="image/market/unvisable.png">
                                     <img class="visibleBtn" src="image/market/visible.png">
                                 </a>
@@ -267,7 +254,7 @@
                             </div>
                             <div class="sYMerch">
                                 <a class="sYMerchImg" href="javascript:;">
-                                    <img class="sYMerchHeadImg" merchId="5" src="image/product/101.png">
+                                    <img class="sYMerchHeadImg" merchId="5" src="image/merchProduct/101.png">
                                     <img class="unvisibleBtn" src="image/market/unvisable.png">
                                     <img class="visibleBtn" src="image/market/visible.png">
                                 </a>
@@ -285,7 +272,7 @@
                             </div>
                             <div class="sYMerch">
                                 <a class="sYMerchImg" href="javascript:;">
-                                    <img class="sYMerchBodyImg" merchId="6" src="image/product/301.png">
+                                    <img class="sYMerchBodyImg" merchId="6" src="image/merchProduct/301.png">
                                     <img class="unvisibleBtn" src="image/market/unvisable.png">
                                     <img class="visibleBtn" src="image/market/visible.png">
                                 </a>
@@ -303,7 +290,7 @@
                             </div>
                             <div class="sYMerch">
                                 <a class="sYMerchImg" href="javascript:;">
-                                    <img class="sYMerchSailImg" merchId="7" src="image/product/201.png">
+                                    <img class="sYMerchSailImg" merchId="7" src="image/merchProduct/201.png">
                                     <img class="unvisibleBtn" src="image/market/unvisable.png">
                                     <img class="visibleBtn" src="image/market/visible.png">
                                 </a>
@@ -321,7 +308,7 @@
                             </div>
                             <div class="sYMerch">
                                 <a class="sYMerchImg" href="javascript:;">
-                                    <img class="sYMerchHeadImg" merchId="8" src="image/product/102.png">
+                                    <img class="sYMerchHeadImg" merchId="8" src="image/merchProduct/102.png">
                                     <img class="unvisibleBtn" src="image/market/unvisable.png">
                                     <img class="visibleBtn" src="image/market/visible.png">
                                 </a>
@@ -339,7 +326,7 @@
                             </div>
                             <div class="sYMerch">
                                 <a class="sYMerchImg" href="javascript:;">
-                                    <img class="sYMerchBodyImg" merchId="9" src="image/product/302.png">
+                                    <img class="sYMerchBodyImg" merchId="9" src="image/merchProduct/302.png">
                                     <img class="unvisibleBtn" src="image/market/unvisable.png">
                                     <img class="visibleBtn" src="image/market/visible.png">
                                 </a>
@@ -357,7 +344,7 @@
                             </div>
                             <div class="sYMerch">
                                 <a class="sYMerchImg" href="javascript:;">
-                                    <img class="sYMerchSailImg" merchId="10" src="image/product/202.png">
+                                    <img class="sYMerchSailImg" merchId="10" src="image/merchProduct/202.png">
                                     <img class="unvisibleBtn" src="image/market/unvisable.png">
                                     <img class="visibleBtn" src="image/market/visible.png">
                                 </a>
@@ -392,7 +379,7 @@
 
                             <div class="sYMerch">
                                 <a class="sYMerchImg" href="javascript:;">
-                                    <img class="sYMerchHeadImg" merchId="<?php echo $headproductRow["modelId"]; ?>" src="image/product/<?php echo $headproductRow["modelImg"]; ?>">
+                                    <img class="sYMerchHeadImg" merchId="<?php echo $headproductRow["modelId"]; ?>" src="image/merchProduct/<?php echo $headproductRow["modelImg"]; ?>">
                                     <img class="unvisibleBtn" src="image/market/unvisable.png">
                                     <img class="visibleBtn" src="image/market/visible.png">
                                 </a>
@@ -437,7 +424,7 @@
 
                             <div class="sYMerch">
                                 <a class="sYMerchImg" href="javascript:;">
-                                    <img class="sYMerchBodyImg" merchId="<?php echo $bodyproductRow["modelId"]; ?>" src="image/product/<?php echo $bodyproductRow["modelImg"]; ?>">
+                                    <img class="sYMerchBodyImg" merchId="<?php echo $bodyproductRow["modelId"]; ?>" src="image/merchProduct/<?php echo $bodyproductRow["modelImg"]; ?>">
                                     <img class="unvisibleBtn" src="image/market/unvisable.png">
                                     <img class="visibleBtn" src="image/market/visible.png">
                                 </a>
@@ -481,7 +468,7 @@
                                 
                             <div class="sYMerch">
                                 <a class="sYMerchImg" href="javascript:;">
-                                    <img class="sYMerchSailImg" merchId="<?php echo $sailproductRow["modelId"]; ?>" src="image/product/<?php echo $sailproductRow["modelImg"]; ?>">
+                                    <img class="sYMerchSailImg" merchId="<?php echo $sailproductRow["modelId"]; ?>" src="image/merchProduct/<?php echo $sailproductRow["modelImg"]; ?>">
                                     <img class="unvisibleBtn" src="image/market/unvisable.png">
                                     <img class="visibleBtn" src="image/market/visible.png">
                                 </a>
@@ -561,7 +548,7 @@
                                                                     <div class="merchPartImg">
                                                                         <span class="sYMerchCircle"></span>
                                                                         <a href="javascript:;">
-                                                                            <img class="previewHeadBox" src="image/product/">
+                                                                            <img class="previewHeadBox" src="image/merchProduct/">
                                                                         </a>
                                                                     </div>
 
@@ -581,7 +568,7 @@
                                                                     <div class="merchPartImg">
                                                                         <span class="sYMerchCircle"></span>
                                                                         <a href="javascript:;">
-                                                                            <img class="previewBodyBox" src="image/product/">
+                                                                            <img class="previewBodyBox" src="image/merchProduct/">
                                                                         </a>
                                                                     </div>
                                                                     <div class="merchPartintro">
@@ -599,7 +586,7 @@
                                                                     <div class="merchPartImg">
                                                                         <span class="sYMerchCircle"></span>
                                                                         <a href="javascript:;">
-                                                                            <img class="previewSailBox" src="image/product/">
+                                                                            <img class="previewSailBox" src="image/merchProduct/">
                                                                         </a>
                                                                     </div>
                                                                     <div class="merchPartintro">
@@ -643,7 +630,7 @@
                                                                     <div class="merchPartImg">
                                                                         <span class="sYMerchCircle"></span>
                                                                         <a href="javascript:;">
-                                                                            <img class="previewHeadBox" src="image/product/<?php echo $wearingImg ?>">
+                                                                            <img class="previewHeadBox" src="image/merchProduct/<?php echo $wearingImg ?>">
                                                                         </a>
                                                                     </div>
 
@@ -669,7 +656,7 @@
                                                                     <div class="merchPartImg">
                                                                         <span class="sYMerchCircle"></span>
                                                                         <a href="javascript:;">
-                                                                            <img class="previewBodyBox" src="image/product/<?php echo $wearingImg ?>">
+                                                                            <img class="previewBodyBox" src="image/merchProduct/<?php echo $wearingImg ?>">
                                                                         </a>
                                                                     </div>
                                                                     <div class="merchPartintro">
@@ -693,7 +680,7 @@
                                                                     <div class="merchPartImg">
                                                                         <span class="sYMerchCircle"></span>
                                                                         <a href="javascript:;">
-                                                                            <img class="previewSailBox" src="image/product/<?php echo $wearingImg ?>">
+                                                                            <img class="previewSailBox" src="image/merchProduct/<?php echo $wearingImg ?>">
                                                                         </a>
                                                                     </div>
                                                                     <div class="merchPartintro">
@@ -726,7 +713,7 @@
                                                                     <div class="merchPartImg">
                                                                         <span class="sYMerchCircle"></span>
                                                                         <a href="javascript:;">
-                                                                            <img class="previewHeadBox" src="image/product/100.png">
+                                                                            <img class="previewHeadBox" src="image/merchProduct/100.png">
                                                                         </a>
                                                                     </div>
 
@@ -747,7 +734,7 @@
                                                                     <div class="merchPartImg">
                                                                         <span class="sYMerchCircle"></span>
                                                                         <a href="javascript:;">
-                                                                            <img class="previewBodyBox" src="image/product/300.png">
+                                                                            <img class="previewBodyBox" src="image/merchProduct/300.png">
                                                                         </a>
                                                                     </div>
                                                                     <div class="merchPartintro">
@@ -766,7 +753,7 @@
                                                                     <div class="merchPartImg">
                                                                         <span class="sYMerchCircle"></span>
                                                                         <a href="javascript:;">
-                                                                            <img class="previewSailBox" src="image/product/200.png">
+                                                                            <img class="previewSailBox" src="image/merchProduct/200.png">
                                                                         </a>
                                                                     </div>
                                                                     <div class="merchPartintro">
@@ -794,9 +781,9 @@
                     </div>
                     <div class="sYShipPreviewBox">
 
-                        <img id="sYHead" defaultId="100.png" src="image/product/100.png">
-                        <img id="sYBody" defaultId="100.png" src="image/product/300.png">
-                        <img id="sYSail" defaultId="100.png" src="image/product/200.png">
+                        <img id="sYHead" defaultId="100.png" src="image/merchProduct/100.png">
+                        <img id="sYBody" defaultId="100.png" src="image/merchProduct/300.png">
+                        <img id="sYSail" defaultId="100.png" src="image/merchProduct/200.png">
                         
                         <a class="sYPreviewBtn" href="javascript:;">
                             <span>查看目前選擇部位</span><img src="image/market/zoom.png">
@@ -811,7 +798,7 @@
                         <a href="shipRank.php">
                             <span>+更多熱門造型 :</span>
                         </a>
-                        <a href="shipRank.php">
+                        <a class="sYGoToShiprank" href="shipRank.php">
                             <h4>船匠排行</h4>
                         </a>
                     </div>
@@ -862,104 +849,112 @@
     <script src="js/wavebtn.js"></script>
     <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
     <script src="js/slick/slick.js" type="text/javascript" charset="utf-8"></script>
-    <script src="js/market.js"></script>
+    
     <script src="js/login.js"></script>
     <script src="js/header.js"></script>
     <script src="js/verification.js"></script>
     <script src="js/compass.js"></script>
     <script src="js/reset.js"></script>
-<script src="js/getStatus.js"></script>
+    <script src="js/getStatus.js"></script>
+    
+    <!-- <script src="js/TweenMax.min.js"></script>
+    <script src="js/tweenmax.js"></script>
+    <script src="js/ScrollMagic.min.js"></script>
+    <script src="js/animation.gsap.min.js"></script>
+    <script src="js/parallax.js"></script> -->
+    <script src="js/market.js"></script>
+    <!-- <script src="js/storm.js"></script> -->
     <script>
-var compass;
-var playTimeCount=0;
-var rankFly;
-var gameStartTimer;
-var bazierRank;
-// var memId=$('#getSession').text();
-var memLv=parseInt($('#blueLv span').text());
-var memExp=parseInt($('#blueLv span').text());
-var memMoney=parseInt($('#blueLv span').text());
-var playedTimes=parseInt($('#blueGameTime span').text());
-var int=parseInt($('#blueInt span').text());
-var str=parseInt($('#blueStr span').text());
-var lcu=parseInt($('#blueLuck span').text());
-var agi=parseInt($('#blueAgi span').text());
-var rwd=$('#playTitleSec').width();
-memLv=100;
-memExp=100;
-memMoney=1000;
-playedTimes=2000;
-int=100;
-str=200;
-lcu=300;
-agi=400;
-$(document).ready(function(){
-getStatus();
-});
+        var compass;
+        var playTimeCount=0;
+        var rankFly;
+        var gameStartTimer;
+        var bazierRank;
+        // var memId=$('#getSession').text();
+        var memLv=parseInt($('#blueLv span').text());
+        var memExp=parseInt($('#blueLv span').text());
+        var memMoney=parseInt($('#blueLv span').text());
+        var playedTimes=parseInt($('#blueGameTime span').text());
+        var int=parseInt($('#blueInt span').text());
+        var str=parseInt($('#blueStr span').text());
+        var lcu=parseInt($('#blueLuck span').text());
+        var agi=parseInt($('#blueAgi span').text());
+        var rwd=$('#playTitleSec').width();
+        memLv=100;
+        memExp=100;
+        memMoney=1000;
+        playedTimes=2000;
+        int=100;
+        str=200;
+        lcu=300;
+        agi=400;
+        $(document).ready(function(){
+        getStatus();
+        });
 
-// $(document).ready(function(){
-// //還沒登入compass = none
-// if(memId!=''){
-// 	$('#compass').css('display','block');
-// }else{
-// 	$('#compass').css('display','none');
-// }
-// //rwd compass = none
-// if(rwd==375){
-// 	$('#compass').css('display','none');
-// }else{
-// 	$('#compass').css('display','block');
-// }
-// reset();
-// getStatus();
-// //lightbox 離開
-// $('.checkToLeave').click(function(){$('.lightbox').css('display','none');});
-// $('.popbg').click(function(){$('.lightbox').css('display','none');});
-// $('.leave').click(function(){$('.lightbox').css('display','none');})
+        // $(document).ready(function(){
+        // //還沒登入compass = none
+        // if(memId!=''){
+        // 	$('#compass').css('display','block');
+        // }else{
+        // 	$('#compass').css('display','none');
+        // }
+        // //rwd compass = none
+        // if(rwd==375){
+        // 	$('#compass').css('display','none');
+        // }else{
+        // 	$('#compass').css('display','block');
+        // }
+        // reset();
+        // getStatus();
+        // //lightbox 離開
+        // $('.checkToLeave').click(function(){$('.lightbox').css('display','none');});
+        // $('.popbg').click(function(){$('.lightbox').css('display','none');});
+        // $('.leave').click(function(){$('.lightbox').css('display','none');})
 
-// // 寫入遊戲測驗時間
-// $('#winbox .checkToLeave').click(function(){
-// 	playedTimes-=1;
-// 	updateScore();
-// 	getScoreL();
-// 	getStatus();
-// 	playTimeCount=0;
-// });
-// $('#losebox .checkToLeave').click(function(){
-// 	playedTimes-=1;
-// 	updateScore();
-// 	getScoreL();
-// 	getStatus();
-// 	playTimeCount=0;
-// });
-// // 跑tweenmax
-// playTweenMax();
+        // // 寫入遊戲測驗時間
+        // $('#winbox .checkToLeave').click(function(){
+        // 	playedTimes-=1;
+        // 	updateScore();
+        // 	getScoreL();
+        // 	getStatus();
+        // 	playTimeCount=0;
+        // });
+        // $('#losebox .checkToLeave').click(function(){
+        // 	playedTimes-=1;
+        // 	updateScore();
+        // 	getScoreL();
+        // 	getStatus();
+        // 	playTimeCount=0;
+        // });
+        // // 跑tweenmax
+        // playTweenMax();
 
-// // playBtn
-// if(memId!=''){
-// 	$('.button_border').click(function(){
-// 		if(playedTimes==0){
-// 			$('#playedTimesBox .lightbox').css('display','block');
-// 		}else{
-// 			$('#playSpark').css('clipPath','circle(1900px)');
-// 			gameStartTimer = setInterval(play,1000);
-// 		}
-// 	});
-// }else{
-// 	$('#loginbox .lightbox').css('display','block');
-// }
+        // // playBtn
+        // if(memId!=''){
+        // 	$('.button_border').click(function(){
+        // 		if(playedTimes==0){
+        // 			$('#playedTimesBox .lightbox').css('display','block');
+        // 		}else{
+        // 			$('#playSpark').css('clipPath','circle(1900px)');
+        // 			gameStartTimer = setInterval(play,1000);
+        // 		}
+        // 	});
+        // }else{
+        // 	$('#loginbox .lightbox').css('display','block');
+        // }
 
-// function play(){
-// 	clearInterval(gameStartTimer);
-// 	$('.button_border').css('display','none');
-// 	$('#defaultCanvas0').css('display','block');
-// 	playTimer = setInterval(playTime,1000)
-// }
-// function playTime(){
-// 	playTimeCount+=1;
-// 	console.log('playTimeCount: ',playTimeCount);
-// }
-// });
+        // function play(){
+        // 	clearInterval(gameStartTimer);
+        // 	$('.button_border').css('display','none');
+        // 	$('#defaultCanvas0').css('display','block');
+        // 	playTimer = setInterval(playTime,1000)
+        // }
+        // function playTime(){
+        // 	playTimeCount+=1;
+        // 	console.log('playTimeCount: ',playTimeCount);
+        // }
+        // });
 </script>
 </body>
 

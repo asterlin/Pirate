@@ -10,7 +10,7 @@ body {
 }
 .marWrap {
     font-family: $fofaText;
-    
+    overflow: hidden;
 }
 
 h1, h2, h3, h4 {
@@ -103,6 +103,11 @@ img {
         position: relative;
         margin: 20px 0 0 10%;
     }
+    
+    .marTitInBox:hover h2 {
+        color: #fff;
+        text-shadow: 0 0 2px #000;
+    }
 
 
 
@@ -110,6 +115,7 @@ img {
         padding: 10px;
         margin: 0;
         transform: scale(.9);
+        transition: .2s;
     }
 
     .currentMar h2 {
@@ -125,6 +131,7 @@ img {
     position: relative;
     width: 100%;
     overflow: hidden;
+    z-index: 10;
     .marBorDec {
         position: absolute;
         bottom: -8px;
@@ -234,7 +241,7 @@ img {
         }
 
         .merchPartPrice {
-            color: #a34f49;
+            color: #55150f;
         }
 
         .sYMerchText {
@@ -248,7 +255,7 @@ img {
                 margin-bottom: 10px;
             }
             .sYIntroPrice {
-                color: #a34f49;
+                color: #55150f;
             }
     
             .merchPartPrice {
@@ -304,7 +311,35 @@ img {
         .merchPartBox {
             width: 30%;
             text-align: center;
+            h3 {
+                color: #a34f49;
+                text-shadow: .1px .1px .1px #000;
+                transition: .2s;
+            }
         }
+
+        .merchPartBox:hover h3 {
+            color: #554e4d;
+        }
+
+        .mydefaultHead {
+            h3 {
+                color: #554e4d;
+            }
+        }
+
+        .mydefaultBody {
+            h3 {
+                color: #554e4d;
+            }
+        }
+
+        .mydefaultSail {
+            h3 {
+                color: #554e4d;
+            }
+        }
+
         .sYbuymerchesBtn {
             margin-top: 10px;
             transition: .6s;
@@ -323,6 +358,7 @@ img {
             margin-top: -20px;
             position: relative;
             z-index: 1;
+            line-height: 1.25rem;
             a {
                 h4 {
                     display: inline-block;
@@ -506,7 +542,7 @@ img {
 
 .shipYard .shipYardCont .sYMTypeBox .ownedMerch {
     order: 1;
-    background-color: #7c6648;
+    background-color: #af9f87;
 }
 
 .ownedMerch .btnpri:hover .wave {
@@ -594,7 +630,12 @@ img {
         box-shadow: 1px 1px 4px 0px #000,
                     0 0 4px 4px #574934,
                     0 0 4px 8px rgb(206, 108, 108);
+                    h3 {
+                        color: #a34f49;
+                        text-shadow: .1px .1px .1px #000;
+                    }
     }
+ 
     .shipYard .shipYardCont .sYMerchImg {
         width: 50%;
         height: 100px;
@@ -888,9 +929,9 @@ img {
 
 .shipYard .shipYardCont .sYMTypeBox .ownedMerch {
     order: 1;
-    background-color: #7c6648;
+    background-color: #af9f87;
     .sYMerchImg {
-        background-color: #ad9473;
+        background-color: #cac7c3;
     }
 }
 
@@ -952,14 +993,14 @@ img {
     transition: 1s;
 }
 
-
-    
     h3 {
         font-size: 1.25rem;
     }
 
     .shipYard {
         overflow: visible;
+        margin: 50vh 0 0 0;
+        padding-bottom: 6vh;
     }
 
     .shipYard .shipYardCont {
@@ -1649,4 +1690,461 @@ html {
         }
           
 }
-//-----黑市
+//-----
+
+.marketADCont {
+    transition: .6s;
+    position: relative;
+    z-index: 0;
+}
+
+.mlslBox, .marBoard {
+    z-index: -1;
+}
+
+.piratesLoadingWrap {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    overflow: hidden;
+    z-index: -10;
+    // background: #222222;
+}
+
+.loadingsYItembg {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    opacity: 1;
+    transition: all .3s;
+    overflow: hidden;
+    z-index: 3;
+    }
+
+    .loadingsYItembg .loadingsRDNWrap {
+      overflow: hidden;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0; }
+      
+.loadingsRBgWeather {
+    transform: rotate(20deg) translate(-300px,-100px);
+    transform-origin: center;
+    position: relative;
+}
+
+.pirateLoadingShip {
+    width: 15%;
+    position: absolute;
+    z-index: 1;
+    bottom: 20vh;
+    left: 48%;
+    transform: translate(-50%,0);
+    animation: pirateShip 5s ease-in-out infinite alternate;
+    z-index: 1;
+    img {
+        width: 100%;
+        position: relative;
+        top: 0;
+        left: 0;
+    }
+
+    .loadingHead {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    .loadingSail {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+}
+
+.lWBFront {
+    position: absolute;
+    bottom: 0;
+    width: 100%; 
+    // background-image: linear-gradient(0deg, rgb(134, 241, 241) 0%, rgba(0, 126, 126,.5) 10%, rgba(0, 153, 153,.2) 30%, transparent 100%);
+    padding-top: 10vh;
+    z-index: 2;
+
+    img {
+        position: absolute;
+        bottom: -10vh;
+        opacity: .8;
+        height: 48vh;
+        z-index: 1;
+        left: 0;
+    }
+    img:nth-of-type(1){
+        position: relative;
+        animation: stormWavesdefault 5s 5s ease-in-out infinite alternate;
+        transform: rotate(5deg) scale(1.15);
+    }
+    img:nth-of-type(2){
+        animation: stormWavesa 2s 5s ease-in-out infinite alternate;
+        transform: rotate(20deg) scale(1.15);
+    }
+    img:nth-of-type(3){
+        animation: stormWavesb 3s 5s ease-in-out infinite alternate;
+        transform: rotate(15deg) scale(1.15);
+    }
+    img:nth-of-type(4){
+        animation: stormWavesb 4s 5s ease-in-out infinite alternate;
+        transform: rotate(15deg) scale(1.15);
+    }
+    img:nth-of-type(5){
+        animation: stormWavesa 6s 5s ease-in-out infinite alternate;
+        transform: rotate(20deg) scale(1.15);
+    }
+}
+
+.lWBBack {
+    position: absolute;
+    bottom: 0;
+    width: 100%; 
+    background-image: linear-gradient(0deg, rgb(134, 241, 241) 0%, rgba(0, 126, 126,.5) 10%, rgba(0, 153, 153,.2) 30%, transparent 100%);
+    padding-top: 10vh;
+    z-index: 2;
+    
+    img {
+        position: absolute;
+        bottom: -10vh;
+        opacity: .8;
+        height: 48vh;
+        z-index: 1;
+        left: 0;
+    }
+    img:nth-of-type(1){
+        position: relative;
+        
+        animation: stormWavesa 6s ease-in-out infinite alternate;
+    }
+    img:nth-of-type(2){
+        
+        animation: stormWavesb 4s .5s ease-in-out infinite alternate;
+    }
+    img:nth-of-type(3){
+        animation: stormWavesb 3s .4s ease-in-out infinite alternate;
+    }
+    img:nth-of-type(4){
+        animation: stormWavesa 2s ease-in-out infinite alternate;
+    }
+    img:nth-of-type(5){
+        height: 68vh;
+        bottom: -30vh;
+        animation: stormWavesdefault 5s ease-in-out infinite alternate;
+    }
+}
+
+.lWBFront {
+    z-index: 0;
+    animation: lWBFrontAnimation 5s 5s ease-in-out infinite alternate;
+    transform: scale(1.1);
+}
+
+.lWBBack {
+    z-index: 2;
+    animation: lWBFBackAnimation 5s ease-in-out infinite alternate;
+    transform: rotateY(180deg) scale(1.1);
+}
+
+@keyframes lWBFrontAnimation {
+    from {
+        transform: rotateZ(0deg) scale(1.1);
+    }
+    to {
+        transform: rotateZ(-20deg) scale(1.1);
+    }
+}
+
+@keyframes lWBFBackAnimation {
+    from {
+        transform: rotateZ(0deg) rotateY(180deg) scale(1.1);
+    }
+    to {
+        transform: rotateZ(20deg) rotateY(180deg) scale(1.1);
+    }
+}
+
+@keyframes pirateShip {
+    from {
+        transform: rotate(-10deg) translate(-30%, -15px);
+    }
+    25%{
+        
+    }
+    50%{
+        
+    }
+    65%{
+
+    }
+    to {
+        transform: rotate(25deg) translate(-75%, 40px);
+    }
+}
+
+@keyframes stormWavesdefault {
+    from {
+        transform: rotate(5deg) translate(0, 0) scale(1.05);
+    }
+    to {
+        transform: rotate(-5deg) translate(0, 0) scale(1.05);
+    }
+}
+
+
+@keyframes stormWavesa {
+    from {
+        transform: rotate(20deg) translate(-100px, 0) scale(1.1);
+    }
+    to {
+        transform: rotate(10deg) translate(0, 0) scale(1.1);
+    }
+}
+
+@keyframes stormWavesb {
+    from {
+        transform: rotate(15deg) translate(100px, 0) scale(1.18);
+    }
+    to {
+        transform: rotate(-5deg) translate(-100px, 0) scale(1.18);
+    }
+}
+
+@keyframes stormWavesc {
+    from {
+        transform: rotate(10deg) translate(0px, 0) scale(1.1);
+    }
+    to {
+        transform: rotate(0deg) translate(100px, 0) scale(1.1);
+    }
+}
+
+@keyframes stormWavesd {
+    from {
+        transform: rotate(5deg) translate(100px, 0) scale(1.1);
+    }
+    to {
+        transform: rotate(0deg) translate(0px, 0) scale(1.1);
+    }
+}
+
+.merchHead .previewHeadBox {
+    animation: previewHeadActive 1.5s ease-in-out infinite alternate;
+}
+
+.merchBody .previewBodyBox {
+    animation: previewBodyActive 1.5s ease-in-out infinite alternate;
+}
+
+.merchSail .previewSailBox {
+    animation: previewSailActive 1.5s ease-in-out infinite alternate;
+}
+
+.mydefaultHead .previewHeadBox{
+    animation: previewHeadActive 0s ease-in-out infinite alternate;
+}
+
+.mydefaultBody .previewBodyBox{
+    animation: previewHeadActive 0s ease-in-out infinite alternate;
+}
+
+.mydefaultSail .previewSailBox{
+    animation: previewHeadActive 0s ease-in-out infinite alternate;
+}
+
+@keyframes previewHeadActive {
+    from {
+        transform: translateY(-4px) scale(1.3);
+    }
+    to {
+        transform: translateY(4px) scale(1.3);
+    }
+}
+
+@keyframes previewBodyActive {
+    from {
+        transform: translateY(-4px) scale(1.3);
+    }
+    to {
+        transform: translateY(4px) scale(1.3);
+    }
+}
+
+@keyframes previewSailActive {
+    from {
+        transform: translateY(-4px) scale(1.3);
+    }
+    to {
+        transform: translateY(4px) scale(1.3);
+    }
+}
+
+.thisWeekTitle {
+    margin-top: 50px;
+    font-size: 1.5rem;
+    display: block;
+    color: #a34f49;
+    text-shadow: .3px .3px 0px #000;
+}
+
+.sYShopTitle {
+    font-size: 1.5rem;
+    display: block;
+    color: #a34f49;
+    text-shadow: .3px .3px 0px #000;
+    text-align: center;
+}
+
+.pirateShipSec {
+    left: 24%;
+    bottom: 30vh;
+    width: 10%;
+    animation: smallerShipRepositionSec 5s ease-in-out infinite alternate;
+}
+
+.pirateShipThird {
+    left: 72%;
+    bottom: 30vh;
+    width: 10%;
+    animation: smallerShipRepositionThird 5s ease-in-out infinite alternate;
+}
+
+@keyframes smallerShipRepositionSec{
+    from {
+        transform: rotate(-10deg) translate(-30%, 5vh);
+    }
+    25%{
+        
+    }
+    50%{
+        
+    }
+    65%{
+
+    }
+    to {
+        transform: rotate(25deg) translate(-75%, -12vh);
+    }
+}
+
+@keyframes smallerShipRepositionThird{
+    from {
+        transform: rotate(-10deg) translate(-75%, -8vh);
+    }
+    25%{
+        
+    }
+    50%{
+        
+    }
+    65%{
+
+    }
+    to {
+        transform: rotate(25deg) translate(-30%, 15vh)
+    }
+}
+
+.btnpri:hover span{
+    text-shadow: 1px 1px 1px #000;
+}
+
+a {
+    cursor: pointer;
+}
+
+.goToSMarketTitle {
+    text-align: center;
+    display: block;
+    margin-top: 15px;
+    position: relative;
+    z-index: 1;
+    span {
+        font-size: 1.25rem;
+        color: #21729e;
+    }
+    
+    &:hover span {
+        color: #2f83b1;
+        text-shadow: .1px .1px .1px #000;
+    }
+}
+
+.goToSSRTitle {
+    text-align: center;
+    display: block;
+    margin-top: 15px;
+    span {
+        font-size: 1.25rem;
+        color: #21729e;
+    }
+    
+    &:hover span {
+        color: #2f83b1;
+        text-shadow: .1px .1px .1px #000;
+    }
+}
+
+.sYGoToShiprank h4{
+    font-size: 1.25rem;
+}
+
+.goToSMarketTitle:hover {
+    img {
+        animation: arrowAnimation 1s infinite alternate;
+    }
+}
+
+@keyframes arrowAnimation  {
+    from{
+        transform: rotate(270deg) translateX(3px);
+    }
+    to{
+        transform: rotate(270deg) translateX(-3px);
+    }
+}
+
+.sYDownarrow {
+    width: .6rem;
+    transform: rotate(270deg);
+    padding: 0 5px;
+}
+
+@media screen and (max-width: 1200px){
+    .marketADCont {
+        display: none;
+    }
+    .thisWeekTitle {
+        display: none;
+    }
+    .goToSMarketTitle {
+        display: none;
+    }
+
+    .marMain {
+        margin-top: 0;
+    }
+    
+    .shipYard .shipYardCont .mSSDCont #drawLineCanvas {
+    display: none;
+    }
+    
+    .marBanner {
+        margin-top: 200px;
+    }
+    .shipYard .shipYardCont .sYMerchText span {
+        margin-right: .5rem;
+    }
+    #compass {
+        display: none;
+    }
+}
+header {
+    z-index: 20;
+}

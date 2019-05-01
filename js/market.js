@@ -53,6 +53,7 @@ $(document).on('ready', function () {
         changeMar[switchMarket - 1].style.display = "block";
         changeMar[switchMarket - 1].style.animation = "fadeIn .6s";
         trigger[switchMarket - 1].className += " currentMar";
+
         if (w < 1024) {
 
             if (executedHot == false) {
@@ -261,12 +262,15 @@ $(document).on('ready', function () {
         }
     }
     var executed = false;
-    document.getElementsByClassName("marTypeTit")[0].onmouseover = function () {
+    document.getElementsByClassName("marTypeTit")[0].onclcick = function () {
 
         currentMarket(1);
+        setTimeout(function () {
+            window.location.href = "blackMarket.php";
+        }, 500);
 
     };
-    document.getElementsByClassName("marTypeTit")[1].onmouseover = function () {
+    document.getElementsByClassName("marTypeTit")[1].onclick = function () {
         currentMarket(2);
     }
 
@@ -361,6 +365,10 @@ $(document).on('ready', function () {
                     getmerchlist[i].parentNode.classList.add("currentPreview");
                     getmerchlist[i].parentNode.style.order = "-1";
                     currentType(parseInt(previewMerchType) + 1);
+
+                    if(previewMerchType){
+                        document.getElementsByClassName("marketADCont")[0].style.opacity = 0;
+                    }
 
                     if (previewMerchType == 1) {
                         document.getElementsByClassName("merchHead")[0].getElementsByClassName("previewHeadBox")[0].src = getmerchlist[i].getElementsByTagName("img")[0].src;
@@ -460,6 +468,7 @@ $(document).on('ready', function () {
     if (goToShipYard == 1) {
         currentMarket(previewMerchType + 1);
         window.scrollTo(0, document.body.scrollHeight);
+        document.getElementsByClassName("marketADCont")[0].style.opacity = 0;
         // document.getElementsByClassName("shipYardBanner")[0].style.opacity = "0";
 
 
@@ -527,12 +536,17 @@ $(document).on('ready', function () {
                     break;
             }
         }, 10);
+        previewCount = 1;
+        changesYbuymerchesBtn();
     }
 
-    document.getElementsByClassName("marTitInBox")[0].onmouseenter = function () {
+    document.getElementsByClassName("marTitInBox")[0].onclick = function () {
         currentMarket(1);
+        setTimeout(function () {
+            window.location.href = "blackMarket.php";
+        }, 500);
     }
-    document.getElementsByClassName("marTitInBox")[1].onmouseenter = function () {
+    document.getElementsByClassName("marTitInBox")[1].onclick = function () {
         currentMarket(2);
 
     }
@@ -602,6 +616,8 @@ $(document).on('ready', function () {
             }
         }
     }
+
+    currentMarket(2);
 });
 
 
@@ -1548,42 +1564,42 @@ function buyMerchActivity() {
 
 buyMerchActivity();
 
-document.getElementsByClassName("leave")[0].onclick = function () {
-    document.getElementsByClassName("lightbox")[0].style.display = "none";
-}
+// document.getElementsByClassName("leave")[0].onclick = function () {
+//     document.getElementsByClassName("lightbox")[0].style.display = "none";
+// }
 
-document.getElementById("signUp").onclick = function () {
-    $.ajax({
-        url: 'marketphp/goToShipYard.php',
-        data: {
-            goToShipYard: 1,
-        },
-        type: 'GET',
-        success: function () {
-            console.log("寫入session");
-        },
-        error: function (e) {
-            console.log("寫入session失敗");
-        }
-    });
-    location.reload(true);
-}
-document.getElementById("btnver").onclick = function () {
-    $.ajax({
-        url: 'marketphp/goToShipYard.php',
-        data: {
-            goToShipYard: 1,
-        },
-        type: 'GET',
-        success: function () {
-            console.log("寫入session");
-        },
-        error: function (e) {
-            console.log("寫入session失敗");
-        }
-    });
-    location.reload(true);
-}
+// document.getElementById("signUp").onclick = function () {
+//     $.ajax({
+//         url: 'marketphp/goToShipYard.php',
+//         data: {
+//             goToShipYard: 1,
+//         },
+//         type: 'GET',
+//         success: function () {
+//             console.log("寫入session");
+//         },
+//         error: function (e) {
+//             console.log("寫入session失敗");
+//         }
+//     });
+//     location.reload(true);
+// }
+// document.getElementById("btnver").onclick = function () {
+//     $.ajax({
+//         url: 'marketphp/goToShipYard.php',
+//         data: {
+//             goToShipYard: 1,
+//         },
+//         type: 'GET',
+//         success: function () {
+//             console.log("寫入session");
+//         },
+//         error: function (e) {
+//             console.log("寫入session失敗");
+//         }
+//     });
+//     location.reload(true);
+// }
 
 //////////////////////////////////////////////////////////////////////////////
 
@@ -1591,29 +1607,40 @@ if (w > 768) {
     var isOnDiv = false;
     $(".sYMTypeBox").mouseenter(function () { isOnDiv = true; });
     $(".sYMTypeBox").mouseleave(function () { isOnDiv = false; });
+    var left = parseInt($('#compassBlue').css('left'));
+    var triggerCompass = false;
 
-    $(".shipYard").bind('mousewheel', function (event) {
+    $(".marWrap").bind('mousewheel', function (event) {
         if (event.originalEvent.wheelDelta >= 0) {
-
             if (isOnDiv == false) {
                 window.scrollTo(0, 0);
-                // document.getElementsByClassName("shipYardBanner")[0].style.opacity = "1";
-            }
+                document.getElementsByClassName("marketADCont")[0].style.opacity = 1;
 
-            if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-                // you're at the bottom of the page
-            } else {
-                // document.getElementsByClassName("shipYardBanner")[0].style.opacity = "1";
+                document.getElementById("out").classList.remove("addAnimate");
+                document.getElementById("in").classList.remove("addAnimateF");
+                document.getElementById("compassBlue").style.left = "-1500px";
+
             }
         }
         else {
             window.scrollTo(0, document.body.scrollHeight);
-            // document.getElementsByClassName("shipYardBanner")[0].style.opacity = "0";
+            document.getElementsByClassName("marketADCont")[0].style.opacity = 0;
+
+            document.getElementById("out").classList.add("addAnimate");
+            document.getElementById("in").classList.add("addAnimateF");
+            if(triggerCompass == false){
+                document.getElementById("compassBlue").style.left = "100px";
+                triggerCompass = true;
+            } 
         }
+
     });
+    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+        document.getElementsByClassName("marketADCont")[0].style.opacity = 0;
+    }
 }
 
-console.log("goToShipYard", goToShipYard, "previewMerchId", previewMerchId, "previewMerchType", previewMerchType);
+// console.log("goToShipYard", goToShipYard, "previewMerchId", previewMerchId, "previewMerchType", previewMerchType);
 
 // if ( memid !== "tourist") {
 //     document.getElementsByClassName("lightbox")[0].style.display = "none";
@@ -1626,8 +1653,28 @@ if (w < 768) {
             ownedCountInphone[i].parentNode.parentNode.style.order = "-1";
             // alert(ownedCountInphone[i].parentNode.parentNode.style.order);
         }
-    },2000);
-    document.getElementsByClassName("sYMTypeBox")[0].onclick = function(){
+    }, 2000);
+    document.getElementsByClassName("sYMTypeBox")[0].onclick = function () {
         window.scrollTo(0, 200);
     };
 }
+
+////parallax
+
+// var tlc = new TimelineMax({
+//     onComplete: parallaxs
+// });
+
+
+// // tlc.to('.box_09', 1 , {left: 100}).to('.box_10', 1 , {top: 50}).to('.box_11', 1 , {right: 100}).to('.box_12', 1 , {top: 20})
+
+
+// function parallaxs() {
+//     var scene = document.getElementById('shipParallax_box');
+//     var parallax = new Parallax(scene);
+// };
+
+document.getElementsByClassName("goToSMarketTitle")[0].onclick = function(){
+    window.scrollTo(0, document.body.scrollHeight);
+    document.getElementsByClassName("marketADCont")[0].style.opacity = 0;
+};
