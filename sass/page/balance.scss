@@ -1,0 +1,49 @@
+.card{
+  
+    border: 1px solid burlywood;
+    border-radius: 5px;
+    
+}
+.balance{
+    position: relative;
+    width: 400px;
+    height: 250px;
+    border: 2px solid burlywood;
+   
+}
+.base,.rod,.lcsl,.rcsl,.treasure,.promptprice{
+    position: absolute;
+    transition: 2s;
+}
+.base{
+    bottom: 0;
+    left: 35%;
+}
+.rod{
+    top: 15%;
+    left:10%;
+}
+.lcsl{
+    left: 10%;
+    top: 30%;
+}
+.rcsl{
+    right: 10%;
+    top: 30%;
+}
+.treasure{
+    width: 90px;
+    height: 90px;
+    left: 10%;
+    top: 50%;
+    
+}
+.promptprice{
+    top: 60%;
+    right: 16%;
+}
+.price{
+    width: 50px;
+    height: 20px;
+    font-size: 18px;
+}

@@ -133,7 +133,7 @@
 }
 
 .selltreabox {
-    display: none;
+    display: block;
     .info,.axis,{width: 370px;}
     .paper{width: 350px;
     padding-bottom: 10px;}
@@ -141,6 +141,7 @@
         
         
 }
+
 .holdtrea{
     width: 100%;
     border: 1px solid red;
@@ -163,6 +164,7 @@
 
 @media screen and (min-width:768px){
     .selltreabox {
+       
         .info,.axis,{width: 740px;}
         .paper{width: 680px;
                 padding: 100px 20px;
