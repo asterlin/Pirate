@@ -80,7 +80,7 @@ function reset(){
 	count=0;
 
 	star = createSprite(random(0, width), random(0, height));
-	star.addImage(loadImage('image/play/game/asterisk_circle0006.png'));
+	star.addImage(loadImage('image/play/boat.png'));
 
 	rock = createSprite(200,400);
 	rock.addImage(loadImage('image/play/game/rock1.png'));
