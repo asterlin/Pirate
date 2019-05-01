@@ -58,6 +58,7 @@
 </script>
 
     <div class="marWrap">
+<<<<<<< HEAD
     <label for="burgerCtrl">
         <input type="checkbox" name="" id="burgerCtrl">
         <div id="burger">
@@ -139,6 +140,46 @@
     </div>
 
             <!-- 廣告動畫 -->
+=======
+        <label for="burgerCtrl">
+            <input type="checkbox" name="" id="burgerCtrl">
+            <div id="burger">
+                <div class="burgerLine"></div>
+                <div class="burgerLine"></div>
+            </div>
+        </label>
+        <header class=""><!-- homeHeadHide-->
+            <h1 id="headerLogo"><a href="javascript:;">
+                <img src="image/logo.svg" alt="大海賊帝國">
+            </a></h1>
+            <nav id="headerMenu" >
+                <ul>
+                    <li class="menuSwitch">
+                        <a href="play.php">海賊試煉場</i></a>
+                        <ul class="headerSub">
+                            <li><a href="play.php#game">海賊試煉</a></li>
+                            <li><a href="play.php#gpsWrap">啟航尋寶</a></li>
+                        </ul>
+                    </li>
+                    <li class="menuSwitch">
+                        <a href="market.php">海上市集</i></a>
+                        <ul class="headerSub">
+                            <li><a href="market.php">黑市</a></li>
+                            <li><a href="market.php">造船廠</a></li>
+                        </ul>
+                    </li>
+                    <li class="menuSwitch"><a href="bar.php">情報酒館</a></li>
+                    <li class="menuSwitch">
+                        <a href="me.php">俺の海賊船</i></a>
+                        <ul class="headerSub">
+                            <li><a href="javascript:;" class="loginHere">登入</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <div class="marBanner">
+>>>>>>> 2683a3ecabb9536141e511d85ceb7db44d7bebb3
             <div class="mlslBox">
                 <img class="mlsl" src="image/market/mlsl.png" alt="">
             </div>
