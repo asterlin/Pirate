@@ -25,10 +25,11 @@ echo $errMsg;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <script src="js/jquery-3.3.1.min.js"></script>
     <link rel="stylesheet" href="../css/backStage.css">
     <link rel="stylesheet" href="../css/backOfficialMerch.css">
     <link rel="stylesheet" href="../css/wavebtn.css">
-    <script src="js/jquery-3.3.1.min.js"></script>
+    
 </head>
 
 <body>
@@ -41,9 +42,9 @@ echo $errMsg;
             <div class="content">
                 <h3 class="titlePri">官方商品管理</h3>
                 <div class="custToolBox">
-                    <button id="addTrea" href="javascript:;">
+                    <button id="addTrea"  class="btnpri" href="javascript:;">
                         <span>新增</span>
-                        <span>+</span>
+                        <!-- <span>+</span> -->
                     </button>
                 </div>
                 <div class="dataTable">
@@ -73,7 +74,7 @@ try {
 
                 foreach ($prods as $i=>$prodRow) {
                     ?>	
-                <tbody>
+                
                 <tr>
                 <td class="treaNo"><?php echo $prodRow["treaId"]; ?></td>
                 <td class="treaName"><input type="text" name="treaName" value='<?php echo $prodRow["treaName"]; ?>' placeholder="請輸入造型名稱"></td>
@@ -103,13 +104,12 @@ try {
                 </select>
                 </td>
                 <td>
-                <button class="updateList" style="display:none">修改</button>
-                <button class="addToList removeIt">刪除</button>
+                <button class="updateList btnpri" style="display:none"><span>修改</span></button>
+                <button class="addToList removeIt btnpri"><span>刪除</span></button>
                 </td>
                 <?php
                 ?>
                 </tr>
-                </tbody>
                 </form>
             <?php
                 }
@@ -126,7 +126,6 @@ try {
         </div>
     </div>
     <script src="../js/wavebtn.js"></script>
-
     <script src="js/backOfficialTrea.js"></script>
 </body>
 </html>
