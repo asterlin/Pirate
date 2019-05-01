@@ -278,6 +278,7 @@ window.addEventListener('load',function(){
             url: "backstage/php/saveAvatar.php",
             data: {avatarImg:avatarUrl},
             success: function (response) {
+                homeStor['avatarDir'] = response;
                 console.log("It's avatar:"+response)
                 // homeStor['avaratDir'] = response;
                 //路徑將存入server session，註冊完成後再將路徑寫入資料庫
@@ -315,6 +316,9 @@ window.addEventListener('load',function(){
                     sailSrc:shipSail.src.slice(-11,-4),
                 },
                 success: function (response) {
+                    var resObj = JSON.parse(response);
+                    homeStor['fullShipDir']=resObj.fullShipDir;
+                    homeStor['custList']=resObj.custList;
                     console.log("It's fullShip:"+response)
                     // homeStor['fullShipDir'] = response;
                     //路徑將存入server session，註冊完成後再將路徑寫入資料庫

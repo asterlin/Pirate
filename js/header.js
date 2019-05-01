@@ -2,12 +2,12 @@ function $id(id){
     return document.getElementById(id);
 }
 window.addEventListener('load',function(){
-    //取得header角色資訊
-    // var headerMe= document.getElementById("headerMe");
+
+    // var headerMe= document.getElementById("headerMe");//取得header角色資訊
     var burgerCtrl = document.getElementById('burgerCtrl');
     var headerMenu = document.querySelector('#headerMenu');
     var header = document.getElementsByTagName('header')[0];
-    var subSwitchs = document.getElementsByClassName('menuSwitch');
+    // var subSwitchs = document.getElementsByClassName('menuSwitch');
 
     //關閉與開啟header
     function toggleHeader(){

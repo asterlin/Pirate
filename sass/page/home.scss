@@ -87,13 +87,13 @@ p{ //這裡其實不懂為何_font設定的在瀏覽器不執行
         display: block;
         left: 0; right: 0;margin: auto;
         top: 300px;
-            
     }
     #bannerShip{
         width: 240px;
         top: 100px;
         position: relative;
         margin: auto;
+        animation: sailing 2s infinite;
     }
     img{
         width: 100%;
@@ -101,7 +101,14 @@ p{ //這裡其實不懂為何_font設定的在瀏覽器不執行
         
     }
 }
-
+@keyframes sailing{ //船的震動
+    10%{transform: translateY(-10px) }
+    25%{transform: translateY(0px) }   
+    55%{transform: translateY(-30px) }
+    60%{transform: translateY(-20px) }
+    65%{transform: translateY(-25px) }
+    70%{transform: translateY(-10px) }
+}
 #btnBePirate{
     // position: absolute;
     margin: 150px 0 0 40px;
@@ -584,9 +591,9 @@ h2 a{
     line-height: 0.5;
 }
 .wantedShip{
-    width: 75%;
+    width: 65%;
     position: absolute;
-    top: 10%;
+    top: 15%;
     left: 0;right: 0;margin: auto;
 }
 .wantName{
