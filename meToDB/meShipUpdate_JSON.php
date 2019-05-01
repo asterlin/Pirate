@@ -1,11 +1,14 @@
 <?php
+session_start();
 $errMsg = "";
+$_SESSION["memId"] = "test03";  //..................should delete this line
 try{
   require_once("../backstage/php/connectPirates.php");
-  $sql = "update mycustom set wearing=:wearing where memId='test03' and modelId=':modelId'";
+  $sql = "update mycustom set wearing=:wearing where memId= :memId and modelId= :modelId";
   $statement = $pdo->prepare($sql);
   $statement->bindValue(":wearing",$_REQUEST["wearing"]);
   $statement->bindValue(":modelId",$_REQUEST["modelId"]);
+  $statement->bindValue(":memId",$SESSION["memId"]);
   $statement->execute();
 
   // echo "異動{$affectedRows}筆資料成功";

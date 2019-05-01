@@ -4,21 +4,17 @@ session_start();
 // $memId = '$_REQUEST["memId"]';
 $errMsg = "";
 $_SESSION["memId"] = "test03";  //........................should delete this line
+$wearList = $_REQUEST["wearList"];
 // exit($_SESSION["memId"]);
 try{
   require_once("../backstage/php/connectPirates.php");
-  $sql = "select * from customlist JOIN mycustom ON customlist.modelId = mycustom.modelId where memId = :memId";
+  $sql = "update mycustom set wearing = 1 where modelId in ($wearList) and memId = :memId;
+  update mycustom set wearing = 0 where modelId not in ($wearList) and memId = :memId;";
+  
   $mycustom = $pdo->prepare( $sql );
   $mycustom -> bindValue( ":memId", $_SESSION["memId"] );
   $mycustom -> execute( );
-
-  if( $mycustom->rowCount() == 0 ){
-    echo "[]";
-  }else{
-
-    $mycustomRows = $mycustom->fetchAll(PDO::FETCH_ASSOC);
-    echo json_encode($mycustomRows);
-  }	
+  echo "OK";
 }catch(PDOException $e){
   echo $e->getMessage();
 }

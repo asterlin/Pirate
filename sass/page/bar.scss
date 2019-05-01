@@ -10,7 +10,7 @@ $pcMax: 2500px;
 //@media screen and (min-width: ){}
 //@media screen and (min-width: $padV){}
 //@media screen and (min-width: $pc){}
-$brownO40: rgba(54,46,43,0.4);
+$brownO40: rgba(156, 128, 117, 0.4);
 $lightBrown: #b6a79a;
 $boxColor: #d4c5af;
 $titleHight: 300px;
@@ -194,30 +194,33 @@ body {
 //放火燒
 #hotIssue{
     // -webkit-clip-path: url(../../image/bar/take_4.svg);
-    animation-name: firePath;
-    animation-duration: 3s;
-    animation-delay: 0s;
-    animation-iteration-count: 1s;
-    animation-timing-function: steps(1000000000000000000,start);
-    // animation-direction: reverse;
-    animation-fill-mode: none;
-    animation-play-state: running;
-    // background-color: #f00;
-    // -webkit-mask-image: url(../../image/bar/take_9.svg);
-    -webkit-mask-repeat: no-repeat;
-    -webkit-mask-position: bottom right;
-    -webkit-mask-size: contain;
-    position: relative;
-    // transition: 10s linear;
-    // &::after{
-    //     content: url(../../image/bar/fire.gif);
-    //     display: block;
-    //     width: 20%;
-    //     height: 100%;
-    //     position: absolute;
-    //     top: 0;
-    //     left: 0;
-    // }
+    @media screen and (min-width: $padV){
+       
+        animation-name: firePath;
+        animation-duration: 3s;
+        animation-delay: 0s;
+        animation-iteration-count: 1s;
+        animation-timing-function: steps(1000000000000000000,start);
+        // animation-direction: reverse;
+        animation-fill-mode: none;
+        animation-play-state: running;
+        // background-color: #f00;
+        // -webkit-mask-image: url(../../image/bar/take_9.svg);
+        -webkit-mask-repeat: no-repeat;
+        -webkit-mask-position: bottom right;
+        -webkit-mask-size: contain;
+        position: relative;
+        // transition: 10s linear;
+        // &::after{
+        //     content: url(../../image/bar/fire.gif);
+        //     display: block;
+        //     width: 20%;
+        //     height: 100%;
+        //     position: absolute;
+        //     top: 0;
+        //     left: 0;
+        // }
+    }
 }
 // #fire{
 //     position: absolute;
@@ -259,6 +262,7 @@ body {
 //最新情報
 #newsWrapCont{
     width: 100%;
+    min-height: calc(100% - 100px);
     @media screen and (min-width: $padV){}
     @media screen and (min-width: $pc){
         width: 1200px;
@@ -525,7 +529,7 @@ body {
         background-repeat: no-repeat;
     }
     @media screen and (min-width: $pc){
-        padding: 0px 0px 0px;
+        padding: 230px 0px 30px;
         background-size: 30%;
     }
     &::-webkit-scrollbar {
@@ -754,7 +758,7 @@ body {
                 #showArticleImg{
                     width: 50%;
                     text-align: center;
-                    display: none;
+                    display: block;
                     margin: auto;
                     @media screen and (min-width: $pc){
                         width: 30%;
@@ -806,7 +810,7 @@ body {
 }
 #articleBoxWrap{
     // overflow-y: scroll;
-    padding-top: 2rem 0px;
+    padding-top: 2rem;
     @media screen and (min-width: $padV){}
     @media screen and (min-width: $padH){
         padding: 100px 0px;
@@ -867,7 +871,11 @@ body {
             width: 1200px;
         }
         .textL{
+            max-width: 12rem;
             padding-right: 1rem;
+            @media screen and (min-width: $pc){
+                max-width: 120rem;
+            }
         }
         #articleBoxType{
             display: inline-block;
@@ -891,7 +899,7 @@ body {
         padding-left: 1rem;
         position: absolute;
         top: 1rem;
-        right: 0.5rem;
+        right: 3rem;
         width: 4rem;
         text-align: right;
         @media screen and (min-width: $padV){

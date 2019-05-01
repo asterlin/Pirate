@@ -1,5 +1,6 @@
 
 var map, lati, long, pos, player;
+var showPrizeImg,showPrizeMsg,wheelPrizeType,wheelPrizeNum,prizeBonus;
 // 玩家資訊
 var palyerName = '航海士';
 var palyerIcon = 'image/gpsGame/position.png';
@@ -253,57 +254,272 @@ function initMap(){
     // playGps();
 }
 function playGps() {
-    navigator.geolocation.getCurrentPosition(succCallback,errorCallback,{
-      enableHighAccuracy: false,
-      timeout: 60000,
-      maximumAge: 60000,
-    });
-}
-function succCallback(e) {
-    lati = e.coords.latitude;
-	  long = e.coords.longitude;
-    console.log({lati, long});
+    lati = 24.967856;
+    long = 121.191691;
     playerPosition = {lat: lati, lng: long};
-    map.setZoom(17);
-    map.setCenter({lat: lati, lng: long});
+    getNewMap(playerPosition);
     player = new google.maps.Marker({
-		position: playerPosition,
-		map: map,
-		icon: palyerIcon,
+    position: playerPosition,
+    map: map,
+    icon: palyerIcon,
     title: palyerName,
     });
-    map.addListener('center_changed', function() {
-        window.setTimeout(function() {
-            map.panTo(player.getPosition());
-            lati = e.coords.latitude;
-            long = e.coords.longitude;
-            playerPosition = {lat: lati, lng: long};
-        }, 3000);
-        circle();
-      });
-      circle();
-      getTreaPosition()
-      dropTreas();
-      sidePosition = new google.maps.LatLng((lati+0.0005),(long+0.0005));
-      sideMarker = new google.maps.Marker({
-        position: sidePosition,
-        map: map,
-        icon: treaIcon,
-        title: treaName,
-        animation: google.maps.Animation.BOUNCE,
-      });
-      sideMarker.addListener('click', function(){
-        playWheel();
-        console.log("click");
-      });
-      // addEvent();
-    //addEvent();
-    // treas.addEventListener("click", function(){
-    //     console.log(click);
-    // });
+    circle();
+    getTreaPosition()
+    dropTreas();
+    alert("dropTreas");
+    // addEvent(); 
+    // alert("addEvent");
+    // treas.addListener(treas, "click", (function(treas) {
+    //   return function(evt) {
+    //     console.log("click");
+    //     playWheel();
+    //   }
+    // })(dropTreas));
+}
+function getNewMap(playerPosition) {
+  map = new google.maps.Map(document.getElementById('gpsMap'), {
+    zoom: 17,
+    center: playerPosition,
+    styles: [
+        {"elementType": "geometry","stylers": [{"color": "#ebe3cd"}]},
+        {"elementType": "labels.text.fill", "stylers": [{"color": "#523735"}]},
+        {
+          "elementType": "labels.text.stroke",
+          "stylers": [
+            {
+              "color": "#f5f1e6"
+            }
+          ]
+        },
+        {
+          "featureType": "administrative",
+          "elementType": "geometry.stroke",
+          "stylers": [
+            {
+              "color": "#c9b2a6"
+            }
+          ]
+        },
+        {
+          "featureType": "administrative.land_parcel",
+          "elementType": "geometry.stroke",
+          "stylers": [
+            {
+              "color": "#dcd2be"
+            }
+          ]
+        },
+        {
+          "featureType": "administrative.land_parcel",
+          "elementType": "labels.text.fill",
+          "stylers": [
+            {
+              "color": "#ae9e90"
+            }
+          ]
+        },
+        {
+          "featureType": "landscape.man_made",
+          "elementType": "geometry.fill",
+          "stylers": [
+            {
+              "visibility": "on"
+            }
+          ]
+        },
+        {
+          "featureType": "landscape.natural",
+          "elementType": "geometry",
+          "stylers": [
+            {
+              "color": "#dfd2ae"
+            }
+          ]
+        },
+        {
+          "featureType": "poi",
+          "elementType": "geometry",
+          "stylers": [
+            {
+              "color": "#dfd2ae"
+            }
+          ]
+        },
+        {
+          "featureType": "poi",
+          "elementType": "labels.text.fill",
+          "stylers": [
+            {
+              "color": "#93817c"
+            }
+          ]
+        },
+        {
+          "featureType": "poi.attraction",
+          "stylers": [
+            {
+              "visibility": "off"
+            }
+          ]
+        },
+        {
+          "featureType": "poi.business",
+          "stylers": [
+            {
+              "visibility": "off"
+            }
+          ]
+        },
+        {
+          "featureType": "poi.park",
+          "elementType": "geometry.fill",
+          "stylers": [
+            {
+              "color": "#a5b076"
+            }
+          ]
+        },
+        {
+          "featureType": "poi.park",
+          "elementType": "labels.text",
+          "stylers": [
+            {
+              "visibility": "off"
+            }
+          ]
+        },
+        {
+          "featureType": "poi.park",
+          "elementType": "labels.text.fill",
+          "stylers": [
+            {
+              "color": "#447530"
+            }
+          ]
+        },
+        {
+          "featureType": "road",
+          "elementType": "geometry",
+          "stylers": [
+            {
+              "color": "#f5f1e6"
+            }
+          ]
+        },
+        {
+          "featureType": "road.arterial",
+          "elementType": "geometry",
+          "stylers": [
+            {
+              "color": "#fdfcf8"
+            }
+          ]
+        },
+        {
+          "featureType": "road.highway",
+          "elementType": "geometry",
+          "stylers": [
+            {
+              "color": "#f8c967"
+            }
+          ]
+        },
+        {
+          "featureType": "road.highway",
+          "elementType": "geometry.stroke",
+          "stylers": [
+            {
+              "color": "#e9bc62"
+            }
+          ]
+        },
+        {
+          "featureType": "road.highway.controlled_access",
+          "elementType": "geometry",
+          "stylers": [
+            {
+              "color": "#e98d58"
+            }
+          ]
+        },
+        {
+          "featureType": "road.highway.controlled_access",
+          "elementType": "geometry.stroke",
+          "stylers": [
+            {
+              "color": "#db8555"
+            }
+          ]
+        },
+        {
+          "featureType": "road.local",
+          "elementType": "labels.text.fill",
+          "stylers": [
+            {
+              "color": "#806b63"
+            }
+          ]
+        },
+        {
+          "featureType": "transit.line",
+          "elementType": "geometry",
+          "stylers": [
+            {
+              "color": "#dfd2ae"
+            }
+          ]
+        },
+        {
+          "featureType": "transit.line",
+          "elementType": "labels.text.fill",
+          "stylers": [
+            {
+              "color": "#8f7d77"
+            }
+          ]
+        },
+        {
+          "featureType": "transit.line",
+          "elementType": "labels.text.stroke",
+          "stylers": [
+            {
+              "color": "#ebe3cd"
+            }
+          ]
+        },
+        {
+          "featureType": "transit.station",
+          "elementType": "geometry",
+          "stylers": [
+            {
+              "color": "#dfd2ae"
+            }
+          ]
+        },
+        {
+          "featureType": "water",
+          "elementType": "geometry.fill",
+          "stylers": [
+            {
+              "color": "#b9d3c2"
+            }
+          ]
+        },
+        {
+          "featureType": "water",
+          "elementType": "labels.text.fill",
+          "stylers": [
+            {
+              "color": "#92998d"
+            }
+          ]
+        }
+      ]
+  });
 }
 function getTreaPosition() {
-    // treaPosArr.push({lat: (lati+0.0005),lng: (long+0.0005)});
+    treaPosArr.push({lat: (lati+0.0005),lng: (long+0.0005)});
     for (let i = 0; i < 4; i++) {
         treaPosArr.push({lat: lati+ 0.008*(Math.random()*2 - 1),lng: long+ 0.008*(Math.random()*2 - 1)});
     }
@@ -317,6 +533,10 @@ function dropTreas(){
             title: treaName,
             animation: google.maps.Animation.DROP,
           }));
+        treas[i].addListener("click",function(){
+          playWheel();
+          console.log(treas[i]);
+        });
     }
 }
 function circle() {
@@ -334,30 +554,6 @@ function circle() {
       });
     circle.setMap(map);
 }
-function addEvent(){
-  console.log( treas.length);
-  for (let i = 0; i < treas.length; i++) {
-    treaPosArrX = Math.abs(treaPosArr[i].lat-lati) ;
-    treaPosArrY = Math.abs(treaPosArr[i].lng-long);
-    treaPosArrR = Math.pow(treaPosArrX,2)+ Math.pow(treaPosArrY, 2);
-    // console.log(treaPosArrX);
-    // console.log(treaPosArrY);
-    // console.log(treas[i]);
-    // if ( treaPosArrR< Math.pow(0.001, 2) && treaPosArrX < 0.001 && treaPosArrY < 0.001) {
-    //   // treas[i].addEventListener
-    //   treas[i].addListener( "click",function(){
-    //     console.log("get");
-    //     // playWheel();
-    //     // treas[i] = NULL;
-    //   });
-      console.log(treas[i]);
-      treas[i].setAnimation(google.maps.Animation.BOUNCE);
-  };
-  // if (isLocationOnEdge(playerPosition, circle, 10e-1)) {
-  //   	console.log("get!");
-  //   };
-}
-
 
 function errorCallback(e) {
     console.log(e.code);
@@ -510,10 +706,9 @@ function drawWheel(){
 }
 
 function showPrize() {
-  var showPrizeImg,showPrizeMsg;
   var prizeWeaponImg = [`000.png`,`001.png`,`002.png`,`003.png`,`004.png`,`005.png`,`006.png`,`007.png`,`009.png`,`010.png`,`011.png`,`012.png`,`013.png`];
   var prizeWeaponName = [`斧頭`,`大釜`,`超級獵槍`,`左輪手槍`,`雙劍`,`雙刀`,`西洋劍`,`寶劍`,`大刀`,`神奇望遠鏡`,`短刀`,`長槍`,`大砲`];
-  var prizeBonus = Math.floor(Math.random() * (500 - 100 - 1) + 100);
+  prizeBonus = Math.floor(Math.random() * (500 - 100 - 1) + 100);
 	wheelPrizeType = prizeBonus % 2;//0=錢 1=武器
 	wheelPrizeNum = prizeBonus % 13;//第幾個
 	if (wheelPrizeType == 1) {
@@ -534,7 +729,34 @@ function playWheel(){
   clock = 0 
   theClock = 0;
   slowDown();
+  setTimeout(showPrize,1000);
+  document.getElementById("closeWheelBtn").addEventListener("click",function() {
+    prize();
+    document.getElementById("luckyWheel").style.display="none";
+    document.getElementById("showPrize").style.display = "none";
+  });
   // drawWheel();
 };
+function prize(){
+  var xhr = new XMLHttpRequest();
+  xhr.onload=function (){
+	  if( xhr.status == 200 ){
+      alert(xhr.responseText);
+	  }else{
+	    alert( xhr.status );
+	  }
+  }
+  //0=錢 1=武器
+  var prize = {};
+  if (wheelPrizeType == 1) {
+    prize.treaId = wheelPrizeNum;
+  } else {
+    prize.prizeBonus = prizeBonus;
+	}
+  var jsonStr = JSON.stringify(prize);
+  var url = "php/gpsGame.php?jsonStr=" + jsonStr;
+  xhr.open("Get", url, true);
+  xhr.send( null );
+}
 
 // window.addEventListener('load',initMap());
