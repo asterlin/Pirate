@@ -352,8 +352,8 @@ session_start();
                     <form action="barphp/addArtreport.php" method="post" id="addNavyReportForm" enctype="multipart/form-data">
                         <h2 class="titleThi">讓海軍為你主持公道吧</h2>
                         <input type="hiddle">
-                        <input type="hidden" name="memId" value="<?php?>">
-                        <input type="hidden" name="artId" value="<?php?>">
+                        <input type="hidden" name="memId" value="">
+                        <input type="hidden" name="artId" value="">
                         <input type="text" name="navyReport" id="navyReportCont" placeholder="請點擊此處填入通報項目">
                         <a class="btnpri" href="javascript:;" ><span><label for="submitNavyReport">一鍵通報海軍</label></span>
                         </a>
@@ -385,7 +385,7 @@ session_start();
 </div> -->
 
 <!-- script -->
-<script src="js/bar.js?<?php echo time();?>"></script>
+<script src="js/bar.js"></script>
 <script>
     function doFirst() {
         hotIssueText();
@@ -408,6 +408,7 @@ session_start();
             artBox();
         }
         artId="";
+        news();
         artReport()
         // readArt();
         // alert(location.search);

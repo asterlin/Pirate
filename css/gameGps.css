@@ -1,7 +1,7 @@
 #gpsWrap{
     position: relative;
     width: 100%;
-    height: 100%;
+    /* height: 100%; */
     overflow: hidden;
 }
 #gpsMap{
@@ -16,7 +16,11 @@
 }
 #gpsCloudLeft{
     position: absolute;
+<<<<<<< HEAD
+    bottom: 300px;
+=======
     top: 0;
+>>>>>>> 6e17014e939b58e711f8123d3aa0913cc9330654
     left: 0;
     animation-name: cloudLeftMove;
 }
@@ -88,8 +92,12 @@
         width: 60%;
     }
     #gpsCloudLeft{
+<<<<<<< HEAD
+        top: 350px;
+=======
         top: -100px;
         left: 0;
+>>>>>>> 6e17014e939b58e711f8123d3aa0913cc9330654
     }
     #gpsCloudRight{
         bottom: 0;

@@ -127,9 +127,10 @@ function change(){
 }
 
 function showAns(e){
-	e.target.children[2].style.display = 'block';
+	index = $(this).index();
+	$('.ans').eq(index).css('display','block');
 	$('#timeRow').css('display','none');
-	if(e.target.children[2].src.indexOf('correct') != -1)change();//+分
+	if($('.ans').eq(index).attr("src").indexOf('correct') != -1)change();//+分
 	if( level==5 )$('#teemo').attr("src","image/iqtest/teemoAns.png");//公布提摩img
 	h==140?$('#mytimeHeight').css('height','40px'):$('#mytimeHeight').css('height','80px');//rwd用
 	clearInterval(qsNextTimer);

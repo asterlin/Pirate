@@ -1,5 +1,6 @@
 
 var map, lati, long, pos, player;
+var showPrizeImg,showPrizeMsg,wheelPrizeType,wheelPrizeNum,prizeBonus;
 // 玩家資訊
 var palyerName = '航海士';
 var palyerIcon = 'image/gpsGame/position.png';
@@ -267,8 +268,8 @@ function playGps() {
     getTreaPosition()
     dropTreas();
     alert("dropTreas");
-    addEvent(); 
-    alert("addEvent");
+    // addEvent(); 
+    // alert("addEvent");
     // treas.addListener(treas, "click", (function(treas) {
     //   return function(evt) {
     //     console.log("click");
@@ -516,10 +517,6 @@ function getNewMap(playerPosition) {
         }
       ]
   });
-  // map.addListener("click",function(){
-  //   console.log("map");
-  // });
-  
 }
 function getTreaPosition() {
     treaPosArr.push({lat: (lati+0.0005),lng: (long+0.0005)});
@@ -556,36 +553,6 @@ function circle() {
         fillOpacity: 0.1,
       });
     circle.setMap(map);
-}
-// function addEvent(){
-//   console.log( treas.length);
-//   for (let i = 0; i < treas.length; i++) {
-//     treaPosArrX = Math.abs(treaPosArr[i].lat-lati) ;
-//     treaPosArrY = Math.abs(treaPosArr[i].lng-long);
-//     treaPosArrR = Math.pow(treaPosArrX,2)+ Math.pow(treaPosArrY, 2);
-//     // console.log(treaPosArrX);
-//     // console.log(treaPosArrY);
-//     // console.log(treas[i]);
-//     if ( treaPosArrR< Math.pow(0.001, 2) && treaPosArrX < 0.001 && treaPosArrY < 0.001) {
-//       // treas[i].addEventListener
-//       treas[i].addListener( "click",function(){
-//         console.log("get");
-//         // playWheel();
-//         // treas[i] = NULL;
-//       });
-//       // console.log(treas[i]);
-//       // treas[i].setAnimation(google.maps.Animation.BOUNCE);
-//   };
-//   // if (isLocationOnEdge(playerPosition, circle, 10e-1)) {
-//   //   	console.log("get!");
-//   //   };
-// }}
-function addEvent(){
-  // treas.addListener('click', playWheel);
-  for (let i = 0; i < treas.length; i++) {
-    alert(treas[i]);
-    treas[i].addListener('onclick', playWheel);
-  }
 }
 
 function errorCallback(e) {
@@ -739,10 +706,9 @@ function drawWheel(){
 }
 
 function showPrize() {
-  var showPrizeImg,showPrizeMsg;
   var prizeWeaponImg = [`000.png`,`001.png`,`002.png`,`003.png`,`004.png`,`005.png`,`006.png`,`007.png`,`009.png`,`010.png`,`011.png`,`012.png`,`013.png`];
   var prizeWeaponName = [`斧頭`,`大釜`,`超級獵槍`,`左輪手槍`,`雙劍`,`雙刀`,`西洋劍`,`寶劍`,`大刀`,`神奇望遠鏡`,`短刀`,`長槍`,`大砲`];
-  var prizeBonus = Math.floor(Math.random() * (500 - 100 - 1) + 100);
+  prizeBonus = Math.floor(Math.random() * (500 - 100 - 1) + 100);
 	wheelPrizeType = prizeBonus % 2;//0=錢 1=武器
 	wheelPrizeNum = prizeBonus % 13;//第幾個
 	if (wheelPrizeType == 1) {
@@ -763,8 +729,34 @@ function playWheel(){
   clock = 0 
   theClock = 0;
   slowDown();
-  setTimeout(showPrize,3000000);
+  setTimeout(showPrize,1000);
+  document.getElementById("closeWheelBtn").addEventListener("click",function() {
+    prize();
+    document.getElementById("luckyWheel").style.display="none";
+    document.getElementById("showPrize").style.display = "none";
+  });
   // drawWheel();
 };
+function prize(){
+  var xhr = new XMLHttpRequest();
+  xhr.onload=function (){
+	  if( xhr.status == 200 ){
+      alert(xhr.responseText);
+	  }else{
+	    alert( xhr.status );
+	  }
+  }
+  //0=錢 1=武器
+  var prize = {};
+  if (wheelPrizeType == 1) {
+    prize.treaId = wheelPrizeNum;
+  } else {
+    prize.prizeBonus = prizeBonus;
+	}
+  var jsonStr = JSON.stringify(prize);
+  var url = "php/gpsGame.php?jsonStr=" + jsonStr;
+  xhr.open("Get", url, true);
+  xhr.send( null );
+}
 
 // window.addEventListener('load',initMap());

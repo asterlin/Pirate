@@ -12,8 +12,8 @@ session_start();
 	<link rel="stylesheet" href="css/compass.css">
 	<link rel="stylesheet" href="css/wavebtn.css">
     <link rel="stylesheet" href="css/lightbox.css">
-    <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="css/gameGps.css">
+    <link rel="stylesheet" href="css/login.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.6/plugins/animation.gsap.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.6/plugins/debug.addIndicators.min.js"></script>
@@ -31,7 +31,6 @@ session_start();
 	<script src="js/verification.js"></script>
 </head>
 <body>
-	<div id="getSession"><?php echo $_SESSION["memId"] ?></div>
 	<label for="burgerCtrl">
         <input type="checkbox" name="" id="burgerCtrl">
         <div id="burger">
@@ -46,26 +45,6 @@ session_start();
         <nav id="headerMenu" >
             <ul>
                 <li class="menuSwitch">
-<<<<<<< HEAD
-                    <a href="play.html">海賊試煉場</i></a>
-                    <ul class="headerSub">
-                        <li><a href="javascript:;">海賊試煉</a></li>
-                        <li><a href="javascript:;">啟航尋寶</a></li>
-                    </ul>
-                </li>
-                <li class="menuSwitch">
-                    <a href="market.html">海上市集</i></a>
-                    <ul class="headerSub">
-                        <li><a href="javascript:;">黑市</a></li>
-                        <li><a href="javascript:;">造船廠</a></li>
-                    </ul>
-                </li>
-                <li class="menuSwitch"><a href="bar.html">情報酒館</a></li>
-                <li class="menuSwitch">
-                    <a href="me.html">俺の海賊船</i></a>
-                    <ul class="headerSub">
-                        <li><a href="javascript:;">登入</a></li>
-=======
                     <a href="play.php">海賊試煉場</i></a>
                     <ul class="headerSub">
                         <li><a href="play.php#game">海賊試煉</a></li>
@@ -84,7 +63,6 @@ session_start();
                     <a href="me.php">俺の海賊船</i></a>
                     <ul class="headerSub">
                         <li><a href="javascript:;" class="loginHere">登入</a></li>
->>>>>>> 3ea415305675f0630533ddbbe1f4feba7292ba01
                     </ul>
                 </li>
             </ul>
@@ -350,10 +328,9 @@ session_start();
 			</div>
 		</div>
 	</div>
-
 	<!-- gps地圖開始 -->
 	<div id="gpsWrap">
-        <h2 class="titleSec">
+		<h2 class="titleSec">
             啟航尋寶
             <img src="image/h2frame.svg" alt="">
         </h2>
@@ -361,7 +338,7 @@ session_start();
             開啟GPS地圖在生活中尋寶吧！可獲得寶物或金幣！寶藏地圖每隔一小時刷新一次
             <br>提醒：每開啟一個寶箱扣除1點體力值
         </p>
-    	<div class="button_border gpsbtn">
+		<div class="button_border">
 			<div class="border_in">
 				<span class="icon_movie">
 				</span>
@@ -399,9 +376,8 @@ session_start();
 	            </div>
 	        </div>
 	    </div>
-	    <script src="js/gameGps.js"></script>
-	    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKB16XDqQ6Qnki2BdJUQXXP4hEpK0_2wo&callback=initMap&libraries=geometry"></script> -->
-	    <script src="js/wavebtn.js"></script>
+	</div>
+	<div id="getSession">0.
 	</div>
 	<!-- lightBox -->
 	<!-- win -->
@@ -458,7 +434,7 @@ session_start();
 	</div>
 	
 	<div id="loginbox">
-		<div class="lightbox">
+		<div class="lightbox idot">
         <div class="popbg"></div>
         <div class="info">
             <div class="axis axis1"></div>
@@ -497,7 +473,7 @@ session_start();
                                 <a id="signlbtn" href="javascript:;">左</a>
                                 <img id="signnew" src="image/new.png" alt="" width="100px" height="100px">
                                 <a id="signrbtn" href="javascript:;">右</a>
-                                <!-- <a id="signconfirm" type="submit">提交</a> -->
+                                <a id="signconfirm" type="submit">提交</a>
                                 <div id="signcontent"></div>
                             </div>
                             <div class="clearfix"></div>
@@ -524,15 +500,15 @@ session_start();
 		<img src="image/compass_outter.png" alt="out" id="out">
 		<div id="compassBlue">
 			<div id="blueImg" class="blueInfo"><img src="" alt=""></div>
-			<div id="blueName" class="blueInfo"><?php echo $_SESSION["memNic"] ?></div>
-			<div id="blueLv" class="blueInfo">Lv<span><?php echo $_SESSION["memLv"] ?></span></div>
-			<div id="blueExp" class="blueInfo"><span><?php echo $_SESSION["memExp"] ?></span>/100</div>
-			<div id="blueMoney" class="blueInfo">金幣<span><?php echo $_SESSION["memMoney"] ?></span>G</div>
-			<div id="blueStr" class="blueInfo">力量<span><?php echo $_SESSION["strength"] ?></span></div>
-			<div id="blueLuck" class="blueInfo">幸運<span><?php echo $_SESSION["luck"] ?></span></div>
-			<div id="blueAgi" class="blueInfo">敏捷<span><?php echo $_SESSION["agile"] ?></span></div>
-			<div id="blueInt" class="blueInfo">智力<span><?php echo $_SESSION["intelligence"] ?></span></div>
-			<div id="blueGameTime" class="blueInfo">體力值<span><?php echo $_SESSION["playedTimes"] ?></span></div>
+			<div id="blueName" class="blueInfo"></div>
+			<div id="blueLv" class="blueInfo">Lv<span></span></div>
+			<div id="blueExp" class="blueInfo"><span></span>/100</div>
+			<div id="blueMoney" class="blueInfo">金幣<span></span>G</div>
+			<div id="blueStr" class="blueInfo">力量<span></span></div>
+			<div id="blueLuck" class="blueInfo">幸運<span></span></div>
+			<div id="blueAgi" class="blueInfo">敏捷<span></span></div>
+			<div id="blueInt" class="blueInfo">智力<span></span></div>
+			<div id="blueGameTime" class="blueInfo">體力值<span></span></div>
 		</div>
 	</div>
 <script src="js/playTime_update.js"></script>
@@ -544,15 +520,14 @@ session_start();
 <script src="js/playRank.js"></script>
 <script src="js/playFrameChange.js"></script>
 <script src="js/playTweenMax.js"></script>
-<script src="js/reset.js"></script>
+<!-- <script src="js/reset.js"></script> -->
 <script src="js/getStatus.js"></script>
+<script src="js/gameGps.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKB16XDqQ6Qnki2BdJUQXXP4hEpK0_2wo&callback=initMap&libraries=geometry"></script> 
 <script>
-var gpsCloudLeft,gpsCloudRight;
 var compass;
 var playTimeCount=0;
-var rankFly;
 var gameStartTimer;
-var bazierRank;
 var memId=$('#getSession').text();
 var memLv=parseInt($('#blueLv span').text());
 var memExp=parseInt($('#blueLv span').text());
@@ -563,34 +538,20 @@ var str=parseInt($('#blueStr span').text());
 var lcu=parseInt($('#blueLuck span').text());
 var agi=parseInt($('#blueAgi span').text());
 var rwd=$('#playTitleSec').width();
-memLv=100;
-memExp=100;
-memMoney=1000;
-playedTimes=2000;
-int=100;
-str=200;
-lcu=300;
-agi=400;
-
+console.log(memId);
 
 $(document).ready(function(){
-// GPS game btn
-gpsCloudLeft = document.getElementById("gpsCloudLeft");
-gpsCloudRight = document.getElementById("gpsCloudRight");
-$('#gpsWrap .button_border').click(function(){
-	$('#gpsWrap .button_border').css('display','none');
-	gpsCloudLeft.style.display = "none";
-	gpsCloudRight.style.display = "none";
-	playGps();
-});
+//登入lightbox使用
+document.getElementById("signUp").addEventListener("click",signUp );
+document.getElementById("btnver").addEventListener("click",verification );
 //還沒登入compass = none
-if(memId!='')	$('#compass').css('display','block');
-else			$('#compass').css('display','none');
+if(memId=='')	$('#compass').css('display','none');
+else			$('#compass').css('display','block');
+
 //rwd compass = none
 if(rwd==375)	$('#compass').css('display','none');
 else			$('#compass').css('display','block');
-reset();
-getStatus();
+getStatus();//getStatus.js
 //lightbox 離開
 $('.checkToLeave').click(function(){$('.lightbox').css('display','none');});
 $('.popbg').click(function(){$('.lightbox').css('display','none');});
@@ -599,10 +560,10 @@ $('.leave').click(function(){$('.lightbox').css('display','none');})
 // 寫入遊戲測驗時間
 $('#winbox .checkToLeave').click(function(){
 	playedTimes-=1;
-	updateScore();
+	updateScore();//playTime_update.js
 	getScoreL();
 	getStatus();
-	playTimeCount=0;
+	playTimeCount=0;//getStatus
 });
 $('#losebox .checkToLeave').click(function(){
 	playedTimes-=1;
@@ -613,24 +574,28 @@ $('#losebox .checkToLeave').click(function(){
 });
 // 跑tweenmax
 playTweenMax();
-
-// Game:playBtn
-if(memId!=''){
-	$('#playArea .button_border').click(function(){
-		if(playedTimes==0){
-			$('#playedTimesBox .lightbox').css('display','block');
-		}else{
-			$('#playSpark').css('clipPath','circle(1900px)');
-			gameStartTimer = setInterval(play,1000);
-		}
-	});
-}else{
-	$('#loginbox .lightbox').css('display','block');
-}
-
+// GPS
+var gpsCloudLeft,gpsCloudRight;
+gpsCloudLeft = $('#gpsCloudLeft');
+gpsCloudRight = $('#gpsCloudRight');
+$('#gpsWrap .button_border').click(function(){
+	gpsCloudLeft.css('display','none');
+	gpsCloudRight.css('display','none');
+	$(this).css('display','none')
+	playGps();
+});
+// Game
+$('#playArea .button_border').click(function(){
+	if(playedTimes==0){
+		$('#playedTimesBox .lightbox').css('display','block');
+	}else{
+		$('#playSpark').css('clipPath','circle(1900px)');
+		gameStartTimer = setInterval(play,1000);
+	}
+});
 function play(){
 	clearInterval(gameStartTimer);
-	$('#playArea .button_border').css('display','none');
+	$('.button_border').css('display','none');
 	$('#defaultCanvas0').css('display','block');
 	playTimer = setInterval(playTime,1000)
 }
@@ -639,12 +604,6 @@ function playTime(){
 	console.log('playTimeCount: ',playTimeCount);
 }
 });
-
-		
-		
-		
-
-
-	</script>
+</script>
 </body>
 </html>

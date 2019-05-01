@@ -9,7 +9,7 @@ function updateScore(){
     }
     console.log(playTimeCount);
     console.log(playedTimes);
-    var url = "php/playTime_update.php?memId="+memId+"&highscoreL="+playTimeCount+"&playedTimes="+playedTimes+"&memMoney="+1000;
+    var url = "php/playTime_update.php?memId="+memId+"&highscoreL="+playTimeCount+"&memMoney="+1000;
     xhr.open("Get", url, true);
     xhr.send( null );
 }

@@ -134,7 +134,7 @@ try {
                 <li class="menuSwitch">
                     <a href="me.php">俺の海賊船</i></a>
                     <ul class="headerSub">
-                        <li class="loginHere"><a href="javascript:;">登入</a></li>
+                        <li class="loginHere"><a href="javascript:;">登船</a></li>
                     </ul>
                 </li>
             </ul>
@@ -276,7 +276,7 @@ try {
                         <img class="wantedPaper" src="image/home/wanted.svg" alt="懸賞單低階第一">
                         <p class="wantName"><?php echo $rowGameHiL['memNic']; ?></p>
                         <p class="wantScore">高階試煉 <?php echo $rowGameHiL['highscoreL'];  ?>秒</p>
-                        <img class="wantedShip" src="image/ship/ship.png" alt="我是大帥哥的海賊船">
+                        <img class="wantedShip" src="image/ship/<?php echo $rowGameHiL['shipImgAll'];  ?>" alt="<?php echo $rowGameHiL['memNic']; ?>的海賊船">
                     </div>
                 </div>
                 <div class="wrapWanted">
@@ -284,7 +284,7 @@ try {
                         <img class="wantedPaper" src="image/home/wanted.svg" alt="懸賞單中階第一">
                         <p class="wantName"><?php echo $rowGameHiM['memNic']; ?></p>
                         <p class="wantScore">中階試煉 <?php echo $rowGameHiM['highscoreM'];  ?>秒</p>
-                        <img class="wantedShip" src="image/ship/ship.png" alt="我是大帥哥的海賊船">
+                        <img class="wantedShip" src="image/ship/<?php echo $rowGameHiM['shipImgAll'];  ?>" alt="<?php echo $rowGameHiM['memNic']; ?>的海賊船">
                     </div>
                 </div>
                 <div class="wrapWanted">
@@ -292,7 +292,7 @@ try {
                         <img class="wantedPaper" src="image/home/wanted.svg" alt="懸賞單初階第一">
                         <p class="wantName"><?php echo $rowGameHiH['memNic']; ?></p>
                         <p class="wantScore">初階試煉 <?php echo $rowGameHiH['highscoreH'];  ?>秒</p>
-                        <img class="wantedShip" src="image/ship/ship.png" alt="我是大帥哥的海賊船">
+                        <img class="wantedShip" src="image/ship/<?php echo $rowGameHiH['shipImgAll'];  ?>" alt="<?php echo $rowGameHiH['memNic']; ?>的海賊船">
                     </div>
                 </div>
             </div>
@@ -302,33 +302,36 @@ try {
         <p class="textEmphasis"> <span class="smaller">「我把所有的財寶都放在那裡了！」</span><br>
             置身偉大航道，在<strong class="textHiliR">真實世界啟航尋寶</strong>
         </p>
-        <div id="gameGpsMap"></div>
-        <div id="gameGpsLotto">
-            <table>
-                <tr>
-                    <td class="gameGpsLottoUnit" id="gameGpsLottoUnit_0"></td>
-                    <td class="gameGpsLottoUnit" id="gameGpsLottoUnit_1"></td>
-                    <td class="gameGpsLottoUnit" id="gameGpsLottoUnit_2"></td>
-                    <td class="gameGpsLottoUnit" id="gameGpsLottoUnit_3"></td>
-                </tr>
-                <tr>
-                    <td class="gameGpsLottoUnit" id="gameGpsLottoUnit_11"></td>
-                    <td colspan="2" rowspan="2" id="gameGpsLottoShow">
-                    </td>
-                    <td class="gameGpsLottoUnit" id="gameGpsLottoUnit_4"></td>
-                </tr>
-                <tr>
-                    <td class="gameGpsLottoUnit" id="gameGpsLottoUnit_10"></td>
-                    <td class="gameGpsLottoUnit" id="gameGpsLottoUnit_5"></td>
-                </tr>
-                <tr>
-                    <td class="gameGpsLottoUnit" id="gameGpsLottoUnit_9"></td>
-                    <td class="gameGpsLottoUnit" id="gameGpsLottoUnit_8"></td>
-                    <td class="gameGpsLottoUnit" id="gameGpsLottoUnit_7"></td>
-                    <td class="gameGpsLottoUnit" id="gameGpsLottoUnit_6"></td>
-                </tr>
-            </table>   
+        <div id="gpsWrap">
+            <div id="gpsMap"></div>
+            <img src="image/gpsGame/cloudLeft.png" alt="雲" id="gpsCloudLeft"> 
+            <img src="image/gpsGame/cloudRight.png" alt="雲" id="gpsCloudRight">
+            <canvas id="luckyWheel"></canvas>
+            <div class="lightbox" id="showPrize">
+                <div class="popbg"></div>
+                <div class="info">
+                    <div class="axis axis1"></div>
+                    <div class="axis axis2"></div>
+                    <div class="leave"></div>
+                    <div class="paper">
+                        <!-- 範例 -->
+                        <p class="textM">恭喜您獲得</p>
+                        <div id="showPrizePic"></div>
+                        <div class="textM" id="showPrizeMeg"></div>
+                        <a class="btnsec" id="closeWheelBtn" href="javascript:">
+                            <span>繼續航行</span>
+                        </a>
+                        <a class="btnsec" href="me.php">
+                            <span>清點船艙</span>
+                        </a>
+                    </div>
+                </div>
         </div>
+</div>
+
+
+
+
     </div>
     <div id="homeGameTrea">
         <img src="image/gpsGame/treaBoxOpen.svg" alt="藏寶箱">
@@ -357,21 +360,22 @@ try {
                 <p class="textL">造船廠</p>
                 <p class="textM">不定期推出海賊船造型</p>
             </div>
+
             <div id="homeMarketProdInfo">
                 <div id="homeWrapProd" class="homeWrapProd active">
                     <img id="homeProdImg" class="homeProdImg" src="image/treasure/006.png" alt="寶物6">
                     <div class="homeProdInfoCard">
-                        <p id="homeProdName" class="homeProdName textM"><?php echo $rowsProds[0]['treaName'] ?></p>
+                        <p id="homeProdName" class="homeProdName textM"></p>
                         <p class="homeProdPrice textM">
-                            價格：<strong id="homeProdPrice" class="textHiliR"><?php echo $rowsProds[0]['price'] ?></strong> G
-                            <a href="javascript:;" class="btnpri" id="homeProdBuy" tradeId="<?php echo $rowsProds[0]['tradeId'] ?>"><span>直接購買</span></a>
+                            價格：<strong id="homeProdPrice" class="textHiliR"></strong> G
+                            <a href="javascript:;" class="btnpri" id="homeProdBuy" tradeId=""><span>直接購買</span></a>
                         </p>
-                        <p class="homeProdSaler textS">賣家：<span id="homeProdSaler"><?php echo $rowsProds[0]['memNic'] ?></span></p>
+                        <p class="homeProdSaler textS">賣家：<span id="homeProdSaler"></span></p>
                         <p class="homeProdTalent textS">寶物天賦：<br>
-                            力量：<span id="homeProdStr"><?php echo $rowsProds[0]['treaStr'] ?></span><br>
-                            智力：<span id="homeProdInt"><?php echo $rowsProds[0]['treaInt'] ?></span><br>
-                            幸運：<span id="homeProdLuc"><?php echo $rowsProds[0]['treaLuk'] ?></span><br>
-                            敏捷：<span id="homeProdAgi"><?php echo $rowsProds[0]['treaAgi'] ?></span>
+                            力量：<span id="homeProdStr"></span><br>
+                            智力：<span id="homeProdInt"></span><br>
+                            幸運：<span id="homeProdLuc"></span><br>
+                            敏捷：<span id="homeProdAgi"></span>
                             <div id="homeProdTalentImg">
                                 <!-- <canvas id="homeTalentRadar"></canvas> -->
                             </div>
@@ -407,7 +411,7 @@ try {
             while($hotIssueRow = $hotIssue ->fetch(PDO::FETCH_ASSOC)){
             ?>
             <div class="hotIssueBox">
-                <a href="bar.php?artId=<?php echo $hotIssueRow["artId"];?>" class="hotIssueBoxLink artShow">
+                <a href="bar.php?from=index&artId=<?php echo $hotIssueRow["artId"];?>" class="hotIssueBoxLink artShow">
                     <div class="hotIssueBoxInfo">
                         <img src="image/bar/DB/<?php echo $hotIssueRow["artImg"];?>" alt="情報圖片">
                     </div>
@@ -423,7 +427,12 @@ try {
             $arr[]=$hotIssueRow["artText"];
             }
             $jsonStr = json_encode($arr);
-            ?>        
+            ?>  
+    <script>
+        var arrhotIssue = <?php echo $jsonStr;?>;
+        console.log(arrhotIssue);
+    </script>
+
         </div>    
         <p class="textEmphasis">Follow<strong class="textHiliR">最新消息</strong>走在時代尖端</p>
         <div id="newsBoxWrap">
@@ -574,9 +583,9 @@ try {
     <script src="js/header.js"></script>
     <script src="js/gameGps.js"></script>
     <script src="js/shipDIY.js"></script>
-    <script src="js/home.js"></script>
     <script src="js/login.js"></script>
     <script src="js/verification.js"></script>
     <script src="js/homeMapPIXI.js"></script>
+    <script src="js/home.js"></script>
     </body>
 </html>

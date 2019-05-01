@@ -14,8 +14,10 @@ try {
         echo 0;
         $errMsg .= "帳密錯誤, <a href='signUp.html'>重新登入</a><br>";
     }else{
-        echo 1;
+        $arr = [];
         $memRow = $member->fetch(PDO::FETCH_ASSOC);
+        $arr[] = $memRow;
+        echo json_encode($arr);
         //登入成功,將登入者的資料寫入session
         session_start();
         $_SESSION["memId"] = $memRow["memId"];
@@ -33,7 +35,6 @@ try {
         $_SESSION["avatarImg"] = $memRow["avatarImg"];
         $_SESSION["playedTimes"] = $memRow["playedTimes"];
         $_SESSION["talentPointsRemain"] = $memRow["talentPointsRemain"];
-  
     }
 } catch (PDOException $e) {
     $errMsg .= "錯誤 : ".$e -> getMessage()."<br>";

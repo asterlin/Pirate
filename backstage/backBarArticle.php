@@ -63,7 +63,9 @@ echo $errMsg;
                             <td><?php echo $articlelistRow["clickAmt"];?></td>
                             <td><?php echo $artTimeStr?></td>
                         </tr>
-        <?php}?>
+        <?php
+        }
+        ?>
                         <!-- <tr>
                             <td>1314520</td>
                             <td>131452</td>

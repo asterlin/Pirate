@@ -31,7 +31,7 @@ function draw(){
 function collect(collector, collected)
 {
   collected.remove();
-  console.log(count);
+  // console.log(count);
   count+=1;
   if(count==10)
   	wingame();
@@ -47,7 +47,7 @@ function collect2(collector, collected)
   text("Game Over!!",
     width/2, height*0.67);
   a+=1;
-  console.log(a);
+  // console.log(a);
   if(a==200)
   endGame();
 }

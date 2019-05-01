@@ -1,6 +1,7 @@
 <?php
-ob_start();
-session_start();
+$_SESSION['memId'] = "test03";
+// ob_start();
+// session_start();
 $errMsg = "";
 require_once("meToDB/meToDB.php");
 ?>
@@ -15,10 +16,12 @@ require_once("meToDB/meToDB.php");
     <title>《大海賊帝國》去追尋吧！</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="css/me.css">
+    <link rel="stylesheet" href="css/boxx.css">
     <link rel="stylesheet" href="css/wavebtn.css">
 </head>
 
 <body>
+ 
     
     <!--------------------------------- 選單 ------------------------------------->
     <label for="burgerCtrl">
@@ -52,7 +55,7 @@ require_once("meToDB/meToDB.php");
                 <li class="menuSwitch">
                     <a href="me.php">俺の海賊船</i></a>
                     <ul class="headerSub">
-                        <li><a href="javascript:;" class="loginHere">登入</a></li>
+                        <li class="loginHere"><a href="javascript:;">登入</a></li>
                     </ul>
                 </li>
             </ul>
@@ -105,7 +108,7 @@ require_once("meToDB/meToDB.php");
                     <!-- <form method="Post"  id="meShipForm" >       -->
                     <li>
                               <input type="hidden" name="memId" value="<?php echo $memberId ?>" id="memId1">
-                        密碼: <input type="password" name="memPsw" value="<?php echo $memPsw?> " maxlength="12" readonly id="memPsw1">
+                        密碼: <input type="password" name="memPsw" value="<?php echo $memPsw ?>" maxlength="12" readonly id="memPsw1">
                               <i class="fas fa-pen"></i>
                     </li>
                     
@@ -132,10 +135,7 @@ require_once("meToDB/meToDB.php");
                     </div>
                         <button class="btnpri butNews" id="carryOut"><span>確認修改</span></button>
                     </li>
-                    <?php
-                                }
-                            }
-                    ?>  
+                   
                 </ul>
                 <!-- --------------------------------------------------------------------------->
                 
@@ -147,12 +147,15 @@ require_once("meToDB/meToDB.php");
                     <button id="butL" class="but" >幸運</button>
                     <button id="butA" class="but" >敏捷</button>
                     </div>
-                    <h3>天賦值: <span id="points"> <?php echo $_SESSION["talentPointsRemain"];?> </span> 點</h3>
+                    <h3>天賦值: <span id="points"> <?php echo $TPRemain ?> </span> 點</h3>
                     <canvas id="myChart"  style="display: inline-block; width:90%; height:90%;"></canvas>
                 </div>
             </div>
             <!-- --------------------------------------------------------------------------->
-
+                <?php
+                                }
+                            }
+                    ?>  
 
             <!-- -------------------------------寶物造型頁籤 ------------------------------------>
             <div class="col-12  bookMark">
@@ -168,12 +171,16 @@ require_once("meToDB/meToDB.php");
                                 <ul>
                                 <?php
                                     $memId = $_SESSION["memId"];
-                                        while ($treasurestorageRow = $treasurestorage->fetch(PDO::FETCH_ASSOC)) {
+                                        while ($treasurestorage->fetch(PDO::FETCH_ASSOC)) {
                                             if ($treasurestorageId == $memId) {
                                                 ?> 
                                     <li>
-                                        <img src="image/treasure/<?php echo $treaImg ?>" alt="">
+                                        <img src="image/treasure/<?php echo $treaImg ?>" alt="" class="trea<?php $treaId ?>">
                                     </li> 
+
+
+                                       
+
                                 <?php
                                             }
                                         }
@@ -283,11 +290,8 @@ require_once("meToDB/meToDB.php");
     int = parseInt($('#int').text());
     lck = parseInt($('#lck').text());
     age = parseInt($('#age').text());
+    var meship;//為了剛開始撈到船的資料
     memId = $('#memId1').val();
-    memPsw = $('#memPsw1').val();
-    console.log(memPsw);
-    var meship;
-            
     var chart;//radar圖名稱
     var graphDataNew = [str, int, lck, age];//從資料庫載入的Radar數值
     function plusSkill(e) {
@@ -301,10 +305,10 @@ require_once("meToDB/meToDB.php");
     }
     $(document).ready(function () {
         chartRadar(graphDataNew);//從資料庫載入的Radar數值,初始化用
-        $('.but').click(plusSkill);
-        $id("carryOut").onclick = login;
+        $('.but').click(plusSkill);//加技能點數
+        $id("carryOut").onclick = login;//儲存密碼變更
         getShip();
-        $('#butStore').click(changeMeShip);
+        $('#butStore').click(changeMeShip);//儲存變更船隻
     });
 
 //-----------------------------------------------------------------

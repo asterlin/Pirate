@@ -14,7 +14,8 @@ $(document).ready(function () {
     //         $('header').addClass('homeHeadHide')
     //     }
     // })
-    
+    hotIssueText();
+
     var winWidth = window.innerWidth;
     window.addEventListener('resize',function(){
         winWidth = window.innerWidth;
@@ -216,7 +217,6 @@ if(winWidth < 1024){
                 console.log(r);
                 var obj = JSON.parse(r);
                 console.log(obj.memNic);
-                var paper = document.querySelector('#Msglightbox .paper');
                 msg='';
                 if(obj.buyerMoney){
                     msg += '<p>您已購買<strong>';
@@ -233,8 +233,7 @@ if(winWidth < 1024){
                     msg +=  obj.msg;
                     msg += '</p>';
                 }
-                paper.innerHTML=msg;
-                document.getElementById('Msglightbox').style.display='block';
+                showMsglitbo(msg);
 
             },
         });
@@ -246,7 +245,6 @@ function hotIssueText() {
     let innerWidth = window.innerWidth;
     let text, titLength;
     let title = document.getElementsByClassName('artTit');
-    let arrhotIssue = document.getElementsByClassName('arrhotIssue');
     for (let i = 0; i < arrhotIssue.length; i++) {
         titLength = title[i].innerText.length;
         text = arrhotIssue[i];

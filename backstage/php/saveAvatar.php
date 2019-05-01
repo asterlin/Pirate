@@ -19,13 +19,14 @@ $img = str_replace(' ','+',$img);
 $data = base64_decode($img);
 
 //儲存圖案碼至路徑
-$file = UPLOAD_PATH.'avatar'.uniqid().'.png';
+$imgName='avatar'.uniqid().'.png';
+$file = UPLOAD_PATH.$imgName;
 $success = file_put_contents($file, $data);
 
 //到底會不會成功呢
 $output = ($success)? "<img src='{$file}'>" : "<p>what's wrong?</p>";
-$_SESSION['avatarDir'] = $file; //存入server session，之後給註冊使用
-echo $file;
+// $_SESSION['avatarDir'] = $imgName; //存入server session，之後給註冊使用
+echo $imgName;
 
 } catch (PDOException $e) {
     $errMsg .= "錯誤行：".$e->getLine()."<br>";
