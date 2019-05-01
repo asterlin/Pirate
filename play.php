@@ -500,6 +500,7 @@ var compass;
 var gameStartTimer;
 var memId=storage['memId'];
 var playedTimes=storage['playedTimes'];
+var memMoney = parseInt(storage['memMoney']);
 var memLv=parseInt(storage['memLv']);
 var memExp=parseInt(storage['memExp']);
 var playedTimes=parseInt($('#blueGameTime span').text());
@@ -535,6 +536,7 @@ $('#winbox .checkToLeave').click(function(){
 	memExp=50;
 	storage['memLv']=memLv;
 	storage['memExp']=memExp;
+	storage['memMoney']=memMoney+1500;
 	updateScore();//playTime_update.js
 	getScoreL();
 	getStatus();
