@@ -1,5 +1,4 @@
 var rankNow = 0;
-getScoreL();
 $('#beforeArrow').css('display','none');
 $('#gobefore').css('display','none');
 $('#gonext').click(function(){
