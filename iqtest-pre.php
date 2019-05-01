@@ -139,7 +139,6 @@ session_start();
          </div>
     </div>
 	<script src="js/wavebtn.js"></script>
-	<script src="js/login.js"></script>
 	<script src="js/verification.js"></script>
 	<script>
 		$(document).ready(function(){
