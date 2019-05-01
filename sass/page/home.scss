@@ -3,8 +3,13 @@
 @import '../layout/header';
 
 
+<<<<<<< HEAD
 #homeGame,#homeMarket,#homeBar,#homeEnd{
     margin-top: 250px;
+=======
+#homeGame,#homeMarket,#homeBar{
+    margin-top: 15vh;
+>>>>>>> 80c983e0f57006bd8b622a8848daa3992c4acd7d
 }
 
 .clearfix{
@@ -469,16 +474,92 @@ h2 a{
 #homeGamePlay{
     // height: 200px;
     width: calc(100% - 30px);
-    background: rgba(173, 207, 193,0.5);
+    background: rgba(17, 77, 124,0.3);
     border: #a67c52 5px double;
     margin: 10px;
+    position: relative;
+    video{
+        width: 100%;
+        position: relative;
+        z-index: -1;
+    }
 
 }
+
+.homeGamePlayBtn{
+    position: absolute;
+    top: 40%;
+    left: 0;
+    right: 0;
+    cursor: pointer;
+}
+.button_border{
+    transition: all .5s ease 1s;
+    opacity: 1;
+    /*-webkit-transform: scale(1);
+    transform: scale(1);*/
+    width: 88px;
+    height: 88px;
+    position: relative;
+    margin: auto;
+    cursor: pointer;
+}
+.border_in {
+    transition: 0.4s;
+    width: 60px;
+    height: 60px;
+    background: $red;
+    border-radius: 50%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -30px;
+    margin-top: -30px;
+    display: block;
+    box-shadow:0px 3px 5px #79726c;
+}
+.border_out {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 88px;
+    height: 88px;
+    -webkit-animation: borderCircle 3s linear infinite;
+    animation: borderCircle 3s linear infinite;
+}
+.border{
+    fill: none;
+    stroke: #fff;
+}
+.button_border:hover .border_in span{
+    transform:scale(.8);
+}
+.button_border:hover .border_in{
+    -webkit-transform:scale(1.2);
+    transform:scale(1.2)
+}
+.button_border:hover .border_out{
+    animation: borderCircle 1s linear infinite;
+}
+@keyframes borderCircle{
+    0% {
+        transform: rotate(0);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
 #homeGameMsg{
     width: 250px;
     margin: auto;
     padding: 10px;
     background: $beige;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
 }
 
 //懸賞排行
@@ -577,6 +658,12 @@ h2 a{
         width: 70%;
         float: left;
     }
+    #homeGamePlay{
+        max-width:1200px;
+        margin: auto;
+    }
+
+
     .homeWanteds{
         position: relative;
         height: 400px;
@@ -593,6 +680,7 @@ h2 a{
         left: 55%;
         right: auto;
     }
+    
 }
 
 //啟航尋寶
@@ -1012,6 +1100,11 @@ h2 a{
         width: 250px;
         margin: auto;
     }
+    img{
+        margin-left: 25%;
+        width: 200px;
+        animation: sailing 2s infinite;
+    }
 }
 @media screen and (min-width:768px){
     #homeEnd .textEmphasis{
@@ -1020,6 +1113,12 @@ h2 a{
     }
     #homeEnd .textHiliR{
         letter-spacing: 10px;
+    }
+    #homeEnd{
+        margin-top: 50px;
+        img{
+            margin-left: 55%;
+        }
     }
 
 }

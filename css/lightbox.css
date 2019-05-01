@@ -1,6 +1,19 @@
+<<<<<<< HEAD
 /* lightbox平常是none,當觸發事件時更改display = 'block' */
 /* paper是書寫的區域 */
 /* leave或是popbg被點擊時lightbox.style.display = 'none' */
+=======
+@charset "UTF-8";
+@font-face {
+  font-family: "王漢宗特明體繁";
+  src: url(../font/WT004.TTF); }
+@font-face {
+  font-family: "Adobe Heiti Std R";
+  src: url(../font/ADOBEHEITISTD-REGULAR.OTF); }
+.justHide {
+  display: none; }
+
+>>>>>>> 80c983e0f57006bd8b622a8848daa3992c4acd7d
 p {
   line-height: 1.5; }
 
@@ -108,9 +121,167 @@ a {
 .lightbox{
 
   display: block;
+<<<<<<< HEAD
 }
 
 .popbg{
+=======
+  height: 15px;
+  width: 100%;
+  max-width: 1880px;
+  margin: auto; }
+
+header {
+  background: #fffcf2;
+  margin-top: 10px;
+  position: fixed;
+  transition-duration: 0.5s;
+  width: 100%;
+  top: 0;
+  z-index: 10; }
+
+#headerMenu {
+  text-align: center;
+  transition-duration: 0.5s;
+  height: calc(100vh - 203px);
+  overflow: hidden;
+  background: #fffcf2; }
+  #headerMenu a {
+    color: #362e2b;
+    font-size: 1.5rem;
+    font-family: Adobe Heiti Std R;
+    display: inline-block;
+    position: relative; }
+    #headerMenu a::before {
+      content: '';
+      display: inline-block;
+      width: 100%;
+      height: 0%;
+      background: #5f6f7042;
+      position: absolute;
+      left: 0;
+      top: -6px;
+      transition-duration: 0.2s; }
+    #headerMenu a::after {
+      content: '';
+      display: inline-block;
+      width: 100%;
+      height: 0%;
+      background: #5f6f7079;
+      position: absolute;
+      bottom: -6px;
+      right: 0;
+      transition-duration: 0.2s; }
+  #headerMenu li:hover > a::before {
+    height: 20%; }
+  #headerMenu li:hover > a::after {
+    height: 20%; }
+  #headerMenu i {
+    transform-origin: 50% 40%;
+    transform: rotate(-180deg);
+    transition: all 0.2s cubic-bezier(0.5, 0.11, 0.37, 1.5) 0s; }
+  #headerMenu .headerSub {
+    overflow: hidden;
+    max-height: 50%;
+    transition-duration: 0.2s; }
+    #headerMenu .headerSub a {
+      font-size: 1.25rem;
+      margin: 10px auto;
+      color: #5f6f70; }
+
+.menuSwitch > a {
+  margin: 30px auto 5px auto;
+  width: 100%; }
+
+#burger {
+  width: 50px;
+  height: 50px;
+  background: #5f6f70;
+  position: fixed;
+  bottom: 100px;
+  right: 0;
+  z-index: 11; }
+  #burger .burgerLine {
+    width: 18px;
+    height: 4px;
+    position: absolute;
+    background: #fffcf2;
+    right: 0;
+    left: 0;
+    margin: auto;
+    border-radius: 3px;
+    transition: all 0.25s cubic-bezier(0.67, 0.48, 0.64, 1.21); }
+  #burger .burgerLine:nth-child(1) {
+    top: calc(50% - 7px); }
+  #burger .burgerLine:nth-child(2) {
+    top: calc(50% + 1px); }
+
+#burgerCtrl {
+  display: none; }
+
+#burgerCtrl:checked + #burger .burgerLine:nth-child(1) {
+  top: calc(50% - 15px); }
+#burgerCtrl:checked + #burger .burgerLine:nth-child(2) {
+  top: calc(50% + 9px); }
+
+header.hide {
+  top: -200px; }
+
+#headerMenu.hide {
+  height: 0px; }
+
+#headerMe.hide {
+  top: -70px; }
+
+@media screen and (min-width: 768px) {
+  #headerMe.hide {
+    top: 10px; }
+
+  #headerLogo {
+    position: absolute;
+    left: 0;
+    right: 0; }
+
+  #headerMenu {
+    height: 65px; }
+
+  .menuSwitch > a {
+    margin: 20px 0;
+    width: 130px; }
+
+  .menuSwitch {
+    float: left;
+    width: calc((100% - 250px) /4); }
+
+  #headerMenu ul::after {
+    content: '';
+    display: block;
+    clear: both; }
+
+  .menuSwitch:nth-child(2) {
+    margin-right: 123px; }
+
+  .menuSwitch:nth-child(3) {
+    margin-left: 123px; } }
+@media screen and (min-width: 1024px) {
+  #headerLogo {
+    top: 15px; }
+
+  header {
+    background: transparent;
+    width: 100%; }
+
+  header:hover #headerMenu {
+    height: 150px; }
+
+  #headerMenu {
+    max-width: 1800px;
+    margin: auto; } }
+.clearfix {
+  clear: both; }
+
+.popbg {
+>>>>>>> 80c983e0f57006bd8b622a8848daa3992c4acd7d
   position: fixed;
   z-index: 19;
   width: 100vw;
@@ -187,6 +358,7 @@ a {
 .btnpri {
   margin: 10px; }
 
+<<<<<<< HEAD
   p{
     font-family: 王漢宗特明體繁;
     font-size: 20px;
@@ -197,3 +369,34 @@ a {
     padding: 0 20px;
     padding-bottom: 100px;
   }
+=======
+.lightbox {
+  display: none; }
+
+#feedback, #feedback2 {
+  height: 30px;
+  line-height: 30px; }
+
+/* .lightbox p{
+   font-family: 王漢宗特明體繁;
+   font-size: 20px;
+   line-height: 1.6;
+   text-align: left;
+   color: #362e2b;
+   letter-spacing: 2px;
+   padding: 0 20px;
+ } */
+.lightbox input[type=text], .lightbox input[type=password] {
+  background: #fffcf2;
+  border: none;
+  height: 30px;
+  padding: 5px 10px;
+  border-radius: 10px 10px;
+  transition-duration: 0.1s; }
+
+.lightbox input:focus {
+  outline: none;
+  background: #dddad0; }
+
+/*# sourceMappingURL=lightbox.css.map */
+>>>>>>> 80c983e0f57006bd8b622a8848daa3992c4acd7d

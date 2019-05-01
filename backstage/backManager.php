@@ -24,11 +24,11 @@ echo $errMsg;
     <title>Document</title>
     <link rel="stylesheet" href="../css/backStage.css">
     <link rel="stylesheet" href="../css/wavebtn.css">
-    <style>
+    <!-- <style>
     .btnpri{
             border: 1px solid transparent;
         }
-    </style>
+    </style> -->
 </head>
 
 <body>
@@ -40,7 +40,14 @@ echo $errMsg;
             <div class="content">
                 <h3 class="titlePri">管理員帳號管理</h3>
                 <a href="backNewManager.php">
+<<<<<<< HEAD
                     <button class="btnpri">新增</button>
+=======
+                    <button>
+                        <span>新增</span>
+                        <span>+</span>
+                </button>
+>>>>>>> 80c983e0f57006bd8b622a8848daa3992c4acd7d
                 </a>
                 <div class="dataTable">
                     <table>
@@ -54,11 +61,33 @@ echo $errMsg;
                         <?php
                         while ($memberRow = $manager->fetch()) {
                             ?>
+<<<<<<< HEAD
                             <td><?php echo $memberRow['managerAcc'] ?></td>
                             <td><?php echo $memberRow['managerPsw'] ?></td>
                             <td><?php echo $memberRow['managerSignUpTime'] ?></td>
                             <td><?php echo $memberRow['managerStatus'] ?></td>
                             
+=======
+                            <td><?php echo $managerRow['managerAcc'] ?></td>
+                            <td><?php echo $managerRow['managerPsw'] ?></td>
+                            <td><?php echo $managerRow['managerSignUpTime'] ?></td>
+                            <form action="backManagerStatus.php">
+                            <td>
+                            <label>
+                                <input type="radio" name="managerStatus" value="1" <?php echo $managerRow['managerStatus'] == 1 ? 'checked' : '' ?>>
+                                開啟
+                            </label>
+                            <label>
+                                <input type="radio" name="managerStatus" value="0" <?php echo $managerRow['managerStatus'] == 0 ? 'checked' : '' ?>>
+                                關閉
+                            </label>
+                            </td>
+                            <td>
+                            <input type="hidden" name="managerAcc" value="<?php echo $managerRow['managerAcc'] ?>">
+                            <button type="submit"><span>修改</span></button>
+                            </td>
+                            </form>
+>>>>>>> 80c983e0f57006bd8b622a8848daa3992c4acd7d
                             </tr>
                         <?php
                         }

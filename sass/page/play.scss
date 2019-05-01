@@ -2,6 +2,22 @@
 @import '../base/font';
 // reset
 @import '../base/reset';
+<<<<<<< HEAD
+=======
+// header
+@import '../layout/header';
+// footer
+@import '../layout/footer';
+footer{
+    text-align: center;
+    margin-top: 200px;
+    margin-bottom:10px;
+}
+footer img{
+    width: 250px;
+    margin-bottom: 5px;
+}
+>>>>>>> 80c983e0f57006bd8b622a8848daa3992c4acd7d
 body {
     background-image: url(../image/background/BgPage.png);
     background-repeat: no-repeat;
@@ -13,6 +29,12 @@ body {
 	margin:0;
 	padding:0;
 }
+<<<<<<< HEAD
+=======
+#gpsWrap{margin-bottom: 100px;}
+#getSession{color: red; visibility: hidden};
+#checkSession{visibility: hidden};
+>>>>>>> 80c983e0f57006bd8b622a8848daa3992c4acd7d
 #element1{display: none;}
 #element3{display: none;}
 #eleImg1{display: none;}
@@ -877,7 +899,7 @@ body {
 // playArea
 #playSpark{
 	z-index: 4;
-	top: 0;
+	top: 5px;
 	left: 0;
 	position: absolute;
 	background-color: #33A6B8;

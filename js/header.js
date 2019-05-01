@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+=======
+function $id(id){
+    return document.getElementById(id);
+}
+>>>>>>> 80c983e0f57006bd8b622a8848daa3992c4acd7d
 window.addEventListener('load',function(){
     //取得header角色資訊
     var headerMe= document.getElementById("headerMe");
@@ -43,6 +49,48 @@ window.addEventListener('load',function(){
         headerMe.removeEventListener('click',toggleHeader);
     }
 
+<<<<<<< HEAD
+=======
+
+    var headerLog = document.querySelector('#headermenu .loginHere');
+    console.log(headerLog);
+    headerLog.addEventListener('click',function(e){
+<<<<<<< HEAD
+=======
+        console.log(headerLog.innerText);
+        if(headerLog.innerText=="登船"){
+            // console.log('按了登船')
+            document.getElementById('loginBox').style.display="block";
+            burgerCtrl.click();
+
+        }else{
+            // console.log('按了離船')
+            $.ajax({
+                type: "POST",
+                url: "logout.php",
+                data: {memId:storage['memId']},
+                success: function (response) {
+                    console.log(response);
+                }
+            });
+            storage.removeItem('memId');
+            burgerCtrl.click();
+            let msg =" <p>";
+            msg += "您已登出";
+            msg += "</p>";
+            showMsglitbo(msg);
+            headerLog.innerText = "登船";
+        }
+>>>>>>> homeBy7177
+        console.log(e.target)
+    })
+
+    // for(var i=0;i<subSwitchs.length;i++){
+    //     subSwitchs[i].addEventListener('click',function(e){
+    //         toggleSub(e);
+    //     })
+    // }
+>>>>>>> 80c983e0f57006bd8b622a8848daa3992c4acd7d
 
 
 })

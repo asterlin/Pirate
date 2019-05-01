@@ -1,3 +1,31 @@
+<<<<<<< HEAD
+=======
+function showLoginLiBo(){
+    loginBox.style.display = 'block';
+}
+
+
+var loginBtns = document.getElementsByClassName('loginHere');
+var loginBox = document.getElementById('loginBox');
+for(i=0;i<loginBtns.length;i++){
+    loginBtns[i].addEventListener('click',showLoginLiBo)
+}
+
+var liBoCloseBtns = document.querySelectorAll('.lightBox .leave');
+for(var i = 0; i<liBoCloseBtns.length;i++){
+    liBoCloseBtns[i].addEventListener('click',function(e){
+        e.target.parentNode.parentNode.style.display="none";
+    })
+}
+
+var liBoBGs = document.querySelectorAll('.lightbox .popbg');
+for(var i=0;i<liBoBGs.length;i++){
+    liBoBGs[i].addEventListener('click',function(e){
+        e.target.parentNode.style.display="none";
+    })
+}
+
+>>>>>>> 80c983e0f57006bd8b622a8848daa3992c4acd7d
 $(function(){
     var $li = $('ul.tab-title li');
         $($li. eq(0) .addClass('active').find('a').attr('href')).siblings('.tab-inner').hide();

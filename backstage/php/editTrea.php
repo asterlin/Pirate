@@ -8,7 +8,7 @@ $treaInt = $_GET["treaInt"];
 $treaStr = $_GET["treaStr"];
 $treaAgi = $_GET["treaAgi"];
 $treaLuk = $_GET["treaLuk"];
-$saleYN = $_GET["saleYN"];
+$saleYN = $_GET["saleYN"];//
 try {
     if ($doType=='insert') {
         require_once("connectPirates.php");
@@ -44,7 +44,11 @@ try {
         $treaUpd->bindValue(":treaId", $treaId);
         $treaUpd->execute();
         
+<<<<<<< HEAD
         
+=======
+    }   
+>>>>>>> 80c983e0f57006bd8b622a8848daa3992c4acd7d
 	// }
 	
 
