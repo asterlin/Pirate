@@ -13,6 +13,8 @@ function getclick(e){
         data: {treaId:treaId,storId:storId,no:'1'},
         type: 'GET',
         success: function(data){
+            $('#bapromptprice').html(data);
+            $('#baprice').val(data);
             var thistreaId = treaId;
             var thisstorId = storId;
             document.getElementById("sellshelfbtn").onclick = function(){
@@ -31,8 +33,7 @@ function getclick(e){
                     }
                 });
             };
-            $('#bapromptprice').html(data);
-            $('#baprice').val(data);
+            
         },
     });
     // $.ajax.response;
