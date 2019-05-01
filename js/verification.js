@@ -2,7 +2,6 @@ var number;
 var mystatus;
 var storage = sessionStorage;
 function logBox(){
-    console.log('hi');
     $('#loginBox').css('display','block');
     $('#signUp').click(login);
     $('#btnver').click(verification);
@@ -27,7 +26,6 @@ function login(){
         data: {signmemId:signmemId,signmemPsw:signmemPsw},
         type: 'GET',
         success: function(data){
-            console.log(data);
             if(data!=0){
                 $('#loginBox').css('display','none');
                 intoSession(data);
@@ -70,6 +68,7 @@ function right(){
 }
  
 function verification(){
+    console.log('verification.....');
     var memId = $('#memId').val();
     var memPsw= $('#memPsw').val();
     var memNic = $('#memNic').val();
@@ -91,15 +90,8 @@ function verification(){
             data: {memId:memId,memPsw:memPsw,memNic:memNic},
             type: 'GET',
             success: function(data){
-                if(data!=0){
-                    console.log('sucess');
-                    $('#loginBox').css('display','none');
-                    intoSession(data);
-                    // getStatus();
-                }else if(data==0){
-                    console.log('no');
-                    $('#feedback2').text("無此帳號或密碼!").css('color','red').css('text-align','center');
-                }
+                console.log(data);
+                $('#loginBox').css('display','none');
             },
         });
     }
