@@ -214,7 +214,6 @@ if(winWidth < 1024){
     }
 
     function showMsglitbo(msg){
-        console.log('hi??');
         document.getElementById('Msglightbox').style.display = "block";
         document.querySelector('#Msglightbox .paper').innerHTML=msg;
     }

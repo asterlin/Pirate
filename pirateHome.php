@@ -338,7 +338,7 @@ try {
             </div>
 
             <div id="homeMarketProdInfo">
-            <div id="homeWrapProd" class="homeWrapProd active">
+                <div id="homeWrapProd" class="homeWrapProd active">
                     <img id="homeProdImg" class="homeProdImg" src="image/treasure/<?php echo $rowsProds[0]['treaImg'] ?>" alt="寶物6">
                     <div class="homeProdInfoCard">
                         <p id="homeProdName" class="homeProdName textM"><?php echo $rowsProds[0]['treaName'] ?></p>
@@ -413,28 +413,28 @@ try {
         <p class="textEmphasis">Follow<strong class="textHiliR">最新消息</strong>走在時代尖端</p>
         <div id="newsBoxWrap">
             <?php
-            while ($newsRow = $news ->fetch(PDO::FETCH_ASSOC)){
-            $newsCat;
-            $newsBoxNameColor;
-            switch ($newsRow["artCat"]) {
-            case "1": $newsCat = "尋寶"; 
-            $newsBoxNameColor = "newsBoxNameGps";break;
-            case "2": $newsCat = "試煉";
-            $newsBoxNameColor = "newsBoxNameTraining"; break;
-            case "3": $newsCat = "其他";
-            $newsBoxNameColor = "newsBoxNameOther" ; break;
-            case "4": $newsCat = "官方";
-            $newsBoxNameColor = "newsBoxNameNavy" ; break;
-            default:break;
-            };
-            $artTime = substr( $newsRow["artTime"] , 0, 10);
-            $artTimeStr = str_replace("-","","$artTime");
+                while ($newsRow = $news ->fetch(PDO::FETCH_ASSOC)){
+                $newsCat;
+                $newsBoxNameColor;
+                switch ($newsRow["artCat"]) {
+                case "1": $newsCat = "尋寶"; 
+                $newsBoxNameColor = "newsBoxNameGps";break;
+                case "2": $newsCat = "試煉";
+                $newsBoxNameColor = "newsBoxNameTraining"; break;
+                case "3": $newsCat = "其他";
+                $newsBoxNameColor = "newsBoxNameOther" ; break;
+                case "4": $newsCat = "官方";
+                $newsBoxNameColor = "newsBoxNameNavy" ; break;
+                default:break;
+                };
+                $artTime = substr( $newsRow["artTime"] , 0, 10);
+                $artTimeStr = str_replace("-","","$artTime");
             ?>
             <div class="newsBox artShow">
                 <div class="newsBoxInfo">
                     <div class="newsBoxInfoCont">
                         <span class="newsBoxName <?php echo $newsBoxNameColor;?>"><?php echo $newsCat;?></span>
-                        <div class="newsBoxTit artTit"><a href="<?php echo $newsRow["artId"];?>"><?php echo $newsRow["artTitle"];?></a>
+                        <div class="newsBoxTit artTit"><a href="bar.php?from=index&artId=<?php echo $newsRow["artId"];?>"><?php echo $newsRow["artTitle"];?></a>
                         </div>
                     </div>
                     <div class="newsInfo">
