@@ -29,7 +29,7 @@ function selltreaclose(){
 function selltreaboxopen(){
     document.getElementsByClassName("lightbox")[1].style.display = "block";
     document.getElementsByClassName("selltreabox")[0].style.display = "block";
-    document.getElementById("selltreaclose").addEventListener("click",selltreaclose);
+    document.getElementById("selloffbtn").addEventListener("click",selltreaclose);
 }
 
 function gosellpage(){

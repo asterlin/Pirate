@@ -11,8 +11,7 @@ try{
     $memRow = $member->fetch(PDO::FETCH_ASSOC)
     }
     echo json_encode($memRow);
-  }
-}catch(PDOException $e){
+  }catch(PDOException $e){
   echo $e->getMessage();
 }
 ?>

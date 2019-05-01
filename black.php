@@ -18,7 +18,7 @@ try {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>大海賊帝國</title>
     <link rel="stylesheet" href="css/wavebtn.css">
     <link rel="stylesheet" href="css/balance.css">
     <link rel="stylesheet" href="css/login.css">
@@ -32,13 +32,28 @@ try {
 </head>
 <body>
     <?php require_once('header.php') ?>
+    <h1 class="titlePri top">海上市集</h1>
+    <div class="marTitBox">
+        
+        <a class=" marTitInBox" href="black.php">
+            <h2 class="marTypeTit titleSec">黑市</h2>
+        </a>
+        <a class=" marTitInBox" href="market.php">
+
+            <h2 class="marTypeTit titleSec">造船廠</h2>
+        </a>
+        <div class="clearfix"></div>
+    </div>
+    <div class="marMain blackMarket">
     <div class="black">
-        <p>黑市</p>
-    <a id="gosellpage" class="btnsec " href="#">
-        <span>販賣寶物</span>
-    </a>
+    <div class="gosellpagewrap">
+        <a id="gosellpage" class="btnsec " href="#">
+            <span>販賣寶物</span>
+        </a>
+    </div>
+    
     <div class="treawrap flex"> 
-        <div class="filterCheck ">
+        <div class="filterCheck " style="display:none">
             <input class="treaCheckbox" type="checkbox" value="treaInt" name="ckbox0"><label>智力</label>
             <input class="treaCheckbox" type="checkbox" value="treaStr" name="ckbox1"><label>力量</label>
             <input class="treaCheckbox" type="checkbox" value="treaAgi" name="ckbox2"><label>敏捷</label>
@@ -50,7 +65,7 @@ try {
         $saleTime = $tradRow["saleTime"];
         $today3 = date("Y-m-d", strtotime('-2 days'));
         $remaining = (strtotime( $saleTime) - strtotime($today3))/(60*60*24);
-        if($remaining <= 3 and $remaining >= 0 and $tradRow['salerId']!= 'sasa'){//$_SESSION["memId"]
+        if($remaining <= 3 and $remaining >= 0 and $tradRow['salerId']!= $_SESSION["memId"]){//$_SESSION["memId"]
         
 ?>
 
@@ -79,7 +94,7 @@ while( $treaRow = $treasurelist->fetch(PDO::FETCH_ASSOC)){
 ?>
     
             
-        <div class="treaRecommend col-12 col-md-4 col-xl-3">
+        <div class="textS treaRecommend col-12 col-md-4 col-xl-3">
             <h3 class="treaName"><?php echo $treaRow["treaName"]; ?></h3>
             <div class="salerId">
                 <span>賣家:<?php echo $tradRow["salerId"]; ?></span>
@@ -103,7 +118,7 @@ while( $treaRow = $treasurelist->fetch(PDO::FETCH_ASSOC)){
                 <input class="tradeId" type="hidden" name="tradeId" value=<?php echo $tradRow["tradeId"];?>>
                 <input class="price" type="hidden" name="price" value=<?php echo $tradRow["price"];?>>
                 <input type="submit" style="display:none">
-                <input id="memMoney" type="hidden" value = 600><?php $_SESSION["memMoney"];?>
+                <input id="memMoney" type="hidden" value = <?php $_SESSION["memMoney"];?>>
                 <input type="hidden" value="<?php echo $tradRow["price"]; ?>">
                 
                 <div class="treabuywrap">
@@ -157,7 +172,7 @@ while( $treaRow = $treasurelist->fetch(PDO::FETCH_ASSOC)){
             session_start();
             
             try {
-                $memId = 'ww';//$_SESSION["memId"]
+                $memId = $_SESSION["memId"];//$_SESSION["memId"]
                 $sql = " select * from traderecord r join treasurelist l on r.treaId = l.treaId";
                 $traderecords = $pdo -> query($sql);
             } catch (PDOException $e) {
@@ -227,7 +242,7 @@ while( $treaRow = $treasurelist->fetch(PDO::FETCH_ASSOC)){
                         <p>寶物</p>
                         <div class="holdtrealist">
                             <?php
-                                $memId = 'ww';//$_SESSION["memId"]
+                                $memId = $_SESSION["memId"];
                                 while( $treaRow = $treasurestorage -> fetch(PDO::FETCH_ASSOC)){ 
                                 if($treaRow["memId"] == $memId){
                             ?>
@@ -267,6 +282,9 @@ while( $treaRow = $treasurelist->fetch(PDO::FETCH_ASSOC)){
                                 <a id="sellshelfbtn" class="btnpri " href="#">
                                     <span>上架</span>
                                 </a>
+                                <a id="selloffbtn" class="btnpri " href="#">
+                                    <span>取消</span>
+                                </a>
                                  
                             </div>
                             <p>上架期限: 72小時</p>
@@ -276,11 +294,12 @@ while( $treaRow = $treasurelist->fetch(PDO::FETCH_ASSOC)){
             </div>
         </div> 
     </div>
-    <script src="js/verification.js"></script>
-    <script src="js/balance.js"></script>
-    <script src="js/black.js"></script>
+
     <script>
+
         $(document).ready(function(){
+          
+
             // black
             var count = $('.treabuy').size();
             var count5 = $('.card').size();
@@ -301,14 +320,19 @@ while( $treaRow = $treasurelist->fetch(PDO::FETCH_ASSOC)){
         });
     </script>
     </div>
+    </div>
     <?php require_once('footer.php') ?>
     <?php require_once('lightbox.php') ?>
+
+
 </body>
 </html>
 
 
     
-
+<script src="js/verification.js"></script>
+<script src="js/balance.js"></script>
+<script src="js/black.js"></script>
 <script src="js/wavebtn.js"></script>
 
 

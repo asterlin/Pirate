@@ -12,18 +12,22 @@
     /* border: 2px #000 solid; */
 }
 #gpsCloudLeft,#gpsCloudRight{
-    width: 150%;
+    width: 100%;
 }
 #gpsCloudLeft{
     position: absolute;
-    bottom: 250px;
-    left: -120px;
+<<<<<<< HEAD
+    bottom: 300px;
+=======
+    top: 0;
+>>>>>>> 6e17014e939b58e711f8123d3aa0913cc9330654
+    left: 0;
     animation-name: cloudLeftMove;
 }
 #gpsCloudRight{
     position: absolute;
     bottom: 0;
-    right: -140px;
+    right: 0;
     animation-name: cloudRightMove;
     animation-delay: 3s;
 }
@@ -47,26 +51,17 @@
     100% {transform: translateX(0%);}
 }
 #luckyWheel{
-    display: none;
+    display: block;
     margin: auto;
     position: absolute;
     top: 0;
     right: 0;
     left: 0;
     bottom: 0;
-    z-index: 10;
+    z-index: 1000;
 }
 #showPrize{
     display: none;
-    z-index: 11;
-}
-#showPrize .textM{
-    display: block;
-    font-size: 1.5rem;
-    font-family: Adobe Heiti Std R;
-    text-align: center;
-    color: #362e2b;
-    padding: 1rem 0;
 }
 #showPrizePic{
     width: 200px;
@@ -77,11 +72,11 @@
     /* text-align: center; */
 }
 @media screen and (min-width: 768px) {
-    #gpsCloudRight,#gpsCloudRight{
-        width: 60%;
+    #gpsCloudRight{
+        width: 90%;
     }
     #gpsCloudLeft{
-        top: 150px;
+        top: 0;
         left: -100px;
     }
     #gpsCloudRight{
@@ -94,20 +89,18 @@
         max-width: 1200px;
     }
     #gpsCloudLeft,#gpsCloudRight{
-        width: 70%;
-        /* max-height: 420px; */
+        width: 60%;
     }
     #gpsCloudLeft{
-        top: 250px;
+<<<<<<< HEAD
+        top: 350px;
+=======
+        top: -100px;
+        left: 0;
+>>>>>>> 6e17014e939b58e711f8123d3aa0913cc9330654
     }
     #gpsCloudRight{
         bottom: 0;
         right: 0;
     }
-}
-#loginbox{
-    display: none;
-}
-body {
-    overflow-x: hidden;
 }

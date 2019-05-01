@@ -267,7 +267,7 @@ function playGps() {
     circle();
     getTreaPosition()
     dropTreas();
-    // alert("dropTreas");
+    alert("dropTreas");
     // addEvent(); 
     // alert("addEvent");
     // treas.addListener(treas, "click", (function(treas) {
@@ -525,7 +525,7 @@ function getTreaPosition() {
     }
 }
 function dropTreas(){
-    for (let i = 0; i < treaPosArr.length; i++) {
+    for (var i = 0; i < treaPosArr.length; i++) {
         treas.push(new google.maps.Marker({
             position: treaPosArr[i],
             map: map,
@@ -535,7 +535,7 @@ function dropTreas(){
           }));
         treas[i].addListener("click",function(){
           playWheel();
-          // console.log(treas[i]);
+          console.log(treas[i]);
         });
     }
 }
@@ -730,11 +730,8 @@ function playWheel(){
   theClock = 0;
   slowDown();
   setTimeout(showPrize,1000);
-  if(storage[memId])  $('#goToMeBtn').attr('href')=='me.php';
-  else                $('#loginbox').css('display','block');
   document.getElementById("closeWheelBtn").addEventListener("click",function() {
-    if(storage[memId])  prize();
-    else                $('#loginbox').css('display','block');
+    prize();
     document.getElementById("luckyWheel").style.display="none";
     document.getElementById("showPrize").style.display = "none";
   });
@@ -744,22 +741,20 @@ function prize(){
   var xhr = new XMLHttpRequest();
   xhr.onload=function (){
 	  if( xhr.status == 200 ){
-      // alert(xhr.responseText);
+      alert(xhr.responseText);
 	  }else{
-	    // alert( xhr.status );
+	    alert( xhr.status );
 	  }
   }
   //0=錢 1=武器
-  
+  var prize = {};
   if (wheelPrizeType == 1) {
-    type = "treaId";
-    value = wheelPrizeNum;
+    prize.treaId = wheelPrizeNum;
   } else {
-    type = "prizeBonus"
-    value = prizeBonus;
+    prize.prizeBonus = prizeBonus;
 	}
-  
-  var url = "php/gpsGame.php?type=" + type + "&value=" + value;
+  var jsonStr = JSON.stringify(prize);
+  var url = "php/gpsGame.php?jsonStr=" + jsonStr;
   xhr.open("Get", url, true);
   xhr.send( null );
 }

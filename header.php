@@ -29,7 +29,7 @@
             <li class="menuSwitch">
                 <a href="me.php">俺の海賊船</i></a>
                 <ul class="headerSub">
-                    <li><a href="javascript:;" id='headerLog'>登船</a></li>
+                    <li><a href="javascript:;" class="loginHere">登船</a></li>
                 </ul>
             </li>
         </ul>

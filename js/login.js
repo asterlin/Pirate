@@ -6,7 +6,7 @@ function showLoginLiBo(){
 var loginBtns = document.getElementsByClassName('loginHere');
 var loginBox = document.getElementById('loginBox');
 for(i=0;i<loginBtns.length;i++){
-    loginBtns[i].onclick=showLoginLiBo;
+    loginBtns[i].addEventListener('click',showLoginLiBo)
 }
 
 var liBoCloseBtns = document.querySelectorAll('.lightBox .leave');

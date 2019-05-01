@@ -1,6 +1,21 @@
 <?php
 ob_start();
 session_start();
+if (isset($_SESSION['managerAcc']) == false) {
+    header('location:backLogin.html');
+}
+$errMsg = "";
+
+try {
+    require_once("php/connectPirates.php");
+    $sql = "select * from manager";
+    $manager = $pdo->query($sql);
+} catch (PDOException $e) {
+    $errMsg .=  "錯誤原因" . $e->getMessage() . "<br>";
+    $errMsg .=  "錯誤行號" . $e->getLine() . "<br>";
+}
+
+echo $errMsg;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,7 +48,7 @@ session_start();
                 <div class="dataTable">
                     <table id="merchTable">
 
-                        <form action="editMerch.php" method="GET">
+
                         <tr>
                             <th>造型編號</th>
                             <th>造型名稱</th>
@@ -45,17 +60,17 @@ session_start();
                         </tr>
                         <?php
 try {
-            require_once("php/connectPirates.php");
-            $sql = "select * from customlist ORDER BY modelId DESC;";
-            $product=$pdo->query($sql);
+    require_once("php/connectPirates.php");
+    $sql = "select * from customlist ORDER BY modelId DESC;";
+    $product=$pdo->query($sql);
 
-            if ($product->rowCount() == 0) {
-                echo "沒有商品!!!";
-            } else {
-                $prods = $product->fetchAll(PDO::FETCH_ASSOC);
+    if ($product->rowCount() == 0) {
+        echo "沒有商品!!!";
+    } else {
+        $prods = $product->fetchAll(PDO::FETCH_ASSOC);
 
-                foreach ($prods as $i=>$prodRow) {
-                    ?>	
+        foreach ($prods as $i=>$prodRow) {
+            ?>	
             <tbody>
             <tr>
             <td class="merchNo"><?php echo $prodRow["modelId"]; ?></td>
@@ -85,8 +100,8 @@ try {
             <?php
             ?>
             <td class="merchImg">
-                <img src="../<?php echo $prodRow["modelImg"]; ?>" class="imgPreview">
-                <input class="merchInputImg" type="file" value="../<?php echo $prodRow["modelImg"]; ?>">
+                <img src="../image/merchProduct/<?php echo $prodRow["modelImg"]; ?>" class="imgPreview">
+                <input class="merchInputImg" type="file" value="../image/merchProduct/<?php echo $prodRow["modelImg"]; ?>">
             </td>   
             </td>
             <td class="cusYN">
@@ -129,14 +144,13 @@ try {
             <?php
             ?>
             </tr>
-            </tbody>
-            </form>
+
           <?php
-                }
-            }
-        } catch (PDOException $e) {
-            echo "error";
         }
+    }
+} catch (PDOException $e) {
+    echo "error";
+}
 ?>
                     </table>
                 </div>

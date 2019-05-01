@@ -1,7 +1,7 @@
 <?php
 session_start();
 $no = $_REQUEST["no"];
-$memId = "ww";//$_SESSION["memId"]
+$memId = $_SESSION["memId"];//$_SESSION["memId"]
 $treaId = $_REQUEST["treaId"];
 $storId = $_REQUEST["storId"];
 $price = $_REQUEST["price"];

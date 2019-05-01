@@ -11,23 +11,21 @@ window.addEventListener("load", function () {
             option4 = $('.option4').eq(index).val();
             answer = $('.answer').eq(index).val();
             testId = parseInt($('.testId').eq(index).text());
-            // console.log(testText)
-            // console.log(point)
-            // console.log(option1)
-            // console.log(option2)
-            // console.log(option3)
-            // console.log(option4)
-            // console.log(answer)
-            // console.log(option1)
+            console.log(testText)
+            console.log(point)
+            console.log(option1)
+            console.log(option2)
+            console.log(option3)
+            console.log(option4)
+            console.log(answer)
+            console.log(option1)
 
             var xhr = new XMLHttpRequest();
             xhr.onload = function () {
                 if (xhr.status == 200) {
-                   
                     
                 } else {
-                    alert(xhr.status); 
-                    
+                    alert(xhr.status);
                 }
             }
 

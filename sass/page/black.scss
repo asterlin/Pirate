@@ -10,7 +10,7 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
 }
-.black{
+ .top{
     padding-top: 200px;
 }
 *{
@@ -117,6 +117,13 @@ body {
     }
     
 }
+.gosellpagewrap{
+    width: 100%;
+    text-align: center;
+    margin: 10px 0;
+}
+
+
 
 
 
@@ -185,4 +192,57 @@ body {
                 padding: 100px 20px;
         }
     }
+}
+
+
+.titlePri {
+    margin: 10px;
+    font-size: 20px; }
+.marTitBox + span {
+    display: block;
+    margin-top: 70px;
+}
+.marTitBox {
+    width: 200px;
+    margin: auto;
+    display: flex;
+    justify-content: space-evenly;
+    position: relative;
+
+    .titFrame {
+        position: absolute;
+        margin: 3px 0 0 -46px;
+        display: block;
+        transform: translateX(0px);
+        transition: 1s;
+        width: 110px;
+    }
+
+    
+}
+.marTitInBox {
+    position: relative;
+    margin: 20px 0 0 10%;
+}
+
+.marTitInBox:hover h2 {
+    color: #fff;
+    text-shadow: 0 0 2px #000;
+}
+.marMain {
+    width: 100%;
+}
+@media screen and (min-width: 1024px){
+    .marMain {
+
+        margin-bottom: 60px;
+    }
+}
+@media screen and (max-width: 1200px){
+ 
+    .marMain {
+        overflow: hidden;
+        margin-top: 0;
+    }
+   
 }

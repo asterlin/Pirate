@@ -219,7 +219,26 @@ try {
         <p class="textEmphasis">駕駛海賊船，挑戰<strong class="textHiliR">海賊試煉遊戲</strong>
         </p>
         <div id="homeGamePlay" class="scaleBorder">
-            <!-- 使否先放張圖片？ -->
+            <video autoplay=autoplay>
+            <source src="image\play\video.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+            </video>
+            <div class="homeGamePlayBtn">
+                <a href="play.php#game">
+                <div class="button_border">
+                    <div class="border_in">
+                    </div>
+                    <div class="border_out">
+                        <svg viewBox="0 0 88 88">
+                            <path class="border" d="M39.2,86C19.7,83.8,4.2,68.3,2,48.8"></path>
+                            <path class="border" d="M86,48.8c-2.2,19.5-17.7,35-37.2,37.2"></path>
+                            <path class="border" d="M48.8,2c19.5,2.2,35,17.7,37.2,37.2"></path>
+                            <path class="border" d="M2,39.2C4.2,19.7,19.7,4.2,39.2,2"></path>
+                        </svg>
+                    </div>
+                </div>
+                </a>
+            </div>
             <p class="textM" id="homeGameMsg">
                 航行指南：<br>
                 按下<span class="textHiliB">START!</span> 、移動滑鼠避開礁石、航向目標吧！<br>
@@ -268,34 +287,26 @@ try {
             置身偉大航道，在<strong class="textHiliR">真實世界啟航尋寶</strong>
         </p>
         <div id="gpsWrap">
-            <div id="gpsMap"></div>
+            <div id="gpsMap"><img src="image\play\mapL.png" alt="GPS啟航尋寶"></div>
             <img src="image/gpsGame/cloudLeft.png" alt="雲" id="gpsCloudLeft"> 
             <img src="image/gpsGame/cloudRight.png" alt="雲" id="gpsCloudRight">
-            <canvas id="luckyWheel"></canvas>
-            <div class="lightbox" id="showPrize">
-                <div class="popbg"></div>
-                <div class="info">
-                    <div class="axis axis1"></div>
-                    <div class="axis axis2"></div>
-                    <div class="leave"></div>
-                    <div class="paper">
-                        範例
-                        <p class="textM">恭喜您獲得</p>
-                        <div id="showPrizePic"></div>
-                        <div class="textM" id="showPrizeMeg"></div>
-                        <a class="btnsec" id="closeWheelBtn" href="javascript:">
-                            <span>繼續航行</span>
-                        </a>
-                        <a class="btnsec" href="me.php">
-                            <span>清點船艙</span>
-                        </a>
+            <div class="homeGamePlayBtn">
+                <a href="play.php#gpsWrap">
+                <div class="button_border">
+                    <div class="border_in">
+                    </div>
+                    <div class="border_out">
+                        <svg viewBox="0 0 88 88">
+                            <path class="border" d="M39.2,86C19.7,83.8,4.2,68.3,2,48.8"></path>
+                            <path class="border" d="M86,48.8c-2.2,19.5-17.7,35-37.2,37.2"></path>
+                            <path class="border" d="M48.8,2c19.5,2.2,35,17.7,37.2,37.2"></path>
+                            <path class="border" d="M2,39.2C4.2,19.7,19.7,4.2,39.2,2"></path>
+                        </svg>
                     </div>
                 </div>
+                </a>
+            </div>
         </div>
-</div>
-
-
-
 
     </div>
     <div id="homeGameTrea">
@@ -327,20 +338,20 @@ try {
             </div>
 
             <div id="homeMarketProdInfo">
-            <div id="homeWrapProd" class="homeWrapProd active">
-                    <img id="homeProdImg" class="homeProdImg" src="image/treasure/<?php echo $rowsProds[0]['treaImg'] ?>" alt="寶物6">
+                <div id="homeWrapProd" class="homeWrapProd active">
+                    <img id="homeProdImg" class="homeProdImg" src="image/treasure/006.png" alt="寶物6">
                     <div class="homeProdInfoCard">
-                        <p id="homeProdName" class="homeProdName textM"><?php echo $rowsProds[0]['treaName'] ?></p>
+                        <p id="homeProdName" class="homeProdName textM"></p>
                         <p class="homeProdPrice textM">
-                            價格：<strong id="homeProdPrice" class="textHiliR"><?php echo $rowsProds[0]['price'] ?></strong> G
-                            <a href="javascript:;" class="btnpri" id="homeProdBuy" tradeId="<?php echo $rowsProds[0]['tradeId'] ?>"><span>直接購買</span></a>
+                            價格：<strong id="homeProdPrice" class="textHiliR"></strong> G
+                            <a href="javascript:;" class="btnpri" id="homeProdBuy" tradeId=""><span>直接購買</span></a>
                         </p>
-                        <p class="homeProdSaler textS">賣家：<span id="homeProdSaler"><?php echo $rowsProds[0]['memNic'] ?></span></p>
+                        <p class="homeProdSaler textS">賣家：<span id="homeProdSaler"></span></p>
                         <p class="homeProdTalent textS">寶物天賦：<br>
-                            力量：<span id="homeProdStr"><?php echo $rowsProds[0]['treaStr'] ?></span><br>
-                            智力：<span id="homeProdInt"><?php echo $rowsProds[0]['treaInt'] ?></span><br>
-                            幸運：<span id="homeProdLuc"><?php echo $rowsProds[0]['treaLuk'] ?></span><br>
-                            敏捷：<span id="homeProdAgi"><?php echo $rowsProds[0]['treaAgi'] ?></span>
+                            力量：<span id="homeProdStr"></span><br>
+                            智力：<span id="homeProdInt"></span><br>
+                            幸運：<span id="homeProdLuc"></span><br>
+                            敏捷：<span id="homeProdAgi"></span>
                             <div id="homeProdTalentImg">
                                 <!-- <canvas id="homeTalentRadar"></canvas> -->
                             </div>
@@ -453,7 +464,9 @@ try {
         </p>
         <p class="textM">
             加入大海賊帝國，立即<br>
-            <a class="scrToDIY" href="javascript:;">成為海賊</a>
+            <a class="scrToDIY" href="javascript:;">成為海賊<br>
+                <img src="image\ship\shipComplete.png" alt="龍舟">
+            </a>
         </p>
     </div>
 
@@ -469,15 +482,13 @@ try {
     <script src="js\ScrollMagic.min.js"></script>
     <script src="js\debug.addIndicators.min.js"></script>
     <script src="js\animation.gsap.min.js"></script>
-    <script src="http://maps.google.com/maps/api/js?key=AIzaSyBKB16XDqQ6Qnki2BdJUQXXP4hEpK0_2wo&callback=initMap"></script>
     <script src="js/iro.min.js"></script>
     <script src="js\pixi.min.js"></script>
     <script src="js/wavebtn.js"></script>
     <script src="js/header.js"></script>
-    <script src="js/gameGps.js"></script>
     <script src="js/shipDIY.js"></script>
-    <script src="js/verification.js"></script>
     <script src="js/homeMapPIXI.js"></script>
+    <script src="js/verification.js"></script>
     <script src="js/home.js"></script>
     </body>
 </html>

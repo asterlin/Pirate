@@ -1,4 +1,5 @@
 <?php
+
 $doType = $_GET["doType"];
 $treaId = $_GET["treaId"];
 $treaName = $_GET["treaName"];
@@ -7,7 +8,7 @@ $treaInt = $_GET["treaInt"];
 $treaStr = $_GET["treaStr"];
 $treaAgi = $_GET["treaAgi"];
 $treaLuk = $_GET["treaLuk"];
-$saleYN = $_GET["saleYN"];
+$saleYN = $_GET["saleYN"];//
 try {
     if ($doType=='insert') {
         require_once("connectPirates.php");
@@ -31,7 +32,7 @@ try {
 		
 	}elseif ($doType=='update') {
 		require_once("connectPirates.php");
-        $sqlUpd = "UPDATE treasurelist SET treaName=:treaName, treaImg=:treaImg,treaInt=:treaInt, treaStr=:treaStr, treaAgi=:treaAgi, treaLuk=:treaLuk,treaStatus=:saleYN WHERE treaId=:treaId";
+        $sqlUpd = "UPDATE treasurelist SET treaName=:treaName, treaImg=:treaImg,treaInt=:treaInt, treaStr=:treaStr, treaAgi=:treaAgi, treaLuk=:treaLuk,treaStatus=:saleYN WHERE treaId=:treaId;";
         $treaUpd = $pdo->prepare($sqlUpd);
         $treaUpd->bindValue(":treaName", $treaName);
         $treaUpd->bindValue(":treaImg", $treaImg);
@@ -43,8 +44,8 @@ try {
         $treaUpd->bindValue(":treaId", $treaId);
         $treaUpd->execute();
         
-        
-	 }
+    }   
+	// }
 	
 
 } catch (PDOException $e) {
