@@ -27,11 +27,11 @@ echo $errMsg;
     <title>Document</title>
     <link rel="stylesheet" href="../css/backStage.css">
     <link rel="stylesheet" href="../css/wavebtn.css">
-    <style>
+    <!-- <style>
     .btnpri{
             border: 1px solid transparent;
         }
-    </style>
+    </style> -->
 </head>
 
 <body>
@@ -43,7 +43,10 @@ echo $errMsg;
             <div class="content">
                 <h3 class="titlePri">管理員帳號管理</h3>
                 <a href="backNewManager.php">
-                    <button class="btnpri"><span>新增</span></button>
+                    <button>
+                        <span>新增</span>
+                        <span>+</span>
+                </button>
                 </a>
                 <div class="dataTable">
                     <table>
@@ -74,7 +77,7 @@ echo $errMsg;
                             </td>
                             <td>
                             <input type="hidden" name="managerAcc" value="<?php echo $managerRow['managerAcc'] ?>">
-                            <button type="submit" class="btnpri"><span>修改</span></button>
+                            <button type="submit"><span>修改</span></button>
                             </td>
                             </form>
                             </tr>

@@ -39,7 +39,7 @@ echo $errMsg;
         
         <div class="contentWrap">
             <div class="content">
-                <h3 class="titlePri">官方商品管理</h3>
+                <h3 class="titlePri">寶物商品管理</h3>
                 <div class="custToolBox">
                     <button id="addTrea" href="javascript:;">
                         <span>新增</span>

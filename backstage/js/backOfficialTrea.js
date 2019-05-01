@@ -26,10 +26,16 @@ window.onload = function () {
                     var saleYN = merchDelete.getElementsByClassName('saleYN')[0].getElementsByTagName('select')[0].value;
 
                     $.ajax({
-                        url: 'php/editTrea.php',
+                        url: '../php/editTrea.php',
                         data: {
                             doType: 'delete',
-                            treaName: treaName
+                            treaName: treaName,
+                            treaImg: treaImg,
+                            treaInt: treaInt,
+                            treaStr: treaStrN,
+                            treaAgi: treaAgi,
+                            treaLuk: treaLuk,
+                            saleYN: saleYN,
                         },
                         type: 'GET',
                         success: function () {
@@ -59,7 +65,7 @@ window.onload = function () {
                     doUpdate();
 
                     $.ajax({
-                        url: 'php/editTrea.php',
+                        url: '../php/editTrea.php',
                         data: {
                             doType: 'insert',
                             treaName: treaName,
@@ -154,7 +160,7 @@ window.onload = function () {
     //修改動作
     function doUpdate() {
         
-        // var updateBtn = document.getElementsByClassName('updateList');
+        var updateBtn = document.getElementsByClassName('updateList');
         var inputChange = document.getElementsByTagName('input');
         var selectChange = document.getElementsByTagName('select');
 
@@ -191,9 +197,13 @@ window.onload = function () {
         // // str = str.substr(0,3);
         // console.log(str);
         var treaName = merchUpdate.getElementsByClassName('treaName')[0].childNodes[0].value;
+<<<<<<< HEAD
+        var treaImg = "0";//merchUpdate.getElementsByClassName('treaImg')[0].getElementsByTagName('input')[0].value;
+=======
         // var treaImg = merchUpdate.getElementsByClassName('treaImg')[0].getElementsByTagName('input')[0].value;
         var treaImg = $('.treaImg img').eq(index).attr('src');
         treaImg = treaImg.substr(treaImg.length-7,7);
+>>>>>>> fbaf30a0ff4a845504c7524601543c42f54a4478
         var treaInt = merchUpdate.getElementsByClassName('treaInt')[0].getElementsByTagName('input')[0].value;
         var treaStr = merchUpdate.getElementsByClassName('treaStr')[0].getElementsByTagName('input')[0].value;
         var treaAgi = merchUpdate.getElementsByClassName('treaAgi')[0].getElementsByTagName('input')[0].value;
@@ -210,17 +220,16 @@ window.onload = function () {
         console.log(treaNo);
 
         $.ajax({
-            url:'php/editTrea.php',
+            url:'../php/editTrea.php',
             data: {
                 doType: 'update',
                 treaName: treaName,
-                treaImg: treaImg,
+                treaImg: '0',
                 treaInt: treaInt,
                 treaStr: treaStr,
                 treaAgi: treaAgi,
                 treaLuk: treaLuk,
                 saleYN: saleYN,
-                treaId: treaNo
             },
             type: 'GET',
             success: function () {

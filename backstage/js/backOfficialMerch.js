@@ -59,7 +59,7 @@ window.onload = function () {
                     var merchPrice = merchInsert.getElementsByClassName('merchPrice')[0].getElementsByTagName('input')[0].value;
                     var saleYN = merchInsert.getElementsByClassName('saleYN')[0].getElementsByTagName('select')[0].value;
 
-                    doUpdate();
+                    
 
                     $.ajax({
                         url: 'php/editMerch.php',
@@ -75,6 +75,11 @@ window.onload = function () {
                         },
                         type: 'GET',
                         success: function () {
+                            console.log(document.getElementsByClassName("merchNo")[0].value);
+                        if(!document.getElementsByClassName("merchNo")[0].value){
+                            location.reload(true);
+                            doUpdate();
+                        }
                             alert('修改完成');
                         },
                         error: function (e) {
@@ -88,21 +93,7 @@ window.onload = function () {
 
     addBtn.onclick = function () {
         addBtn.disabled = true;
-        // var nowTime = new Date();
-        // var yyyy = nowTime.getFullYear();
-        // if (dd < 10) {
-        //   dd = '0' + dd;
-        // } 
-        // if (mm < 10) {
-        //   mm = '0' + mm;
-        // } 
-        // var mm = nowTime.getMonth() + 1;
-        // var dd = nowTime.getDate();
-        // var hr = nowTime.getHours();
-        // var min = nowTime.getMinutes();
-        // var sec = nowTime.getSeconds();
 
-        // var nowTime = yyyy + '.' + mm + '.' + dd  + '.' + hr  + '.' + min  + '.' + sec;
         var newTr = document.createElement('TR');
 
         var newMerch = `
@@ -146,10 +137,6 @@ window.onload = function () {
     var firstMerch = merchTable.getElementsByTagName('tbody')[1];
     merchTable.insertBefore(newTr, firstMerch);
 
-
-        addRemove();
-
-
         var inputImg = document.getElementsByClassName('merchInputImg');
 
         for (var j = 0; j < inputImg.length; j++) {
@@ -164,9 +151,10 @@ window.onload = function () {
                 reader.readAsDataURL(file);
             }
         }
+        addRemove();
     };
     addRemove();
-    doUpdate()
+    doUpdate();
 
     //修改動作
     function doUpdate() {
@@ -228,6 +216,7 @@ window.onload = function () {
                     type: 'GET',
                     success: function () {
                         alert('修改完成');
+                        
                     },
                     error: function (e) {
                         alert('出錯囉???');

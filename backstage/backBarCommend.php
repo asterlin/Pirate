@@ -65,7 +65,7 @@ echo $errMsg;
                             <th>留言時間</th>
                         </tr>
             <?php while ($artrespondsRow = $artresponds->fetch(PDO::FETCH_ASSOC)) {
-        $msgTime = substr($artrespondRow["msgTime"], 0, 10);
+        $msgTime = substr($artrespondsRow["msgTime"], 0, 10);
         $msgTimeStr = str_replace("-", "", "$msgTime"); ?>
                         <tr>
                             <td><?php echo $artrespondsRow["msgId"]; ?></td>
