@@ -301,13 +301,13 @@ try {
     <div id="homeGameTrea">
         <img src="image/gpsGame/treaBoxOpen.svg" alt="藏寶箱">
         <div class="homeTreaImg">
-            <img src="image/treasure/004.png" alt="寶物">
+            <img src="image/treasure/001.png" alt="寶物">
         </div>
         <div class="homeTreaImg">
-            <img src="image/treasure/005.png" alt="寶物">
+            <img src="image/treasure/010.png" alt="寶物">
         </div>
         <div class="homeTreaImg">
-            <img src="image/treasure/006.png" alt="寶物">
+            <img src="image/treasure/013.png" alt="寶物">
         </div>
     </div>
     <div class="clearfix"></div>
