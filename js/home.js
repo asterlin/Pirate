@@ -206,7 +206,7 @@ if(winWidth < 1024){
 
         }
     }
-
+function showMsglitbo(msg){}
 //購買黑市商品
     $('#homeProdBuy').click(function(){
         $.ajax({
