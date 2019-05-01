@@ -377,8 +377,7 @@ session_start();
 	        </div>
 	    </div>
 	</div>
-	<div id="getSession">0.
-	</div>
+	<div id="getSession"></div>
 	<!-- lightBox -->
 	<!-- win -->
 	<div class="playLightbox" id="winbox">

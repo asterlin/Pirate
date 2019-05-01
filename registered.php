@@ -76,9 +76,6 @@ $errMsg = "";
     $errMsg .= "錯誤原因 : ".$e -> getMessage(). "<br>";
     $errMsg .= "錯誤行號 : ".$e -> getLine(). "<br>";
     }	
-
-
-   
 ?> 
 <!DOCTYPE html>
 <html>
