@@ -138,6 +138,9 @@ function verification(){
                     console.log(data);
                     $('#feedback2').text("註冊成功，即將開始海賊IQ測驗...").css('color','green');
                     intoSession(data);
+                    storage.removeItem('homePartBody');
+                    storage.removeItem('homePartHead');
+                    storage.removeItem('homePartSail');
                     setTimeout(() => {
                         window.location = 'iqtest-pre.php'; 
                     }, 1000);

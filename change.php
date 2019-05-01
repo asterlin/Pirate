@@ -10,7 +10,7 @@ try{
     session_start();
     $date = date("Y-m-d");
     $memId = 'sasa'; //$_SESSION["memId"]
-    require_once("connectPirates.php");
+    require_once("backstage/php/connectPirates.php");
     $sql = "UPDATE traderecord SET buyerId = 'ww',tradeTime = '$date' where tradeId= '$tradeId'";
     $traderecord = $pdo->exec( $sql );
 

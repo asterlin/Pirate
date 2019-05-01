@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 23.0.2, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!-- Generator: Adobe Illustrator 21.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 34.5 48.6" style="enable-background:new 0 0 34.5 48.6;" xml:space="preserve">
 <style type="text/css">
@@ -14,12 +14,6 @@
 	<path class="st1" d="M17.3,2c8.4,0,15.2,6.8,15.2,15.2s-6.8,15.2-15.2,15.2S2.1,25.6,2.1,17.2S8.9,2,17.3,2 M17.3,0
 		C7.8,0,0.1,7.7,0.1,17.2s7.7,17.2,17.2,17.2s17.2-7.7,17.2-17.2S26.8,0,17.3,0L17.3,0z"/>
 </g>
-<image style="overflow:visible;enable-background:new    ;" width="106" height="40" id="圖層_5" xlink:href="A357693FD6EEAD28.png"  transform="matrix(0.185 0 0 0.185 7.5121 20.23)">
-</image>
-<image style="overflow:visible;enable-background:new    ;" width="106" height="20" id="向量圖智慧型物件" xlink:href="A357693FD6EEAD29.png"  transform="matrix(0.1863 0 0 0.1863 7.4431 22.1363)">
-</image>
-<image style="overflow:visible;enable-background:new    ;" width="106" height="96" xlink:href="A357693FD6EEAD2F.png"  transform="matrix(0.1858 0 0 0.1858 7.4019 7.1755)">
-</image>
-<image style="overflow:visible;enable-background:new    ;" width="96" height="86" id="向量圖智慧型物件-2" xlink:href="A357693FD6EEAD2A.png"  transform="matrix(0.1877 0 0 0.1877 8.5466 7.1292)">
+<image style="overflow:visible;" width="600" height="650" xlink:href="../ship/fullShip5cc71fdbbeeef.png"  transform="matrix(3.769755e-02 0 0 3.769755e-02 5.1668 5.1652)">
 </image>
 </svg>

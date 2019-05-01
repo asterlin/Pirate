@@ -204,6 +204,7 @@ a {
 .lightbox input[type= text],.lightbox input[type=password]{
   background: #fffcf2;
   border: none;
+  height: 30px;
   padding: 5px 10px;
   border-radius: 10px 10px;
   transition-duration: 0.1s;
