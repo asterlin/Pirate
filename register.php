@@ -55,7 +55,24 @@ try {
 
         echo json_encode($arr);
 
-        // $pdo->commit();
+        session_start();
+        $_SESSION["memId"] = $memRow["memId"];
+        $_SESSION["memPsw"] = $memRow["memPsw"];
+        $_SESSION["memNic"] = $memRow["memNic"];
+        $_SESSION["memLv"] = $memRow["memLv"];
+        $_SESSION["memExp"] = $memRow["memExp"];
+        $_SESSION["memMoney"] = $memRow["memMoney"];
+        $_SESSION["intelligence"] = $memRow["intelligence"];
+        $_SESSION["strength"] = $memRow["strength"];
+        $_SESSION["agile"] = $memRow["agile"];
+        $_SESSION["luck"] = $memRow["luck"];
+        $_SESSION["shipTotalVote"] = $memRow["shipTotalVote"];
+        $_SESSION["shipImgAll"] = $memRow["shipImgAll"];
+        $_SESSION["avatarImg"] = $memRow["avatarImg"];
+        $_SESSION["playedTimes"] = $memRow["playedTimes"];
+        $_SESSION["talentPointsRemain"] = $memRow["talentPointsRemain"];
+
+        $pdo->commit();
     } 
 
 }catch (PDOException $e) {

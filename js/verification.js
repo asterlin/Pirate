@@ -33,7 +33,6 @@ function login(){
             data: {signmemId:signmemId,signmemPsw:signmemPsw},
             type: 'GET',
             success: function(data){
-                alert('sucess');
                 console.log(data);
                 if(data!=0){
                     $('#loginBox').css('display','none');
