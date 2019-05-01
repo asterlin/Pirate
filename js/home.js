@@ -1,7 +1,7 @@
 // import { TweenMax } from "gsap";
 
 // import { TweenMax, TimelineMax } from "gsap";
-
+var storage = sessionStorage;
 $(document).ready(function () {
 
     // console.log($('#homeDIY').offset().top);
@@ -215,6 +215,7 @@ if(winWidth < 1024){
 function showMsglitbo(msg){}
 //購買黑市商品
     $('#homeProdBuy').click(function(){
+<<<<<<< HEAD
         $.ajax({
             type: "POST",
             url: "backstage/php/homeBuyTrea.php",
@@ -243,6 +244,48 @@ function showMsglitbo(msg){}
 
             },
         });
+=======
+        console.log('按了');
+        if(checkLog()){
+            console.log('是登入')
+            $.ajax({
+                type: "POST",
+                url: "backstage/php/homeBuyTrea.php",
+                data:{
+                    tradeId:$(this).attr('tradeId'),
+                    memId:storage['memId'],
+                },
+                success: function (r) {
+                    console.log(r);
+                    var obj = JSON.parse(r);
+                    console.log(obj.memNic);
+                    msg='';
+                    if(obj.buyerMoney){
+                        msg += '<p>您已購買<strong>';
+                        msg +=  obj.treaName;
+                        msg += '</strong></p>';
+                        msg += '<p>金額：';
+                        msg += obj.price;
+                        msg += '</p>';
+                        msg += '<p>您的剩餘金幣：';
+                        msg += obj.buyerMoney;
+                        msg += '</p>';
+                        msg +="前往<a href='me.php'>俺の海賊船</a>查看寶物"
+                    }else{
+                        msg += '<p>';
+                        msg +=  obj.msg;
+                        msg += '</p>';
+                    }
+                    showMsglitbo(msg);
+    
+                },
+            });
+        }else{
+            document.getElementById('loginBox').style.display="block";
+            $('#feedback').text("請先登入").css('color','red');
+        }
+        
+>>>>>>> homeBy7177
     })
 
 

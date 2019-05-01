@@ -2,6 +2,7 @@
 session_start();
 
 $tradeId = $_POST['tradeId'];
+$memId = $_POST['memId'];
 $msg = [];
 $errMsg ='' ;
 try {
@@ -11,7 +12,7 @@ if(isset($_SESSION['memId'])){
     $pdo->beginTransaction();
 
     // echo "您的登入帳號為{$_SESSION['memId']}";
-    $sql = "select memNic, memMoney from member where memId = '{$_SESSION['memId']}'";
+    $sql = "select memNic, memMoney from member where memId = '$memId'";
     $staBuyer =  $pdo -> query($sql);
     $rowBuyer = $staBuyer->fetch(PDO::FETCH_ASSOC);
     

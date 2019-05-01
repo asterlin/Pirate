@@ -87,6 +87,33 @@ window.addEventListener('load',function(){
     var headerLog = document.querySelector('#headermenu .loginHere');
     console.log(headerLog);
     headerLog.addEventListener('click',function(e){
+<<<<<<< HEAD
+=======
+        console.log(headerLog.innerText);
+        if(headerLog.innerText=="登船"){
+            // console.log('按了登船')
+            document.getElementById('loginBox').style.display="block";
+            burgerCtrl.click();
+
+        }else{
+            // console.log('按了離船')
+            $.ajax({
+                type: "POST",
+                url: "logout.php",
+                data: {memId:storage['memId']},
+                success: function (response) {
+                    console.log(response);
+                }
+            });
+            storage.removeItem('memId');
+            burgerCtrl.click();
+            let msg =" <p>";
+            msg += "您已登出";
+            msg += "</p>";
+            showMsglitbo(msg);
+            headerLog.innerText = "登船";
+        }
+>>>>>>> homeBy7177
         console.log(e.target)
     })
 
