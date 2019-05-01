@@ -2,7 +2,7 @@
 <!-- 熱門話題 -->
 <?php
 session_start();
-$_SESSION["memId"] = "test01";
+// $_SESSION["memId"] = "test01";
 // echo $_SESSION["memId"];
 ?>
 <script>

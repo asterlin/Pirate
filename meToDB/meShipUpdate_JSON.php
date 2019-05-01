@@ -2,10 +2,10 @@
 $errMsg = "";
 try{
   require_once("../backstage/php/connectPirates.php");
-  $sql = "update mycustom set wearing=:wearing where memId='test03'";
+  $sql = "update mycustom set wearing=:wearing where memId='test03' and modelId=':modelId'";
   $statement = $pdo->prepare($sql);
   $statement->bindValue(":wearing",$_REQUEST["wearing"]);
-  // $statement->bindValue(":memId",$_REQUEST["memId"]);
+  $statement->bindValue(":modelId",$_REQUEST["modelId"]);
   $statement->execute();
 
   // echo "異動{$affectedRows}筆資料成功";

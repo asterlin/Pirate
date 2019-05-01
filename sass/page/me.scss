@@ -10,9 +10,9 @@
 //媒體查詢
 @import'../base/media';
 
-* {
-    outline: 1px solid rgb(125, 131, 211);
-}
+// * {
+//     outline: 1px solid rgb(125, 131, 211);
+// }
 
 body {
     background-image: url('../image/background/BgPage.png');
@@ -204,6 +204,9 @@ canvas {
                     input {
                         width: 100px;
                     }
+                    .fas{
+                        cursor: pointer; 
+                    }
                 }
             }
 
@@ -229,6 +232,7 @@ canvas {
                 //按鈕
                 .but {
                     position: absolute;
+                    cursor: pointer; 
                     //opacity: 0;
 
                 }
@@ -330,6 +334,7 @@ canvas {
         border-radius: 20%;
         overflow: hidden;
         box-sizing: border-box;
+        
 
         img {
             width: 100%;
@@ -339,6 +344,9 @@ canvas {
             transform: scale(1.05);
             opacity: .5;
         }
+    }
+    .myCustomer{
+        cursor: pointer;
     }
 }
 

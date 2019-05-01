@@ -1,3 +1,7 @@
+<?php
+ob_start();
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,45 +18,9 @@
 
 <body>
     <div class="backstage">
-        <div class="menu">
-            <div id="logo">
-                <img src="../image/logo.svg" alt="">
-            </div>
-            <p>Hi~ 管理員 <span id="manager">景承</span>♥</p>
-            <p>你好^___^</p>
-            <ul class="menuUl">
-                <li>
-                    <a href="backAdministrator.html">管理員帳號管理</a>
-                </li>
-                <li>
-                    <a href="backMember.html">會員帳號管理</a>
-                </li>
-                <li>
-                    <a href="backOfficialMerch.html">官方商品管理</a>
-                </li>
-                <li>
-                    <a href="backMerchRecord.html">造型記錄查詢</a>
-                </li>
-                <li>
-                    <a href="backTreasure.html">寶物商品管理</a>
-                </li>
-                <li>
-                    <a href="backTreasureRocard.html">寶物拍賣紀錄查詢</a>
-                </li>
-                <li>
-                    <a href="backIQTest.html">測驗題目管理</a>
-                </li>
-                <li>
-                    <a href="backBarArticle.html">討論區文章檢舉管理</a>
-                </li>
-                <li>
-                    <a href="backBarCommend.html">討論區留言檢舉管理</a>
-                </li>
-                <a href="#" class="btnpri" id="logout">
-                    <span>登出</span>
-                </a>
-            </ul>
-        </div>
+    <?php
+        require_once("backMenu.php");
+        ?>
         <div class="contentWrap">
             <div class="content">
                 <h3 class="titlePri">官方商品管理</h3>
@@ -77,17 +45,17 @@
                         </tr>
                         <?php
 try {
-    require_once("php/connectPirates.php");
-    $sql = "select * from customlist ORDER BY modelId DESC;";
-    $product=$pdo->query($sql);
+            require_once("php/connectPirates.php");
+            $sql = "select * from customlist ORDER BY modelId DESC;";
+            $product=$pdo->query($sql);
 
-    if ($product->rowCount() == 0) {
-        echo "沒有商品!!!";
-    } else {
-        $prods = $product->fetchAll(PDO::FETCH_ASSOC);
+            if ($product->rowCount() == 0) {
+                echo "沒有商品!!!";
+            } else {
+                $prods = $product->fetchAll(PDO::FETCH_ASSOC);
 
-        foreach ($prods as $i=>$prodRow) {
-            ?>	
+                foreach ($prods as $i=>$prodRow) {
+                    ?>	
             <tbody>
             <tr>
             <td class="merchNo"><?php echo $prodRow["modelId"]; ?></td>
@@ -164,24 +132,13 @@ try {
             </tbody>
             </form>
           <?php
+                }
+            }
+        } catch (PDOException $e) {
+            echo "error";
         }
-    }
-} catch (PDOException $e) {
-    echo "error";
-}
 ?>
                     </table>
-                </div>
-                <div class="pagination">
-                    <ul>
-                        <li id="left"><a href="#">
-                                < </a> </li> <li> <a href="#">1</a></li>
-                        <li> <a href="#">2</a></li>
-                        <li> <a href="#">3</a></li>
-                        <li> <a href="#">4</a></li>
-                        <li> <a href="#">5</a></li>
-                        <li class="right"> <a href="#"> > </a></li>
-                    </ul>
                 </div>
             </div>
         </div>
