@@ -183,7 +183,14 @@ a {
 .btnpri {
   margin: 10px; }
 
- .lightbox p{
+  .lightbox{
+    display: none;
+  }
+#feedback,#feedback2{
+  height: 30px;
+  line-height: 30px;
+}
+ /* .lightbox p{
     font-family: 王漢宗特明體繁;
     font-size: 20px;
     line-height: 1.6;
@@ -191,4 +198,17 @@ a {
     color: #362e2b;
     letter-spacing: 2px;
     padding: 0 20px;
-  }
+  } */
+
+  
+.lightbox input[type= text],.lightbox input[type=password]{
+  background: #fffcf2;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 10px 10px;
+  transition-duration: 0.1s;
+}
+.lightbox input:focus{
+  outline: none;
+  background: #dddad0;
+}

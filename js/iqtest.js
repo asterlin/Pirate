@@ -116,11 +116,13 @@ function change(){
 	}
 	
 	if(level==6){
+		storage['intelligence'] = str;
+	    storage['strength'] = int;
+	    storage['agile'] = agi;
+	    storage['luck'] = lcu;
 		storage['grade'] = grade;
-		storage['str'] = str;
-		storage['int'] = int;
-		storage['lcu'] = lcu;
-		storage['agi'] = agi;
+		storage['playedTimes'] = 5;
+		storage['memLv'] = 7;
 		storage['tans'] = tans;
 		window.location="iqtest-result.php";
 	}

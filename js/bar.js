@@ -48,7 +48,7 @@ function news() {
             var news_xhr = new XMLHttpRequest();
             news_xhr.onload = function(){
                 news = JSON.parse(news_xhr.responseText);
-                console.log(news);
+                // console.log(news);
                 if (newsBoxWrapCont!='') {
                     newsBoxWrapCont='';
                 }
@@ -112,7 +112,7 @@ function artBox(artId) {
     // var artBoxContText, artBoxContTextMain, artBoxContTextMeg=[],artBoxContTextRespond;
     
     if (artId == undefined) {
-        console.log("bar");
+        // console.log("bar");
         for (let i = 0; i < $class('artShow').length; i++) {
             $class('artShow')[i].addEventListener('click',function(e) {
                 document.getElementById("articleBoxWrapMask").style.display = "block";
@@ -178,11 +178,11 @@ function artBox(artId) {
             // console.log(artBoxContTextMain);
             // 
             // $id('articleBoxWrap').innerHTML=artBoxContTextMain;
-            addMeg();
+            addMeg(artId);
             });
         }
     } else {
-        console.log("index");
+        // console.log("index");
         artBoxContText='';
         var artBoxText_xhr = new XMLHttpRequest();
         artBoxText_xhr.onload = function () {
@@ -229,7 +229,7 @@ function artBox(artId) {
                 <p class="textM">${artBoxText.artText}</p>
             </div>
         </div>`;
-        addMeg();
+        addMeg(artId);
         artId = "";
         }
         artBoxText_xhr.open("Get","barphp/artBoxText.php?artId=" + artId);
@@ -238,7 +238,7 @@ function artBox(artId) {
             artId = "";
         });
     }
-    function addMeg() {
+    function addMeg(artId) {
         var artBox_xhr = new XMLHttpRequest();
         artBox_xhr.onload=function (){
             // console.log(artBox_xhr.responseText);
@@ -273,7 +273,7 @@ function artBox(artId) {
             </form>
             </div>`;
             // $id("addArtRespondArtId").value = thisMemId;
-            console.log(thisMemId);
+            // console.log(thisMemId);
             // console.log(artBoxContText);
             // artBoxContText += `${artBoxContTextRespond}`;
             $id('articleBoxWrap').innerHTML=artBoxContText;
@@ -283,6 +283,9 @@ function artBox(artId) {
             //     $id('articleBoxWrapMask').style.display = 'none';
             //     body[0].classList.remove("lightboxShow");
             // });
+
+            document.getElementById("articleBoxWrapMask").style.display = "block";
+            
             $id('closeArt').addEventListener('click',function() {
                 artId = "";
             });
@@ -330,7 +333,7 @@ function addArt() {
             alert("請上傳png,jpg或svg");
             e.preventDefault();
             e.target.value ="";
-            console.log(e.target.value);
+            // console.log(e.target.value);
             file.name ="transparent";
             $id("showArticleImg").src = "";
             $id("submitArticle").style.display= "none";
@@ -350,8 +353,8 @@ function addArt() {
             $id("showArticleImg").src = reader.result;
             // let fileName = $id('showArticleImg').src.split("/").pop();
             // console.log(fileName);
-            console.log($id("submitArticle").nodeType);
-            console.log(fileTypeAllow.indexOf(fileType));
+            // console.log($id("submitArticle").nodeType);
+            // console.log(fileTypeAllow.indexOf(fileType));
         }
         reader.readAsDataURL(file);
     }
@@ -365,7 +368,7 @@ function addArt() {
 // artReport
 //判斷
 function checkSession() {
-    if (thisMemId === "") {
+    if (thisMemId == undefined) {
         $("submitArticleLabel").addEventListener('click',function(){
             $("loginBox").style.display = "block";
         });

@@ -343,7 +343,7 @@ body {
 .p5Canvas {
   display: none; }
 
-body .lightbox {
+.lightbox {
   display: none; }
 
 @keyframes borderCircle {
@@ -812,7 +812,7 @@ body .lightbox {
   width: 300px; }
 
 #loginbox .lightbox {
-  display: none; }
+  display: block; }
 
 .playLightbox .lightbox .axis {
   left: 46px;

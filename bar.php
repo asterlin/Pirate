@@ -7,7 +7,7 @@ session_start();
 ?>
 <script>
     var thisMemId = "<?php echo $_SESSION["memId"]; ?>";
-    console.log(thisMemId);
+    // console.log(thisMemId);
 </script>
 
 
@@ -130,7 +130,7 @@ session_start();
 </div>
 <script>
     var arrhotIssue = <?php echo $jsonStr; ?>;
-    console.log(arrhotIssue);
+    // console.log(arrhotIssue);
 </script>
 
 <!-- 熱門話題內容開始 -->
@@ -352,13 +352,8 @@ session_start();
                     <form action="barphp/addArtreport.php" method="post" id="addNavyReportForm" enctype="multipart/form-data">
                         <h2 class="titleThi">讓海軍為你主持公道吧</h2>
                         <input type="hiddle">
-<<<<<<< HEAD
                         <input type="hidden" name="memId" value="">
                         <input type="hidden" name="artId" value="">
-=======
-                        <input type="hidden" name="memId" value="<?php?>">
-                        <input type="hidden" name="artId" value="<?php?>">
->>>>>>> 6e17014e939b58e711f8123d3aa0913cc9330654
                         <input type="text" name="navyReport" id="navyReportCont" placeholder="請點擊此處填入通報項目">
                         <a class="btnpri" href="javascript:;" ><span><label for="submitNavyReport">一鍵通報海軍</label></span>
                         </a>
@@ -390,33 +385,30 @@ session_start();
 </div> -->
 
 <!-- script -->
-<script src="js/bar.js?<?php echo time();?>"></script>
+<script src="js/bar.js"></script>
 <script>
     function doFirst() {
         hotIssueText();
-        addArt();
+        // addArt();
         news();
         //get queryString
         if (location.search.match("from=index") || location.search.match("from=me") ||  location.search.match("from=artRespond")) {
             // var location = location.search;
-            // console.log(location.search);
-            // console.log(location.search.indexOf("artId"));
+            console.log(location.search);
+            console.log(location.search.indexOf("artId"));
             // console.log(location.search.substring(location.search.indexOf("artId"),location.search.length));
             artBoxContText='';
             var locationSearch = location.search;
             var artId = location.search.substring(location.search.indexOf("artId"),location.search.length);
             artId = artId.substring((artId.indexOf("=")+1),artId.length);
-            // console.log(artId);
+            console.log(artId);
             artBox(artId);
-            document.getElementById("articleBoxWrapMask").style.display = "block";
+           
         }else{
             artBox();
         }
         artId="";
-<<<<<<< HEAD
         news();
-=======
->>>>>>> 6e17014e939b58e711f8123d3aa0913cc9330654
         artReport()
         // readArt();
         // alert(location.search);

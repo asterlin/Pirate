@@ -106,14 +106,14 @@ session_start();
 	<script>
 		var storage = sessionStorage;
 		var chart;
-		var graphDataNew = [50,30,40,70];//從資料庫載入的Radar數值
 		// chart.data.datasets[0].label=["asas","B","C","D"];
 		grade = storage['grade'];
-		str = parseInt(storage['str']);//力量
-		int = parseInt(storage['int']);//智力
-		lcu = parseInt(storage['lcu']);//幸運
-		agi = parseInt(storage['agi']);//敏捷
+		str = parseInt(storage['strength']);//力量
+		int = parseInt(storage['intelligence']);//智力
+		lcu = parseInt(storage['luck']);//幸運
+		agi = parseInt(storage['agile']);//敏捷
 		tans = parseInt(storage['tans']);//答對題數
+		var graphDataNew = [str,int,lcu,agi];//從資料庫載入的Radar數值
 
 		// 給分數
 		$('#grade').text(`${grade}`);
@@ -124,22 +124,20 @@ session_start();
 		else $('#abc').text(`D`);
 
 		// 把技能點數傳回資料庫update
-		function checkId(){  
+		function checkId(){
 		  //產生XMLHttpRequest物件
 		  let xhr = new XMLHttpRequest();
 
 		  //註冊callback function
 		  xhr.onload = function(){
 			      if( xhr.status == 200){ //server端可以正確的執行
-			      	console.log('sucess');
-			      	console.log(xhr.responseText);
 			      }else{ //其它
 			          alert( xhr.status );
 			      }
 			  }  
 
 			  //設定好所要連結的程式
-			  var url = "php/iqresult_Update.php?int="+int+"&str="+str+"&lcu="+lcu+"&agi="+agi;
+			  var url = `php/iqresult_Update.php?int=${int}&str=${str}&lcu=${lcu}&agi=${agi}`;
 			  xhr.open("Get", url, true);
 			  xhr.send( null );
 		}//function_checkId

@@ -96,6 +96,7 @@ try {
     
     
     <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/wavebtn.css">
     <link rel="stylesheet" href="css/gameGps.css">
     <link rel="stylesheet" href="css/lightbox.css">
@@ -103,43 +104,7 @@ try {
     <link rel="stylesheet" href="css/home.css">
 </head>
 <body>
-    <label for="burgerCtrl">
-        <input type="checkbox" name="" id="burgerCtrl">
-        <div id="burger">
-            <div class="burgerLine"></div>
-            <div class="burgerLine"></div>
-        </div>
-    </label>
-    <header class=""><!-- homeHeadHide-->
-        <h1 id="headerLogo"><a href="index.php">
-            <img src="image/logo.svg" alt="大海賊帝國">
-        </a></h1>
-        <nav id="headerMenu" >
-            <ul>
-                <li class="menuSwitch">
-                    <a href="play.php">海賊試煉場</i></a>
-                    <ul class="headerSub">
-                        <li><a href="play.php#game">海賊試煉</a></li>
-                        <li><a href="play.php#gpsWrap">啟航尋寶</a></li>
-                    </ul>
-                </li>
-                <li class="menuSwitch">
-                    <a href="market.php">海上市集</i></a>
-                    <ul class="headerSub">
-                        <li><a href="market.php">黑市</a></li>
-                        <li><a href="market.php">造船廠</a></li>
-                    </ul>
-                </li>
-                <li class="menuSwitch"><a href="bar.php">情報酒館</a></li>
-                <li class="menuSwitch">
-                    <a href="me.php">俺の海賊船</i></a>
-                    <ul class="headerSub">
-                        <li class="loginHere"><a href="javascript:;">登入</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
-    </header>
+    <?php require_once('header.php') ?>
     <div id="homeBanner">
         <p class="textEmphasis">
             如果我們的夢想可以引導你的方向，<br><strong class="textHiliR">那就去追尋吧！</strong><br>
@@ -276,7 +241,7 @@ try {
                         <img class="wantedPaper" src="image/home/wanted.svg" alt="懸賞單低階第一">
                         <p class="wantName"><?php echo $rowGameHiL['memNic']; ?></p>
                         <p class="wantScore">高階試煉 <?php echo $rowGameHiL['highscoreL'];  ?>秒</p>
-                        <img class="wantedShip" src="image/ship/ship.png" alt="我是大帥哥的海賊船">
+                        <img class="wantedShip" src="image/ship/<?php echo $rowGameHiL['shipImgAll'];  ?>" alt="<?php echo $rowGameHiL['memNic']; ?>的海賊船">
                     </div>
                 </div>
                 <div class="wrapWanted">
@@ -284,7 +249,7 @@ try {
                         <img class="wantedPaper" src="image/home/wanted.svg" alt="懸賞單中階第一">
                         <p class="wantName"><?php echo $rowGameHiM['memNic']; ?></p>
                         <p class="wantScore">中階試煉 <?php echo $rowGameHiM['highscoreM'];  ?>秒</p>
-                        <img class="wantedShip" src="image/ship/ship.png" alt="我是大帥哥的海賊船">
+                        <img class="wantedShip" src="image/ship/<?php echo $rowGameHiM['shipImgAll'];  ?>" alt="<?php echo $rowGameHiM['memNic']; ?>的海賊船">
                     </div>
                 </div>
                 <div class="wrapWanted">
@@ -292,7 +257,7 @@ try {
                         <img class="wantedPaper" src="image/home/wanted.svg" alt="懸賞單初階第一">
                         <p class="wantName"><?php echo $rowGameHiH['memNic']; ?></p>
                         <p class="wantScore">初階試煉 <?php echo $rowGameHiH['highscoreH'];  ?>秒</p>
-                        <img class="wantedShip" src="image/ship/ship.png" alt="我是大帥哥的海賊船">
+                        <img class="wantedShip" src="image/ship/<?php echo $rowGameHiH['shipImgAll'];  ?>" alt="<?php echo $rowGameHiH['memNic']; ?>的海賊船">
                     </div>
                 </div>
             </div>
@@ -496,79 +461,9 @@ try {
         <p class="textS">Copyleft © 2019</p>
     </footer>
 
+<!-- 以下為燈箱 -->
+<?php require_once('lightbox.php') ?>
 
-
-    <div class="lightbox justHide" id="loginBox">
-        <div class="popbg"></div>
-        <div class="info">
-            <div class="axis axis1"></div>
-            <div class="axis axis2"></div>
-            <div class="leave"></div>
-            <div class="paper">
-
-                <div id="tab-demo">
-                    <div id="tab01" class="tab-inner">
-                        <h2 class="textL">成為海賊</h2>
-                        
-                            <label class="textS">帳號:</label>
-                            <input id="signmemId" type="text" name="memId"><br>
-                            <label class="textS">密碼:</label>
-                            <input id="signmemPsw" type="password" name="memPsw"><br>
-                            <a id="signUp"class="btnpri" href="javascript:;">
-                                <span>登入</span>
-                            </a>
-                    </div>
-
-                    <div id="tab02" class="tab-inner">
-                        <h2 class="textL">成為海賊</h2>
-                        <form action="registered.php" id="loginforma">
-                            <div class="Data-Title">
-                                <label class="textS" for="memId">帳號:</label><br>
-                                <label class="textS" for="memNic">暱稱:</label><br>
-                                <label class="textS" for="memPsw">密碼:</label><br>
-                                <label class="textS" for="memCon">確認密碼:</label><br>
-                            </div>
-                            <div class="Data-Items">
-                                <input type="text" id="memId" name="memId"><br>
-                                <input type="text" id="memNic" name="memNic"><br>
-                                <input type="password" id="memPsw" name="memPsw"><br>
-                                <input type="password" id="memCon" name="memCon"><br>
-                            </div>
-                            <div class="verification">
-                                <div class="textM">請旋轉到正確位置</div>
-                                <a id="signlbtn" href="javascript:;">左</a>
-                                <img id="signnew" src="image/new.png" alt="" width="100px" height="100px">
-                                <a id="signrbtn" href="javascript:;">右</a>
-                                <!-- <a id="signconfirm" type="submit">提交0</a> -->
-                                <div id="signcontent"></div>
-                            </div>
-                            <div class="clearfix"></div>
-                            <a id="btnver" class="btnpri" href="javascript:;" >
-                                <span>驗證身份</span>
-                            </a>
-                            
-                        </form>
-                    </div>
-                    <ul class="tab-title">
-                        <li><a class="signIn textS" href="#tab01">登入頁</a></li>
-                        <li>/</li>
-                        <li><a class="register textS" href="#tab02">註冊頁</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="lightbox justHide" id="Msglightbox">
-        <div class="popbg"></div>
-        <div class="info">
-            <div class="axis axis1"></div>
-            <div class="axis axis2"></div>
-            <div class="leave"></div>
-            <div class="paper">
-            
-            </div>
-        </div>
-    </div>
 
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/iro.min.js"></script>
@@ -583,9 +478,9 @@ try {
     <script src="js/header.js"></script>
     <script src="js/gameGps.js"></script>
     <script src="js/shipDIY.js"></script>
-    <script src="js/home.js"></script>
     <script src="js/login.js"></script>
     <script src="js/verification.js"></script>
     <script src="js/homeMapPIXI.js"></script>
+    <script src="js/home.js"></script>
     </body>
 </html>
