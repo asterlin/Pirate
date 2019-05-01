@@ -53,17 +53,19 @@ canvas {
     height: 100%;
     width: 100%;
 }
-.butStore{
-    transform: rotateX(-50deg);
+
+.butStore {
+    transform: rotateX(0deg);
     position: absolute;
     display: block;
-    align:center;
+    align: center;
     top: 0;
     bottom: 0;
     right: 0;
     left: 0;
 }
-#butStore{
+
+#butStore {
     display: flex;
 }
 
@@ -217,11 +219,13 @@ canvas {
                     input {
                         width: 100px;
                         border-radius: 5px;
-                        border: 2px solid #8F716D;;
-                        
+                        border: 2px solid #8F716D;
+                        ;
+
                     }
-                    .fas{
-                        cursor: pointer; 
+
+                    .fas {
+                        cursor: pointer;
                     }
                 }
             }
@@ -248,7 +252,7 @@ canvas {
                 //按鈕
                 .but {
                     position: absolute;
-                    cursor: pointer; 
+                    cursor: pointer;
                     border: 1px solid transparent;
                     background-color: #8F716D;
                     box-sizing: border-box;
@@ -357,7 +361,7 @@ canvas {
         border-radius: 20%;
         overflow: hidden;
         box-sizing: border-box;
-        
+
 
         img {
             width: 100%;
@@ -368,7 +372,8 @@ canvas {
             opacity: .5;
         }
     }
-    .myCustomer{
+
+    .myCustomer {
         cursor: pointer;
     }
 }
@@ -454,7 +459,10 @@ canvas {
 
 @media screen and(min-width: 768px) {
 
-    
+    .butStore {
+        transform: rotateX(-50deg);
+    }
+
 
     .meTitle {
         padding-top: 210px;
@@ -566,6 +574,7 @@ canvas {
 
 
 @media screen and(min-width: 1200px) {
+
 
     .meTitle {
         padding-top: 210px;
