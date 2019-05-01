@@ -216,6 +216,9 @@ canvas {
 
                     input {
                         width: 100px;
+                        border-radius: 5px;
+                        border: 2px solid #8F716D;;
+                        
                     }
                     .fas{
                         cursor: pointer; 
@@ -246,6 +249,13 @@ canvas {
                 .but {
                     position: absolute;
                     cursor: pointer; 
+                    border: 1px solid transparent;
+                    background-color: #8F716D;
+                    box-sizing: border-box;
+                    padding: 5px 10px;
+                    border-radius: 5px;
+                    font-family: $fofaText;
+                    color: #fff;
                     //opacity: 0;
 
                 }
@@ -256,7 +266,7 @@ canvas {
                 }
 
                 #butI {
-                    left: 50px;
+                    left: 60px;
                     /* right: 15px; */
                     /* top: 150px; */
                     bottom: 0;
@@ -264,12 +274,12 @@ canvas {
 
                 #butL {
                     bottom: 0;
-                    left: 100px;
+                    left: 120px;
                 }
 
                 #butA {
                     bottom: 0;
-                    left: 150px;
+                    left: 180px;
                 }
             }
         }
@@ -498,20 +508,15 @@ canvas {
 
         .boxNews {
             padding: 0 20px;
-            // padding-left: 80px;
+            padding-top: 40px;
             transform-style: preserve-3d;
-            // transform: rotateX(0deg);
             transform-origin: bottom;
-            // animation: lyingDown .5s;
-
-
 
             .meNews {
                 display: flex;
             }
 
         }
-
 
     }
 

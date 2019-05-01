@@ -78,7 +78,7 @@ try {
                 <td class="treaNo"><?php echo $prodRow["treaId"]; ?></td>
                 <td class="treaName"><input type="text" name="treaName" value='<?php echo $prodRow["treaName"]; ?>' placeholder="請輸入造型名稱"></td>
                 <td class="treaImg">
-                    <img src="../<?php echo $prodRow["treaImg"]; ?>" class="imgPreview">
+                    <img src="../image/treasure/<?php echo $prodRow["treaImg"]; ?>" class="imgPreview">
                     <input class="treaInputImg" type="file" value="../<?php echo $prodRow["treaImg"]; ?>">
                 </td>
                 <td class="treaInt"><input type="text" name="treaInt" value='<?php echo $prodRow["treaInt"]; ?>' placeholder="請輸入能力值"></td>
@@ -127,7 +127,7 @@ try {
     </div>
     <script src="../js/wavebtn.js"></script>
 
-    <script src="../backstage/js/backOfficialTrea.js"></script>
+    <script src="js/backOfficialTrea.js"></script>
 </body>
 
 </html>
