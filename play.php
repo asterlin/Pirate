@@ -14,6 +14,7 @@ session_start();
     <link rel="stylesheet" href="css/lightbox.css">
     <link rel="stylesheet" href="css/gameGps.css">
     <link rel="stylesheet" href="css/login.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.6/plugins/animation.gsap.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.6/plugins/debug.addIndicators.min.js"></script>
@@ -28,46 +29,11 @@ session_start();
     <script src="js/animation.gsap.min.js"></script>
 	<script src="js/jquery-3.3.1.min.js"></script>
 	<script src="js/ScrollToPlugin.js"></script>
-	<script src="js/verification.js"></script>
 </head>
 <body>
-	<label for="burgerCtrl">
-        <input type="checkbox" name="" id="burgerCtrl">
-        <div id="burger">
-            <div class="burgerLine"></div>
-            <div class="burgerLine"></div>
-        </div>
-    </label>
-    <header class=""><!-- homeHeadHide-->
-        <h1 id="headerLogo"><a href="index.php">
-            <img src="image/logo.svg" alt="大海賊帝國">
-        </a></h1>
-        <nav id="headerMenu" >
-            <ul>
-                <li class="menuSwitch">
-                    <a href="play.php">海賊試煉場</i></a>
-                    <ul class="headerSub">
-                        <li><a href="play.php#game">海賊試煉</a></li>
-                        <li><a href="play.php#gpsWrap">啟航尋寶</a></li>
-                    </ul>
-                </li>
-                <li class="menuSwitch">
-                    <a href="market.php">海上市集</i></a>
-                    <ul class="headerSub">
-                        <li><a href="market.php">黑市</a></li>
-                        <li><a href="market.php">造船廠</a></li>
-                    </ul>
-                </li>
-                <li class="menuSwitch"><a href="bar.php">情報酒館</a></li>
-                <li class="menuSwitch">
-                    <a href="me.php">俺の海賊船</i></a>
-                    <ul class="headerSub">
-                        <li><a href="javascript:;" class="loginHere">登入</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
-    </header>
+	<?php 
+	require_once("header.php");
+	?>
 	<div id="choose">
 		<div id="playTitle">
 	        <h1 class="titlePri">海賊試煉場</h1>
@@ -211,53 +177,53 @@ session_start();
 					<div id="rankList1">
 						<div class="list1 playerList spark">
 							<span class="rankNum">1</span>
-							<span class="rankName">林以騰</span>
-							<span class="rankSec">34.81秒</span>
+							<span class="rankName">炒泡麵之神</span>
+							<span class="rankSec">10秒</span>
 						</div>
 						<div class="list2 playerList">
 							<span class="rankNum">2</span>
-							<span class="rankName">貝多芬</span>
-							<span class="rankSec">34.81秒</span>
+							<span class="rankName">八加九之光</span>
+							<span class="rankSec">20秒</span>
 						</div>
 						<div class="list3 playerList">
 							<span class="rankNum">3</span>
 							<span class="rankName">拿破崙</span>
-							<span class="rankSec">34.81秒</span>
+							<span class="rankSec">30秒</span>
 						</div>
 						<div class="list4 playerList">
 							<span class="rankNum">4</span>
-							<span class="rankName">織田信asd</span>
-							<span class="rankSec">34.81秒</span>
+							<span class="rankName">提摩隊長</span>
+							<span class="rankSec">34秒</span>
 						</div>
 						<div class="list5 playerList">
 							<span class="rankNum">5</span>
-							<span class="rankName">德川家</span>
-							<span class="rankSec">34.81秒</span>
+							<span class="rankName">三眼神童</span>
+							<span class="rankSec">35秒</span>
 						</div>
 						<div class="list6 playerList">
 							<span class="rankNum">6</span>
-							<span class="rankName">宮本武</span>
-							<span class="rankSec">34.81秒</span>
+							<span class="rankName">冷笑話王</span>
+							<span class="rankSec">64秒</span>
 						</div>
 						<div class="list7 playerList">
 							<span class="rankNum">7</span>
-							<span class="rankName">佐佐木</span>
-							<span class="rankSec">34.81秒</span>
+							<span class="rankName">台灣阿呆</span>
+							<span class="rankSec">88秒</span>
 						</div>
 						<div class="list8 playerList">
 							<span class="rankNum">8</span>
-							<span class="rankName">武田勝</span>
-							<span class="rankSec">34.81秒</span>
+							<span class="rankName">帥到分手</span>
+							<span class="rankSec">92秒</span>
 						</div>
 						<div class="list9 playerList">
 							<span class="rankNum">9</span>
-							<span class="rankName">小早川</span>
-							<span class="rankSec">34.81秒</span>
+							<span class="rankName">小早川秀秋</span>
+							<span class="rankSec">132秒</span>
 						</div>
 						<div class="list10 playerList">
 							<span class="rankNum">10</span>
 							<span class="rankName">蘭陵王</span>
-							<span class="rankSec">34.81秒</span>
+							<span class="rankSec">140秒</span>
 						</div>
 					</div>
 				</div>
@@ -267,62 +233,62 @@ session_start();
 					<div class="rank0 rankFrame">
 						<img src="image/play/rankPaper.png" alt="frame">
 						<img src="image/play/myBoat.png" alt="myBoat" class="myBoat">
-						<span class="myName">林以騰</span>
-						<span class="myGrade">初階試煉34.81秒</span>
+						<span class="myName">炒泡麵之神</span>
+						<span class="myGrade">初階試煉10秒</span>
 					</div>
 					<div class="rank1 rankFrame">
 						<img src="image/play/rankPaper.png" alt="frame">
 						<img src="image/play/myBoat.png" alt="myBoat" class="myBoat">
-						<span class="myName">貝多芬</span>
-						<span class="myGrade">初階試煉34.81秒</span>
+						<span class="myName">八加九之光</span>
+						<span class="myGrade">初階試煉20秒</span>
 					</div>
 					<div class="rank2 rankFrame">
 						<img src="image/play/rankPaper.png" alt="frame">
 						<img src="image/play/myBoat.png" alt="myBoat" class="myBoat">
 						<span class="myName">拿破崙</span>
-						<span class="myGrade">初階試煉34.81秒</span>
+						<span class="myGrade">初階試煉30秒</span>
 					</div>
 					<div class="rank3 rankFrame">
 						<img src="image/play/rankPaper.png" alt="frame">
 						<img src="image/play/myBoat.png" alt="myBoat" class="myBoat">
-						<span class="myName">織田信長</span>
-						<span class="myGrade">初階試煉34.81秒</span>
+						<span class="myName">提摩隊長</span>
+						<span class="myGrade">初階試煉34秒</span>
 					</div>
 					<div class="rank4 rankFrame">
 						<img src="image/play/rankPaper.png" alt="frame">
 						<img src="image/play/myBoat.png" alt="myBoat" class="myBoat">
-						<span class="myName">德川家康</span>
-						<span class="myGrade">初階試煉34.81秒</span>
+						<span class="myName">三眼神童</span>
+						<span class="myGrade">初階試煉35秒</span>
 					</div>
 					<div class="rank5 rankFrame">
 						<img src="image/play/rankPaper.png" alt="frame">
 						<img src="image/play/myBoat.png" alt="myBoat" class="myBoat">
-						<span class="myName">宮本武藏</span>
-						<span class="myGrade">初階試煉34.81秒</span>
+						<span class="myName">冷笑話王</span>
+						<span class="myGrade">初階試煉64秒</span>
 					</div>
 					<div class="rank6 rankFrame">
 						<img src="image/play/rankPaper.png" alt="frame">
 						<img src="image/play/myBoat.png" alt="myBoat" class="myBoat">
-						<span class="myName">佐佐木</span>
-						<span class="myGrade">初階試煉34.81秒</span>
+						<span class="myName">台灣阿呆</span>
+						<span class="myGrade">初階試煉88秒</span>
 					</div>
 					<div class="rank7 rankFrame">
 						<img src="image/play/rankPaper.png" alt="frame">
 						<img src="image/play/myBoat.png" alt="myBoat" class="myBoat">
-						<span class="myName">武田勝賴</span>
-						<span class="myGrade">初階試煉34.81秒</span>
+						<span class="myName">帥到分手</span>
+						<span class="myGrade">初階試煉92秒</span>
 					</div>
 					<div class="rank8 rankFrame">
 						<img src="image/play/rankPaper.png" alt="frame">
 						<img src="image/play/myBoat.png" alt="myBoat" class="myBoat">
 						<span class="myName">小早川秀秋</span>
-						<span class="myGrade">初階試煉34.81秒</span>
+						<span class="myGrade">初階試煉132秒</span>
 					</div>
 					<div class="rank9 rankFrame">
 						<img src="image/play/rankPaper.png" alt="frame">
 						<img src="image/play/myBoat.png" alt="myBoat" class="myBoat">
 						<span class="myName">蘭陵王</span>
-						<span class="myGrade">初階試煉34.81秒</span>
+						<span class="myGrade">初階試煉140秒</span>
 					</div>
 				</div>
 			</div>
@@ -510,6 +476,11 @@ session_start();
 			<div id="blueGameTime" class="blueInfo">體力值<span></span></div>
 		</div>
 	</div>
+	<?php 
+		require_once("lightbox.php");
+		require_once("footer.php");
+	 ?>
+<script src="js/playTweenMax.js"></script>
 <script src="js/playTime_update.js"></script>
 <script src="js/header.js"></script>
 <script src="js/wavebtn.js"></script>
@@ -518,11 +489,11 @@ session_start();
 <script src="js/compass.js"></script>
 <script src="js/playRank.js"></script>
 <script src="js/playFrameChange.js"></script>
-<script src="js/playTweenMax.js"></script>
 <!-- <script src="js/reset.js"></script> -->
 <script src="js/getStatus.js"></script>
 <script src="js/gameGps.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKB16XDqQ6Qnki2BdJUQXXP4hEpK0_2wo&callback=initMap&libraries=geometry"></script> 
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKB16XDqQ6Qnki2BdJUQXXP4hEpK0_2wo&callback=initMap&libraries=geometry"></script>
+<script src="js/verification.js"></script> 
 <script>
 var storage = sessionStorage;
 var compass;
@@ -538,7 +509,6 @@ var lcu=parseInt($('#blueLuck span').text());
 var agi=parseInt($('#blueAgi span').text());
 var rwd=$('#playTitleSec').width();
 var playTimeCount=0;
-console.log(memLv,'%',memExp);
 
 $(document).ready(function(){
 //登入lightbox使用
@@ -569,6 +539,10 @@ $('#winbox .checkToLeave').click(function(){
 	getScoreL();
 	getStatus();
 	playTimeCount=0;
+	$('#blueLv span').text(`${memLv}`);
+    $('#blueExp span').text(`${memExp}`);
+    $('#blueMoney span').text(`${memMoney}`);
+    $('#blueGameTime span').text(`${playedTimes}`);
 });
 $('#losebox .checkToLeave').click(function(){
 	storage['playedTimes']=playedTimes-1;
