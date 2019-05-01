@@ -87,7 +87,7 @@ require_once("meToDB/meToDB.php");
                         <canvas id="drawFlag"></canvas>
                 </div>
             </div>
-            <a href="#">
+            <a class="butStore" href="javacript:;">
                 <button id="butStore" class="btnpri"><span>儲存</span></button>
             </a>
         </div>
@@ -148,7 +148,7 @@ require_once("meToDB/meToDB.php");
                     <button id="butA" class="but" >敏捷</button>
                     </div>
                     <h3>天賦值: <span id="points"> <?php echo $TPRemain ?> </span> 點</h3>
-                    <canvas id="myChart"  style="display: inline-block; width:90%; height:90%;"></canvas>
+                    <canvas id="myChart"  style="display: inline-block; width:60%; height:60%;"></canvas>
                 </div>
             </div>
             <!-- --------------------------------------------------------------------------->
@@ -255,7 +255,6 @@ require_once("meToDB/meToDB.php");
                                 <li>發文時間: <span><?php echo $artTime?></span> </li>
                                 <li>討論人數: <span><?php echo $msgAmt?></span> 次</li>
                                 <li>點擊次數: <span><?php echo $clickAmt?></span> 次</li>
-                                <li><button class="btnpri"><span><a href="ber.php?from=me&artId=<?php echo $artId?>">前往文章</a></span></button></li>
                             </ul>
                     </div>
                     <?php
@@ -308,7 +307,7 @@ require_once("meToDB/meToDB.php");
         $('.but').click(plusSkill);//加技能點數
         $id("carryOut").onclick = login;//儲存密碼變更
         getShip();
-        $('#butStore').click(changeMeShip);//儲存變更船隻
+        $('#butStore').click(saveMeShip);//儲存變更船隻
     });
 
 //-----------------------------------------------------------------

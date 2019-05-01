@@ -53,6 +53,19 @@ canvas {
     height: 100%;
     width: 100%;
 }
+.butStore{
+    transform: rotateX(-50deg);
+    position: absolute;
+    display: block;
+    align:center;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+#butStore{
+    display: flex;
+}
 
 /* #shipArea img{
     width: 750px;
@@ -431,9 +444,7 @@ canvas {
 
 @media screen and(min-width: 768px) {
 
-    #butStore {
-        transform: rotateX(-50deg);
-    }
+    
 
     .meTitle {
         padding-top: 210px;

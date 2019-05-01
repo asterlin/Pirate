@@ -43,7 +43,7 @@ window.addEventListener("load", function () {
             let myImage = e.target;
             let partNo = myImage.className.substr(1, 1);
             let partName;
-            console.log(meShip);
+            // console.log(meShip);
             switch (partNo) {
                 case "1":
                     partName = "partHead";
@@ -63,7 +63,7 @@ window.addEventListener("load", function () {
                 changeMyShip(e.target.src,document.getElementById(partName).data);
                 document.getElementById(partName).data = e.target.src;
             } else {
-                changeMyShip(e.target.src,document.getElementById(partName).src);
+                changeMyShip(e.target.src, document.getElementById(partName).src);
                 document.getElementById(partName).src = e.target.src;
                 document.getElementById(partName).data = e.target.data;
             }
