@@ -212,52 +212,52 @@ session_start();
 						<div class="list1 playerList spark">
 							<span class="rankNum">1</span>
 							<span class="rankName">林以騰</span>
-							<span class="rankSec">34.81秒</span>
+							<span class="rankSec">10秒</span>
 						</div>
 						<div class="list2 playerList">
 							<span class="rankNum">2</span>
 							<span class="rankName">貝多芬</span>
-							<span class="rankSec">34.81秒</span>
+							<span class="rankSec">20秒</span>
 						</div>
 						<div class="list3 playerList">
 							<span class="rankNum">3</span>
 							<span class="rankName">拿破崙</span>
-							<span class="rankSec">34.81秒</span>
+							<span class="rankSec">22秒</span>
 						</div>
 						<div class="list4 playerList">
 							<span class="rankNum">4</span>
-							<span class="rankName">織田信asd</span>
-							<span class="rankSec">34.81秒</span>
+							<span class="rankName">織田信</span>
+							<span class="rankSec">32秒</span>
 						</div>
 						<div class="list5 playerList">
 							<span class="rankNum">5</span>
 							<span class="rankName">德川家</span>
-							<span class="rankSec">34.81秒</span>
+							<span class="rankSec">48秒</span>
 						</div>
 						<div class="list6 playerList">
 							<span class="rankNum">6</span>
 							<span class="rankName">宮本武</span>
-							<span class="rankSec">34.81秒</span>
+							<span class="rankSec">56秒</span>
 						</div>
 						<div class="list7 playerList">
 							<span class="rankNum">7</span>
 							<span class="rankName">佐佐木</span>
-							<span class="rankSec">34.81秒</span>
+							<span class="rankSec">76秒</span>
 						</div>
 						<div class="list8 playerList">
 							<span class="rankNum">8</span>
 							<span class="rankName">武田勝</span>
-							<span class="rankSec">34.81秒</span>
+							<span class="rankSec">77秒</span>
 						</div>
 						<div class="list9 playerList">
 							<span class="rankNum">9</span>
 							<span class="rankName">小早川</span>
-							<span class="rankSec">34.81秒</span>
+							<span class="rankSec">156秒</span>
 						</div>
 						<div class="list10 playerList">
 							<span class="rankNum">10</span>
 							<span class="rankName">蘭陵王</span>
-							<span class="rankSec">34.81秒</span>
+							<span class="rankSec">231秒</span>
 						</div>
 					</div>
 				</div>
@@ -268,61 +268,61 @@ session_start();
 						<img src="image/play/rankPaper.png" alt="frame">
 						<img src="image/play/myBoat.png" alt="myBoat" class="myBoat">
 						<span class="myName">林以騰</span>
-						<span class="myGrade">初階試煉34.81秒</span>
+						<span class="myGrade">初階試煉10秒</span>
 					</div>
 					<div class="rank1 rankFrame">
 						<img src="image/play/rankPaper.png" alt="frame">
 						<img src="image/play/myBoat.png" alt="myBoat" class="myBoat">
 						<span class="myName">貝多芬</span>
-						<span class="myGrade">初階試煉34.81秒</span>
+						<span class="myGrade">初階試煉20秒</span>
 					</div>
 					<div class="rank2 rankFrame">
 						<img src="image/play/rankPaper.png" alt="frame">
 						<img src="image/play/myBoat.png" alt="myBoat" class="myBoat">
 						<span class="myName">拿破崙</span>
-						<span class="myGrade">初階試煉34.81秒</span>
+						<span class="myGrade">初階試煉22秒</span>
 					</div>
 					<div class="rank3 rankFrame">
 						<img src="image/play/rankPaper.png" alt="frame">
 						<img src="image/play/myBoat.png" alt="myBoat" class="myBoat">
 						<span class="myName">織田信長</span>
-						<span class="myGrade">初階試煉34.81秒</span>
+						<span class="myGrade">初階試煉32秒</span>
 					</div>
 					<div class="rank4 rankFrame">
 						<img src="image/play/rankPaper.png" alt="frame">
 						<img src="image/play/myBoat.png" alt="myBoat" class="myBoat">
 						<span class="myName">德川家康</span>
-						<span class="myGrade">初階試煉34.81秒</span>
+						<span class="myGrade">初階試煉48秒</span>
 					</div>
 					<div class="rank5 rankFrame">
 						<img src="image/play/rankPaper.png" alt="frame">
 						<img src="image/play/myBoat.png" alt="myBoat" class="myBoat">
 						<span class="myName">宮本武藏</span>
-						<span class="myGrade">初階試煉34.81秒</span>
+						<span class="myGrade">初階試煉56秒</span>
 					</div>
 					<div class="rank6 rankFrame">
 						<img src="image/play/rankPaper.png" alt="frame">
 						<img src="image/play/myBoat.png" alt="myBoat" class="myBoat">
 						<span class="myName">佐佐木</span>
-						<span class="myGrade">初階試煉34.81秒</span>
+						<span class="myGrade">初階試煉76秒</span>
 					</div>
 					<div class="rank7 rankFrame">
 						<img src="image/play/rankPaper.png" alt="frame">
 						<img src="image/play/myBoat.png" alt="myBoat" class="myBoat">
 						<span class="myName">武田勝賴</span>
-						<span class="myGrade">初階試煉34.81秒</span>
+						<span class="myGrade">初階試煉77秒</span>
 					</div>
 					<div class="rank8 rankFrame">
 						<img src="image/play/rankPaper.png" alt="frame">
 						<img src="image/play/myBoat.png" alt="myBoat" class="myBoat">
 						<span class="myName">小早川秀秋</span>
-						<span class="myGrade">初階試煉34.81秒</span>
+						<span class="myGrade">初階試煉156秒</span>
 					</div>
 					<div class="rank9 rankFrame">
 						<img src="image/play/rankPaper.png" alt="frame">
 						<img src="image/play/myBoat.png" alt="myBoat" class="myBoat">
 						<span class="myName">蘭陵王</span>
-						<span class="myGrade">初階試煉34.81秒</span>
+						<span class="myGrade">初階試煉231秒</span>
 					</div>
 				</div>
 			</div>
@@ -528,17 +528,17 @@ var storage = sessionStorage;
 var compass;
 var gameStartTimer;
 var memId=storage['memId'];
-var playedTimes=storage['playedTimes'];
+var playedTimes=parseInt(storage['playedTimes']);
 var memLv=parseInt(storage['memLv']);
 var memExp=parseInt(storage['memExp']);
-var playedTimes=parseInt($('#blueGameTime span').text());
+var memMoney=parseInt(storage['memMoney']);
 var int=parseInt($('#blueInt span').text());
 var str=parseInt($('#blueStr span').text());
 var lcu=parseInt($('#blueLuck span').text());
 var agi=parseInt($('#blueAgi span').text());
 var rwd=$('#playTitleSec').width();
 var playTimeCount=0;
-console.log(memLv,'%',memExp);
+console.log(memLv,'%',memExp,'$',playedTimes);
 
 $(document).ready(function(){
 //登入lightbox使用
@@ -560,7 +560,9 @@ $('.leave').click(function(){$('.lightbox').css('display','none');})
 
 // 寫入遊戲測驗時間
 $('#winbox .checkToLeave').click(function(){
-	storage['playedTimes']=playedTimes-1;
+	memMoney+=1000;
+	playedTimes-=1;
+	storage['playedTimes']=playedTimes;
 	memLv+=1;
 	memExp=50;
 	storage['memLv']=memLv;
@@ -569,13 +571,20 @@ $('#winbox .checkToLeave').click(function(){
 	getScoreL();
 	getStatus();
 	playTimeCount=0;
+	console.log('memLv: ',memLv,'memExp: ',memExp,'playedTime: ',playedTimes);
+	$('#blueLv span').text(`${memLv}`);
+    $('#blueExp span').text(`${memExp}`);
+    $('#blueMoney span').text(`${memMoney}`);
+    $('#blueGameTime span').text(`${playedTimes}`);
 });
 $('#losebox .checkToLeave').click(function(){
-	storage['playedTimes']=playedTimes-1;
+	playedTimes-=1;
+	storage['playedTimes']=playedTimes;
 	updateScore();//playTime_update.js
 	getScoreL();
 	getStatus();
 	playTimeCount=0;
+	$('#blueGameTime span').text(playedTimes);
 });
 // 跑tweenmax
 playTweenMax();

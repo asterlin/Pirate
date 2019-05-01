@@ -21,6 +21,7 @@ try {
     <title>Document</title>
     <link rel="stylesheet" href="css/wavebtn.css">
     <link rel="stylesheet" href="css/balance.css">
+    <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="css/black.css">
     <link rel="stylesheet" href="css/lightbox.css">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
@@ -30,6 +31,7 @@ try {
 
 </head>
 <body>
+    <?php require_once('header.php') ?>
     <div class="black">
         <p>黑市</p>
     <a id="gosellpage" class="btnsec " href="#">
@@ -274,6 +276,7 @@ while( $treaRow = $treasurelist->fetch(PDO::FETCH_ASSOC)){
             </div>
         </div> 
     </div>
+    <script src="js/verification.js"></script>
     <script src="js/balance.js"></script>
     <script src="js/black.js"></script>
     <script>
@@ -298,6 +301,8 @@ while( $treaRow = $treasurelist->fetch(PDO::FETCH_ASSOC)){
         });
     </script>
     </div>
+    <?php require_once('footer.php') ?>
+    <?php require_once('lightbox.php') ?>
 </body>
 </html>
 
