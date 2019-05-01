@@ -284,7 +284,7 @@ try {
                         <img class="wantedPaper" src="image/home/wanted.svg" alt="懸賞單中階第一">
                         <p class="wantName"><?php echo $rowGameHiM['memNic']; ?></p>
                         <p class="wantScore">中階試煉 <?php echo $rowGameHiM['highscoreM'];  ?>秒</p>
-                        <img class="wantedShip" src="image/ship/<?php echo $rowGameHiL['shipImgAll'];  ?>" alt="<?php echo $rowGameHiM['memNic']; ?>的海賊船">
+                        <img class="wantedShip" src="image/ship/<?php echo $rowGameHiM['shipImgAll'];  ?>" alt="<?php echo $rowGameHiM['memNic']; ?>的海賊船">
                     </div>
                 </div>
                 <div class="wrapWanted">
@@ -292,7 +292,7 @@ try {
                         <img class="wantedPaper" src="image/home/wanted.svg" alt="懸賞單初階第一">
                         <p class="wantName"><?php echo $rowGameHiH['memNic']; ?></p>
                         <p class="wantScore">初階試煉 <?php echo $rowGameHiH['highscoreH'];  ?>秒</p>
-                        <img class="wantedShip" src="image/ship/<?php echo $rowGameHiL['shipImgAll'];  ?>" alt="<?php echo $rowGameHiH['memNic']; ?>的海賊船">
+                        <img class="wantedShip" src="image/ship/<?php echo $rowGameHiH['shipImgAll'];  ?>" alt="<?php echo $rowGameHiH['memNic']; ?>的海賊船">
                     </div>
                 </div>
             </div>
