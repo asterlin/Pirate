@@ -528,17 +528,17 @@ var storage = sessionStorage;
 var compass;
 var gameStartTimer;
 var memId=storage['memId'];
-var playedTimes=storage['playedTimes'];
+var playedTimes=parseInt(storage['playedTimes']);
 var memLv=parseInt(storage['memLv']);
 var memExp=parseInt(storage['memExp']);
-var playedTimes=parseInt($('#blueGameTime span').text());
+var memMoney=parseInt(storage['memMoney']);
 var int=parseInt($('#blueInt span').text());
 var str=parseInt($('#blueStr span').text());
 var lcu=parseInt($('#blueLuck span').text());
 var agi=parseInt($('#blueAgi span').text());
 var rwd=$('#playTitleSec').width();
 var playTimeCount=0;
-console.log(memLv,'%',memExp);
+console.log(memLv,'%',memExp,'$',playedTimes);
 
 $(document).ready(function(){
 //登入lightbox使用
@@ -560,7 +560,9 @@ $('.leave').click(function(){$('.lightbox').css('display','none');})
 
 // 寫入遊戲測驗時間
 $('#winbox .checkToLeave').click(function(){
-	storage['playedTimes']=playedTimes-1;
+	memMoney+=1000;
+	playedTimes-=1;
+	storage['playedTimes']=playedTimes;
 	memLv+=1;
 	memExp=50;
 	storage['memLv']=memLv;
@@ -569,13 +571,20 @@ $('#winbox .checkToLeave').click(function(){
 	getScoreL();
 	getStatus();
 	playTimeCount=0;
+	console.log('memLv: ',memLv,'memExp: ',memExp,'playedTime: ',playedTimes);
+	$('#blueLv span').text(`${memLv}`);
+    $('#blueExp span').text(`${memExp}`);
+    $('#blueMoney span').text(`${memMoney}`);
+    $('#blueGameTime span').text(`${playedTimes}`);
 });
 $('#losebox .checkToLeave').click(function(){
-	storage['playedTimes']=playedTimes-1;
+	playedTimes-=1;
+	storage['playedTimes']=playedTimes;
 	updateScore();//playTime_update.js
 	getScoreL();
 	getStatus();
 	playTimeCount=0;
+	$('#blueGameTime span').text(playedTimes);
 });
 // 跑tweenmax
 playTweenMax();
