@@ -16,7 +16,7 @@ try{
   $iqtest->bindValue(":option4",$_REQUEST["option4"]);
   $iqtest->bindValue(":answer",$_REQUEST["answer"]);
   $iqtest->execute();
-
+  
 }catch (PDOException $e) {
   $errMsg .=  "錯誤原因" . $e->getMessage() . "<br>"; 
   $errMsg .=  "錯誤行號" . $e->getLine() . "<br>";
