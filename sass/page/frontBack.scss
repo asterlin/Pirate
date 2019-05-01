@@ -1,0 +1,418 @@
+@import '../base/font';
+@import '../base/reset';
+
+.body {
+    font-family: $fofaText;
+}
+
+h1, h2, h3, h4 {
+    text-shadow: .1px .1px .1px #443c3a;
+}
+
+span,a {
+    color: rgb(15, 15, 15);
+    font-size: 1rem;
+}
+
+img {
+    width: 100%;
+}
+
+.clearfix {
+    clear: both;
+}
+
+.piratesLoadingWrap {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    background: #222222;
+}
+
+.loadingsYItembg {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    opacity: 1;
+    transition: all .3s;
+    overflow: hidden;
+    z-index: 3;
+    }
+
+    .loadingsYItembg .loadingsRDNWrap {
+      overflow: hidden;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0; }
+      
+.loadingsRBgWeather {
+    transform: rotate(20deg) translate(-300px,-100px);
+    transform-origin: center;
+    position: relative;
+}
+
+.pirateLoadingShip {
+    width: 15%;
+    position: absolute;
+    z-index: 1;
+    bottom: 20vh;
+    left: 48%;
+    transform: translate(-50%,0);
+    animation: pirateShip 5s ease-in-out infinite alternate;
+    z-index: 1;
+    img {
+        width: 100%;
+        position: relative;
+        top: 0;
+        left: 0;
+    }
+
+    .loadingHead {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    .loadingSail {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+}
+
+.lWBFront {
+    position: absolute;
+    bottom: 0;
+    width: 100%; 
+    // background-image: linear-gradient(0deg, rgb(134, 241, 241) 0%, rgba(0, 126, 126,.5) 10%, rgba(0, 153, 153,.2) 30%, transparent 100%);
+    padding-top: 10vh;
+    z-index: 2;
+
+    img {
+        position: absolute;
+        bottom: -10vh;
+        opacity: .8;
+        height: 48vh;
+        z-index: 1;
+    }
+    img:nth-of-type(1){
+        position: relative;
+        animation: stormWavesdefault 5s 5s ease-in-out infinite alternate;
+        transform: rotate(5deg) scale(1.15);
+    }
+    img:nth-of-type(2){
+        animation: stormWavesa 2s 5s ease-in-out infinite alternate;
+        transform: rotate(20deg) scale(1.15);
+    }
+    img:nth-of-type(3){
+        animation: stormWavesb 3s 5s ease-in-out infinite alternate;
+        transform: rotate(15deg) scale(1.15);
+    }
+    img:nth-of-type(4){
+        animation: stormWavesb 4s 5s ease-in-out infinite alternate;
+        transform: rotate(15deg) scale(1.15);
+    }
+    img:nth-of-type(5){
+        animation: stormWavesa 6s 5s ease-in-out infinite alternate;
+        transform: rotate(20deg) scale(1.15);
+    }
+}
+
+.lWBBack {
+    position: absolute;
+    bottom: 0;
+    width: 100%; 
+    background-image: linear-gradient(0deg, rgb(134, 241, 241) 0%, rgba(0, 126, 126,.5) 10%, rgba(0, 153, 153,.2) 30%, transparent 100%);
+    padding-top: 10vh;
+    z-index: 2;
+    
+    img {
+        position: absolute;
+        bottom: -10vh;
+        opacity: .8;
+        height: 48vh;
+        z-index: 1;
+    }
+    img:nth-of-type(1){
+        position: relative;
+        
+        animation: stormWavesa 6s ease-in-out infinite alternate;
+    }
+    img:nth-of-type(2){
+        
+        animation: stormWavesb 4s .5s ease-in-out infinite alternate;
+    }
+    img:nth-of-type(3){
+        animation: stormWavesb 3s .4s ease-in-out infinite alternate;
+    }
+    img:nth-of-type(4){
+        animation: stormWavesa 2s ease-in-out infinite alternate;
+    }
+    img:nth-of-type(5){
+        height: 68vh;
+        bottom: -30vh;
+        animation: stormWavesdefault 5s ease-in-out infinite alternate;
+    }
+}
+
+.lWBFront {
+    z-index: 0;
+    animation: lWBFrontAnimation 5s 5s ease-in-out infinite alternate;
+    transform: scale(1.1);
+}
+
+.lWBBack {
+    z-index: 2;
+    animation: lWBFBackAnimation 5s ease-in-out infinite alternate;
+    transform: rotateY(180deg) scale(1.1);
+}
+
+@keyframes lWBFrontAnimation {
+    from {
+        transform: rotateZ(0deg) scale(1.1);
+    }
+    to {
+        transform: rotateZ(-20deg) scale(1.1);
+    }
+}
+
+@keyframes lWBFBackAnimation {
+    from {
+        transform: rotateZ(0deg) rotateY(180deg) scale(1.1);
+    }
+    to {
+        transform: rotateZ(20deg) rotateY(180deg) scale(1.1);
+    }
+}
+
+@keyframes pirateShip {
+    from {
+        transform: rotate(-10deg) translate(-30%, -15px);
+    }
+    25%{
+        
+    }
+    50%{
+        
+    }
+    65%{
+
+    }
+    to {
+        transform: rotate(25deg) translate(-75%, 40px);
+    }
+}
+
+@keyframes stormWavesdefault {
+    from {
+        transform: rotate(5deg) translate(0, 0) scale(1.05);
+    }
+    to {
+        transform: rotate(-5deg) translate(0, 0) scale(1.05);
+    }
+}
+
+
+@keyframes stormWavesa {
+    from {
+        transform: rotate(20deg) translate(-100px, 0) scale(1.1);
+    }
+    to {
+        transform: rotate(10deg) translate(0, 0) scale(1.1);
+    }
+}
+
+@keyframes stormWavesb {
+    from {
+        transform: rotate(15deg) translate(100px, 0) scale(1.18);
+    }
+    to {
+        transform: rotate(-5deg) translate(-100px, 0) scale(1.18);
+    }
+}
+
+@keyframes stormWavesc {
+    from {
+        transform: rotate(10deg) translate(0px, 0) scale(1.1);
+    }
+    to {
+        transform: rotate(0deg) translate(100px, 0) scale(1.1);
+    }
+}
+
+@keyframes stormWavesd {
+    from {
+        transform: rotate(5deg) translate(100px, 0) scale(1.1);
+    }
+    to {
+        transform: rotate(0deg) translate(0px, 0) scale(1.1);
+    }
+}
+
+////////////////////
+
+
+
+.buoy {
+    margin: 100px;
+    width: 14vw;
+    height: 15vh;
+    // background-color: rgb(148, 83, 83);
+    // border-radius: 4px;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    line-height: 15vh;
+    font-size: 3rem;
+}
+
+#buoyFront::before,#buoyBack::before{
+    // outline: 2px solid rgb(255, 0, 0);
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: -19vh;
+    left: 0;
+    width: 10px;
+    height: 34vh;
+    background-color: #dadada;
+    z-index: 0;
+    border-radius: 4px; 
+}
+
+#buoyFront::after,#buoyBack::after{
+    /* outline: 2px solid #000; */
+    content: "";
+    display: block;
+    position: absolute;
+    left: -1.9vw;
+    top: 30vh;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-image: url(../image/market/floatBall.png);
+    opacity: .3;
+    width: 80px;
+    height: 80px;          
+    z-index: 1;
+}
+
+.frontBackPortalCont {
+    position: absolute;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+}
+
+#buoyFront {
+    left: 10vw;
+    bottom: -20vh;
+    animation: floatFrontBallAnimation 5s ease-in-out infinite alternate;
+}
+
+#buoyBack {
+    left: 40vw;
+    bottom: -20vh;
+    animation: floatBackBallAnimation 5s ease-in-out infinite alternate;
+    z-index: 11;
+}
+
+.pSflagfront {
+    margin: 14vh 0 0 10.7vw;
+    width: 100px;
+    transform: scale(5);
+    // animation: flagReposition .5s linear infinite alternate;
+    position: absolute;
+    z-index: 10;
+}
+
+.pSflagback {
+    top: 45vh;
+    right: 12vw;
+    width: 100px;
+    transform: scale(5);
+    animation: flagReposition 5s ease-in-out infinite alternate;
+    position: absolute;
+    z-index: 10;
+}
+
+@keyframes flagReposition {
+    from{
+        transform: scale(5) translate(-20%, 0px);
+    }
+    to{
+        transform: scale(5) translate(-44%, 10px);
+    }
+}
+
+
+
+@keyframes floatBackBallAnimation  {
+    from {
+        transform: translate(-20%, -15px);
+    }
+    to {
+        transform: translate(-65%, 40px);
+    }
+}
+#backPortal {
+    position: relative;
+    top: 34vh;
+    left: 67vw;
+
+    z-index: 11;
+    animation: floatBackBallAnimation 5s ease-in-out infinite alternate;
+    span {
+        text-align: center;
+        line-height: 15vh;
+        font-size: 3rem;
+        font-size: 3rem;
+	    font-family: $fofaTitle;
+        letter-spacing: 10px;
+        text-shadow: 1px 1px 10px #fff;
+    }
+    
+}
+
+#frontPortal {
+    position: relative;
+    top: 34vh;
+    left: 23vw;
+    z-index: 11;
+    animation: floatBackBallAnimation 5s ease-in-out infinite alternate;
+    span {
+        text-align: center;
+        line-height: 15vh;
+        font-size: 3rem;
+        font-size: 3rem;
+	    font-family: $fofaTitle;
+        letter-spacing: 10px;
+        text-shadow: 1px 1px 10px #fff;
+    }
+    
+}
+
+@media screen and (max-width: 768px){
+    #frontPortal {
+        width: 100%;
+        top: auto;
+        left: auto;
+        text-align: center;
+        margin-top: 40vh;
+        animation: floatBackBallAnimation 0s;
+    }
+    #backPortal {
+        width: 100%;
+        top: auto;
+        left: auto;
+        text-align: center;
+        margin-top: 40vh;
+        animation: floatBackBallAnimation 0s;
+    }
+    .pirateLoadingShip {
+        width: 80%;
+    }
+}
