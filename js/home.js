@@ -206,7 +206,12 @@ if(winWidth < 1024){
 
         }
     }
-function showMsglitbo(msg){}
+
+    function showMsglitbo(msg){
+        console.log('hi??');
+        document.getElementById('Msglightbox').style.display = "block";
+        document.querySelector('#Msglightbox .paper').innerHTML=msg;
+    }
 //購買黑市商品
     $('#homeProdBuy').click(function(){
         $.ajax({
@@ -228,6 +233,7 @@ function showMsglitbo(msg){}
                     msg += '<p>您的剩餘金幣：';
                     msg += obj.buyerMoney;
                     msg += '</p>';
+                    msg +="前往<a href='me.php'>俺の海賊船</a>查看寶物"
                 }else{
                     msg += '<p>';
                     msg +=  obj.msg;

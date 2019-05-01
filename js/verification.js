@@ -33,14 +33,18 @@ function login(){
             data: {signmemId:signmemId,signmemPsw:signmemPsw},
             type: 'GET',
             success: function(data){
-                alert('sucess');
                 console.log(data);
                 if(data!=0){
                     $('#loginBox').css('display','none');
                     intoSession(data);
-                    // getStatus();
+                    document.getElementById('headerLog').innerText = "離船";
+                    //清空燈箱內容
+                    signmemId="";
+                    signmemPsw="";
+                    $('#feedback').text("");
                 }else if(data==0){
                     $('#feedback').text("帳號或密碼錯誤").css('color','red');
+                    $('#signmemId').select();
                 }
             },
         });
@@ -108,7 +112,7 @@ function verification(){
 
     }else if(memPsw != memCon){
         $('#feedback2').text("密碼確認有誤").css('color','red');
-        $('#memCon').focus();
+        $('#memCon').select();
     }else if( !avatarDir || !fullShipDir || !custList){
         $('#feedback2').text("您尚未製作海賊船，將引導您前往...").css('color','green');
         setTimeout(() => {
@@ -165,7 +169,7 @@ function showLoginLiBo(){
 var loginBtns = document.getElementsByClassName('loginHere');
 var loginBox = document.getElementById('loginBox');
 for(i=0;i<loginBtns.length;i++){
-    loginBtns[i].addEventListener('click',showLoginLiBo)
+    loginBtns[i].onclick=showLoginLiBo;
 }
 
 //關閉燈箱
