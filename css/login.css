@@ -125,9 +125,6 @@ a {
 .clearfix {
   clear: both; }
 
-#loginBox {
-  display: none; }
-
 input {
   height: 20px;
   border-radius: 2px;
@@ -146,28 +143,39 @@ input {
   margin: 10px;
   font-size: 20px; }
 
-.Data-Title {
-  float: left;
-  width: 25%;
-  /* Label寬度，視情況調整0 */
-  margin-right: 0px;
-  margin-left: 60px;
-  text-align: right;
-  line-height: 2.2; }
+#signnew {
+  width: 100px;
+  transition: all 0.1s cubic-bezier(0.57, 0.8, 0.76, 1.34); }
 
-.Data-Items {
-  float: left;
-  width: 20%;
-  padding-bottom: 10px;
-  margin-left: 0; }
+.Data-Title {
+  text-align: right;
+  margin: auto;
+  width: 300px; }
 
 .verification {
   padding: 20px 0;
   text-align: center;
   margin: auto;
-  width: 400px;
   /* position: absolute0; */
   top: 100px; }
+  .verification button {
+    color: #fffcf2;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 100px;
+    background: #006ca6;
+    border: none;
+    outline: none;
+    transform: translateY(0px);
+    transition-duration: 0.1s;
+    cursor: pointer; }
+    .verification button i {
+      vertical-align: 1px; }
+    .verification button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 3px 5px #a67c52; }
 
 .Data-Title > label {
   margin: 10px; }

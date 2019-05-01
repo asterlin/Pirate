@@ -377,7 +377,7 @@ session_start();
 	        </div>
 	    </div>
 	</div>
-	<div id="getSession"></div>
+
 	<!-- lightBox -->
 	<!-- win -->
 	<div class="playLightbox" id="winbox">
@@ -524,33 +524,35 @@ session_start();
 <script src="js/gameGps.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKB16XDqQ6Qnki2BdJUQXXP4hEpK0_2wo&callback=initMap&libraries=geometry"></script> 
 <script>
+var storage = sessionStorage;
 var compass;
-var playTimeCount=0;
 var gameStartTimer;
-var memId=$('#getSession').text();
-var memLv=parseInt($('#blueLv span').text());
-var memExp=parseInt($('#blueLv span').text());
-var memMoney=parseInt($('#blueLv span').text());
+var memId=storage['memId'];
+var playedTimes=storage['playedTimes'];
+var memLv=parseInt(storage['memLv']);
+var memExp=parseInt(storage['memExp']);
 var playedTimes=parseInt($('#blueGameTime span').text());
 var int=parseInt($('#blueInt span').text());
 var str=parseInt($('#blueStr span').text());
 var lcu=parseInt($('#blueLuck span').text());
 var agi=parseInt($('#blueAgi span').text());
 var rwd=$('#playTitleSec').width();
-console.log(memId);
+var playTimeCount=0;
+console.log(memLv,'%',memExp);
 
 $(document).ready(function(){
 //登入lightbox使用
 document.getElementById("signUp").addEventListener("click",signUp );
 document.getElementById("btnver").addEventListener("click",verification );
 //還沒登入compass = none
-if(memId=='')	$('#compass').css('display','none');
-else			$('#compass').css('display','block');
-
-//rwd compass = none
-if(rwd==375)	$('#compass').css('display','none');
-else			$('#compass').css('display','block');
+if(!memId)	$('#compass').css('display','none');
+else		$('#compass').css('display','block');
+//input compass
 getStatus();//getStatus.js
+//input rank score
+getScoreL();//getRank.js
+getScoreM();//getRank.js
+getScoreH();//getRank.js
 //lightbox 離開
 $('.checkToLeave').click(function(){$('.lightbox').css('display','none');});
 $('.popbg').click(function(){$('.lightbox').css('display','none');});
@@ -558,15 +560,19 @@ $('.leave').click(function(){$('.lightbox').css('display','none');})
 
 // 寫入遊戲測驗時間
 $('#winbox .checkToLeave').click(function(){
-	playedTimes-=1;
+	storage['playedTimes']=playedTimes-1;
+	memLv+=1;
+	memExp=50;
+	storage['memLv']=memLv;
+	storage['memExp']=memExp;
 	updateScore();//playTime_update.js
 	getScoreL();
 	getStatus();
-	playTimeCount=0;//getStatus
+	playTimeCount=0;
 });
 $('#losebox .checkToLeave').click(function(){
-	playedTimes-=1;
-	updateScore();
+	storage['playedTimes']=playedTimes-1;
+	updateScore();//playTime_update.js
 	getScoreL();
 	getStatus();
 	playTimeCount=0;
@@ -600,7 +606,6 @@ function play(){
 }
 function playTime(){
 	playTimeCount+=1;
-	console.log('playTimeCount: ',playTimeCount);
 }
 });
 </script>

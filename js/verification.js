@@ -30,11 +30,6 @@ function login(){
         data: {signmemId:signmemId,signmemPsw:signmemPsw},
         type: 'GET',
         success: function(data){
-<<<<<<< HEAD
-=======
-            alert('sucess');
-            console.log(data);
->>>>>>> b231f7500ac254650539337e38290b3ba50769ed
             if(data!=0){
                 $('#loginBox').css('display','none');
                 intoSession(data);

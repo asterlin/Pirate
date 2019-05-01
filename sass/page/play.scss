@@ -497,7 +497,7 @@ body {
 	width: 300px;
 }
 #loginbox .lightbox{
-  display: block;
+  display: none;
 }
 .playLightbox .lightbox .axis {
   left: 46px;
@@ -1264,6 +1264,12 @@ body {
 	left: 10%;
 	top: 50%;
 	transform: translate(-50%,50%);
+}
+#winbox .checkToLeave{
+  bottom: 130px;
+}
+#losebox .checkToLeave{
+  bottom: 120px;
 }
 .popbg{
   position: fixed;
