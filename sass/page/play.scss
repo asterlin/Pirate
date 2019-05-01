@@ -25,7 +25,7 @@ body {
 // #rankArea{display: none;}
 // #rankPaper{display: none;}
 .p5Canvas{display: none;}
-body .lightbox{display: none;}
+.lightbox{display: none;}
 @keyframes borderCircle{
 	0% {
 		transform: rotate(0);
@@ -497,7 +497,7 @@ body .lightbox{display: none;}
 	width: 300px;
 }
 #loginbox .lightbox{
-  display: none;
+  display: block;
 }
 .playLightbox .lightbox .axis {
   left: 46px;

@@ -2,7 +2,9 @@
 @import '../base/reset';
 // @import '../base/lightbox';
 
-
+#loginBox{
+    display: none;
+}
 input{
     height: 20px;
     border-radius:2px;
@@ -14,29 +16,6 @@ input{
 .btnpri{
     margin: 10px;
 }
-.lightbox{
-    // display: none;
-//     width: 450px;
-//     height: 320px;
-}
-// .axis{
-//     width: 450px;
-// }
-// .paper{
-//     text-align: center;
-//     padding: 50px 0px;
-//     width: 400px;
-//     height: 200px;
-// }
-// .paper::after{
-//     right: 7%;
-//     top: 15%;
-// }
-
-// .paper::before{
-//     right: 7%;
-//     top: 15%;
-// }
 
 #tab-demo ul > li{
     display: inline;
@@ -69,7 +48,7 @@ input{
     text-align: center;
     margin: auto;
     width:400px;
-    display: none;
+    // display: none;
     /* position: absolute0; */
     top: 100px;
     
