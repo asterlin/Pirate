@@ -2,7 +2,7 @@
 function buy(e){
     var memMoney = parseInt(document.getElementById("memMoney").value);
     var buyprice = e.target.parentNode.parentNode.previousSibling.previousSibling.value;
-    console.log(buyprice);
+    console.log(memMoney);
     
     if( memMoney >= buyprice){
         document.getElementsByClassName("buysucbox")[0].style.display = 'block'; // i代入這個頁面的第幾個燈箱
