@@ -253,6 +253,22 @@ header.homeHeadHide{
     display: inline-block;
     padding: 5px;
     border-radius: 10px;
+<<<<<<< HEAD
+=======
+    cursor: pointer;
+    transition-duration: 0.1s;
+    &.active{
+        border: 3px solid $blue;
+    }
+    &:hover{
+        box-shadow:0 3px 5px #a67c52;
+        transform: translateY(-3px);
+    }
+    &#shipPreview{
+        width: 300px;
+        cursor: default;
+    }
+>>>>>>> 調整首頁客製預覽的滑鼠
 }
 //船
 #shipArea{
