@@ -131,7 +131,7 @@ img {
     position: relative;
     width: 100%;
     overflow: hidden;
-    z-index: 10;
+    z-index: 9;
     .marBorDec {
         position: absolute;
         bottom: -8px;
@@ -1525,6 +1525,9 @@ html {
     #compass {
         display: none !important;
       }
+    .marWrap #burger {
+        display: none;
+    }
 }
 
 .lightbox{
@@ -2147,4 +2150,8 @@ a {
 }
 header {
     z-index: 20;
+}
+
+.sYBuyMerchLightBox {
+    display: none;
 }

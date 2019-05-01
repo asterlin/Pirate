@@ -59,7 +59,7 @@ $(document).ready(function () {
             lightningTimer -= 30.0;
         }
 
-        // lamp();
+        lamp();
         rain();
 
         if (lightningTimer < 500.0) {
@@ -92,6 +92,22 @@ $(document).ready(function () {
     //     ctx.fillStyle = grdGlow;
     //     ctx.fillRect(0, 0, 500, 500);
     // }
+
+
+    function lamp() {
+  
+        // glow modified by time passed
+        var sinGlowMod = 5 * Math.sin(msTimer / 200);
+        var cosGlowMod = 5 * Math.cos((msTimer + 0.5 * sinGlowMod) / 200);        
+        var grdGlow = ctx.createRadialGradient(520, 200, 0, 247 + sinGlowMod,
+                                               400, 206 + cosGlowMod);
+        grdGlow.addColorStop(0.000, 'rgba(220, 240, 160, 1)');
+        grdGlow.addColorStop(0.2, 'rgba(180, 240, 160, 0.4)');
+        grdGlow.addColorStop(0.4, 'rgba(140, 240, 160, 0.2)');
+        grdGlow.addColorStop(1, 'rgba(140, 240, 160, 0)');
+        ctx.fillStyle = grdGlow;
+        ctx.fillRect(0, 0, 500, 600);
+      }
 
     // function to position and color each rain drop
     // TODO: optimize - group raindrops together
@@ -144,6 +160,81 @@ $(document).ready(function () {
             ctx.fillRect(0, 0, w, h);
         }
     }
+
+    /////////////////////////////
+    var divb = document.createElement('div'),
+        canvasb = document.createElement('canvas'),    
+        ctxb = canvasb.getContext('2d'),
+        wb,
+        hb,
+        msTimerb = 0.0,
+        lightningTimerb;
+  
+    // initialize
+    function initb() {
+      document.getElementsByClassName('spotLightSYItembg')[0].appendChild(divb);
+      divb.style.position = "absolute";
+      divb.appendChild(canvasb);
+      UpdatePositionb();
+      lightningTimerb = 8000.0;
+      lightningAlphab = 0.0;
+  
+      // 1 frame every 30ms
+      if (typeof game_loopb != "undefined") clearInterval(game_loopb);
+      game_loopb = setInterval(mainLoopb, 30);
+    }
+    initb();
+  
+    function mainLoopb() {
+      UpdatePositionb();
+      msTimerb += 30;
+  
+      if (lightningTimerb < 0.0)  {
+        lightningTimerb = 8000.0;
+      }
+      else {
+        lightningTimerb -= 30.0;
+      }    
+
+      lamp();        
+    }
+    
+    
+    // canvasb positioning and sizing
+    function UpdatePositionb () {
+      var bodyWidthb = document.documentElement.clientWidth,
+          bodyHeightb = document.documentElement.clientHeight;
+      wb = canvasb.width = Math.max(500,bodyWidthb);
+      hb = canvasb.height = Math.max(320,bodyHeightb);
+      divb.style.left=divb.style.right=
+      divb.style.top=divb.style.bottom="0";
+    }
+  
+    // lamp visuals
+    function lamp() {
+  
+      // glow modified by time passed
+      var sinGlowModb = 5 * Math.sin(msTimerb / 200);
+      var cosGlowModb = 5 * Math.cos((msTimerb + 0.5 * sinGlowModb) / 200);        
+      var grdGlowb = ctxb.createRadialGradient(250, 200, 0, 247 + sinGlowModb,
+                                             400, 206 + cosGlowModb);
+      grdGlowb.addColorStop(0.000, 'rgba(220, 240, 160, 1)');
+      grdGlowb.addColorStop(0.2, 'rgba(180, 240, 160, 0.4)');
+      grdGlowb.addColorStop(0.4, 'rgba(140, 240, 160, 0.2)');
+      grdGlowb.addColorStop(1, 'rgba(140, 240, 160, 0)');
+      ctxb.fillStyle = grdGlowb;
+      ctxb.fillRect(0, 0, 500, 600);
+    }
+
 });
 
 
+document.getElementById("frontPortal").onmouseenter = function(){
+    document.getElementsByClassName("spotLightSYItembg")[0].style.transform = "translate(11vw, 30vh) rotate(20deg)";
+    
+}
+
+document.getElementById("backPortal").onmouseenter = function(){
+    document.getElementsByClassName("spotLightSYItembg")[0].style.transform = "translate(57vw, -20vh) rotate(-20deg)";
+    
+}

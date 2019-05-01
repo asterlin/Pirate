@@ -467,7 +467,10 @@ $(document).on('ready', function () {
     }
     if (goToShipYard == 1) {
         currentMarket(previewMerchType + 1);
-        window.scrollTo(0, document.body.scrollHeight);
+        setTimeout(function () {
+            window.scrollTo(0, document.body.scrollHeight);
+        },1000);
+        
         document.getElementsByClassName("marketADCont")[0].style.opacity = 0;
         // document.getElementsByClassName("shipYardBanner")[0].style.opacity = "0";
 
@@ -1275,7 +1278,7 @@ function buyMerchActivity() {
 
             } else {
                 alert("您尚未登入!!!");
-                document.getElementsByClassName("lightbox")[0].style.display = "block";
+                document.getElementById("loginBox").style.display = "block";
                 createbtn(btnpri);
             }
         }
@@ -1552,7 +1555,7 @@ function buyMerchActivity() {
                 });
             } else {
                 alert("您尚未登入!!!");
-                document.getElementsByClassName("lightbox")[0].style.display = "block";
+                document.getElementById("loginBox").style.display = "block";
                 createbtn(btnpri);
             }
         }
@@ -1568,22 +1571,22 @@ buyMerchActivity();
 //     document.getElementsByClassName("lightbox")[0].style.display = "none";
 // }
 
-// document.getElementById("signUp").onclick = function () {
-//     $.ajax({
-//         url: 'marketphp/goToShipYard.php',
-//         data: {
-//             goToShipYard: 1,
-//         },
-//         type: 'GET',
-//         success: function () {
-//             console.log("寫入session");
-//         },
-//         error: function (e) {
-//             console.log("寫入session失敗");
-//         }
-//     });
-//     location.reload(true);
-// }
+document.getElementById("signUp").onclick = function () {
+    $.ajax({
+        url: 'marketphp/goToShipYard.php',
+        data: {
+            goToShipYard: 1,
+        },
+        type: 'GET',
+        success: function () {
+            console.log("寫入session");
+        },
+        error: function (e) {
+            console.log("寫入session失敗");
+        }
+    });
+    // location.reload(true);
+}
 // document.getElementById("btnver").onclick = function () {
 //     $.ajax({
 //         url: 'marketphp/goToShipYard.php',

@@ -404,9 +404,9 @@ if(memid == "tourist"){
     }
     
 }
-document.getElementsByClassName("leave")[0].onclick = function(){
-    document.getElementsByClassName("lightbox")[0].style.display = "none";
-}
+// document.getElementsByClassName("leave")[0].onclick = function(){
+//     document.getElementsByClassName("lightbox")[0].style.display = "none";
+// }
 
 document.getElementById("signUp").onclick = function () {
 

@@ -8,17 +8,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>《大海賊帝國》去追尋吧！</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/shiprank.css">
     <link rel="stylesheet" href="css/wavebtn.css">
-    <link rel="stylesheet" href="css/lightbox.css">
     <link rel="stylesheet" href="css/compass.css">
-    <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="css/shiprank.css">
-    <script src="verification.js"></script>
+    <link rel="stylesheet" href="css/lightbox.css">
+    <link rel="stylesheet" href="css/login.css">
 
 </head>
 
 <body>
+<?php require_once('header.php') ?>
 <script>
     <?php
     if (isset($_SESSION['memId'])) {
@@ -30,74 +33,54 @@
         var memid = "tourist";
         <?php
         $memid = "tourist";
+
+        ////////////////////
+        $memId = "tourist";
+        $memPsw = "signmemPsw";
+        $errMsg = "";
+        try {
+            require_once("backstage/php/connectPirates.php");
+            $sql = "select * from member where memId=:memId and memPsw=:memPsw"; //''
+            $member = $pdo->prepare( $sql ); //先編譯好
+            $member->bindValue(":memId", $memId); //代入資料
+            $member->bindValue(":memPsw", $memPsw);
+            $member->execute();//
+
+            if( $member->rowCount() == 0 ){//找不到
+                echo 0;
+                $errMsg .= "帳密錯誤, <a href='signUp.html'>重新登入</a><br>";
+            }else{
+                $arr = [];
+                $memRow = $member->fetch(PDO::FETCH_ASSOC);
+                $arr[] = $memRow;
+                echo json_encode($arr);
+                //登入成功,將登入者的資料寫入session
+                session_start();
+                $_SESSION["memId"] = $memRow["memId"];
+                $_SESSION["memPsw"] = $memRow["memPsw"];
+                $_SESSION["memNic"] = $memRow["memNic"];
+                $_SESSION["memLv"] = $memRow["memLv"];
+                $_SESSION["memExp"] = $memRow["memExp"];
+                $_SESSION["memMoney"] = $memRow["memMoney"];
+                $_SESSION["intelligence"] = $memRow["intelligence"];
+                $_SESSION["strength"] = $memRow["strength"];
+                $_SESSION["agile"] = $memRow["agile"];
+                $_SESSION["luck"] = $memRow["luck"];
+                $_SESSION["shipTotalVote"] = $memRow["shipTotalVote"];
+                $_SESSION["shipImgAll"] = $memRow["shipImgAll"];
+                $_SESSION["avatarImg"] = $memRow["avatarImg"];
+                $_SESSION["playedTimes"] = $memRow["playedTimes"];
+                $_SESSION["talentPointsRemain"] = $memRow["talentPointsRemain"];
+            }
+        } catch (PDOException $e) {
+            $errMsg .= "錯誤 : ".$e -> getMessage()."<br>";
+            $errMsg .= "行號 : ".$e -> getLine()."<br>";
+        }
+    ////////////////////
     }
     ?>
-    </script>
-<div class="lightbox">
-        <div class="popbg"></div>
-        <div class="info">
-            <div class="axis axis1"></div>
-            <div class="axis axis2"></div>
-            <div class="leave"></div>
-            <div class="paper">
+</script>
 
-                <div id="tab-demo">
-                
-                    <div id="tab01" class="tab-inner">
-                        <h2 class="titlePri" >成為海賊</h2>
-                        
-                            <label>帳號:</label>
-                            <input id="signmemId" type="text" name="memId"><br>
-                            <label>密碼:</label>
-                            <input id="signmemPsw" type="password" name="memPsw"><br>
-                            
-                            <a id="signUp"class="btnpri" href="javascript:;">
-                                <span>登入</span>
-                            </a>
-                       
-                    </div>
-
-                    <div id="tab02" class="tab-inner">
-                        <h2 class="titlePri" >成為海賊</h2>
-                        <form action="registered.php" id="loginforma">
-                            <div class="Data-Title">
-                                <label for="memId">帳號:</label><br>
-                                <label for="memNic">暱稱:</label><br>
-                                <label for="memPsw">密碼:</label><br>
-                                <label for="memCon">確認密碼:</label><br>
-                            </div>
-                            <div class="Data-Items">
-                                <input type="text" id="memId" name="memId"><br>
-                                <input type="text" id="memNic" name="memNic"><br>
-                                <input type="password" id="memPsw" name="memPsw"><br>
-                                <input type="password" id="memCon" name="memCon"><br>
-                            </div>
-                            <div class="verification">
-                                <h2>請旋轉到正確位置</h2>
-                                <a id="signlbtn" href="javascript:;">左</a>
-                                <img id="signnew" src="image/new.png" alt="" width="100px" height="100px">
-                                <a id="signrbtn" href="javascript:;">右</a>
-                                <!-- <a id="signconfirm" type="submit">提交</a> -->
-                                <div id="signcontent"></div>
-                            </div>
-                            <div class="clearfix"></div>
-                            <a id="btnver" class="btnpri" href="javascript:;" >
-                                <span>驗證身份</span>
-                            </a>
-                            
-                        </form>
-                    </div>
-                    <ul class="tab-title">
-                        <li><a class="signIn" href="#tab01">登入頁</a></li>
-                        <li>/</li>
-                        <li><a class="register" href="#tab02">註冊頁</a></li>
-                    </ul>
-             </div>
-   
-  
-         </div>
-    </div>
-        </div>
     <div class="sRWrap">
     <label for="burgerCtrl">
         <input type="checkbox" name="" id="burgerCtrl">
@@ -106,38 +89,6 @@
             <div class="burgerLine"></div>
         </div>
     </label>
-    <header class=""><!-- homeHeadHide-->
-        <h1 id="headerLogo"><a href="index.php">
-            <img src="image/logo.svg" alt="大海賊帝國">
-        </a></h1>
-        <nav id="headerMenu" >
-            <ul>
-                <li class="menuSwitch">
-                    <a href="play.php">海賊試煉場</i></a>
-                    <ul class="headerSub">
-                        <li><a href="play.php#game">海賊試煉</a></li>
-                        <li><a href="play.php#gpsWrap">啟航尋寶</a></li>
-                    </ul>
-                </li>
-                <li class="menuSwitch">
-                    <a href="market.php">海上市集</i></a>
-                    <ul class="headerSub">
-                        <li><a href="market.php">黑市</a></li>
-                        <li><a href="market.php">造船廠</a></li>
-                    </ul>
-                </li>
-                <li class="menuSwitch"><a href="bar.php">情報酒館</a></li>
-                <li class="menuSwitch">
-                    <a href="me.php">俺の海賊船</i></a>
-                    <ul class="headerSub">
-                        <li class="loginHere"><a href="javascript:;">登入</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
-    </header>
-
-
         <div class="sRContWrap">
 
             <h1>船匠排行</h1>
@@ -285,7 +236,7 @@
                                 </div>
 
                                 <div class="sRimg">
-                                    <img class="sRFullShipImg" src="image/merchProduct/<?php echo $rankList[$i*3+3]; ?>">
+                                    <img class="sRFullShipImg" src="image/ship/<?php echo $rankList[$i*3+3]; ?>">
                                 </div>
 
                                 <div class="SRWaveBox">
@@ -1050,7 +1001,13 @@
                     </a>
                 </div>
                 <div class="sRimg">
-                    <img class="sRFullShipImg" src="image/ship/shipComplete.png">
+                    
+                    <img class="sRFullShipImg" src="image/<?php
+                            if (isset($_SESSION["memId"])) {
+                                echo $_SESSION["shipImgAll"];
+                            } else {
+                                echo "shipComplete.png";
+                            }?>">
                 </div>
 
                 <div class="SRWaveBox">
@@ -1104,15 +1061,17 @@
 			<div id="blueGameTime" class="blueInfo">體力值<span></span></div>
 		</div>
 	</div>
+
+    <?php require_once('lightbox.php') ?>
+
     <script src="js/jquery-3.3.1.min.js"></script>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.5/js/swiper.min.js"></script>
-    <script src="js/wavebtn.js"></script>
     <script src="js/header.js"></script>
-    <script src="js/shipRank.js"></script>
-    <script src="js/login.js"></script>
-    <script src="js/rain.js"></script>
     <script src="js/verification.js"></script>
+    <script src="js/wavebtn.js"></script>
+    <script src="js/shipRank.js"></script>
+    <script src="js/rain.js"></script>
     <script src="js/compass.js"></script>
     <script src="js/reset.js"></script>
 <!-- <script src="js/getStatus.js"></script> -->
@@ -1178,8 +1137,7 @@ $('#losebox .checkToLeave').click(function(){
 	// getStatus();
 	playTimeCount=0;
 });
-// 跑tweenmax
-// playTweenMax();
+
 
 // playBtn
 if(memId!=''){

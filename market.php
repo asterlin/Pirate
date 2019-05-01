@@ -9,14 +9,20 @@
     <title>《大海賊帝國》去追尋吧！</title>
     <link rel="stylesheet" href="css/wavebtn.css">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/slick/slick.css">
     <link rel="stylesheet" href="css/compass.css">
     <link rel="stylesheet" type="text/css" href="css/slick/slick-theme.css">
     <link rel="stylesheet" href="css/market.css">
+    <link rel="stylesheet" href="css/lightbox.css">
+    <link rel="stylesheet" href="css/login.css">
 </head>
 
 <body>
+<?php require_once('header.php') ?>
 <script>
+    var storage = sessionStorage;
         <?php if (isset($_SESSION['goToShipYard'])) {
     ?>
             var goToShipYard  = "<?php echo $_SESSION['goToShipYard']; ?>";
@@ -39,6 +45,13 @@
             } else {
                 ?>  var previewMerchType = -1; <?php ;
             }
+            ?>
+            if((storage)['memId']){
+                alert("挖肏勒");
+            }else{
+                // alert("媽哩個逼逼但");
+            }
+            <?php
             if (isset($_SESSION["memId"])) {
                 ?>
                 var memid = "<?php echo $_SESSION["memId"]; ?>";
@@ -47,7 +60,51 @@
                 ?>
                 var memid = "tourist";
             <?php
-            $memid = "tourist";
+                    $memid = "tourist";
+
+                    ////////////////////
+                        $memId = "tourist";
+                        $memPsw = "signmemPsw";
+                        $errMsg = "";
+                        try {
+                            require_once("backstage/php/connectPirates.php");
+                            $sql = "select * from member where memId=:memId and memPsw=:memPsw"; //''
+                            $member = $pdo->prepare( $sql ); //先編譯好
+                            $member->bindValue(":memId", $memId); //代入資料
+                            $member->bindValue(":memPsw", $memPsw);
+                            $member->execute();//
+
+                            if( $member->rowCount() == 0 ){//找不到
+                                echo 0;
+                                $errMsg .= "帳密錯誤, <a href='signUp.html'>重新登入</a><br>";
+                            }else{
+                                $arr = [];
+                                $memRow = $member->fetch(PDO::FETCH_ASSOC);
+                                $arr[] = $memRow;
+                                echo json_encode($arr);
+                                //登入成功,將登入者的資料寫入session
+                                session_start();
+                                $_SESSION["memId"] = $memRow["memId"];
+                                $_SESSION["memPsw"] = $memRow["memPsw"];
+                                $_SESSION["memNic"] = $memRow["memNic"];
+                                $_SESSION["memLv"] = $memRow["memLv"];
+                                $_SESSION["memExp"] = $memRow["memExp"];
+                                $_SESSION["memMoney"] = $memRow["memMoney"];
+                                $_SESSION["intelligence"] = $memRow["intelligence"];
+                                $_SESSION["strength"] = $memRow["strength"];
+                                $_SESSION["agile"] = $memRow["agile"];
+                                $_SESSION["luck"] = $memRow["luck"];
+                                $_SESSION["shipTotalVote"] = $memRow["shipTotalVote"];
+                                $_SESSION["shipImgAll"] = $memRow["shipImgAll"];
+                                $_SESSION["avatarImg"] = $memRow["avatarImg"];
+                                $_SESSION["playedTimes"] = $memRow["playedTimes"];
+                                $_SESSION["talentPointsRemain"] = $memRow["talentPointsRemain"];
+                            }
+                        } catch (PDOException $e) {
+                            $errMsg .= "錯誤 : ".$e -> getMessage()."<br>";
+                            $errMsg .= "行號 : ".$e -> getLine()."<br>";
+                        }
+                    ////////////////////
             }
             
     unset($_SESSION['goToShipYard']);
@@ -58,15 +115,8 @@
 </script>
 
     <div class="marWrap">
-<<<<<<< HEAD
-    <label for="burgerCtrl">
-        <input type="checkbox" name="" id="burgerCtrl">
-        <div id="burger">
-            <div class="burgerLine"></div>
-            <div class="burgerLine"></div>
-        </div>
-    </label>
-    <header class=""><!-- homeHeadHide-->
+
+    <!-- <header class="">
         <h1 id="headerLogo"><a href="index.php">
             <img src="image/logo.svg" alt="大海賊帝國">
         </a></h1>
@@ -95,7 +145,7 @@
                 </li>
             </ul>
         </nav>
-    </header>
+    </header> -->
 
     
         <div class="marBanner">
@@ -140,46 +190,6 @@
     </div>
 
             <!-- 廣告動畫 -->
-=======
-        <label for="burgerCtrl">
-            <input type="checkbox" name="" id="burgerCtrl">
-            <div id="burger">
-                <div class="burgerLine"></div>
-                <div class="burgerLine"></div>
-            </div>
-        </label>
-        <header class=""><!-- homeHeadHide-->
-            <h1 id="headerLogo"><a href="javascript:;">
-                <img src="image/logo.svg" alt="大海賊帝國">
-            </a></h1>
-            <nav id="headerMenu" >
-                <ul>
-                    <li class="menuSwitch">
-                        <a href="play.php">海賊試煉場</i></a>
-                        <ul class="headerSub">
-                            <li><a href="play.php#game">海賊試煉</a></li>
-                            <li><a href="play.php#gpsWrap">啟航尋寶</a></li>
-                        </ul>
-                    </li>
-                    <li class="menuSwitch">
-                        <a href="market.php">海上市集</i></a>
-                        <ul class="headerSub">
-                            <li><a href="market.php">黑市</a></li>
-                            <li><a href="market.php">造船廠</a></li>
-                        </ul>
-                    </li>
-                    <li class="menuSwitch"><a href="bar.php">情報酒館</a></li>
-                    <li class="menuSwitch">
-                        <a href="me.php">俺の海賊船</i></a>
-                        <ul class="headerSub">
-                            <li><a href="javascript:;" class="loginHere">登入</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </nav>
-        </header>
-        <div class="marBanner">
->>>>>>> 2683a3ecabb9536141e511d85ceb7db44d7bebb3
             <div class="mlslBox">
                 <img class="mlsl" src="image/market/mlsl.png" alt="">
             </div>
@@ -886,12 +896,20 @@
 			<div id="blueInt" class="blueInfo">智力<span></span></div>
 			<div id="blueGameTime" class="blueInfo">體力值<span></span></div>
 		</div>
-	</div>
+    </div>
+    
+    <?php
+    //  require_once('footer.php') 
+    ?>
+
+<!-- 以下為燈箱 -->
+<?php require_once('lightbox.php') ?>
+
     <script src="js/wavebtn.js"></script>
     <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
     <script src="js/slick/slick.js" type="text/javascript" charset="utf-8"></script>
     
-    <script src="js/login.js"></script>
+    <!-- <script src="js/login.js"></script> -->
     <script src="js/header.js"></script>
     <script src="js/verification.js"></script>
     <script src="js/compass.js"></script>
