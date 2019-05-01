@@ -2,12 +2,12 @@
 <!-- 熱門話題 -->
 <?php
 session_start();
-$_SESSION["memId"] = "test01";
+// $_SESSION["memId"] = "test01";
 // echo $_SESSION["memId"];
 ?>
 <script>
     var thisMemId = "<?php echo $_SESSION["memId"]; ?>";
-    console.log(thisMemId);
+    // console.log(thisMemId);
 </script>
 
 
@@ -130,7 +130,7 @@ $_SESSION["memId"] = "test01";
 </div>
 <script>
     var arrhotIssue = <?php echo $jsonStr; ?>;
-    console.log(arrhotIssue);
+    // console.log(arrhotIssue);
 </script>
 
 <!-- 熱門話題內容開始 -->
@@ -389,21 +389,21 @@ $_SESSION["memId"] = "test01";
 <script>
     function doFirst() {
         hotIssueText();
-        addArt();
+        // addArt();
         news();
         //get queryString
         if (location.search.match("from=index") || location.search.match("from=me") ||  location.search.match("from=artRespond")) {
             // var location = location.search;
-            // console.log(location.search);
-            // console.log(location.search.indexOf("artId"));
+            console.log(location.search);
+            console.log(location.search.indexOf("artId"));
             // console.log(location.search.substring(location.search.indexOf("artId"),location.search.length));
             artBoxContText='';
             var locationSearch = location.search;
             var artId = location.search.substring(location.search.indexOf("artId"),location.search.length);
             artId = artId.substring((artId.indexOf("=")+1),artId.length);
-            // console.log(artId);
+            console.log(artId);
             artBox(artId);
-            document.getElementById("articleBoxWrapMask").style.display = "block";
+           
         }else{
             artBox();
         }
