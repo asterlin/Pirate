@@ -16,24 +16,29 @@ function logBox(){
 function login(){    
     var signmemId = $('#signmemId').val();
     var signmemPsw= $('#signmemPsw').val();
-    if(signmemId==""||signmemPsw==""){
-        $('#feedback').text("密碼和帳號不能為空白").css('color','red').css('text-align','center');
+    if(signmemId==""){
+        $('#feedback').text("請乖乖輸入").css('color','red').css('text-align','center');
+        $('#signmemId').focus();
+    }else if(signmemPsw==""){
+        $('#feedback').text("請乖乖輸入").css('color','red').css('text-align','center');
+        $('#signmemPsw').focus();
     }
     else if(number%360!=0){
-        $('#feedback').text("驗證失敗").css('color','red').css('text-align','center');
+        $('#feedback').text("請旋轉上圖至正確方向").css('color','red').css('text-align','center');
     }else{    
     $.ajax({
         url: 'signup.php',
         data: {signmemId:signmemId,signmemPsw:signmemPsw},
         type: 'GET',
         success: function(data){
+            alert('sucess');
             console.log(data);
             if(data!=0){
                 $('#loginBox').css('display','none');
                 intoSession(data);
                 // getStatus();
             }else if(data==0){
-                $('#feedback').text("無此帳號或密碼!").css('color','red').css('text-align','center');
+                $('#feedback').text("帳號或密碼錯誤").css('color','red').css('text-align','center');
             }
         },
     });
@@ -60,11 +65,13 @@ function intoSession(jsonStr){
 }
 function left(){
     number -= 90;
+    number %=360;
     document.getElementById("signnew").style.transform = `rotate(${number}deg)`;
     var content = $('#signcontent');
 }
 function right(){
     number += 90;
+    number %=360;
     document.getElementById("signnew").style.transform = `rotate(${number}deg)`;
     var content = $('#signcontent');
 }
@@ -82,9 +89,12 @@ function verification(){
     // var avatarDir = storage['avatarDir'];
     // else if(avatarDir=="" || fullShipDir=="" || custList==""){
     if($('#memId').val()==""||$('#memNic').val()==""||$('#memPsw').val()==""||$('#memCon').val()==""){
-        $('#feedback2').text("不能有空白").css('color','red').css('text-align','center');
+        $('#feedback2').text("請乖乖輸入").css('color','red').css('text-align','center');
+        
     }else if(memPsw != memCon){
-        $('#feedback2').text("密碼必須一樣").css('color','red').css('text-align','center');
+        $('#feedback2').text("密碼確認有誤").css('color','red').css('text-align','center');
+        $('#memCon').focus();
+
     }else{
         $.ajax({
             url: 'register.php',
