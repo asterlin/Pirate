@@ -28,7 +28,7 @@ echo $errMsg;
     <link rel="stylesheet" href="../css/backStage.css">
     <link rel="stylesheet" href="../css/backOfficialMerch.css">
     <link rel="stylesheet" href="../css/wavebtn.css">
-    <script src="js/jquery-3.3.1.min.js"></script>
+    
 </head>
 
 <body>
@@ -49,7 +49,7 @@ echo $errMsg;
                 <div class="dataTable">
                     <table id="merchTable">
 
-                        <form action="editTrea.php" method="GET">
+                        <form action="php/editTrea.php" method="GET">
                         <tr>
                             <th>寶物編號</th>
                             <th>寶物名稱</th>
@@ -79,7 +79,7 @@ try {
                 <td class="treaName"><input type="text" name="treaName" value='<?php echo $prodRow["treaName"]; ?>' placeholder="請輸入造型名稱"></td>
                 <td class="treaImg">
                     <img src="../image/treasure/<?php echo $prodRow["treaImg"]; ?>" class="imgPreview">
-                    <input class="treaInputImg" type="file" value="../<?php echo $prodRow["treaImg"]; ?>">
+                    <input class="treaInputImg" type="file" value="../image/treasure/<?php echo $prodRow["treaImg"]; ?>">
                 </td>
                 <td class="treaInt"><input type="text" name="treaInt" value='<?php echo $prodRow["treaInt"]; ?>' placeholder="請輸入能力值"></td>
                 <td class="treaStr"><input type="text" name="treaStr" value='<?php echo $prodRow["treaStr"]; ?>' placeholder="請輸入能力值"></td>
@@ -126,7 +126,7 @@ try {
         </div>
     </div>
     <script src="../js/wavebtn.js"></script>
-
+    <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/backOfficialTrea.js"></script>
 </body>
 </html>
