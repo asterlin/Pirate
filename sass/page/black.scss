@@ -64,10 +64,13 @@ body {
     width: 100%;
 }
 .treawrap{
-    border: 1px red solid;
+    border: 7px rgb(110, 86, 47) solid;
+    background-color: rgba(214, 185, 121,.5);
+    border-radius: 5px;
     width: 100%;
     max-width: 1200px;
     margin: auto;
+    box-shadow:3px 0px 5px 0px rgba(71, 60, 34, 0.8);
     
     
     
@@ -134,7 +137,10 @@ body {
 
 
 .sellpage{
-    border: 1px red solid;
+    border: 7px rgb(110, 86, 47) solid;
+    background-color: rgba(214, 185, 121,.5);
+    box-shadow:3px 0px 5px 0px rgba(71, 60, 34, 0.8);
+    border-radius: 5px;
     width: 100%;
     max-width: 1200px;
     display: none;

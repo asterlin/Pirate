@@ -15,7 +15,7 @@ $price = $_REQUEST["price"];
                 $sql = " select * from traderecord where treaId = '$treaId' and buyerId IS NOT NULL";
                 $traderecord = $pdo -> query($sql);
                 if($traderecord->rowCount()==0){
-                    echo "[]";
+                    echo "沒交易紀錄";
             }else{
                 $j=0;
                 $allprice = 0;

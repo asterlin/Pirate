@@ -1,3 +1,23 @@
+<<<<<<< HEAD
+=======
+<?php
+session_start();
+// $memId = $_SESSION["memId"];
+// try {
+// 	require_once("backstage/php/connectPirates.php");
+//     $sql = "select * from member where memId = '$memId'";
+//     $member=$pdo->query($sql);
+// } catch (PDOException $e) {
+
+//     $errMsg .= "錯誤 : ".$e -> getMessage()."<br>";
+//     $errMsg .= "行號 : ".$e -> getLine()."<br>";
+//     echo $errMsg;
+// }
+// while( $tradRow = $member->fetch(PDO::FETCH_ASSOC)){ 
+    
+//   $memIdMoney = $tradRow["memMoney"];}
+?>
+>>>>>>> 65e3e418819622fabfefe5dfdd4077e0ec7de5a5
 
 <?php 
 $errMsg = '';
@@ -55,8 +75,7 @@ try {
 ?>
 
 <?php 
-    session_start();
-    echo $filterCheck;
+    
 try {
     $filter = '';//and treaStr >= 1
     $sql = "select * from treasurelist where treaId = ? $filter ";
@@ -72,6 +91,10 @@ try {
 
 <?php 
 
+<<<<<<< HEAD
+=======
+    $count = 0;
+>>>>>>> 65e3e418819622fabfefe5dfdd4077e0ec7de5a5
 while( $treaRow = $treasurelist->fetch(PDO::FETCH_ASSOC)){
     $count+=1; 
         if($treaRow["treaStatus"] == 1 ){ 
@@ -123,7 +146,7 @@ while( $treaRow = $treasurelist->fetch(PDO::FETCH_ASSOC)){
     ?>
     </div>
     
-    <div class="lightbox buysucbox" ><!-- 購買燈箱 -->
+    <div class="lightbox buysucbox textS" ><!-- 購買燈箱 -->
         <div class="popbg"></div>
         <div class="info">
             <div class="axis axis1"></div>
@@ -147,14 +170,14 @@ while( $treaRow = $treasurelist->fetch(PDO::FETCH_ASSOC)){
 
 
 
-    <div class="sellpage flex">
+    <div class="sellpage flex textS">
         <div class="sellnew">
             <a id="sellnewbtn" class="btnsec ">
                 <span>新增商品</span>
             </a>
         </div> 
         <?php 
-            session_start();
+           
             
             try {
                 $memId = 'ww';//$_SESSION["memId"]
@@ -213,7 +236,7 @@ while( $treaRow = $treasurelist->fetch(PDO::FETCH_ASSOC)){
 
     ?>
 
-    <div class="selltreabox">
+    <div class="selltreabox textS">
         <div class="lightbox ">
             <div class="popbg"></div>
             <div class="info">
@@ -264,9 +287,19 @@ while( $treaRow = $treasurelist->fetch(PDO::FETCH_ASSOC)){
                                  <p id="bapromptprice" class="promptprice"></p><!-- 推薦價格-->
                             </div>
                             <div class="sellshelf">
+<<<<<<< HEAD
                                 <a id="sellshelfbtn" class="btnpri " href="#">
                                     <span>上架</span>
                                 </a>
+=======
+                                <a id="selloffbtn" class="btnpri " href="#">
+                                    <span>取消</span>
+                                </a>
+                                <a id="sellshelfbtn" class="btnpri" href="#">
+                                    <span>上架</span>
+                                </a>
+                               
+>>>>>>> 65e3e418819622fabfefe5dfdd4077e0ec7de5a5
                                  
                             </div>
                             <p>上架期限: 72小時</p>
