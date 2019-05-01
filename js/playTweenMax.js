@@ -6,6 +6,9 @@ var section_04;
 var flag = 0;
 var rwd=$('#playTitleSec').width();
 if(rwd!=375){
+$('#gpsArea').click(function(){
+TweenLite.to(window, 1, {scrollTo:"#gpsWrap"});
+});
 // 滑到第二屏時藍色布幕動畫
 animation_04 = TweenMax.to(`#blueAppear`,10, {
 top:0,

@@ -14,6 +14,7 @@ session_start();
     <link rel="stylesheet" href="css/lightbox.css">
     <link rel="stylesheet" href="css/gameGps.css">
     <link rel="stylesheet" href="css/login.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.6/plugins/animation.gsap.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.6/ScrollMagic.min.js"></script>
@@ -27,46 +28,11 @@ session_start();
     <script src="js/animation.gsap.min.js"></script>
 	<script src="js/jquery-3.3.1.min.js"></script>
 	<script src="js/ScrollToPlugin.js"></script>
-	<script src="js/verification.js"></script>
 </head>
 <body>
-	<label for="burgerCtrl">
-        <input type="checkbox" name="" id="burgerCtrl">
-        <div id="burger">
-            <div class="burgerLine"></div>
-            <div class="burgerLine"></div>
-        </div>
-    </label>
-    <header class=""><!-- homeHeadHide-->
-        <h1 id="headerLogo"><a href="index.php">
-            <img src="image/logo.svg" alt="大海賊帝國">
-        </a></h1>
-        <nav id="headerMenu" >
-            <ul>
-                <li class="menuSwitch">
-                    <a href="play.php">海賊試煉場</i></a>
-                    <ul class="headerSub">
-                        <li><a href="play.php#game">海賊試煉</a></li>
-                        <li><a href="play.php#gpsWrap">啟航尋寶</a></li>
-                    </ul>
-                </li>
-                <li class="menuSwitch">
-                    <a href="market.php">海上市集</i></a>
-                    <ul class="headerSub">
-                        <li><a href="market.php">黑市</a></li>
-                        <li><a href="market.php">造船廠</a></li>
-                    </ul>
-                </li>
-                <li class="menuSwitch"><a href="bar.php">情報酒館</a></li>
-                <li class="menuSwitch">
-                    <a href="me.php">俺の海賊船</i></a>
-                    <ul class="headerSub">
-                        <li><a href="javascript:;" class="loginHere">登入</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
-    </header>
+	<?php 
+	require_once("header.php");
+	?>
 	<div id="choose">
 		<div id="playTitle">
 	        <h1 class="titlePri">海賊試煉場</h1>
@@ -509,19 +475,25 @@ session_start();
 			<div id="blueGameTime" class="blueInfo">體力值<span></span></div>
 		</div>
 	</div>
+	<?php 
+		require_once("lightbox.php");
+		require_once("footer.php");
+	 ?>
+<script src="js/selectShipall.js"></script>
+<script src="js/playTweenMax.js"></script>
 <script src="js/playTime_update.js"></script>
 <script src="js/header.js"></script>
 <script src="js/wavebtn.js"></script>
-<script src="js/login.js"></script>
+<!-- <script src="js/login.js"></script> -->
 <script type="js/TweenMaxPlay.js"></script>
 <script src="js/compass.js"></script>
 <script src="js/playRank.js"></script>
 <script src="js/playFrameChange.js"></script>
-<script src="js/playTweenMax.js"></script>
 <!-- <script src="js/reset.js"></script> -->
 <script src="js/getStatus.js"></script>
 <script src="js/gameGps.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKB16XDqQ6Qnki2BdJUQXXP4hEpK0_2wo&callback=initMap&libraries=geometry"></script> 
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKB16XDqQ6Qnki2BdJUQXXP4hEpK0_2wo&callback=initMap&libraries=geometry"></script>
+<script src="js/verification.js"></script> 
 <script>
 var storage = sessionStorage;
 var compass;
@@ -537,7 +509,6 @@ var lcu=parseInt($('#blueLuck span').text());
 var agi=parseInt($('#blueAgi span').text());
 var rwd=$('#playTitleSec').width();
 var playTimeCount=0;
-console.log(memLv,'%',memExp,'$',playedTimes);
 
 $(document).ready(function(){
 //登入lightbox使用
@@ -552,6 +523,7 @@ getStatus();//getStatus.js
 getScoreL();//getRank.js
 getScoreM();//getRank.js
 getScoreH();//getRank.js
+getShip();
 //lightbox 離開
 $('.checkToLeave').click(function(){$('.lightbox').css('display','none');});
 $('.popbg').click(function(){$('.lightbox').css('display','none');});
@@ -570,7 +542,6 @@ $('#winbox .checkToLeave').click(function(){
 	getScoreL();
 	getStatus();
 	playTimeCount=0;
-	console.log('memLv: ',memLv,'memExp: ',memExp,'playedTime: ',playedTimes);
 	$('#blueLv span').text(`${memLv}`);
     $('#blueExp span').text(`${memExp}`);
     $('#blueMoney span').text(`${memMoney}`);
