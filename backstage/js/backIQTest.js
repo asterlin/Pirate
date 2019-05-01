@@ -10,19 +10,26 @@ window.addEventListener("load", function () {
             option3 = $('.option3').eq(index).val();
             option4 = $('.option4').eq(index).val();
             answer = $('.answer').eq(index).val();
+            console.log(testText)
+            console.log(point)
+            console.log(option1)
+            console.log(option2)
+            console.log(option3)
+            console.log(option4)
+            console.log(answer)
 
             var xhr = new XMLHttpRequest();
             xhr.onload = function () {
                 if (xhr.status == 200) {
-                    console.log('i');
-                    console.log(xhr.responseText)
+                    // console.log('i');
+                    // console.log(xhr.responseText;
                     // getMeShipJSON( xhr.responseText );
                 } else {
                     alert(xhr.status);
                 }
             }
 
-            var url = "backstage/backIQTest.php?testText=" + testText + "&point=" + point+ "&option1=" + option1+ "&option2=" + option2+ "&option3=" + option3+ "&option4=" + option4+ "&answer=" + answer;
+            var url = "php/backIQTestUpdate.php?testId="+testId+"&testText="+testText+"&poin="+point+"&option1="+option1+"&option2="+option2+"&option3="+option3+"&option4="+option4+"&answer="+answer;
             xhr.open("Get", url, true);
             xhr.send(null);
 
