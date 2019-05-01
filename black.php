@@ -19,6 +19,7 @@ try {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>大海賊帝國</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/wavebtn.css">
     <link rel="stylesheet" href="css/balance.css">
     <link rel="stylesheet" href="css/login.css">
@@ -118,9 +119,8 @@ while( $treaRow = $treasurelist->fetch(PDO::FETCH_ASSOC)){
                 <input class="tradeId" type="hidden" name="tradeId" value=<?php echo $tradRow["tradeId"];?>>
                 <input class="price" type="hidden" name="price" value=<?php echo $tradRow["price"];?>>
                 <input type="submit" style="display:none">
-                <input id="memMoney" type="hidden" value = <?php $_SESSION["memMoney"];?>>
+                <input id="memMoney" type="hidden" value= "<?php echo $_SESSION["memMoney"];?>">
                 <input type="hidden" value="<?php echo $tradRow["price"]; ?>">
-                
                 <div class="treabuywrap">
                     <a class="btnpri treabuy" >
                         <span>購買</span>
