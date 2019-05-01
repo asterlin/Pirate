@@ -59,7 +59,7 @@ echo $errMsg;
                         <?php
                             while ($iqtestRow = $iqtest->fetch(PDO::FETCH_ASSOC)) {
                                 ?>
-                            <td><?php echo $iqtestRow['testId'] ?></td>
+                            <td class="testId"><?php echo $iqtestRow['testId'] ?></td>
                             <td> <input class="testText" type="text" value="<?php echo $iqtestRow['testText'] ?>"> </td>
                             <td> <input class="point" type="text" value="<?php echo $iqtestRow['point'] ?>"></td>
                             <td> <input class="option1" type="text" value="<?php echo $iqtestRow['option1'] ?>"></td>
@@ -81,18 +81,6 @@ echo $errMsg;
         </div>
     </div>
     <script src="../js/jquery-3.3.1.min.js"></script>
-    <script src="../js/wavebtn.js"></script>
     <script src="js/backIQTest.js"></script>
 </body>
-
-<script>
-
-// testText = $('#testText').val();
-// console.log(testText)
-
-// $(document).ready(function () {
-//         $('.IQmodify').click(backIQTest)
-//     });
-</script>
-
 </html>

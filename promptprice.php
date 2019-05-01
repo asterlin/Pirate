@@ -11,7 +11,7 @@ $price = $_REQUEST["price"];
 <?php
     if($no === '1'){
         try {
-                require_once("connectPirates.php");
+                require_once("backstage/php/connectPirates.php");
                 $sql = " select * from traderecord where treaId = '$treaId' and buyerId IS NOT NULL";
                 $traderecord = $pdo -> query($sql);
                 if($traderecord->rowCount()==0){

@@ -29,13 +29,7 @@ window.onload = function () {
                         url: 'php/editTrea.php',
                         data: {
                             doType: 'delete',
-                            treaName: treaName,
-                            treaImg: treaImg,
-                            treaInt: treaInt,
-                            treaStr: treaStrN,
-                            treaAgi: treaAgi,
-                            treaLuk: treaLuk,
-                            saleYN: saleYN,
+                            treaName: treaName
                         },
                         type: 'GET',
                         success: function () {
@@ -159,7 +153,7 @@ window.onload = function () {
     //修改動作
     function doUpdate() {
         
-        var updateBtn = document.getElementsByClassName('updateList');
+        // var updateBtn = document.getElementsByClassName('updateList');
         var inputChange = document.getElementsByTagName('input');
         var selectChange = document.getElementsByTagName('select');
 
@@ -185,7 +179,7 @@ window.onload = function () {
         e.target.style.display= "none";
         var merchUpdate = e.target.parentNode.parentNode;
         var treaName = merchUpdate.getElementsByClassName('treaName')[0].childNodes[0].value;
-        var treaImg = "0";//merchUpdate.getElementsByClassName('treaImg')[0].getElementsByTagName('input')[0].value;
+        var treaImg = merchUpdate.getElementsByClassName('treaImg')[0].getElementsByTagName('input')[0].value;
         var treaInt = merchUpdate.getElementsByClassName('treaInt')[0].getElementsByTagName('input')[0].value;
         var treaStr = merchUpdate.getElementsByClassName('treaStr')[0].getElementsByTagName('input')[0].value;
         var treaAgi = merchUpdate.getElementsByClassName('treaAgi')[0].getElementsByTagName('input')[0].value;
@@ -206,12 +200,13 @@ window.onload = function () {
             data: {
                 doType: 'update',
                 treaName: treaName,
-                treaImg: '0',
+                treaImg: treaImg,
                 treaInt: treaInt,
                 treaStr: treaStr,
                 treaAgi: treaAgi,
                 treaLuk: treaLuk,
                 saleYN: saleYN,
+                treaId: treaNo
             },
             type: 'GET',
             success: function () {

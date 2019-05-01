@@ -279,7 +279,7 @@ try {
                     <div class="axis axis2"></div>
                     <div class="leave"></div>
                     <div class="paper">
-                        <!-- 範例 -->
+                        範例
                         <p class="textM">恭喜您獲得</p>
                         <div id="showPrizePic"></div>
                         <div class="textM" id="showPrizeMeg"></div>
@@ -301,13 +301,13 @@ try {
     <div id="homeGameTrea">
         <img src="image/gpsGame/treaBoxOpen.svg" alt="藏寶箱">
         <div class="homeTreaImg">
-            <img src="image/treasure/004.png" alt="寶物">
+            <img src="image/treasure/001.png" alt="寶物">
         </div>
         <div class="homeTreaImg">
-            <img src="image/treasure/005.png" alt="寶物">
+            <img src="image/treasure/010.png" alt="寶物">
         </div>
         <div class="homeTreaImg">
-            <img src="image/treasure/006.png" alt="寶物">
+            <img src="image/treasure/013.png" alt="寶物">
         </div>
     </div>
     <div class="clearfix"></div>
@@ -435,6 +435,7 @@ try {
                         <span class="newsBoxTime"><?php echo $artTimeStr ?></span>
                     </div>
                 </div>
+                <!-- 此列疑似造成跑版 -->
                 <div class="newsBoxArti"><?php echo $newsRow["artText"];?></div>
             </div>
             <?php
@@ -456,10 +457,7 @@ try {
         </p>
     </div>
 
-    <footer>
-        <img src="image/logo.svg" alt="logo">
-        <p class="textS">Copyleft © 2019</p>
-    </footer>
+    <?php require_once('footer.php') ?>
 
 <!-- 以下為燈箱 -->
 <?php require_once('lightbox.php') ?>
@@ -478,7 +476,6 @@ try {
     <script src="js/header.js"></script>
     <script src="js/gameGps.js"></script>
     <script src="js/shipDIY.js"></script>
-    <script src="js/login.js"></script>
     <script src="js/verification.js"></script>
     <script src="js/homeMapPIXI.js"></script>
     <script src="js/home.js"></script>

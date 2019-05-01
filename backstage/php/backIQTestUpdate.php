@@ -1,9 +1,11 @@
 <?php
+session_start();
 $errMsg = "";
 try{
   require_once("connectPirates.php");
-  $sql = "update iqtest set testText=:testText,point=:point,option1=:option1,option2=:option2,option3=:option3,option4=:option4,answer=:answer where testId=:testId";
+  $sql = "update iqtest set testId = :testId, testText = :testText, point = :point, option1 = :option1, option2 = :option2, option3 = :option3, option4 = :option4, answer = :answer where testId = :testId;";
   $iqtest = $pdo->prepare($sql);
+  
 
   $iqtest->bindValue(":testId",$_REQUEST["testId"]);
   $iqtest->bindValue(":testText",$_REQUEST["testText"]);

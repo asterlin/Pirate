@@ -15,7 +15,7 @@ try {
     //get total record count
     $totalRecCount = $recordsRow["totalRecord"];
     //determin: record per page
-    $numPerPage = 10;
+    $numPerPage = 8;
     //get total page
     $totalPages = ceil($totalRecCount / $numPerPage);   
 

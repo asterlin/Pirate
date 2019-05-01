@@ -83,6 +83,13 @@ window.addEventListener('load',function(){
         })
     }
 
+
+    var headerLog = document.querySelector('#headermenu .loginHere');
+    console.log(headerLog);
+    headerLog.addEventListener('click',function(e){
+        console.log(e.target)
+    })
+
     // for(var i=0;i<subSwitchs.length;i++){
     //     subSwitchs[i].addEventListener('click',function(e){
     //         toggleSub(e);

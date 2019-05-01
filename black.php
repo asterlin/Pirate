@@ -2,10 +2,9 @@
 <?php 
 $errMsg = '';
 try {
-	require_once("connectPirates.php");
+	require_once("backstage/php/connectPirates.php");
     $sql = "select * from traderecord where buyerId IS NULL";
     $traderecord=$pdo->query($sql);
-	
 } catch (PDOException $e) {
 
     $errMsg .= "錯誤 : ".$e -> getMessage()."<br>";
@@ -22,7 +21,8 @@ try {
     <title>Document</title>
     <link rel="stylesheet" href="css/wavebtn.css">
     <link rel="stylesheet" href="css/balance.css">
-    <link rel="stylesheet" href="../css/black.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/black.css">
     <link rel="stylesheet" href="css/lightbox.css">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
     <!-- <script src="js/black.js"></script> -->
@@ -31,6 +31,7 @@ try {
 
 </head>
 <body>
+    <?php require_once('header.php') ?>
     <div class="black">
         <p>黑市</p>
     <a id="gosellpage" class="btnsec " href="#">
@@ -87,7 +88,7 @@ while( $treaRow = $treasurelist->fetch(PDO::FETCH_ASSOC)){
                     力量+ <?=$treaRow["treaStr"];?>
                     敏捷+ <?=$treaRow["treaAgi"];?>
                     幸運+ <?=$treaRow["treaLuk"];?></p>
-            <img src="treasureImg/<?php echo $treaRow["treaImg"];?>" class="treaImg">
+            <img src="image/treasure/<?php echo $treaRow["treaImg"];?>" class="treaImg">
             <div class="treaRadar">
                 <p>天賦分佈</p> 
             </div>
@@ -183,7 +184,7 @@ while( $treaRow = $treasurelist->fetch(PDO::FETCH_ASSOC)){
                 力量+ <?=$treaRow["treaStr"];?>
                 敏捷+ <?=$treaRow["treaAgi"];?>
                 幸運+ <?=$treaRow["treaLuk"];?></p>
-            <img src="treasureImg/<?php echo $treaRow["treaImg"];?>" class="treaImg" >
+            <img src="image/treasure/<?php echo $treaRow["treaImg"];?>" class="treaImg" >
             
             <div class="treaRadar">
                 <p>天賦分佈</p> 
@@ -233,7 +234,7 @@ while( $treaRow = $treasurelist->fetch(PDO::FETCH_ASSOC)){
                             <?=$treaRow["treaName"];?>
                             <input class="storId" type="hidden" value="<?=$treaRow["storId"];?>">
                             <input class="treaId" type="hidden" value="<?=$treaRow["treaId"];?>">
-                            <img class = "card" src="treasureImg/<?=$treaRow["treaImg"];?>" alt="" width="10%" hight="10%">
+                            <img class = "card" src="image/treasure/<?=$treaRow["treaImg"];?>" alt="" width="10%" hight="10%">
                            
                             
                             <?php
@@ -255,10 +256,10 @@ while( $treaRow = $treasurelist->fetch(PDO::FETCH_ASSOC)){
                             </div>
 
                             <div  class="balance">
-                                <img id="baBase" class="base" src="base.png" alt="" width="30%">
-                                <img id="baRod" class="rod" src="rod.png" alt="" width="80%">
-                                <img id="baLcsl" class="lcsl" src="scales.png" alt="" width="20%">
-                                <img id="baRcsl" class="rcsl" src="scales.png" alt="" width="20%">
+                                <img id="baBase" class="base" src="image/black/base.png" alt="" width="30%">
+                                <img id="baRod" class="rod" src="image/black/rod.png" alt="" width="80%">
+                                <img id="baLcsl" class="lcsl" src="image/black/scales.png" alt="" width="20%">
+                                <img id="baRcsl" class="rcsl" src="image/black/scales.png" alt="" width="20%">
                                 <img id="batreasure" class="treasure" src="" alt="">
                                  <p id="bapromptprice" class="promptprice"></p><!-- 推薦價格-->
                             </div>
@@ -275,6 +276,7 @@ while( $treaRow = $treasurelist->fetch(PDO::FETCH_ASSOC)){
             </div>
         </div> 
     </div>
+    <script src="js/verification.js"></script>
     <script src="js/balance.js"></script>
     <script src="js/black.js"></script>
     <script>
@@ -299,6 +301,8 @@ while( $treaRow = $treasurelist->fetch(PDO::FETCH_ASSOC)){
         });
     </script>
     </div>
+    <?php require_once('footer.php') ?>
+    <?php require_once('lightbox.php') ?>
 </body>
 </html>
 

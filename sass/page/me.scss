@@ -53,17 +53,19 @@ canvas {
     height: 100%;
     width: 100%;
 }
-.butStore{
-    transform: rotateX(-50deg);
+
+.butStore {
+    transform: rotateX(0deg);
     position: absolute;
     display: block;
-    align:center;
+    align: center;
     top: 0;
     bottom: 0;
     right: 0;
     left: 0;
 }
-#butStore{
+
+#butStore {
     display: flex;
 }
 
@@ -216,9 +218,14 @@ canvas {
 
                     input {
                         width: 100px;
+                        border-radius: 5px;
+                        border: 2px solid #8F716D;
+                        ;
+
                     }
-                    .fas{
-                        cursor: pointer; 
+
+                    .fas {
+                        cursor: pointer;
                     }
                 }
             }
@@ -245,7 +252,14 @@ canvas {
                 //按鈕
                 .but {
                     position: absolute;
-                    cursor: pointer; 
+                    cursor: pointer;
+                    border: 1px solid transparent;
+                    background-color: #8F716D;
+                    box-sizing: border-box;
+                    padding: 5px 10px;
+                    border-radius: 5px;
+                    font-family: $fofaText;
+                    color: #fff;
                     //opacity: 0;
 
                 }
@@ -256,7 +270,7 @@ canvas {
                 }
 
                 #butI {
-                    left: 50px;
+                    left: 60px;
                     /* right: 15px; */
                     /* top: 150px; */
                     bottom: 0;
@@ -264,12 +278,12 @@ canvas {
 
                 #butL {
                     bottom: 0;
-                    left: 100px;
+                    left: 120px;
                 }
 
                 #butA {
                     bottom: 0;
-                    left: 150px;
+                    left: 180px;
                 }
             }
         }
@@ -347,7 +361,7 @@ canvas {
         border-radius: 20%;
         overflow: hidden;
         box-sizing: border-box;
-        
+
 
         img {
             width: 100%;
@@ -358,7 +372,8 @@ canvas {
             opacity: .5;
         }
     }
-    .myCustomer{
+
+    .myCustomer {
         cursor: pointer;
     }
 }
@@ -444,7 +459,10 @@ canvas {
 
 @media screen and(min-width: 768px) {
 
-    
+    .butStore {
+        transform: rotateX(-50deg);
+    }
+
 
     .meTitle {
         padding-top: 210px;
@@ -498,20 +516,15 @@ canvas {
 
         .boxNews {
             padding: 0 20px;
-            // padding-left: 80px;
+            padding-top: 40px;
             transform-style: preserve-3d;
-            // transform: rotateX(0deg);
             transform-origin: bottom;
-            // animation: lyingDown .5s;
-
-
 
             .meNews {
                 display: flex;
             }
 
         }
-
 
     }
 
@@ -561,6 +574,7 @@ canvas {
 
 
 @media screen and(min-width: 1200px) {
+
 
     .meTitle {
         padding-top: 210px;
