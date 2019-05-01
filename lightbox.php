@@ -4,7 +4,7 @@
         <div class="axis axis1"></div>
         <div class="axis axis2"></div>
         <div class="leaveLightbox">
-            <i class="fa fa-close"></i>
+        <i class="fa fa-close"></i>
         </div>
         <div class="paper">
 
@@ -13,24 +13,24 @@
                 <div id="tab01" class="tab-inner">
                     <h2 class="textL" >登船</h2>
                     
-                    <label class="textS">帳號:</label>
-                    <input id="signmemId" type="text" name="memId" placeholder="請輸入帳號"  class="textS"><br>
-                    <label class="textS">密碼:</label>
-                    <input id="signmemPsw" type="password" name="memPsw" class="textS" placeholder="請輸入密碼"><br>
-                    <div class="verification" >
-                        <h2 class="textS">請旋轉到正確方向</h2>
-                        <button id="signlbtn">
-                            <i class="fa fa-rotate-left"></i>
-                        </button>
-                        <img id="signnew" src="image/new.png" alt="">
-                        <button id="signrbtn">
-                            <i class="fa fa-rotate-right"></i>
-                        </button>
-                    </div>
-                    <p id="feedback" class="textM"></p>
-                    <a id="signUp"class="btnpri textS" href="javascript:;">
-                        <span>登入</span>
-                    </a>
+                        <label class="textS">帳號:</label>
+                        <input id="signmemId" type="text" name="memId" placeholder="請輸入帳號"  class="textS"><br>
+                        <label class="textS">密碼:</label>
+                        <input id="signmemPsw" type="password" name="memPsw" class="textS" placeholder="請輸入密碼"><br>
+                        <div class="verification" >
+                            <h2 class="textS">請旋轉到正確方向</h2>
+                            <button id="signlbtn">
+                                <i class="fa fa-rotate-left"></i>
+                            </button>
+                            <img id="signnew" src="image/new.png" alt="">
+                            <button id="signrbtn">
+                                <i class="fa fa-rotate-right"></i>
+                            </button>
+                        </div>
+                        <p id="feedback" class="textM"></p>
+                        <a id="signUp"class="btnpri textS" href="javascript:;">
+                            <span>登入</span>
+                        </a>
                 </div>
 
                 <div id="tab02" class="tab-inner">
@@ -43,6 +43,9 @@
                             <label for="memCon" class="textS" >確認密碼:<input type="password" id="memCon" name="memCon"  class="textS" placeholder="請再次輸入密碼"></label><br>
                         </div>
                         <div class="Data-Items">
+                            
+                            
+                            
                             
                         </div>
                         <div class="clearfix"></div>
@@ -60,7 +63,6 @@
                 </ul>
             </div>
         </div>
-    </div>  
 </div>
 
 
@@ -72,7 +74,7 @@
         <div class="leaveLightbox">
             <i class="fa fa-close"></i>
         </div>
-        <div class="paper textM">
+        <div class="paper">
         
         </div>
     </div>

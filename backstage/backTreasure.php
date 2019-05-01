@@ -25,7 +25,6 @@ echo $errMsg;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <script src="js/jquery-3.3.1.min.js"></script>
     <link rel="stylesheet" href="../css/backStage.css">
     <link rel="stylesheet" href="../css/backOfficialMerch.css">
     <link rel="stylesheet" href="../css/wavebtn.css">
@@ -42,15 +41,15 @@ echo $errMsg;
             <div class="content">
                 <h3 class="titlePri">官方商品管理</h3>
                 <div class="custToolBox">
-                    <button id="addTrea"  class="btnpri" href="javascript:;">
+                    <button id="addTrea" href="javascript:;">
                         <span>新增</span>
-                        <!-- <span>+</span> -->
+                        <span>+</span>
                     </button>
                 </div>
                 <div class="dataTable">
                     <table id="merchTable">
 
-                        <form action="editTrea.php" method="GET">
+                        <form action="php/editTrea.php" method="GET">
                         <tr>
                             <th>寶物編號</th>
                             <th>寶物名稱</th>
@@ -74,13 +73,13 @@ try {
 
                 foreach ($prods as $i=>$prodRow) {
                     ?>	
-                
+                <tbody>
                 <tr>
                 <td class="treaNo"><?php echo $prodRow["treaId"]; ?></td>
                 <td class="treaName"><input type="text" name="treaName" value='<?php echo $prodRow["treaName"]; ?>' placeholder="請輸入造型名稱"></td>
                 <td class="treaImg">
                     <img src="../image/treasure/<?php echo $prodRow["treaImg"]; ?>" class="imgPreview">
-                    <input class="treaInputImg" type="file" value="../<?php echo $prodRow["treaImg"]; ?>">
+                    <input class="treaInputImg" type="file" value="../image/treasure/<?php echo $prodRow["treaImg"]; ?>">
                 </td>
                 <td class="treaInt"><input type="text" name="treaInt" value='<?php echo $prodRow["treaInt"]; ?>' placeholder="請輸入能力值"></td>
                 <td class="treaStr"><input type="text" name="treaStr" value='<?php echo $prodRow["treaStr"]; ?>' placeholder="請輸入能力值"></td>
@@ -104,12 +103,13 @@ try {
                 </select>
                 </td>
                 <td>
-                <button class="updateList btnpri" style="display:none"><span>修改</span></button>
-                <button class="addToList removeIt btnpri"><span>刪除</span></button>
+                <button class="updateList" style="display:none">修改</button>
+                <button class="addToList removeIt">刪除</button>
                 </td>
                 <?php
                 ?>
                 </tr>
+                </tbody>
                 </form>
             <?php
                 }
@@ -126,6 +126,7 @@ try {
         </div>
     </div>
     <script src="../js/wavebtn.js"></script>
+    <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/backOfficialTrea.js"></script>
 </body>
 </html>

@@ -1,3 +1,4 @@
+
 function playTweenMax(){
 var controller = new ScrollMagic.Controller();
 var animation_04;
@@ -17,6 +18,7 @@ triggerElement: "#trigger_02",
 duration: 300,
 reverse:false,
 }).setTween(animation_04)
+.addIndicators()
 .addTo(controller);
 // 滑到第二屏時小船動畫
 animation_08 = TweenMax.to(`#boat`,10, {
@@ -27,6 +29,7 @@ triggerElement: "#trigger_02",
 duration: 300,
 reverse:false,
 }).setTween(animation_08)
+.addIndicators()
 .addTo(controller);
 
 // next

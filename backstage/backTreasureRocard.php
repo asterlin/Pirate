@@ -60,7 +60,7 @@ echo $errMsg;
 
                                 foreach ($record as $i=>$recordRow) {
                                     ?>	
-                                    
+                                    <tbody>
                                     <tr>
                                     <td class="treaNo"><?php echo $recordRow["salerId"]; ?></td>
                                     <td class="treaNo"><?php echo $recordRow["saleTime"]; ?></td>
@@ -69,7 +69,7 @@ echo $errMsg;
                                     <td class="treaNo"><?php echo $recordRow["price"]; ?></td>
                                     <td class="treaNo"><?php echo $recordRow["tradeTime"]; ?></td>
                                     </tr>
-                                  
+                                    </tbody>
                                     
                                 <?php
                                

@@ -1,15 +1,6 @@
 function $id(id){
     return document.getElementById(id);
 }
-var storage = sessionStorage;
-function checkLog(){
-    if(storage['memId']){
-        return true;
-    }else{
-        return false;
-    }
-}
-
 window.addEventListener('load',function(){
 
     // var headerMe= document.getElementById("headerMe");//取得header角色資訊
@@ -92,47 +83,10 @@ window.addEventListener('load',function(){
         })
     }
 
-   
-    
-    var headerLog = document.getElementById('headerLog');
-    let headerMe = document.querySelector('.menuSwitch')[3];
-    
-    if(storage['memId']){
-        headerLog.innerText = "離船";
-    }
-    
-    
 
-
-    //如果我的海賊船備案，要判斷是否登入而登入
-    // headerMe.addEventListener('click',function(){
-
-    // })
-    //登出後提供訊息
-    function showMsglitbo(msg){
-        document.getElementById('Msglightbox').style.display = "block";
-        document.querySelector('#Msglightbox .paper').innerHTML=msg;
-        
-    }
+    var headerLog = document.querySelector('#headermenu .loginHere');
     console.log(headerLog);
-    //當登入或登出被按時
     headerLog.addEventListener('click',function(e){
-        console.log(headerLog.innerText);
-        if(headerLog.innerText=="登船"){
-            console.log('按了登船')
-            document.getElementById('loginBox').style.display="block";
-            burgerCtrl.click();
-
-        }else{
-            console.log('按了離船')
-            storage.removeItem('memId');
-            burgerCtrl.click();
-            let msg =" <p>";
-            msg += "您已登出";
-            msg += "</p>";
-            showMsglitbo(msg);
-            headerLog.innerText = "登船";
-        }
         console.log(e.target)
     })
 

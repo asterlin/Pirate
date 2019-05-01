@@ -25,8 +25,9 @@ session_start();
             <div class="content">
                 <h3 class="titlePri">官方商品管理</h3>
                 <div class="custToolBox">
-                    <button id="addMerch" class="btnpri" href="javascript:;">
+                    <button id="addMerch" href="javascript:;">
                         <span>新增</span>
+                        <span>+</span>
                     </button>
                 </div>
                 <div class="dataTable">
@@ -55,7 +56,7 @@ try {
 
                 foreach ($prods as $i=>$prodRow) {
                     ?>	
-           
+            <tbody>
             <tr>
             <td class="merchNo"><?php echo $prodRow["modelId"]; ?></td>
             <td class="merchName"><input type="text" name="merchName" value='<?php echo $prodRow["modelName"]; ?>' placeholder="請輸入造型名稱"></td>
@@ -122,12 +123,13 @@ try {
             </select>
             </td>
             <td>
-            <button class="updateList btnpri" style="display:none"><span>修改</span></button>
-            <button class="addToList removeIt btnpri"><span>刪除</span></button>
+            <button class="updateList" style="display:none">修改</button>
+            <button class="addToList removeIt">刪除</button>
             </td>
             <?php
             ?>
             </tr>
+            </tbody>
             </form>
           <?php
                 }
