@@ -219,9 +219,9 @@ if(winWidth < 1024){
     }
 //購買黑市商品
     $('#homeProdBuy').click(function(){
-        console.log('按了');
+        // console.log('按了');
         if(checkLog()){
-            console.log('是登入')
+            // console.log('是登入')
             $.ajax({
                 type: "POST",
                 url: "backstage/php/homeBuyTrea.php",
