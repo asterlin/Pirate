@@ -406,7 +406,7 @@ try {
             ?>  
     <script>
         var arrhotIssue = <?php echo $jsonStr;?>;
-        console.log(arrhotIssue);
+        // console.log(arrhotIssue);
     </script>
 
         </div>    

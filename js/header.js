@@ -114,7 +114,7 @@ window.addEventListener('load',function(){
         document.querySelector('#Msglightbox .paper').innerHTML=msg;
         
     }
-    console.log(headerLog);
+    // console.log(headerLog);
     //當登入或登出被按時
     headerLog.addEventListener('click',function(e){
         console.log(headerLog.innerText);
