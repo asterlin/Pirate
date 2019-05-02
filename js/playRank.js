@@ -70,10 +70,11 @@ function getScoreH(){
     xhr.open("Get", url, true);
     xhr.send( null );
 }
-
 function getScoreLJSON(jsonStr){
 	member = JSON.parse(jsonStr);
 	for(i=0; i<=9; i++){
+		// console.log(`image/ship/${member[i].shipImgAll}`);
+		$('.myBoat').eq(i).text(`image/ship/${member[i].shipImgAll}`);
 		$('.myName').eq(i).text(`${member[i].memNic}`);
 		$('.rankName').eq(i).text(`${member[i].memNic}`);
 		$('.rankSec').eq(i).text(`${member[i].highscoreL}`);
@@ -83,6 +84,7 @@ function getScoreLJSON(jsonStr){
 function getScoreMJSON(jsonStr){
 	member = JSON.parse(jsonStr);
 	for(i=0; i<=9; i++){
+		$('.myBoat').eq(i).text(`image/ship/${member[i].shipImgAll}`);
 		$('.myName').eq(i).text(`${member[i].memNic}`);
 		$('.rankName').eq(i).text(`${member[i].memNic}`);
 		$('.rankSec').eq(i).text(`${member[i].highscoreM}`);
@@ -93,6 +95,7 @@ function getScoreHJSON(jsonStr){
 	member = JSON.parse(jsonStr);
 	console.log(member);
 	for(i=0; i<=9; i++){
+		$('.myBoat').eq(i).text(`image/ship/${member[i].shipImgAll}`);
 		$('.myName').eq(i).text(`${member[i].memNic}`);
 		$('.rankName').eq(i).text(`${member[i].memNic}`);
 		$('.rankSec').eq(i).text(`${member[i].highscoreH}`);

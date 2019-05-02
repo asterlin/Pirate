@@ -1,7 +1,9 @@
 <?php
 try{
   require_once("../backstage/php/connectPirates.php");
-  $sql = "select * from member order by highscoreL";
+  $sql = "select * from member
+    where highscoreL is not null
+    order by highscoreL";
   $member = $pdo->query( $sql );
   
   if( $member->rowCount() == 0 ){
