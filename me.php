@@ -15,52 +15,18 @@ require_once("meToDB/meToDB.php");
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>《大海賊帝國》去追尋吧！</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/wavebtn.css">
+    <link rel="stylesheet" href="css/lightbox.css">
+    <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="css/me.css">
     <link rel="stylesheet" href="css/boxx.css">
-    <link rel="stylesheet" href="css/wavebtn.css">
 </head>
 
 <body>
  
     
     <!--------------------------------- 選單 ------------------------------------->
-    <label for="burgerCtrl">
-        <input type="checkbox" name="" id="burgerCtrl">
-        <div id="burger">
-            <div class="burgerLine"></div>
-            <div class="burgerLine"></div>
-        </div>
-    </label>
-    <header class=""><!-- homeHeadHide-->
-        <h1 id="headerLogo"><a href="index.php">
-            <img src="image/logo.svg" alt="大海賊帝國">
-        </a></h1>
-        <nav id="headerMenu" >
-            <ul>
-                <li class="menuSwitch">
-                    <a href="play.php">海賊試煉場</i></a>
-                    <ul class="headerSub">
-                        <li><a href="play.php#game">海賊試煉</a></li>
-                        <li><a href="play.php#gpsWrap">啟航尋寶</a></li>
-                    </ul>
-                </li>
-                <li class="menuSwitch">
-                    <a href="market.php">海上市集</i></a>
-                    <ul class="headerSub">
-                        <li><a href="market.php">黑市</a></li>
-                        <li><a href="market.php">造船廠</a></li>
-                    </ul>
-                </li>
-                <li class="menuSwitch"><a href="bar.php">情報酒館</a></li>
-                <li class="menuSwitch">
-                    <a href="me.php">俺の海賊船</i></a>
-                    <ul class="headerSub">
-                        <li class="loginHere"><a href="javascript:;">登入</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
-    </header>
+    <?php require_once('header.php') ?>
 <!------------------------------------------------------------------------------->
 
 
@@ -269,8 +235,8 @@ require_once("meToDB/meToDB.php");
         <!-- --------------------------------------------------------------------->
     </div>
     <!-- ------------------------------wrap結束------------------------------------>
-
-
+    <?php require_once('footer.php') ?>
+    <?php require_once('lightbox.php') ?>
 
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/Chart.bundle.min.js"></script>
@@ -280,6 +246,7 @@ require_once("meToDB/meToDB.php");
     <script src="js/wavebtn.js"></script>
     <script src="js/meGetShip.js?<?php echo time();?>"></script>
     <script src="js/meShipUpdate.js"></script>
+    <script src="js/verification.js"></script>
     <!-- <script src="js/meShip.js"></script> -->
 
     <script>
