@@ -17,6 +17,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.6/plugins/animation.gsap.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.6/ScrollMagic.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<script src="js/p5.js" type="text/javascript"></script>
 	<script src="js/p5.play.js" type="text/javascript"></script>
 	<script src="js/p5.dom.js"></script>
@@ -27,46 +28,9 @@ session_start();
     <script src="js/animation.gsap.min.js"></script>
 	<script src="js/jquery-3.3.1.min.js"></script>
 	<script src="js/ScrollToPlugin.js"></script>
-	<script src="js/verification.js"></script>
 </head>
 <body>
-	<label for="burgerCtrl">
-        <input type="checkbox" name="" id="burgerCtrl">
-        <div id="burger">
-            <div class="burgerLine"></div>
-            <div class="burgerLine"></div>
-        </div>
-    </label>
-    <header class=""><!-- homeHeadHide-->
-        <h1 id="headerLogo"><a href="index.php">
-            <img src="image/logo.svg" alt="大海賊帝國">
-        </a></h1>
-        <nav id="headerMenu" >
-            <ul>
-                <li class="menuSwitch">
-                    <a href="play.php">海賊試煉場</i></a>
-                    <ul class="headerSub">
-                        <li><a href="play.php#game">海賊試煉</a></li>
-                        <li><a href="play.php#gpsWrap">啟航尋寶</a></li>
-                    </ul>
-                </li>
-                <li class="menuSwitch">
-                    <a href="market.php">海上市集</i></a>
-                    <ul class="headerSub">
-                        <li><a href="market.php">黑市</a></li>
-                        <li><a href="market.php">造船廠</a></li>
-                    </ul>
-                </li>
-                <li class="menuSwitch"><a href="bar.php">情報酒館</a></li>
-                <li class="menuSwitch">
-                    <a href="me.php">俺の海賊船</i></a>
-                    <ul class="headerSub">
-                        <li><a href="javascript:;" class="loginHere">登入</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
-    </header>
+	<?php require_once('header.php') ?>
 	<div id="choose">
 		<div id="playTitle">
 	        <h1 class="titlePri">海賊試煉場</h1>
@@ -431,67 +395,6 @@ session_start();
 		</div>
 	</div>
 	
-	<div id="loginbox">
-		<div class="lightbox idot">
-        <div class="popbg"></div>
-        <div class="info">
-            <div class="axis axis1"></div>
-            <div class="axis axis2"></div>
-            <div class="leave"></div>
-            <div class="paper">
-                <div id="tab-demo">
-                    <div id="tab01" class="tab-inner">
-                        <h2 class="titlePri" >成為海賊</h2>
-                            <label>帳號:</label>
-                            <input id="signmemId" type="text" name="memId"><br>
-                            <label>密碼:</label>
-                            <input id="signmemPsw" type="password" name="memPsw"><br>
-                            <a id="signUp"class="btnpri" href="javascript:;">
-                                <span>登入</span>
-                            </a>
-                    </div>
-
-                    <div id="tab02" class="tab-inner">
-                        <h2 class="titlePri" >成為海賊</h2>
-                        <form action="registered.php" id="loginforma">
-                            <div class="Data-Title">
-                                <label for="memId">帳號:</label><br>
-                                <label for="memNic">暱稱:</label><br>
-                                <label for="memPsw">密碼:</label><br>
-                                <label for="memCon">確認密碼:</label><br>
-                            </div>
-                            <div class="Data-Items">
-                                <input type="text" id="memId" name="memId"><br>
-                                <input type="text" id="memNic" name="memNic"><br>
-                                <input type="password" id="memPsw" name="memPsw"><br>
-                                <input type="password" id="memCon" name="memCon"><br>
-                            </div>
-                            <div class="verification">
-                                <h2>請旋轉到正確位置</h2>
-                                <a id="signlbtn" href="javascript:;">左</a>
-                                <img id="signnew" src="image/new.png" alt="" width="100px" height="100px">
-                                <a id="signrbtn" href="javascript:;">右</a>
-                                <a id="signconfirm" type="submit">提交</a>
-                                <div id="signcontent"></div>
-                            </div>
-                            <div class="clearfix"></div>
-                            <a id="btnver" class="btnpri" href="javascript:;" >
-                                <span>驗證身份</span>
-                            </a> 
-                        </form>
-                    </div>
-                    <ul class="tab-title">
-                        <li><a class="signIn" href="#tab01">登入頁</a></li>
-                        <li>/</li>
-                        <li><a class="register" href="#tab02">註冊頁</a></li>
-                    </ul>
-	             	</div>
-	         	</div>
-	    	</div>
-	    </div>
-	</div>
-	
-	
 	<!-- compass -->
 	<div id="compass">
 		<img src="image/compass_inner.png" alt="in" id="in">
@@ -509,6 +412,12 @@ session_start();
 			<div id="blueGameTime" class="blueInfo">體力值<span></span></div>
 		</div>
 	</div>
+	<?php require_once('footer.php') ?>
+
+<!-- 以下為燈箱 -->
+<?php require_once('lightbox.php') ?>
+
+
 <script src="js/playTime_update.js"></script>
 <script src="js/header.js"></script>
 <script src="js/wavebtn.js"></script>
@@ -519,6 +428,7 @@ session_start();
 <script src="js/playFrameChange.js"></script>
 <script src="js/playTweenMax.js"></script>
 <!-- <script src="js/reset.js"></script> -->
+<script src="js/verification.js"></script>
 <script src="js/getStatus.js"></script>
 <script src="js/gameGps.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKB16XDqQ6Qnki2BdJUQXXP4hEpK0_2wo&callback=initMap&libraries=geometry"></script> 
