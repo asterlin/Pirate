@@ -412,7 +412,7 @@ session_start();
 			<div id="blueGameTime" class="blueInfo">體力值<span></span></div>
 		</div>
 	</div>
-	<?php require_once('footer.php') ?>
+	<?php //require_once('footer.php') ?>
 
 <!-- 以下為燈箱 -->
 <?php require_once('lightbox.php') ?>
